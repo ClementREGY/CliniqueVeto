@@ -18,7 +18,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "INSERT INTO Logins VALUES(@login,@password)";
+                    command.CommandText = "exec ajout_login @login,@password";
                     command.Parameters.AddWithValue("@login", login.LoginUser);
                     command.Parameters.AddWithValue("@password", login.PasswordUser);
                     int resultat = command.ExecuteNonQuery();
