@@ -1,0 +1,9 @@
+CliniqueVeto/bin
+CliniqueVeto/obj
+DAL/bin
+DAL/obj
+BLL/bin
+BLL/obj
+BO/bin
+BO/obj
+*.suo
