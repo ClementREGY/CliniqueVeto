@@ -38,23 +38,25 @@
             // 
             // TBox_User
             // 
-            this.TBox_User.Location = new System.Drawing.Point(123, 29);
+            this.TBox_User.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_User.Location = new System.Drawing.Point(122, 20);
             this.TBox_User.Name = "TBox_User";
-            this.TBox_User.Size = new System.Drawing.Size(184, 20);
+            this.TBox_User.Size = new System.Drawing.Size(184, 26);
             this.TBox_User.TabIndex = 0;
             // 
             // TBox_Password
             // 
-            this.TBox_Password.Location = new System.Drawing.Point(123, 64);
+            this.TBox_Password.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Password.Location = new System.Drawing.Point(122, 55);
             this.TBox_Password.Name = "TBox_Password";
-            this.TBox_Password.Size = new System.Drawing.Size(184, 20);
+            this.TBox_Password.Size = new System.Drawing.Size(184, 26);
             this.TBox_Password.TabIndex = 1;
             // 
             // Label_User
             // 
             this.Label_User.AutoSize = true;
             this.Label_User.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_User.Location = new System.Drawing.Point(29, 28);
+            this.Label_User.Location = new System.Drawing.Point(28, 23);
             this.Label_User.Name = "Label_User";
             this.Label_User.Size = new System.Drawing.Size(88, 19);
             this.Label_User.TabIndex = 2;
@@ -64,7 +66,7 @@
             // 
             this.Label_Password.AutoSize = true;
             this.Label_Password.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Password.Location = new System.Drawing.Point(9, 63);
+            this.Label_Password.Location = new System.Drawing.Point(8, 58);
             this.Label_Password.Name = "Label_Password";
             this.Label_Password.Size = new System.Drawing.Size(108, 19);
             this.Label_Password.TabIndex = 3;
@@ -73,7 +75,7 @@
             // BTN_Valider
             // 
             this.BTN_Valider.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Valider.Location = new System.Drawing.Point(181, 100);
+            this.BTN_Valider.Location = new System.Drawing.Point(181, 98);
             this.BTN_Valider.Name = "BTN_Valider";
             this.BTN_Valider.Size = new System.Drawing.Size(125, 30);
             this.BTN_Valider.TabIndex = 4;
