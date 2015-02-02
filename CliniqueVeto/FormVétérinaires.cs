@@ -10,20 +10,11 @@ using System.Windows.Forms;
 
 namespace CliniqueVeto
 {
-    public partial class FormLogin : Form
+    public partial class FormVétérinaires : Form
     {
-        public FormLogin()
+        public FormVétérinaires()
         {
             InitializeComponent();
-        }
-
-        private void BTN_Valider_Click(object sender, EventArgs e)
-        {
-            FormPrincipale frm;
-            frm = new FormPrincipale();
-            frm.Show();
-            frm.BringToFront();
-            this.Hide();
         }
     }
 }

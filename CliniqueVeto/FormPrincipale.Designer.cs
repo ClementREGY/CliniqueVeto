@@ -31,27 +31,27 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipale));
             this.menuGénéral = new System.Windows.Forms.MenuStrip();
             this.secrétariatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.vétérinaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.paramétrageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priseDeRendezVousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dossierClientAnimauxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vétérinaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dossiersMédicauxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.paramétrageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vétérinairesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miseÀJourDuBarèmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barreAccès = new System.Windows.Forms.ToolStrip();
             this.toolStripBt_RDV = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBt_Client = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBt_Relance = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBt_Agenda = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBt_Dossier = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuGénéral.SuspendLayout();
             this.barreAccès.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +65,7 @@
             this.paramétrageToolStripMenuItem});
             this.menuGénéral.Location = new System.Drawing.Point(0, 0);
             this.menuGénéral.Name = "menuGénéral";
-            this.menuGénéral.Size = new System.Drawing.Size(805, 27);
+            this.menuGénéral.Size = new System.Drawing.Size(990, 27);
             this.menuGénéral.TabIndex = 1;
             this.menuGénéral.Text = "menuStrip1";
             // 
@@ -80,30 +80,13 @@
             this.secrétariatToolStripMenuItem.Size = new System.Drawing.Size(96, 23);
             this.secrétariatToolStripMenuItem.Text = "&Secrétariat";
             // 
-            // vétérinaireToolStripMenuItem
-            // 
-            this.vétérinaireToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.agendaToolStripMenuItem,
-            this.dossiersMédicauxToolStripMenuItem});
-            this.vétérinaireToolStripMenuItem.Name = "vétérinaireToolStripMenuItem";
-            this.vétérinaireToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
-            this.vétérinaireToolStripMenuItem.Text = "&Vétérinaire";
-            // 
-            // paramétrageToolStripMenuItem
-            // 
-            this.paramétrageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.vétérinairesToolStripMenuItem,
-            this.miseÀJourDuBarèmeToolStripMenuItem});
-            this.paramétrageToolStripMenuItem.Name = "paramétrageToolStripMenuItem";
-            this.paramétrageToolStripMenuItem.Size = new System.Drawing.Size(110, 23);
-            this.paramétrageToolStripMenuItem.Text = "&Paramétrage";
-            // 
             // priseDeRendezVousToolStripMenuItem
             // 
             this.priseDeRendezVousToolStripMenuItem.Name = "priseDeRendezVousToolStripMenuItem";
             this.priseDeRendezVousToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.priseDeRendezVousToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.priseDeRendezVousToolStripMenuItem.Text = "Prise de Rendez-Vous";
+            this.priseDeRendezVousToolStripMenuItem.Click += new System.EventHandler(this.AfficherRDV);
             // 
             // dossierClientAnimauxToolStripMenuItem
             // 
@@ -111,6 +94,7 @@
             this.dossierClientAnimauxToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
             this.dossierClientAnimauxToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.dossierClientAnimauxToolStripMenuItem.Text = "Dossiers Client / Animaux";
+            this.dossierClientAnimauxToolStripMenuItem.Click += new System.EventHandler(this.AfficherClients);
             // 
             // relancesToolStripMenuItem
             // 
@@ -126,6 +110,15 @@
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Text = "Mise à Jour du Stock de Vaccins";
             // 
+            // vétérinaireToolStripMenuItem
+            // 
+            this.vétérinaireToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.agendaToolStripMenuItem,
+            this.dossiersMédicauxToolStripMenuItem});
+            this.vétérinaireToolStripMenuItem.Name = "vétérinaireToolStripMenuItem";
+            this.vétérinaireToolStripMenuItem.Size = new System.Drawing.Size(98, 23);
+            this.vétérinaireToolStripMenuItem.Text = "&Vétérinaire";
+            // 
             // agendaToolStripMenuItem
             // 
             this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
@@ -140,12 +133,22 @@
             this.dossiersMédicauxToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
             this.dossiersMédicauxToolStripMenuItem.Text = "Dossiers Médicaux";
             // 
+            // paramétrageToolStripMenuItem
+            // 
+            this.paramétrageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vétérinairesToolStripMenuItem,
+            this.miseÀJourDuBarèmeToolStripMenuItem});
+            this.paramétrageToolStripMenuItem.Name = "paramétrageToolStripMenuItem";
+            this.paramétrageToolStripMenuItem.Size = new System.Drawing.Size(110, 23);
+            this.paramétrageToolStripMenuItem.Text = "&Paramétrage";
+            // 
             // vétérinairesToolStripMenuItem
             // 
             this.vétérinairesToolStripMenuItem.Name = "vétérinairesToolStripMenuItem";
             this.vétérinairesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.vétérinairesToolStripMenuItem.Size = new System.Drawing.Size(396, 24);
             this.vétérinairesToolStripMenuItem.Text = "Vétérinaires";
+            this.vétérinairesToolStripMenuItem.Click += new System.EventHandler(this.AfficherVétérinaires);
             // 
             // miseÀJourDuBarèmeToolStripMenuItem
             // 
@@ -158,6 +161,7 @@
             // barreAccès
             // 
             this.barreAccès.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barreAccès.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.barreAccès.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBt_RDV,
             this.toolStripSeparator5,
@@ -169,10 +173,10 @@
             this.toolStripSeparator3,
             this.toolStripBt_Dossier,
             this.toolStripSeparator1});
-            this.barreAccès.Location = new System.Drawing.Point(704, 27);
+            this.barreAccès.Location = new System.Drawing.Point(889, 27);
             this.barreAccès.Name = "barreAccès";
             this.barreAccès.Padding = new System.Windows.Forms.Padding(0);
-            this.barreAccès.Size = new System.Drawing.Size(101, 557);
+            this.barreAccès.Size = new System.Drawing.Size(101, 644);
             this.barreAccès.TabIndex = 2;
             this.barreAccès.Text = "toolStrip1";
             // 
@@ -186,6 +190,12 @@
             this.toolStripBt_RDV.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_RDV.Text = "Rendez-Vous";
             this.toolStripBt_RDV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_RDV.Click += new System.EventHandler(this.AfficherRDV);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(100, 6);
             // 
             // toolStripBt_Client
             // 
@@ -197,6 +207,12 @@
             this.toolStripBt_Client.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Client.Text = "Client Animal";
             this.toolStripBt_Client.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Client.Click += new System.EventHandler(this.AfficherClients);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(100, 6);
             // 
             // toolStripBt_Relance
             // 
@@ -209,6 +225,11 @@
             this.toolStripBt_Relance.Text = "Relance";
             this.toolStripBt_Relance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(100, 6);
+            // 
             // toolStripBt_Agenda
             // 
             this.toolStripBt_Agenda.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -219,6 +240,11 @@
             this.toolStripBt_Agenda.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Agenda.Text = "Agenda";
             this.toolStripBt_Agenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(100, 6);
             // 
             // toolStripBt_Dossier
             // 
@@ -236,31 +262,11 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(100, 6);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(100, 6);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(100, 6);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(100, 6);
-            // 
             // FormPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 584);
+            this.ClientSize = new System.Drawing.Size(990, 671);
             this.Controls.Add(this.barreAccès);
             this.Controls.Add(this.menuGénéral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

@@ -81,6 +81,7 @@
             this.BTN_Valider.TabIndex = 4;
             this.BTN_Valider.Text = "Se Connecter";
             this.BTN_Valider.UseVisualStyleBackColor = true;
+            this.BTN_Valider.Click += new System.EventHandler(this.BTN_Valider_Click);
             // 
             // FormLogin
             // 
