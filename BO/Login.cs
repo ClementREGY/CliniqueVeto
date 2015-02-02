@@ -8,19 +8,19 @@ namespace BO
 {
     public class Login
     {
-        public Login(String LoginUser, String PasswordUser, int Id)
-        {
-            this.LoginUser = LoginUser;
-            this.PasswordUser = PasswordUser;
-            this.Id = Id;
-        }
+        public String loginUser { get; set; }
+        public String passwordUser { get; set; }
+        public int id { get; set; }
 
         public Login()
         {
         }
 
-        public String LoginUser { get; set; }
-        public String PasswordUser { get; set; }
-        public int Id { get; set; }
+        public Login(String LoginUser, String PasswordUser, int Id)
+        {
+            this.loginUser = LoginUser;
+            this.passwordUser = PasswordUser;
+            this.id = Id;
+        }
     }
 }
