@@ -51,6 +51,7 @@
             this.TBox_Password.Name = "TBox_Password";
             this.TBox_Password.Size = new System.Drawing.Size(184, 26);
             this.TBox_Password.TabIndex = 1;
+            this.TBox_Password.UseSystemPasswordChar = true;
             // 
             // Label_User
             // 

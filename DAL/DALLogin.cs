@@ -18,18 +18,14 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "exec ajout_login @login,@password";
-                    command.Parameters.AddWithValue("@login", login.LoginUser);
-                    command.Parameters.AddWithValue("@password", login.PasswordUser);
+                    command.CommandText = "EXEC ajout_login @login,@password";
+                    command.Parameters.AddWithValue("@login", login.loginUser);
+                    command.Parameters.AddWithValue("@password", login.passwordUser);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
-                    {
                         return false;
-                    }
                     else
-                    {
                         return true;
-                    }
                 }
             }
             catch (Exception ex)
@@ -50,10 +46,7 @@ namespace DAL
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "SELECT * FROM Logins ORDER BY Login";
 
-
                     SqlDataReader dt = command.ExecuteReader();
-
-
 
                     int colId = dt.GetOrdinal("Id");
                     int colLogin = dt.GetOrdinal("Login");
@@ -62,9 +55,9 @@ namespace DAL
                     while (dt.Read())
                     {
                         Login login = new Login();
-                        login.LoginUser = dt.GetString(colLogin);
-                        login.PasswordUser = dt.GetString(colPassword);
-                        login.Id = dt.GetInt32(colId);
+                        login.loginUser = dt.GetString(colLogin);
+                        login.passwordUser = dt.GetString(colPassword);
+                        login.id = dt.GetInt32(colId);
                         list.Add(login);
                     }
                 }
@@ -85,19 +78,15 @@ namespace DAL
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "UPDATE Logins SET Login = @login, Password = @password WHERE Id = @Id";
-                    command.Parameters.AddWithValue("@login", login.LoginUser);
-                    command.Parameters.AddWithValue("@password", login.PasswordUser);
-                    command.Parameters.AddWithValue("@id", login.Id);
+                    command.Parameters.AddWithValue("@login", login.loginUser);
+                    command.Parameters.AddWithValue("@password", login.passwordUser);
+                    command.Parameters.AddWithValue("@id", login.id);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
-                    {
                         return false;
-                    }
                     else
-                    {
                         return true;
-                    }
                 }
             }
             catch (Exception ex)
@@ -115,17 +104,13 @@ namespace DAL
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "DELETE Login WHERE Id = @Id";
-                    command.Parameters.AddWithValue("@id", login.Id);
+                    command.Parameters.AddWithValue("@id", login.id);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
-                    {
                         return false;
-                    }
                     else
-                    {
                         return true;
-                    }
                 }
             }
             catch (Exception ex)

@@ -16,7 +16,7 @@ namespace BO
         {
         }
 
-        public Login(String LoginUser, String PasswordUser, int Id)
+        public Login(String LoginUser, String PasswordUser, int Id = 0)
         {
             this.loginUser = LoginUser;
             this.passwordUser = PasswordUser;
