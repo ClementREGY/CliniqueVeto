@@ -101,7 +101,7 @@ namespace DAL
             return list;
         }
 
-        public static Client GetClient(Guid id)
+        public static Client GetClient(Client client)
         {
             List<Client> list = new List<Client>();
 
@@ -112,7 +112,7 @@ namespace DAL
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "SELECT * FROM Clients WHERE Id = @id AND Archive = 0";
-                    command.Parameters.AddWithValue("@id", id);
+                    command.Parameters.AddWithValue("@id", client.id);
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
                 }

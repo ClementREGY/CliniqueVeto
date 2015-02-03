@@ -10,6 +10,7 @@ namespace DAL
 {
     public class DALLogin
     {
+        #region CRUD
         public static bool AddLogin(Login login)
         {
             try
@@ -118,5 +119,29 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+        #endregion
+
+        #region Authentifier
+        public static bool Authentifier(Login pLogin)
+        {
+            bool isConnect = false;
+            using (SqlConnection cnx = DALAccess.GetConnection())
+            {
+                SqlCommand command = cnx.CreateCommand();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "SELECT * FROM Logins WHERE Login = @login, Password = @password";
+                command.Parameters.AddWithValue("@login", pLogin.loginUser);
+                command.Parameters.AddWithValue("@password", pLogin.passwordUser);
+
+                int resultat = command.ExecuteNonQuery();
+                if (resultat == 1)
+                    isConnect = true;
+                    
+            }
+            return isConnect;
+        }
+
+
+        #endregion
     }
 }
