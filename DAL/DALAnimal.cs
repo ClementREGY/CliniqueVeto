@@ -1,52 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BO;
-using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class DALClient
+    class DALAnimal
     {
-        private static List<Client> builderObject(SqlDataReader dt)
+        private static List<Animal> builderObject(SqlDataReader dt)
         {
-            List<Client> list = new List<Client>();
-            int colId = dt.GetOrdinal("CodeClient");
-            int colNom = dt.GetOrdinal("NomClient");
-            int colPrenom = dt.GetOrdinal("PrenomClient");
-            int colAdresse = dt.GetOrdinal("Adresse1");
-            int colAdresse2 = dt.GetOrdinal("Adresse2");
-            int colCP = dt.GetOrdinal("CodePostal");
-            int colVille = dt.GetOrdinal("Ville");
-            int colNumTel = dt.GetOrdinal("NumTel");
-            int colAssurance = dt.GetOrdinal("Assurance");
-            int colEmail = dt.GetOrdinal("Email");
-            int colRemarque = dt.GetOrdinal("Remarque");
+            List<Animal> list = new List<Animal>();
+            int colId = dt.GetOrdinal("CodeAnimal");
+            int colNom = dt.GetOrdinal("NomAnimal");
+            int colSexe = dt.GetOrdinal("Sexe");
+            int colCouleur = dt.GetOrdinal("Couleur");
+            int colRace = dt.GetOrdinal("Race");
+            int colEspece = dt.GetOrdinal("Espece");
+            int colClient = dt.GetOrdinal("CodeClient");
+            int colTatouage = dt.GetOrdinal("Tatouage");
+            int colAntecedents = dt.GetOrdinal("Antecedents");
             int colArchive = dt.GetOrdinal("Archive");
 
             while (dt.Read())
             {
-                Client client = new Client();
-                client.codeClient = dt.GetGuid(colId);
-                client.nomClient = dt.GetString(colNom);
-                client.prenomClient = dt.GetString(colPrenom);
-                client.adresse = dt.GetString(colAdresse);
-                client.adresse2 = dt.GetString(colAdresse2);
-                client.cp = dt.GetString(colCP);
-                client.ville = dt.GetString(colVille);
-                client.numTel = dt.GetString(colNumTel);
-                client.assurance = dt.GetString(colAssurance);
-                client.email = dt.GetString(colEmail);
-                client.remarque = dt.GetString(colRemarque);
-                client.archive = dt.GetBoolean(colArchive);
-                list.Add(client);
+                Animal animal = new Animal();
+                animal.codeAnimal = dt.GetGuid(colId);
+                animal.nomAnimal = dt.GetString(colNom);
+                animal.sexe = dt.GetString(colSexe);
+                animal.couleur = dt.GetString(colCouleur);
+                animal.race = dt.GetString(colRace);
+                animal.espece = dt.GetString(colEspece);
+                animal.Client = DALClient.GetClient(dt.GetInt32(colClient));
+                animal.tatouage = dt.GetBoolean(colTatouage);
+                animal.antecedents = dt.GetString(colAntecedents);
+                animal.archive = dt.GetBoolean(colArchive);
+                list.Add(animal);
             }
             return list;
         }
 
-        public static bool AddClient(Client client)
+        public static bool AddAnimal(Animal animal)
         {
             try
             {
@@ -54,13 +50,14 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "EXEC ajout_client @nom,@prenom,@adresse,@adresse2,@cp,@ville";
-                    command.Parameters.AddWithValue("@nom", client.nomClient);
-                    command.Parameters.AddWithValue("@prenom", client.prenomClient);
-                    command.Parameters.AddWithValue("@adresse", client.adresse);
-                    command.Parameters.AddWithValue("@adresse2", client.adresse2);
-                    command.Parameters.AddWithValue("@cp", client.cp);
-                    command.Parameters.AddWithValue("@ville", client.ville);
+                    command.CommandText = "EXEC ajout_animal @nom,@sexe,@couleur,@race,@espece,@idClient,@tatouage";
+                    command.Parameters.AddWithValue("@nom", animal.nomAnimal);
+                    command.Parameters.AddWithValue("@sexe", animal.sexe);
+                    command.Parameters.AddWithValue("@couleur", animal.couleur);
+                    command.Parameters.AddWithValue("@race", animal.race);
+                    command.Parameters.AddWithValue("@espece", animal.espece);
+                    command.Parameters.AddWithValue("@idClient", animal.Client.codeClient);
+                    command.Parameters.AddWithValue("@tatouage", animal.tatouage);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
                         return false;
@@ -74,9 +71,9 @@ namespace DAL
             }
         }
 
-        public static List<Client> GetClients()
+        public static List<Animal> GetAnimals()
         {
-            List<Client> list = new List<Client>();
+            List<Animal> list = new List<Animal>();
 
             try
             {
@@ -84,7 +81,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients ORDER BY Nom";
+                    command.CommandText = "SELECT * FROM Animals";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -97,9 +94,9 @@ namespace DAL
             return list;
         }
 
-        public static Client GetClient(int id)
+        public static Animal GetAnimal(int id)
         {
-            List<Client> list = new List<Client>();
+            List<Animal> list = new List<Animal>();
 
             try
             {
@@ -107,7 +104,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients WHERE Id = @id";
+                    command.CommandText = "SELECT * FROM Animals WHERE Id = @id";
                     command.Parameters.AddWithValue("@id", id);
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -127,7 +124,7 @@ namespace DAL
             }
         }
 
-        public static bool SetClient(Client client)
+        public static bool SetAnimal(Animal animal)
         {
             try
             {
@@ -135,14 +132,15 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "UPDATE Clients SET Nom = @nom, Prenom = @prenom, Adresse1 = @adresse, Adresse2 = @adresse2, CodePostal = @cp, Ville = @ville WHERE CodeClient = @id";
-                    command.Parameters.AddWithValue("@nom", client.nomClient);
-                    command.Parameters.AddWithValue("@prenom", client.prenomClient);
-                    command.Parameters.AddWithValue("@adresse", client.adresse);
-                    command.Parameters.AddWithValue("@adresse2", client.adresse2);
-                    command.Parameters.AddWithValue("@cp", client.cp);
-                    command.Parameters.AddWithValue("@ville", client.ville);
-                    command.Parameters.AddWithValue("@id", client.codeClient);
+                    command.CommandText = "UPDATE Animaux SET NomAnimal = @nom, Sexe = @sexe, Couleur = @couleur, Race = @race, Espece = @espece, CodeClient = @codeClient, Tatouage = @tatouage WHERE CodeAnimal = @id";
+                    command.Parameters.AddWithValue("@nom", animal.nomAnimal);
+                    command.Parameters.AddWithValue("@sexe", animal.sexe);
+                    command.Parameters.AddWithValue("@couleur", animal.couleur);
+                    command.Parameters.AddWithValue("@race", animal.race);
+                    command.Parameters.AddWithValue("@espece", animal.espece);
+                    command.Parameters.AddWithValue("@codeClient", animal.Client.codeClient);
+                    command.Parameters.AddWithValue("@tatouage", animal.tatouage);
+                    command.Parameters.AddWithValue("@id", animal.codeAnimal);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
@@ -157,7 +155,7 @@ namespace DAL
             }
         }
 
-        public static bool DeleteClient(Client client)
+        public static bool DeleteAnimal(Animal animal)
         {
             try
             {
@@ -165,8 +163,8 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE FROM Clients WHERE Id = @id";
-                    command.Parameters.AddWithValue("@id", client.codeClient);
+                    command.CommandText = "DELETE FROM Animals WHERE Id = @id";
+                    command.Parameters.AddWithValue("@id", animal.codeAnimal);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
