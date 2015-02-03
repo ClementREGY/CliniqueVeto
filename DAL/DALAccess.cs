@@ -18,7 +18,7 @@ namespace DAL
                 cnx.ConnectionString = ConfigurationManager.ConnectionStrings["ConnexionPrincipale"].ToString();
                 cnx.Open();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new ApplicationException("Erreur à l'ouverture de la connexion");
             }

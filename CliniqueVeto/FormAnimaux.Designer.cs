@@ -272,6 +272,7 @@
             this.CBox_Genre.Name = "CBox_Genre";
             this.CBox_Genre.Size = new System.Drawing.Size(96, 27);
             this.CBox_Genre.TabIndex = 24;
+            this.CBox_Genre.SelectedIndexChanged += new System.EventHandler(this.CBox_Genre_SelectedIndexChanged);
             // 
             // FormAnimaux
             // 

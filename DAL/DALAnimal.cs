@@ -94,6 +94,30 @@ namespace DAL
             return list;
         }
 
+        public static List<Animal> GetAnimalsByClient(int id)
+        {
+            List<Animal> list = new List<Animal>();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Animals WHERE CodeClient = @id";
+                    command.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader dt = command.ExecuteReader();
+                    list = builderObject(dt);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return list;
+        }
+
         public static Animal GetAnimal(int id)
         {
             List<Animal> list = new List<Animal>();

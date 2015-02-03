@@ -28,5 +28,10 @@ namespace CliniqueVeto
                 CBox_Espèce.SelectedIndex = 0;
             }
         }
+
+        private void CBox_Genre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
