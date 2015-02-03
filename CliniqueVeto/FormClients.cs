@@ -166,6 +166,20 @@ namespace CliniqueVeto
             }
         }
 
+        private void BTN_Rechercher_Click(object sender, EventArgs e)
+        {
+            bool isTrouve = false;
+            foreach (Client unClient in MgtClient.GetClients())
+            {
+                if (unClient.nomClient.Contains(TBox_Recherche.Text.Trim()) || unClient.prenomClient.Contains(TBox_Recherche.Text.Trim()) || isTrouve == false)
+                {
+                    isTrouve = true;
+                    _clientCourant = unClient;
+                    AfficherClientCourant();
+                }
+            }
+        }
+
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_Nom.Text.Trim()))
@@ -307,6 +321,5 @@ namespace CliniqueVeto
         }
 
         #endregion
-
     }
 }

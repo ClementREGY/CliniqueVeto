@@ -113,6 +113,7 @@ namespace DAL
                     command.CommandType = System.Data.CommandType.Text;
                     command.CommandText = "SELECT * FROM Clients WHERE Id = @id AND Archive = 0";
                     command.Parameters.AddWithValue("@id", id);
+
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
                 }

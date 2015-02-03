@@ -190,6 +190,7 @@
             this.BTN_Rechercher.Size = new System.Drawing.Size(26, 26);
             this.BTN_Rechercher.TabIndex = 3;
             this.BTN_Rechercher.UseVisualStyleBackColor = true;
+            this.BTN_Rechercher.Click += new System.EventHandler(this.BTN_Rechercher_Click);
             // 
             // BTN_AjouterClient
             // 
@@ -427,7 +428,7 @@
             this.BTN_Valider.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Valider.Name = "BTN_Valider";
             this.BTN_Valider.Size = new System.Drawing.Size(114, 27);
-            this.BTN_Valider.TabIndex = 22;
+            this.BTN_Valider.TabIndex = 15;
             this.BTN_Valider.Text = "Valider";
             this.BTN_Valider.UseVisualStyleBackColor = false;
             this.BTN_Valider.Visible = false;
@@ -441,7 +442,7 @@
             this.BTN_Annuler.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Annuler.Name = "BTN_Annuler";
             this.BTN_Annuler.Size = new System.Drawing.Size(114, 27);
-            this.BTN_Annuler.TabIndex = 23;
+            this.BTN_Annuler.TabIndex = 16;
             this.BTN_Annuler.Text = "Annuler";
             this.BTN_Annuler.UseVisualStyleBackColor = false;
             this.BTN_Annuler.Visible = false;
@@ -466,7 +467,7 @@
             this.TBox_Num1.Location = new System.Drawing.Point(108, 395);
             this.TBox_Num1.Name = "TBox_Num1";
             this.TBox_Num1.Size = new System.Drawing.Size(25, 26);
-            this.TBox_Num1.TabIndex = 24;
+            this.TBox_Num1.TabIndex = 8;
             this.TBox_Num1.TextChanged += new System.EventHandler(this.TBox_Num1_TextChanged);
             // 
             // Label_Email
@@ -485,7 +486,7 @@
             this.TBox_Email.Location = new System.Drawing.Point(108, 436);
             this.TBox_Email.Name = "TBox_Email";
             this.TBox_Email.Size = new System.Drawing.Size(150, 26);
-            this.TBox_Email.TabIndex = 26;
+            this.TBox_Email.TabIndex = 13;
             // 
             // Label_Assurance
             // 
@@ -503,7 +504,7 @@
             this.TBox_Assurance.Location = new System.Drawing.Point(108, 479);
             this.TBox_Assurance.Name = "TBox_Assurance";
             this.TBox_Assurance.Size = new System.Drawing.Size(149, 26);
-            this.TBox_Assurance.TabIndex = 28;
+            this.TBox_Assurance.TabIndex = 14;
             // 
             // TBox_Num2
             // 
@@ -511,7 +512,7 @@
             this.TBox_Num2.Location = new System.Drawing.Point(139, 395);
             this.TBox_Num2.Name = "TBox_Num2";
             this.TBox_Num2.Size = new System.Drawing.Size(25, 26);
-            this.TBox_Num2.TabIndex = 30;
+            this.TBox_Num2.TabIndex = 9;
             this.TBox_Num2.TextChanged += new System.EventHandler(this.TBox_Num2_TextChanged);
             // 
             // TBox_Num3
@@ -520,7 +521,7 @@
             this.TBox_Num3.Location = new System.Drawing.Point(170, 395);
             this.TBox_Num3.Name = "TBox_Num3";
             this.TBox_Num3.Size = new System.Drawing.Size(25, 26);
-            this.TBox_Num3.TabIndex = 31;
+            this.TBox_Num3.TabIndex = 10;
             this.TBox_Num3.TextChanged += new System.EventHandler(this.TBox_Num3_TextChanged);
             // 
             // TBox_Num4
@@ -529,7 +530,7 @@
             this.TBox_Num4.Location = new System.Drawing.Point(201, 395);
             this.TBox_Num4.Name = "TBox_Num4";
             this.TBox_Num4.Size = new System.Drawing.Size(25, 26);
-            this.TBox_Num4.TabIndex = 32;
+            this.TBox_Num4.TabIndex = 11;
             this.TBox_Num4.TextChanged += new System.EventHandler(this.TBox_Num4_TextChanged);
             // 
             // TBox_Num5
@@ -538,7 +539,7 @@
             this.TBox_Num5.Location = new System.Drawing.Point(232, 395);
             this.TBox_Num5.Name = "TBox_Num5";
             this.TBox_Num5.Size = new System.Drawing.Size(25, 26);
-            this.TBox_Num5.TabIndex = 33;
+            this.TBox_Num5.TabIndex = 12;
             this.TBox_Num5.TextChanged += new System.EventHandler(this.TBox_Num5_TextChanged);
             // 
             // FormClients
