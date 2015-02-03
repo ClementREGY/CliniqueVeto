@@ -10,6 +10,8 @@ namespace BLL
 {
     public class MgtLogin
     {
+        #region Méthodes CRUD
+
         // Create
         public static bool CreateLogin(Login pLogin)
         {
@@ -33,5 +35,24 @@ namespace BLL
         {
             return DALLogin.DeleteLogin(pLogin);
         }
+
+        #endregion
+
+        #region Authentification
+
+        public static bool Authentifier(Login pLogin)
+        {
+            bool isConnect = false;
+            foreach (Login unLogin in GetLogins())
+            {
+                if ((unLogin.loginUser == pLogin.loginUser) && (unLogin.passwordUser == pLogin.passwordUser))
+                {
+                    isConnect = true;
+                }
+            }
+            return isConnect;
+        }
+
+        #endregion
     }
 }

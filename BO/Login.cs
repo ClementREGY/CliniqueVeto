@@ -8,9 +8,15 @@ namespace BO
 {
     public class Login
     {
+        #region Attributs
+
         public String loginUser { get; set; }
         public String passwordUser { get; set; }
         public int id { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Login()
         {
@@ -22,5 +28,7 @@ namespace BO
             this.passwordUser = PasswordUser;
             this.id = Id;
         }
+
+        #endregion
     }
 }

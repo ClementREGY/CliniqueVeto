@@ -22,7 +22,7 @@ namespace CliniqueVeto
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             Login loginSaisie = new Login(TBox_User.Text, TBox_Password.Text);
-            if (MgtLogin.GetLogins().Contains(loginSaisie))
+            if (MgtLogin.Authentifier(loginSaisie))
             {
                 FormPrincipale frm;
                 frm = new FormPrincipale();
@@ -30,9 +30,11 @@ namespace CliniqueVeto
                 frm.BringToFront();
                 this.Hide();
             }
-            else
+            else            
             {
-                MessageBox.Show("Erreur de Connexion !");
+                MessageBox.Show("Impossible de se connecter !");
+                TBox_User.Focus();
+                TBox_Password.Clear();
             }
         }
     }
