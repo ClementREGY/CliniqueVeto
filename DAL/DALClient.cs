@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    class DALClient
+    public class DALClient
     {
         private static List<Client> builderObject(SqlDataReader dt)
         {
