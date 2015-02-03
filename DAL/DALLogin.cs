@@ -103,7 +103,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE Login WHERE Id = @Id";
+                    command.CommandText = "DELETE FROM Logins WHERE Id = @Id";
                     command.Parameters.AddWithValue("@id", login.id);
 
                     int resultat = command.ExecuteNonQuery();
