@@ -31,18 +31,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClients));
             this.Panel_GestionClients = new System.Windows.Forms.Panel();
-            this.navBar1 = new ControlsLibrary.NavBar();
-            this.BTN_SupprimerClient = new System.Windows.Forms.Button();
-            this.BTN_AjouterClient = new System.Windows.Forms.Button();
-            this.TBox_Recherche = new System.Windows.Forms.TextBox();
-            this.Label_Premier = new System.Windows.Forms.Label();
-            this.Label_Précédent = new System.Windows.Forms.Label();
-            this.Label_Suivant = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Label_AjouterClient = new System.Windows.Forms.Label();
-            this.Label_SupprimerClient = new System.Windows.Forms.Label();
-            this.BTN_Rechercher = new System.Windows.Forms.Button();
             this.Label_Rechercher = new System.Windows.Forms.Label();
+            this.Label_SupprimerClient = new System.Windows.Forms.Label();
+            this.Label_AjouterClient = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Label_Suivant = new System.Windows.Forms.Label();
+            this.Label_Précédent = new System.Windows.Forms.Label();
+            this.Label_Premier = new System.Windows.Forms.Label();
+            this.TBox_Recherche = new System.Windows.Forms.TextBox();
+            this.BTN_Rechercher = new System.Windows.Forms.Button();
+            this.BTN_AjouterClient = new System.Windows.Forms.Button();
+            this.BTN_SupprimerClient = new System.Windows.Forms.Button();
+            this.navBar1 = new ControlsLibrary.NavBar();
             this.TBox_Code = new System.Windows.Forms.TextBox();
             this.TBox_Nom = new System.Windows.Forms.TextBox();
             this.TBox_Prénom = new System.Windows.Forms.TextBox();
@@ -89,6 +89,114 @@
             this.Panel_GestionClients.Size = new System.Drawing.Size(673, 83);
             this.Panel_GestionClients.TabIndex = 0;
             // 
+            // Label_Rechercher
+            // 
+            this.Label_Rechercher.AutoSize = true;
+            this.Label_Rechercher.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Rechercher.Location = new System.Drawing.Point(550, 62);
+            this.Label_Rechercher.Name = "Label_Rechercher";
+            this.Label_Rechercher.Size = new System.Drawing.Size(69, 15);
+            this.Label_Rechercher.TabIndex = 8;
+            this.Label_Rechercher.Text = "Rechercher";
+            // 
+            // Label_SupprimerClient
+            // 
+            this.Label_SupprimerClient.AutoSize = true;
+            this.Label_SupprimerClient.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_SupprimerClient.Location = new System.Drawing.Point(384, 62);
+            this.Label_SupprimerClient.Name = "Label_SupprimerClient";
+            this.Label_SupprimerClient.Size = new System.Drawing.Size(65, 15);
+            this.Label_SupprimerClient.TabIndex = 7;
+            this.Label_SupprimerClient.Text = "Supprimer";
+            // 
+            // Label_AjouterClient
+            // 
+            this.Label_AjouterClient.AutoSize = true;
+            this.Label_AjouterClient.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_AjouterClient.Location = new System.Drawing.Point(315, 62);
+            this.Label_AjouterClient.Name = "Label_AjouterClient";
+            this.Label_AjouterClient.Size = new System.Drawing.Size(47, 15);
+            this.Label_AjouterClient.TabIndex = 7;
+            this.Label_AjouterClient.Text = "Ajouter";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(201, 62);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 15);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Dernier";
+            // 
+            // Label_Suivant
+            // 
+            this.Label_Suivant.AutoSize = true;
+            this.Label_Suivant.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Suivant.Location = new System.Drawing.Point(137, 62);
+            this.Label_Suivant.Name = "Label_Suivant";
+            this.Label_Suivant.Size = new System.Drawing.Size(48, 15);
+            this.Label_Suivant.TabIndex = 7;
+            this.Label_Suivant.Text = "Suivant";
+            // 
+            // Label_Précédent
+            // 
+            this.Label_Précédent.AutoSize = true;
+            this.Label_Précédent.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Précédent.Location = new System.Drawing.Point(68, 62);
+            this.Label_Précédent.Name = "Label_Précédent";
+            this.Label_Précédent.Size = new System.Drawing.Size(61, 15);
+            this.Label_Précédent.TabIndex = 6;
+            this.Label_Précédent.Text = "Précédent";
+            // 
+            // Label_Premier
+            // 
+            this.Label_Premier.AutoSize = true;
+            this.Label_Premier.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Premier.Location = new System.Drawing.Point(10, 62);
+            this.Label_Premier.Name = "Label_Premier";
+            this.Label_Premier.Size = new System.Drawing.Size(51, 15);
+            this.Label_Premier.TabIndex = 5;
+            this.Label_Premier.Text = "Premier";
+            // 
+            // TBox_Recherche
+            // 
+            this.TBox_Recherche.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Recherche.Location = new System.Drawing.Point(498, 28);
+            this.TBox_Recherche.Name = "TBox_Recherche";
+            this.TBox_Recherche.Size = new System.Drawing.Size(131, 26);
+            this.TBox_Recherche.TabIndex = 4;
+            // 
+            // BTN_Rechercher
+            // 
+            this.BTN_Rechercher.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_Rechercher.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Rechercher.Image")));
+            this.BTN_Rechercher.Location = new System.Drawing.Point(639, 28);
+            this.BTN_Rechercher.Name = "BTN_Rechercher";
+            this.BTN_Rechercher.Size = new System.Drawing.Size(26, 26);
+            this.BTN_Rechercher.TabIndex = 3;
+            this.BTN_Rechercher.UseVisualStyleBackColor = true;
+            // 
+            // BTN_AjouterClient
+            // 
+            this.BTN_AjouterClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_AjouterClient.Image = ((System.Drawing.Image)(resources.GetObject("BTN_AjouterClient.Image")));
+            this.BTN_AjouterClient.Location = new System.Drawing.Point(307, 6);
+            this.BTN_AjouterClient.Name = "BTN_AjouterClient";
+            this.BTN_AjouterClient.Size = new System.Drawing.Size(60, 53);
+            this.BTN_AjouterClient.TabIndex = 3;
+            this.BTN_AjouterClient.UseVisualStyleBackColor = true;
+            // 
+            // BTN_SupprimerClient
+            // 
+            this.BTN_SupprimerClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_SupprimerClient.Image = ((System.Drawing.Image)(resources.GetObject("BTN_SupprimerClient.Image")));
+            this.BTN_SupprimerClient.Location = new System.Drawing.Point(386, 6);
+            this.BTN_SupprimerClient.Name = "BTN_SupprimerClient";
+            this.BTN_SupprimerClient.Size = new System.Drawing.Size(60, 53);
+            this.BTN_SupprimerClient.TabIndex = 2;
+            this.BTN_SupprimerClient.UseVisualStyleBackColor = true;
+            // 
             // navBar1
             // 
             this.navBar1.ApresEnable = true;
@@ -107,114 +215,6 @@
             this.navBar1.TextPrecedent = "";
             this.navBar1.TextPremier = "";
             this.navBar1.TextSuivant = "";
-            // 
-            // BTN_SupprimerClient
-            // 
-            this.BTN_SupprimerClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BTN_SupprimerClient.Image = ((System.Drawing.Image)(resources.GetObject("BTN_SupprimerClient.Image")));
-            this.BTN_SupprimerClient.Location = new System.Drawing.Point(386, 6);
-            this.BTN_SupprimerClient.Name = "BTN_SupprimerClient";
-            this.BTN_SupprimerClient.Size = new System.Drawing.Size(60, 53);
-            this.BTN_SupprimerClient.TabIndex = 2;
-            this.BTN_SupprimerClient.UseVisualStyleBackColor = true;
-            // 
-            // BTN_AjouterClient
-            // 
-            this.BTN_AjouterClient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BTN_AjouterClient.Image = ((System.Drawing.Image)(resources.GetObject("BTN_AjouterClient.Image")));
-            this.BTN_AjouterClient.Location = new System.Drawing.Point(307, 6);
-            this.BTN_AjouterClient.Name = "BTN_AjouterClient";
-            this.BTN_AjouterClient.Size = new System.Drawing.Size(60, 53);
-            this.BTN_AjouterClient.TabIndex = 3;
-            this.BTN_AjouterClient.UseVisualStyleBackColor = true;
-            // 
-            // TBox_Recherche
-            // 
-            this.TBox_Recherche.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Recherche.Location = new System.Drawing.Point(498, 28);
-            this.TBox_Recherche.Name = "TBox_Recherche";
-            this.TBox_Recherche.Size = new System.Drawing.Size(131, 26);
-            this.TBox_Recherche.TabIndex = 4;
-            // 
-            // Label_Premier
-            // 
-            this.Label_Premier.AutoSize = true;
-            this.Label_Premier.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Premier.Location = new System.Drawing.Point(10, 62);
-            this.Label_Premier.Name = "Label_Premier";
-            this.Label_Premier.Size = new System.Drawing.Size(51, 15);
-            this.Label_Premier.TabIndex = 5;
-            this.Label_Premier.Text = "Premier";
-            // 
-            // Label_Précédent
-            // 
-            this.Label_Précédent.AutoSize = true;
-            this.Label_Précédent.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Précédent.Location = new System.Drawing.Point(68, 62);
-            this.Label_Précédent.Name = "Label_Précédent";
-            this.Label_Précédent.Size = new System.Drawing.Size(61, 15);
-            this.Label_Précédent.TabIndex = 6;
-            this.Label_Précédent.Text = "Précédent";
-            // 
-            // Label_Suivant
-            // 
-            this.Label_Suivant.AutoSize = true;
-            this.Label_Suivant.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Suivant.Location = new System.Drawing.Point(137, 62);
-            this.Label_Suivant.Name = "Label_Suivant";
-            this.Label_Suivant.Size = new System.Drawing.Size(48, 15);
-            this.Label_Suivant.TabIndex = 7;
-            this.Label_Suivant.Text = "Suivant";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Dernier";
-            // 
-            // Label_AjouterClient
-            // 
-            this.Label_AjouterClient.AutoSize = true;
-            this.Label_AjouterClient.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_AjouterClient.Location = new System.Drawing.Point(315, 62);
-            this.Label_AjouterClient.Name = "Label_AjouterClient";
-            this.Label_AjouterClient.Size = new System.Drawing.Size(47, 15);
-            this.Label_AjouterClient.TabIndex = 7;
-            this.Label_AjouterClient.Text = "Ajouter";
-            // 
-            // Label_SupprimerClient
-            // 
-            this.Label_SupprimerClient.AutoSize = true;
-            this.Label_SupprimerClient.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_SupprimerClient.Location = new System.Drawing.Point(384, 62);
-            this.Label_SupprimerClient.Name = "Label_SupprimerClient";
-            this.Label_SupprimerClient.Size = new System.Drawing.Size(65, 15);
-            this.Label_SupprimerClient.TabIndex = 7;
-            this.Label_SupprimerClient.Text = "Supprimer";
-            // 
-            // BTN_Rechercher
-            // 
-            this.BTN_Rechercher.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BTN_Rechercher.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Rechercher.Image")));
-            this.BTN_Rechercher.Location = new System.Drawing.Point(639, 28);
-            this.BTN_Rechercher.Name = "BTN_Rechercher";
-            this.BTN_Rechercher.Size = new System.Drawing.Size(26, 26);
-            this.BTN_Rechercher.TabIndex = 3;
-            this.BTN_Rechercher.UseVisualStyleBackColor = true;
-            // 
-            // Label_Rechercher
-            // 
-            this.Label_Rechercher.AutoSize = true;
-            this.Label_Rechercher.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Rechercher.Location = new System.Drawing.Point(550, 62);
-            this.Label_Rechercher.Name = "Label_Rechercher";
-            this.Label_Rechercher.Size = new System.Drawing.Size(69, 15);
-            this.Label_Rechercher.TabIndex = 8;
-            this.Label_Rechercher.Text = "Rechercher";
             // 
             // TBox_Code
             // 
@@ -349,6 +349,7 @@
             this.BTN_EditerAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_EditerAnimal.TabIndex = 15;
             this.BTN_EditerAnimal.UseVisualStyleBackColor = true;
+            this.BTN_EditerAnimal.Click += new System.EventHandler(this.BTN_EditerAnimal_Click);
             // 
             // BTN_AjouterAnimal
             // 
@@ -359,6 +360,7 @@
             this.BTN_AjouterAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_AjouterAnimal.TabIndex = 17;
             this.BTN_AjouterAnimal.UseVisualStyleBackColor = true;
+            this.BTN_AjouterAnimal.Click += new System.EventHandler(this.BTN_AjouterAnimal_Click);
             // 
             // BTN_SupprimerAnimal
             // 
@@ -430,6 +432,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormClients";
             this.Text = "Clients";
+            this.Load += new System.EventHandler(this.FormClients_Load);
             this.Panel_GestionClients.ResumeLayout(false);
             this.Panel_GestionClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

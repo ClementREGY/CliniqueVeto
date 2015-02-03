@@ -12,9 +12,21 @@ namespace CliniqueVeto
 {
     public partial class FormAnimaux : Form
     {
-        public FormAnimaux()
+        private FormClients frmClients;
+
+        public FormAnimaux(FormClients frm)
         {
             InitializeComponent();
+            frmClients = frm;
+        }
+
+        private void FormAnimaux_Load(object sender, EventArgs e)
+        {
+            if (frmClients.ModeAnimal == "Ajout")
+            {
+                CBox_Genre.SelectedIndex = 0;
+                CBox_Espèce.SelectedIndex = 0;
+            }
         }
     }
 }

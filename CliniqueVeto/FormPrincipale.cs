@@ -17,9 +17,15 @@ namespace CliniqueVeto
             InitializeComponent();
         }
 
-        private void miseÀJourDuBarèmeToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AfficherStocks(object sender, EventArgs e)
         {
-
+            FormStock frm;
+            frm = new FormStock();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
+            frm.FormClosed += FermetureFille;
         }
 
         private void AfficherVétérinaires(object sender, EventArgs e)
@@ -49,7 +55,7 @@ namespace CliniqueVeto
             }
             else
             {
-                frm = (FormRDV)Array.Find(this.MdiChildren, (Form f) => f.Name == "FrmEmployes");
+                frm = (FormRDV)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormRDV");
                 frm.BringToFront();
             }
         }
@@ -70,7 +76,49 @@ namespace CliniqueVeto
             }
             else
             {
-                frm = (FormClients)Array.Find(this.MdiChildren, (Form f) => f.Name == "FrmEmployes");
+                frm = (FormClients)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormClients");
+                frm.BringToFront();
+            }
+        }
+
+        private void AfficherRelance(object sender, EventArgs e)
+        {
+            FormRelance frm;
+            if (!relancesToolStripMenuItem.Checked)
+            {
+                frm = new FormRelance();
+                frm.MdiParent = this;
+                frm.Show();
+                relancesToolStripMenuItem.Checked = true;
+                toolStripBt_Relance.Checked = true;
+                frm.BringToFront();
+                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
+                frm.FormClosed += FermetureFille;
+            }
+            else
+            {
+                frm = (FormRelance)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormRelance");
+                frm.BringToFront();
+            }
+        }
+
+        private void AfficherAgenda(object sender, EventArgs e)
+        {
+            FormAgenda frm;
+            if (!agendaToolStripMenuItem.Checked)
+            {
+                frm = new FormAgenda();
+                frm.MdiParent = this;
+                frm.Show();
+                agendaToolStripMenuItem.Checked = true;
+                toolStripBt_Agenda.Checked = true;
+                frm.BringToFront();
+                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
+                frm.FormClosed += FermetureFille;
+            }
+            else
+            {
+                frm = (FormAgenda)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormAgenda");
                 frm.BringToFront();
             }
         }
@@ -91,12 +139,22 @@ namespace CliniqueVeto
                 toolStripBt_Client.Checked = false;
                 f.FormClosed -= FermetureFille;
             }
+            else if (f is FormRelance)
+            {
+                relancesToolStripMenuItem.Checked = false;
+                toolStripBt_Relance.Checked = false;
+                f.FormClosed -= FermetureFille;
+            }
+            else if (f is FormAgenda)
+            {
+                agendaToolStripMenuItem.Checked = false;
+                toolStripBt_Agenda.Checked = false;
+                f.FormClosed -= FermetureFille;
+            }
             else
             {
                 f.FormClosed -= FermetureFille;
             }
         }
-
-
     }
 }

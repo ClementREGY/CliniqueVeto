@@ -102,6 +102,7 @@
             this.relancesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.relancesToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.relancesToolStripMenuItem.Text = "Relances";
+            this.relancesToolStripMenuItem.Click += new System.EventHandler(this.AfficherRelance);
             // 
             // miseÀJourDuStockDeVaccinsToolStripMenuItem
             // 
@@ -109,6 +110,7 @@
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Text = "Mise à Jour du Stock de Vaccins";
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Click += new System.EventHandler(this.AfficherStocks);
             // 
             // vétérinaireToolStripMenuItem
             // 
@@ -125,6 +127,7 @@
             this.agendaToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.agendaToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
             this.agendaToolStripMenuItem.Text = "Agenda";
+            this.agendaToolStripMenuItem.Click += new System.EventHandler(this.AfficherAgenda);
             // 
             // dossiersMédicauxToolStripMenuItem
             // 
@@ -156,7 +159,6 @@
             this.miseÀJourDuBarèmeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.miseÀJourDuBarèmeToolStripMenuItem.Size = new System.Drawing.Size(396, 24);
             this.miseÀJourDuBarèmeToolStripMenuItem.Text = "Mise à Jour du Barème de Tarification";
-            this.miseÀJourDuBarèmeToolStripMenuItem.Click += new System.EventHandler(this.miseÀJourDuBarèmeToolStripMenuItem_Click);
             // 
             // barreAccès
             // 
@@ -224,6 +226,7 @@
             this.toolStripBt_Relance.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Relance.Text = "Relance";
             this.toolStripBt_Relance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Relance.Click += new System.EventHandler(this.AfficherRelance);
             // 
             // toolStripSeparator2
             // 
@@ -240,6 +243,7 @@
             this.toolStripBt_Agenda.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Agenda.Text = "Agenda";
             this.toolStripBt_Agenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Agenda.Click += new System.EventHandler(this.AfficherAgenda);
             // 
             // toolStripSeparator3
             // 
