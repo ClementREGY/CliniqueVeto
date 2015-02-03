@@ -33,13 +33,13 @@ namespace DAL
                 client.nomClient = dt.GetString(colNom);
                 client.prenomClient = dt.GetString(colPrenom);
                 client.adresse = dt.GetString(colAdresse);
-                client.adresse2 = dt.GetString(colAdresse2);
+                client.adresse2 = (dt.GetValue(colAdresse2).ToString() != null) ? dt.GetValue(colAdresse2).ToString() : String.Empty;
                 client.cp = dt.GetString(colCP);
                 client.ville = dt.GetString(colVille);
-                client.numTel = dt.GetString(colNumTel);
-                client.assurance = dt.GetString(colAssurance);
-                client.email = dt.GetString(colEmail);
-                client.remarque = dt.GetString(colRemarque);
+                client.numTel = (dt.GetValue(colNumTel).ToString() != null) ? dt.GetValue(colNumTel).ToString() : String.Empty;
+                client.assurance = (dt.GetValue(colAssurance).ToString() != null) ? dt.GetValue(colAssurance).ToString() : String.Empty;
+                client.email = (dt.GetValue(colEmail).ToString() != null) ? dt.GetValue(colEmail).ToString() : String.Empty;
+                client.remarque = (dt.GetValue(colRemarque).ToString() != null) ? dt.GetValue(colRemarque).ToString() : String.Empty;
                 client.archive = dt.GetBoolean(colArchive);
                 list.Add(client);
             }
@@ -54,13 +54,17 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "EXEC ajout_client @nom,@prenom,@adresse,@adresse2,@cp,@ville";
+                    command.CommandText = "EXEC ajout_client @nom, @prenom, @add, @add2, @cp, @ville, @tel, @ass, @mail, @arch";
                     command.Parameters.AddWithValue("@nom", client.nomClient);
                     command.Parameters.AddWithValue("@prenom", client.prenomClient);
-                    command.Parameters.AddWithValue("@adresse", client.adresse);
-                    command.Parameters.AddWithValue("@adresse2", client.adresse2);
+                    command.Parameters.AddWithValue("@add", client.adresse);
+                    command.Parameters.AddWithValue("@add2", client.adresse2);
                     command.Parameters.AddWithValue("@cp", client.cp);
                     command.Parameters.AddWithValue("@ville", client.ville);
+                    command.Parameters.AddWithValue("@tel", client.numTel);
+                    command.Parameters.AddWithValue("@ass", client.assurance);
+                    command.Parameters.AddWithValue("@mail", client.email);
+                    command.Parameters.AddWithValue("@arch", (client.archive != false) ? 1 : 0);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
                         return false;
@@ -84,7 +88,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients ORDER BY Nom";
+                    command.CommandText = "SELECT * FROM Clients WHERE Archive = 0 ORDER BY NomClient";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -97,7 +101,7 @@ namespace DAL
             return list;
         }
 
-        public static Client GetClient(Client client)
+        public static Client GetClient(Guid id)
         {
             List<Client> list = new List<Client>();
 
@@ -107,8 +111,8 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients WHERE Id = @id";
-                    command.Parameters.AddWithValue("@id", client.codeClient);
+                    command.CommandText = "SELECT * FROM Clients WHERE Id = @id AND Archive = 0";
+                    command.Parameters.AddWithValue("@id", id);
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
                 }
@@ -165,8 +169,8 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE FROM Clients WHERE Id = @id";
-                    command.Parameters.AddWithValue("@id", client.codeClient);
+                    command.CommandText = "DELETE FROM Clients WHERE CodeClient = @id";
+                    command.Parameters.AddWithValue("@id", client.codeClient.ToString().ToUpper());
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)

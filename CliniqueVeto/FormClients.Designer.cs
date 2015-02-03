@@ -42,7 +42,7 @@
             this.BTN_Rechercher = new System.Windows.Forms.Button();
             this.BTN_AjouterClient = new System.Windows.Forms.Button();
             this.BTN_SupprimerClient = new System.Windows.Forms.Button();
-            this.navBar1 = new ControlsLibrary.NavBar();
+            this.NavBarre = new ControlsLibrary.NavBar();
             this.TBox_Code = new System.Windows.Forms.TextBox();
             this.TBox_Nom = new System.Windows.Forms.TextBox();
             this.TBox_Prénom = new System.Windows.Forms.TextBox();
@@ -64,9 +64,23 @@
             this.Label_AjouterAnimal = new System.Windows.Forms.Label();
             this.Label_EditerAnimal = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.BTN_Valider = new System.Windows.Forms.Button();
+            this.BTN_Annuler = new System.Windows.Forms.Button();
+            this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
+            this.Label_Téléphone = new System.Windows.Forms.Label();
+            this.TBox_Num1 = new System.Windows.Forms.TextBox();
+            this.Label_Email = new System.Windows.Forms.Label();
+            this.TBox_Email = new System.Windows.Forms.TextBox();
+            this.Label_Assurance = new System.Windows.Forms.Label();
+            this.TBox_Assurance = new System.Windows.Forms.TextBox();
+            this.TBox_Num2 = new System.Windows.Forms.TextBox();
+            this.TBox_Num3 = new System.Windows.Forms.TextBox();
+            this.TBox_Num4 = new System.Windows.Forms.TextBox();
+            this.TBox_Num5 = new System.Windows.Forms.TextBox();
             this.Panel_GestionClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_GestionClients
@@ -83,7 +97,7 @@
             this.Panel_GestionClients.Controls.Add(this.BTN_Rechercher);
             this.Panel_GestionClients.Controls.Add(this.BTN_AjouterClient);
             this.Panel_GestionClients.Controls.Add(this.BTN_SupprimerClient);
-            this.Panel_GestionClients.Controls.Add(this.navBar1);
+            this.Panel_GestionClients.Controls.Add(this.NavBarre);
             this.Panel_GestionClients.Location = new System.Drawing.Point(0, 0);
             this.Panel_GestionClients.Name = "Panel_GestionClients";
             this.Panel_GestionClients.Size = new System.Drawing.Size(673, 83);
@@ -186,6 +200,7 @@
             this.BTN_AjouterClient.Size = new System.Drawing.Size(60, 53);
             this.BTN_AjouterClient.TabIndex = 3;
             this.BTN_AjouterClient.UseVisualStyleBackColor = true;
+            this.BTN_AjouterClient.Click += new System.EventHandler(this.BTN_AjouterClient_Click);
             // 
             // BTN_SupprimerClient
             // 
@@ -196,32 +211,34 @@
             this.BTN_SupprimerClient.Size = new System.Drawing.Size(60, 53);
             this.BTN_SupprimerClient.TabIndex = 2;
             this.BTN_SupprimerClient.UseVisualStyleBackColor = true;
+            this.BTN_SupprimerClient.Click += new System.EventHandler(this.BTN_SupprimerClient_Click);
             // 
-            // navBar1
+            // NavBarre
             // 
-            this.navBar1.ApresEnable = true;
-            this.navBar1.AvantEnable = true;
-            this.navBar1.ButtonBorder = 1;
-            this.navBar1.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
-            this.navBar1.ImageDernier = ((System.Drawing.Image)(resources.GetObject("navBar1.ImageDernier")));
-            this.navBar1.ImagePrecedent = ((System.Drawing.Image)(resources.GetObject("navBar1.ImagePrecedent")));
-            this.navBar1.ImagePremier = ((System.Drawing.Image)(resources.GetObject("navBar1.ImagePremier")));
-            this.navBar1.ImageSuivant = ((System.Drawing.Image)(resources.GetObject("navBar1.ImageSuivant")));
-            this.navBar1.Location = new System.Drawing.Point(3, 3);
-            this.navBar1.Name = "navBar1";
-            this.navBar1.Size = new System.Drawing.Size(255, 59);
-            this.navBar1.TabIndex = 0;
-            this.navBar1.TextDernier = "";
-            this.navBar1.TextPrecedent = "";
-            this.navBar1.TextPremier = "";
-            this.navBar1.TextSuivant = "";
+            this.NavBarre.ApresEnable = true;
+            this.NavBarre.AvantEnable = true;
+            this.NavBarre.ButtonBorder = 1;
+            this.NavBarre.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
+            this.NavBarre.ImageDernier = ((System.Drawing.Image)(resources.GetObject("NavBarre.ImageDernier")));
+            this.NavBarre.ImagePrecedent = ((System.Drawing.Image)(resources.GetObject("NavBarre.ImagePrecedent")));
+            this.NavBarre.ImagePremier = ((System.Drawing.Image)(resources.GetObject("NavBarre.ImagePremier")));
+            this.NavBarre.ImageSuivant = ((System.Drawing.Image)(resources.GetObject("NavBarre.ImageSuivant")));
+            this.NavBarre.Location = new System.Drawing.Point(3, 3);
+            this.NavBarre.Name = "NavBarre";
+            this.NavBarre.Size = new System.Drawing.Size(255, 59);
+            this.NavBarre.TabIndex = 0;
+            this.NavBarre.TextDernier = "";
+            this.NavBarre.TextPrecedent = "";
+            this.NavBarre.TextPremier = "";
+            this.NavBarre.TextSuivant = "";
+            this.NavBarre.Navigation += new System.EventHandler<ControlsLibrary.NavBarEventArgs>(this.NavBarre_Navigation);
             // 
             // TBox_Code
             // 
             this.TBox_Code.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBox_Code.Location = new System.Drawing.Point(108, 107);
             this.TBox_Code.Name = "TBox_Code";
-            this.TBox_Code.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Code.Size = new System.Drawing.Size(553, 26);
             this.TBox_Code.TabIndex = 1;
             // 
             // TBox_Nom
@@ -237,7 +254,7 @@
             this.TBox_Prénom.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBox_Prénom.Location = new System.Drawing.Point(108, 189);
             this.TBox_Prénom.Name = "TBox_Prénom";
-            this.TBox_Prénom.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Prénom.Size = new System.Drawing.Size(149, 26);
             this.TBox_Prénom.TabIndex = 3;
             // 
             // TBox_Adresse1
@@ -245,7 +262,7 @@
             this.TBox_Adresse1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBox_Adresse1.Location = new System.Drawing.Point(108, 231);
             this.TBox_Adresse1.Name = "TBox_Adresse1";
-            this.TBox_Adresse1.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Adresse1.Size = new System.Drawing.Size(149, 26);
             this.TBox_Adresse1.TabIndex = 4;
             // 
             // TBox_Adresse2
@@ -253,7 +270,7 @@
             this.TBox_Adresse2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBox_Adresse2.Location = new System.Drawing.Point(108, 272);
             this.TBox_Adresse2.Name = "TBox_Adresse2";
-            this.TBox_Adresse2.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Adresse2.Size = new System.Drawing.Size(149, 26);
             this.TBox_Adresse2.TabIndex = 5;
             // 
             // TBox_CodePostal
@@ -261,7 +278,7 @@
             this.TBox_CodePostal.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TBox_CodePostal.Location = new System.Drawing.Point(108, 313);
             this.TBox_CodePostal.Name = "TBox_CodePostal";
-            this.TBox_CodePostal.Size = new System.Drawing.Size(150, 26);
+            this.TBox_CodePostal.Size = new System.Drawing.Size(149, 26);
             this.TBox_CodePostal.TabIndex = 6;
             // 
             // TBox_Ville
@@ -296,7 +313,7 @@
             // 
             this.Label_Prénom.AutoSize = true;
             this.Label_Prénom.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Prénom.Location = new System.Drawing.Point(9, 192);
+            this.Label_Prénom.Location = new System.Drawing.Point(12, 192);
             this.Label_Prénom.Name = "Label_Prénom";
             this.Label_Prénom.Size = new System.Drawing.Size(64, 19);
             this.Label_Prénom.TabIndex = 10;
@@ -306,7 +323,7 @@
             // 
             this.Label_Adresse.AutoSize = true;
             this.Label_Adresse.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Adresse.Location = new System.Drawing.Point(9, 234);
+            this.Label_Adresse.Location = new System.Drawing.Point(12, 234);
             this.Label_Adresse.Name = "Label_Adresse";
             this.Label_Adresse.Size = new System.Drawing.Size(65, 19);
             this.Label_Adresse.TabIndex = 11;
@@ -326,7 +343,7 @@
             // 
             this.Label_Ville.AutoSize = true;
             this.Label_Ville.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Ville.Location = new System.Drawing.Point(12, 357);
+            this.Label_Ville.Location = new System.Drawing.Point(9, 357);
             this.Label_Ville.Name = "Label_Ville";
             this.Label_Ville.Size = new System.Drawing.Size(39, 19);
             this.Label_Ville.TabIndex = 13;
@@ -335,16 +352,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(307, 107);
+            this.dataGridView1.Location = new System.Drawing.Point(277, 148);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(354, 160);
+            this.dataGridView1.Size = new System.Drawing.Size(384, 273);
             this.dataGridView1.TabIndex = 14;
             // 
             // BTN_EditerAnimal
             // 
             this.BTN_EditerAnimal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_EditerAnimal.Image = ((System.Drawing.Image)(resources.GetObject("BTN_EditerAnimal.Image")));
-            this.BTN_EditerAnimal.Location = new System.Drawing.Point(601, 273);
+            this.BTN_EditerAnimal.Location = new System.Drawing.Point(603, 438);
             this.BTN_EditerAnimal.Name = "BTN_EditerAnimal";
             this.BTN_EditerAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_EditerAnimal.TabIndex = 15;
@@ -355,7 +372,7 @@
             // 
             this.BTN_AjouterAnimal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_AjouterAnimal.Image = ((System.Drawing.Image)(resources.GetObject("BTN_AjouterAnimal.Image")));
-            this.BTN_AjouterAnimal.Location = new System.Drawing.Point(469, 272);
+            this.BTN_AjouterAnimal.Location = new System.Drawing.Point(471, 437);
             this.BTN_AjouterAnimal.Name = "BTN_AjouterAnimal";
             this.BTN_AjouterAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_AjouterAnimal.TabIndex = 17;
@@ -366,7 +383,7 @@
             // 
             this.BTN_SupprimerAnimal.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_SupprimerAnimal.Image = ((System.Drawing.Image)(resources.GetObject("BTN_SupprimerAnimal.Image")));
-            this.BTN_SupprimerAnimal.Location = new System.Drawing.Point(535, 273);
+            this.BTN_SupprimerAnimal.Location = new System.Drawing.Point(537, 438);
             this.BTN_SupprimerAnimal.Name = "BTN_SupprimerAnimal";
             this.BTN_SupprimerAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_SupprimerAnimal.TabIndex = 18;
@@ -376,7 +393,7 @@
             // 
             this.Label_SupprimerAnimal.AutoSize = true;
             this.Label_SupprimerAnimal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_SupprimerAnimal.Location = new System.Drawing.Point(533, 329);
+            this.Label_SupprimerAnimal.Location = new System.Drawing.Point(535, 494);
             this.Label_SupprimerAnimal.Name = "Label_SupprimerAnimal";
             this.Label_SupprimerAnimal.Size = new System.Drawing.Size(65, 15);
             this.Label_SupprimerAnimal.TabIndex = 19;
@@ -386,7 +403,7 @@
             // 
             this.Label_AjouterAnimal.AutoSize = true;
             this.Label_AjouterAnimal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_AjouterAnimal.Location = new System.Drawing.Point(476, 329);
+            this.Label_AjouterAnimal.Location = new System.Drawing.Point(478, 494);
             this.Label_AjouterAnimal.Name = "Label_AjouterAnimal";
             this.Label_AjouterAnimal.Size = new System.Drawing.Size(47, 15);
             this.Label_AjouterAnimal.TabIndex = 20;
@@ -396,18 +413,152 @@
             // 
             this.Label_EditerAnimal.AutoSize = true;
             this.Label_EditerAnimal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_EditerAnimal.Location = new System.Drawing.Point(612, 329);
+            this.Label_EditerAnimal.Location = new System.Drawing.Point(614, 494);
             this.Label_EditerAnimal.Name = "Label_EditerAnimal";
             this.Label_EditerAnimal.Size = new System.Drawing.Size(40, 15);
             this.Label_EditerAnimal.TabIndex = 21;
             this.Label_EditerAnimal.Text = "Éditer";
+            // 
+            // BTN_Valider
+            // 
+            this.BTN_Valider.BackColor = System.Drawing.SystemColors.Control;
+            this.BTN_Valider.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Valider.Location = new System.Drawing.Point(277, 431);
+            this.BTN_Valider.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_Valider.Name = "BTN_Valider";
+            this.BTN_Valider.Size = new System.Drawing.Size(114, 27);
+            this.BTN_Valider.TabIndex = 22;
+            this.BTN_Valider.Text = "Valider";
+            this.BTN_Valider.UseVisualStyleBackColor = false;
+            this.BTN_Valider.Visible = false;
+            this.BTN_Valider.Click += new System.EventHandler(this.BTN_Valider_Click);
+            // 
+            // BTN_Annuler
+            // 
+            this.BTN_Annuler.BackColor = System.Drawing.SystemColors.Control;
+            this.BTN_Annuler.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Annuler.Location = new System.Drawing.Point(277, 472);
+            this.BTN_Annuler.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_Annuler.Name = "BTN_Annuler";
+            this.BTN_Annuler.Size = new System.Drawing.Size(114, 27);
+            this.BTN_Annuler.TabIndex = 23;
+            this.BTN_Annuler.Text = "Annuler";
+            this.BTN_Annuler.UseVisualStyleBackColor = false;
+            this.BTN_Annuler.Visible = false;
+            // 
+            // errorSaisie
+            // 
+            this.errorSaisie.ContainerControl = this;
+            // 
+            // Label_Téléphone
+            // 
+            this.Label_Téléphone.AutoSize = true;
+            this.Label_Téléphone.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Téléphone.Location = new System.Drawing.Point(9, 398);
+            this.Label_Téléphone.Name = "Label_Téléphone";
+            this.Label_Téléphone.Size = new System.Drawing.Size(81, 19);
+            this.Label_Téléphone.TabIndex = 25;
+            this.Label_Téléphone.Text = "Téléphone";
+            // 
+            // TBox_Num1
+            // 
+            this.TBox_Num1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Num1.Location = new System.Drawing.Point(108, 395);
+            this.TBox_Num1.Name = "TBox_Num1";
+            this.TBox_Num1.Size = new System.Drawing.Size(25, 26);
+            this.TBox_Num1.TabIndex = 24;
+            this.TBox_Num1.TextChanged += new System.EventHandler(this.TBox_Num1_TextChanged);
+            // 
+            // Label_Email
+            // 
+            this.Label_Email.AutoSize = true;
+            this.Label_Email.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Email.Location = new System.Drawing.Point(9, 439);
+            this.Label_Email.Name = "Label_Email";
+            this.Label_Email.Size = new System.Drawing.Size(52, 19);
+            this.Label_Email.TabIndex = 27;
+            this.Label_Email.Text = "E-Mail";
+            // 
+            // TBox_Email
+            // 
+            this.TBox_Email.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Email.Location = new System.Drawing.Point(108, 436);
+            this.TBox_Email.Name = "TBox_Email";
+            this.TBox_Email.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Email.TabIndex = 26;
+            // 
+            // Label_Assurance
+            // 
+            this.Label_Assurance.AutoSize = true;
+            this.Label_Assurance.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Assurance.Location = new System.Drawing.Point(9, 482);
+            this.Label_Assurance.Name = "Label_Assurance";
+            this.Label_Assurance.Size = new System.Drawing.Size(81, 19);
+            this.Label_Assurance.TabIndex = 29;
+            this.Label_Assurance.Text = "Assurance";
+            // 
+            // TBox_Assurance
+            // 
+            this.TBox_Assurance.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Assurance.Location = new System.Drawing.Point(108, 479);
+            this.TBox_Assurance.Name = "TBox_Assurance";
+            this.TBox_Assurance.Size = new System.Drawing.Size(149, 26);
+            this.TBox_Assurance.TabIndex = 28;
+            // 
+            // TBox_Num2
+            // 
+            this.TBox_Num2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Num2.Location = new System.Drawing.Point(139, 395);
+            this.TBox_Num2.Name = "TBox_Num2";
+            this.TBox_Num2.Size = new System.Drawing.Size(25, 26);
+            this.TBox_Num2.TabIndex = 30;
+            this.TBox_Num2.TextChanged += new System.EventHandler(this.TBox_Num2_TextChanged);
+            // 
+            // TBox_Num3
+            // 
+            this.TBox_Num3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Num3.Location = new System.Drawing.Point(170, 395);
+            this.TBox_Num3.Name = "TBox_Num3";
+            this.TBox_Num3.Size = new System.Drawing.Size(25, 26);
+            this.TBox_Num3.TabIndex = 31;
+            this.TBox_Num3.TextChanged += new System.EventHandler(this.TBox_Num3_TextChanged);
+            // 
+            // TBox_Num4
+            // 
+            this.TBox_Num4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Num4.Location = new System.Drawing.Point(201, 395);
+            this.TBox_Num4.Name = "TBox_Num4";
+            this.TBox_Num4.Size = new System.Drawing.Size(25, 26);
+            this.TBox_Num4.TabIndex = 32;
+            this.TBox_Num4.TextChanged += new System.EventHandler(this.TBox_Num4_TextChanged);
+            // 
+            // TBox_Num5
+            // 
+            this.TBox_Num5.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Num5.Location = new System.Drawing.Point(232, 395);
+            this.TBox_Num5.Name = "TBox_Num5";
+            this.TBox_Num5.Size = new System.Drawing.Size(25, 26);
+            this.TBox_Num5.TabIndex = 33;
+            this.TBox_Num5.TextChanged += new System.EventHandler(this.TBox_Num5_TextChanged);
             // 
             // FormClients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(673, 403);
+            this.ClientSize = new System.Drawing.Size(673, 519);
+            this.Controls.Add(this.TBox_Num5);
+            this.Controls.Add(this.TBox_Num4);
+            this.Controls.Add(this.TBox_Num3);
+            this.Controls.Add(this.TBox_Num2);
+            this.Controls.Add(this.Label_Assurance);
+            this.Controls.Add(this.TBox_Assurance);
+            this.Controls.Add(this.Label_Email);
+            this.Controls.Add(this.TBox_Email);
+            this.Controls.Add(this.Label_Téléphone);
+            this.Controls.Add(this.TBox_Num1);
+            this.Controls.Add(this.BTN_Annuler);
+            this.Controls.Add(this.BTN_Valider);
             this.Controls.Add(this.Label_EditerAnimal);
             this.Controls.Add(this.Label_SupprimerAnimal);
             this.Controls.Add(this.Label_AjouterAnimal);
@@ -437,6 +588,7 @@
             this.Panel_GestionClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -456,7 +608,7 @@
         private System.Windows.Forms.Button BTN_Rechercher;
         private System.Windows.Forms.Button BTN_AjouterClient;
         private System.Windows.Forms.Button BTN_SupprimerClient;
-        private ControlsLibrary.NavBar navBar1;
+        private ControlsLibrary.NavBar NavBarre;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TextBox TBox_Code;
         private System.Windows.Forms.TextBox TBox_Nom;
@@ -478,5 +630,18 @@
         private System.Windows.Forms.Label Label_SupprimerAnimal;
         private System.Windows.Forms.Label Label_AjouterAnimal;
         private System.Windows.Forms.Label Label_EditerAnimal;
+        private System.Windows.Forms.Button BTN_Valider;
+        private System.Windows.Forms.Button BTN_Annuler;
+        private System.Windows.Forms.ErrorProvider errorSaisie;
+        private System.Windows.Forms.TextBox TBox_Num5;
+        private System.Windows.Forms.TextBox TBox_Num4;
+        private System.Windows.Forms.TextBox TBox_Num3;
+        private System.Windows.Forms.TextBox TBox_Num2;
+        private System.Windows.Forms.Label Label_Assurance;
+        private System.Windows.Forms.TextBox TBox_Assurance;
+        private System.Windows.Forms.Label Label_Email;
+        private System.Windows.Forms.TextBox TBox_Email;
+        private System.Windows.Forms.Label Label_Téléphone;
+        private System.Windows.Forms.TextBox TBox_Num1;
     }
 }
