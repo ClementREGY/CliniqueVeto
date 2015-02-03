@@ -171,13 +171,15 @@ namespace CliniqueVeto
             bool isTrouve = false;
             foreach (Client unClient in MgtClient.GetClients())
             {
-                if (unClient.nomClient.Contains(TBox_Recherche.Text.Trim()) || unClient.prenomClient.Contains(TBox_Recherche.Text.Trim()) || isTrouve == false)
+                if ((unClient.nomClient.ToLower().Contains(TBox_Recherche.Text.Trim().ToLower()) || unClient.prenomClient.ToLower().Contains(TBox_Recherche.Text.Trim().ToLower())) && isTrouve == false)
                 {
                     isTrouve = true;
                     _clientCourant = unClient;
                     AfficherClientCourant();
                 }
             }
+            if (!isTrouve)
+                MessageBox.Show("Aucun Client ne corespond à vos critères de recherche !");
         }
 
         private void BTN_Valider_Click(object sender, EventArgs e)

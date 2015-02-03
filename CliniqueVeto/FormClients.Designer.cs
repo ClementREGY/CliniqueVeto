@@ -56,7 +56,7 @@
             this.Label_Adresse = new System.Windows.Forms.Label();
             this.Label_CodePostal = new System.Windows.Forms.Label();
             this.Label_Ville = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGrid_Animaux = new System.Windows.Forms.DataGridView();
             this.BTN_EditerAnimal = new System.Windows.Forms.Button();
             this.BTN_AjouterAnimal = new System.Windows.Forms.Button();
             this.BTN_SupprimerAnimal = new System.Windows.Forms.Button();
@@ -78,7 +78,7 @@
             this.TBox_Num4 = new System.Windows.Forms.TextBox();
             this.TBox_Num5 = new System.Windows.Forms.TextBox();
             this.Panel_GestionClients.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Animaux)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
@@ -350,13 +350,13 @@
             this.Label_Ville.TabIndex = 13;
             this.Label_Ville.Text = "Ville";
             // 
-            // dataGridView1
+            // DataGrid_Animaux
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(277, 148);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(384, 273);
-            this.dataGridView1.TabIndex = 14;
+            this.DataGrid_Animaux.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid_Animaux.Location = new System.Drawing.Point(277, 148);
+            this.DataGrid_Animaux.Name = "DataGrid_Animaux";
+            this.DataGrid_Animaux.Size = new System.Drawing.Size(384, 273);
+            this.DataGrid_Animaux.TabIndex = 14;
             // 
             // BTN_EditerAnimal
             // 
@@ -566,7 +566,7 @@
             this.Controls.Add(this.BTN_SupprimerAnimal);
             this.Controls.Add(this.BTN_AjouterAnimal);
             this.Controls.Add(this.BTN_EditerAnimal);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DataGrid_Animaux);
             this.Controls.Add(this.Label_Ville);
             this.Controls.Add(this.Label_CodePostal);
             this.Controls.Add(this.Label_Adresse);
@@ -587,7 +587,7 @@
             this.Load += new System.EventHandler(this.FormClients_Load);
             this.Panel_GestionClients.ResumeLayout(false);
             this.Panel_GestionClients.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Animaux)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
@@ -624,7 +624,7 @@
         private System.Windows.Forms.Label Label_Adresse;
         private System.Windows.Forms.Label Label_CodePostal;
         private System.Windows.Forms.Label Label_Ville;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGrid_Animaux;
         private System.Windows.Forms.Button BTN_EditerAnimal;
         private System.Windows.Forms.Button BTN_AjouterAnimal;
         private System.Windows.Forms.Button BTN_SupprimerAnimal;
