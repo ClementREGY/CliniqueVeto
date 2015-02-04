@@ -37,12 +37,12 @@
             this.BTN_Valider = new System.Windows.Forms.Button();
             this.BTN_Dossier = new System.Windows.Forms.Button();
             this.GBox_Client = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBox_Client = new System.Windows.Forms.TextBox();
             this.Label_Tatouage = new System.Windows.Forms.Label();
             this.Label_Couleur = new System.Windows.Forms.Label();
             this.Label_Nom = new System.Windows.Forms.Label();
             this.Label_Code = new System.Windows.Forms.Label();
-            this.TBox_Adresse1 = new System.Windows.Forms.TextBox();
+            this.TBox_Tatouage = new System.Windows.Forms.TextBox();
             this.TBox_Couleur = new System.Windows.Forms.TextBox();
             this.TBox_Nom = new System.Windows.Forms.TextBox();
             this.TBox_Code = new System.Windows.Forms.TextBox();
@@ -134,7 +134,7 @@
             // 
             // GBox_Client
             // 
-            this.GBox_Client.Controls.Add(this.textBox1);
+            this.GBox_Client.Controls.Add(this.TBox_Client);
             this.GBox_Client.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBox_Client.Location = new System.Drawing.Point(12, 89);
             this.GBox_Client.Name = "GBox_Client";
@@ -143,13 +143,13 @@
             this.GBox_Client.TabStop = false;
             this.GBox_Client.Text = "Client";
             // 
-            // textBox1
+            // TBox_Client
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(26, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(332, 25);
-            this.textBox1.TabIndex = 0;
+            this.TBox_Client.Enabled = false;
+            this.TBox_Client.Location = new System.Drawing.Point(26, 21);
+            this.TBox_Client.Name = "TBox_Client";
+            this.TBox_Client.Size = new System.Drawing.Size(332, 25);
+            this.TBox_Client.TabIndex = 0;
             // 
             // Label_Tatouage
             // 
@@ -191,13 +191,13 @@
             this.Label_Code.TabIndex = 16;
             this.Label_Code.Text = "Code";
             // 
-            // TBox_Adresse1
+            // TBox_Tatouage
             // 
-            this.TBox_Adresse1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Adresse1.Location = new System.Drawing.Point(97, 324);
-            this.TBox_Adresse1.Name = "TBox_Adresse1";
-            this.TBox_Adresse1.Size = new System.Drawing.Size(150, 26);
-            this.TBox_Adresse1.TabIndex = 15;
+            this.TBox_Tatouage.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Tatouage.Location = new System.Drawing.Point(97, 324);
+            this.TBox_Tatouage.Name = "TBox_Tatouage";
+            this.TBox_Tatouage.Size = new System.Drawing.Size(150, 26);
+            this.TBox_Tatouage.TabIndex = 15;
             // 
             // TBox_Couleur
             // 
@@ -289,7 +289,7 @@
             this.Controls.Add(this.Label_Couleur);
             this.Controls.Add(this.Label_Nom);
             this.Controls.Add(this.Label_Code);
-            this.Controls.Add(this.TBox_Adresse1);
+            this.Controls.Add(this.TBox_Tatouage);
             this.Controls.Add(this.TBox_Couleur);
             this.Controls.Add(this.TBox_Nom);
             this.Controls.Add(this.TBox_Code);
@@ -318,12 +318,12 @@
         private System.Windows.Forms.Label Label_Valider;
         private System.Windows.Forms.Label Label_Dossier;
         private System.Windows.Forms.GroupBox GBox_Client;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBox_Client;
         private System.Windows.Forms.Label Label_Tatouage;
         private System.Windows.Forms.Label Label_Couleur;
         private System.Windows.Forms.Label Label_Nom;
         private System.Windows.Forms.Label Label_Code;
-        private System.Windows.Forms.TextBox TBox_Adresse1;
+        private System.Windows.Forms.TextBox TBox_Tatouage;
         private System.Windows.Forms.TextBox TBox_Couleur;
         private System.Windows.Forms.TextBox TBox_Nom;
         private System.Windows.Forms.TextBox TBox_Code;

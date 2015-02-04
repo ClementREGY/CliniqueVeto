@@ -22,7 +22,6 @@ namespace DAL
             int colClient = dt.GetOrdinal("CodeClient");
             int colTatouage = dt.GetOrdinal("Tatouage");
             int colAntecedents = dt.GetOrdinal("Antecedents");
-            int colArchive = dt.GetOrdinal("Archive");
 
             while (dt.Read())
             {
@@ -30,13 +29,12 @@ namespace DAL
                 animal.codeAnimal = dt.GetGuid(colId);
                 animal.nomAnimal = dt.GetString(colNom);
                 animal.sexe = dt.GetString(colSexe);
-                animal.couleur = dt.GetString(colCouleur);
+                animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
                 animal.race = dt.GetString(colRace);
                 animal.espece = dt.GetString(colEspece);
-                animal.Client = DALClient.GetClient(dt.GetInt32(colClient));
-                animal.tatouage = dt.GetBoolean(colTatouage);
-                animal.antecedents = dt.GetString(colAntecedents);
-                animal.archive = dt.GetBoolean(colArchive);
+                animal.client = dt.GetGuid(colClient);
+                animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
+                animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
                 list.Add(animal);
             }
             return list;
@@ -56,7 +54,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@couleur", animal.couleur);
                     command.Parameters.AddWithValue("@race", animal.race);
                     command.Parameters.AddWithValue("@espece", animal.espece);
-                    command.Parameters.AddWithValue("@idClient", animal.Client.codeClient);
+                    command.Parameters.AddWithValue("@idClient", animal.client);
                     command.Parameters.AddWithValue("@tatouage", animal.tatouage);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
@@ -94,7 +92,7 @@ namespace DAL
             return list;
         }
 
-        public static List<Animal> GetAnimalsByClient(int id)
+        public static List<Animal> GetAnimalsByClient(Guid id)
         {
             List<Animal> list = new List<Animal>();
 
@@ -219,7 +217,7 @@ namespace DAL
                     command.Parameters.AddWithValue("@couleur", animal.couleur);
                     command.Parameters.AddWithValue("@race", animal.race);
                     command.Parameters.AddWithValue("@espece", animal.espece);
-                    command.Parameters.AddWithValue("@codeClient", animal.Client.codeClient);
+                    command.Parameters.AddWithValue("@codeClient", animal.client);
                     command.Parameters.AddWithValue("@tatouage", animal.tatouage);
                     command.Parameters.AddWithValue("@id", animal.codeAnimal);
 

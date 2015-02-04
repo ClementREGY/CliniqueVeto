@@ -24,7 +24,7 @@ namespace BLL
             return DALAnimal.GetAnimal(id);
         }
 
-        public static List<Animal> GetAnimalsByClient(int id)
+        public static List<Animal> GetAnimalsByClient(Guid id)
         {
             return DALAnimal.GetAnimalsByClient(id);
         }

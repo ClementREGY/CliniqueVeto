@@ -14,8 +14,8 @@ namespace BO
         public string couleur { get; set; }
         public string race { get; set; }
         public string espece { get; set; }
-        public Client Client { get; set; }
-        public bool tatouage { get; set; }
+        public Guid client { get; set; }
+        public string tatouage { get; set; }
         public string antecedents { get; set; }
         public bool archive { get; set; }
 
@@ -23,8 +23,8 @@ namespace BO
         {
         }
 
-        public Animal(Guid CodeAnimal, string NomAnimal, string Sexe, string Couleur, string Race, string Espece,
-            Client Client, bool Tatouage, string Antecedents, bool Archive)
+        public Animal(Guid CodeAnimal, String NomAnimal, String Sexe, String Race, String Espece,
+            Guid Client, bool Archive = false, String Couleur = null, String Tatouage = null, String Antecedents = null)
         {
             this.codeAnimal = CodeAnimal;
             this.nomAnimal = NomAnimal;
@@ -32,7 +32,7 @@ namespace BO
             this.couleur = Couleur;
             this.race = Race;
             this.espece = Espece;
-            this.Client = Client;
+            this.client = Client;
             this.tatouage = Tatouage;
             this.antecedents = Antecedents;
             this.archive = Archive;

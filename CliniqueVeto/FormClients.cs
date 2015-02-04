@@ -39,7 +39,15 @@ namespace CliniqueVeto
             }
         }
 
-        private Client ClientCourant
+        public Animal AnimalCourant
+        {
+            get
+            {
+                return (Animal)DataGrid_Animaux.CurrentRow.DataBoundItem;
+            }
+        }
+
+        public Client ClientCourant
         {
             get { return _clientCourant; }
         }
@@ -56,6 +64,15 @@ namespace CliniqueVeto
         private void FormClients_Load(object sender, EventArgs e)
         {
             TBox_Code.Enabled = false;
+            try
+            {
+                DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         #endregion
@@ -94,6 +111,7 @@ namespace CliniqueVeto
 
             TBox_Email.Text = ClientCourant.email;
             TBox_Assurance.Text = ClientCourant.assurance;
+            DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
         }
 
         private void NavBarre_Navigation(object sender, ControlsLibrary.NavBarEventArgs e)
