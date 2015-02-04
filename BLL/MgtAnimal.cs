@@ -19,9 +19,9 @@ namespace BLL
         }
 
         // Read
-        public static List<Animal> GetAnimals()
+        public static Animal GetAnimal(int id)
         {
-            return DALAnimal.GetAnimals();
+            return DALAnimal.GetAnimal(id);
         }
 
         public static List<Animal> GetAnimalsByClient(int id)
