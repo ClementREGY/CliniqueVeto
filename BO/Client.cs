@@ -11,6 +11,10 @@ namespace BO
         public Guid codeClient { get; set; }
         public String nomClient { get; set; }
         public String prenomClient { get; set; }
+        public String nomPrenom
+        {
+            get { return nomClient + " " + prenomClient; }
+        }
         public String adresse { get; set; }
         public String adresse2 { get; set; }
         public String cp { get; set; }

@@ -30,33 +30,33 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRDV));
             this.GBox_Pour = new System.Windows.Forms.GroupBox();
-            this.GBox_Par = new System.Windows.Forms.GroupBox();
-            this.GBox_Quand = new System.Windows.Forms.GroupBox();
-            this.Label_Vétérinaire = new System.Windows.Forms.Label();
-            this.CBox_Vétérinaire = new System.Windows.Forms.ComboBox();
-            this.Label_Date = new System.Windows.Forms.Label();
-            this.DTPicker_Date = new System.Windows.Forms.DateTimePicker();
-            this.Label_Heure = new System.Windows.Forms.Label();
-            this.CBox_Heure = new System.Windows.Forms.ComboBox();
-            this.Label_H = new System.Windows.Forms.Label();
-            this.CBox_Minute = new System.Windows.Forms.ComboBox();
-            this.BTN_Urgence = new System.Windows.Forms.Button();
-            this.Label_Urgence = new System.Windows.Forms.Label();
-            this.CBox_Client = new System.Windows.Forms.ComboBox();
-            this.Label_Client = new System.Windows.Forms.Label();
+            this.PBox_AddAnimal = new System.Windows.Forms.PictureBox();
+            this.PBox_AddClient = new System.Windows.Forms.PictureBox();
             this.CBox_Animal = new System.Windows.Forms.ComboBox();
             this.Label_Animal = new System.Windows.Forms.Label();
-            this.PBox_AddClient = new System.Windows.Forms.PictureBox();
-            this.PBox_AddAnimal = new System.Windows.Forms.PictureBox();
+            this.CBox_Client = new System.Windows.Forms.ComboBox();
+            this.Label_Client = new System.Windows.Forms.Label();
+            this.GBox_Par = new System.Windows.Forms.GroupBox();
+            this.CBox_Vétérinaire = new System.Windows.Forms.ComboBox();
+            this.Label_Vétérinaire = new System.Windows.Forms.Label();
+            this.GBox_Quand = new System.Windows.Forms.GroupBox();
+            this.Label_Urgence = new System.Windows.Forms.Label();
+            this.BTN_Urgence = new System.Windows.Forms.Button();
+            this.CBox_Minute = new System.Windows.Forms.ComboBox();
+            this.Label_H = new System.Windows.Forms.Label();
+            this.CBox_Heure = new System.Windows.Forms.ComboBox();
+            this.Label_Heure = new System.Windows.Forms.Label();
+            this.DTPicker_Date = new System.Windows.Forms.DateTimePicker();
+            this.Label_Date = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.BTN_Annuler = new System.Windows.Forms.Button();
             this.BTN_Valider = new System.Windows.Forms.Button();
             this.BTN_Supprimer = new System.Windows.Forms.Button();
             this.GBox_Pour.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).BeginInit();
             this.GBox_Par.SuspendLayout();
             this.GBox_Quand.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +76,61 @@
             this.GBox_Pour.TabStop = false;
             this.GBox_Pour.Text = "Pour";
             // 
+            // PBox_AddAnimal
+            // 
+            this.PBox_AddAnimal.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddAnimal.Image")));
+            this.PBox_AddAnimal.Location = new System.Drawing.Point(203, 101);
+            this.PBox_AddAnimal.Name = "PBox_AddAnimal";
+            this.PBox_AddAnimal.Size = new System.Drawing.Size(23, 23);
+            this.PBox_AddAnimal.TabIndex = 6;
+            this.PBox_AddAnimal.TabStop = false;
+            // 
+            // PBox_AddClient
+            // 
+            this.PBox_AddClient.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddClient.Image")));
+            this.PBox_AddClient.Location = new System.Drawing.Point(203, 50);
+            this.PBox_AddClient.Name = "PBox_AddClient";
+            this.PBox_AddClient.Size = new System.Drawing.Size(23, 23);
+            this.PBox_AddClient.TabIndex = 3;
+            this.PBox_AddClient.TabStop = false;
+            // 
+            // CBox_Animal
+            // 
+            this.CBox_Animal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBox_Animal.FormattingEnabled = true;
+            this.CBox_Animal.Location = new System.Drawing.Point(15, 101);
+            this.CBox_Animal.Name = "CBox_Animal";
+            this.CBox_Animal.Size = new System.Drawing.Size(182, 23);
+            this.CBox_Animal.TabIndex = 5;
+            // 
+            // Label_Animal
+            // 
+            this.Label_Animal.AutoSize = true;
+            this.Label_Animal.Location = new System.Drawing.Point(12, 79);
+            this.Label_Animal.Name = "Label_Animal";
+            this.Label_Animal.Size = new System.Drawing.Size(52, 17);
+            this.Label_Animal.TabIndex = 4;
+            this.Label_Animal.Text = "Animal";
+            // 
+            // CBox_Client
+            // 
+            this.CBox_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBox_Client.FormattingEnabled = true;
+            this.CBox_Client.Location = new System.Drawing.Point(15, 50);
+            this.CBox_Client.Name = "CBox_Client";
+            this.CBox_Client.Size = new System.Drawing.Size(182, 23);
+            this.CBox_Client.TabIndex = 3;
+            this.CBox_Client.SelectedIndexChanged += new System.EventHandler(this.CBox_Client_SelectedIndexChanged);
+            // 
+            // Label_Client
+            // 
+            this.Label_Client.AutoSize = true;
+            this.Label_Client.Location = new System.Drawing.Point(12, 28);
+            this.Label_Client.Name = "Label_Client";
+            this.Label_Client.Size = new System.Drawing.Size(44, 17);
+            this.Label_Client.TabIndex = 2;
+            this.Label_Client.Text = "Client";
+            // 
             // GBox_Par
             // 
             this.GBox_Par.Controls.Add(this.CBox_Vétérinaire);
@@ -87,6 +142,24 @@
             this.GBox_Par.TabIndex = 1;
             this.GBox_Par.TabStop = false;
             this.GBox_Par.Text = "Par";
+            // 
+            // CBox_Vétérinaire
+            // 
+            this.CBox_Vétérinaire.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBox_Vétérinaire.FormattingEnabled = true;
+            this.CBox_Vétérinaire.Location = new System.Drawing.Point(21, 72);
+            this.CBox_Vétérinaire.Name = "CBox_Vétérinaire";
+            this.CBox_Vétérinaire.Size = new System.Drawing.Size(200, 23);
+            this.CBox_Vétérinaire.TabIndex = 1;
+            // 
+            // Label_Vétérinaire
+            // 
+            this.Label_Vétérinaire.AutoSize = true;
+            this.Label_Vétérinaire.Location = new System.Drawing.Point(18, 50);
+            this.Label_Vétérinaire.Name = "Label_Vétérinaire";
+            this.Label_Vétérinaire.Size = new System.Drawing.Size(77, 17);
+            this.Label_Vétérinaire.TabIndex = 0;
+            this.Label_Vétérinaire.Text = "Vétérinaire";
             // 
             // GBox_Quand
             // 
@@ -106,82 +179,26 @@
             this.GBox_Quand.TabStop = false;
             this.GBox_Quand.Text = "Quand";
             // 
-            // Label_Vétérinaire
+            // Label_Urgence
             // 
-            this.Label_Vétérinaire.AutoSize = true;
-            this.Label_Vétérinaire.Location = new System.Drawing.Point(18, 50);
-            this.Label_Vétérinaire.Name = "Label_Vétérinaire";
-            this.Label_Vétérinaire.Size = new System.Drawing.Size(77, 17);
-            this.Label_Vétérinaire.TabIndex = 0;
-            this.Label_Vétérinaire.Text = "Vétérinaire";
+            this.Label_Urgence.AutoSize = true;
+            this.Label_Urgence.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Urgence.Location = new System.Drawing.Point(173, 119);
+            this.Label_Urgence.Name = "Label_Urgence";
+            this.Label_Urgence.Size = new System.Drawing.Size(60, 17);
+            this.Label_Urgence.TabIndex = 7;
+            this.Label_Urgence.Text = "Urgence";
             // 
-            // CBox_Vétérinaire
+            // BTN_Urgence
             // 
-            this.CBox_Vétérinaire.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBox_Vétérinaire.FormattingEnabled = true;
-            this.CBox_Vétérinaire.Location = new System.Drawing.Point(21, 72);
-            this.CBox_Vétérinaire.Name = "CBox_Vétérinaire";
-            this.CBox_Vétérinaire.Size = new System.Drawing.Size(200, 23);
-            this.CBox_Vétérinaire.TabIndex = 1;
-            // 
-            // Label_Date
-            // 
-            this.Label_Date.AutoSize = true;
-            this.Label_Date.Location = new System.Drawing.Point(18, 28);
-            this.Label_Date.Name = "Label_Date";
-            this.Label_Date.Size = new System.Drawing.Size(37, 17);
-            this.Label_Date.TabIndex = 1;
-            this.Label_Date.Text = "Date";
-            // 
-            // DTPicker_Date
-            // 
-            this.DTPicker_Date.CalendarFont = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTPicker_Date.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTPicker_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTPicker_Date.Location = new System.Drawing.Point(21, 50);
-            this.DTPicker_Date.Name = "DTPicker_Date";
-            this.DTPicker_Date.Size = new System.Drawing.Size(200, 23);
-            this.DTPicker_Date.TabIndex = 2;
-            // 
-            // Label_Heure
-            // 
-            this.Label_Heure.AutoSize = true;
-            this.Label_Heure.Location = new System.Drawing.Point(18, 75);
-            this.Label_Heure.Name = "Label_Heure";
-            this.Label_Heure.Size = new System.Drawing.Size(46, 17);
-            this.Label_Heure.TabIndex = 3;
-            this.Label_Heure.Text = "Heure";
-            // 
-            // CBox_Heure
-            // 
-            this.CBox_Heure.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBox_Heure.FormattingEnabled = true;
-            this.CBox_Heure.Items.AddRange(new object[] {
-            "09",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20"});
-            this.CBox_Heure.Location = new System.Drawing.Point(21, 96);
-            this.CBox_Heure.Name = "CBox_Heure";
-            this.CBox_Heure.Size = new System.Drawing.Size(43, 23);
-            this.CBox_Heure.TabIndex = 4;
-            // 
-            // Label_H
-            // 
-            this.Label_H.AutoSize = true;
-            this.Label_H.Location = new System.Drawing.Point(65, 99);
-            this.Label_H.Name = "Label_H";
-            this.Label_H.Size = new System.Drawing.Size(18, 17);
-            this.Label_H.TabIndex = 4;
-            this.Label_H.Text = "H";
+            this.BTN_Urgence.BackColor = System.Drawing.Color.Transparent;
+            this.BTN_Urgence.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BTN_Urgence.BackgroundImage")));
+            this.BTN_Urgence.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_Urgence.Location = new System.Drawing.Point(181, 79);
+            this.BTN_Urgence.Name = "BTN_Urgence";
+            this.BTN_Urgence.Size = new System.Drawing.Size(40, 40);
+            this.BTN_Urgence.TabIndex = 6;
+            this.BTN_Urgence.UseVisualStyleBackColor = false;
             // 
             // CBox_Minute
             // 
@@ -205,80 +222,64 @@
             this.CBox_Minute.Size = new System.Drawing.Size(43, 23);
             this.CBox_Minute.TabIndex = 5;
             // 
-            // BTN_Urgence
+            // Label_H
             // 
-            this.BTN_Urgence.BackColor = System.Drawing.Color.Transparent;
-            this.BTN_Urgence.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BTN_Urgence.BackgroundImage")));
-            this.BTN_Urgence.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BTN_Urgence.Location = new System.Drawing.Point(181, 79);
-            this.BTN_Urgence.Name = "BTN_Urgence";
-            this.BTN_Urgence.Size = new System.Drawing.Size(40, 40);
-            this.BTN_Urgence.TabIndex = 6;
-            this.BTN_Urgence.UseVisualStyleBackColor = false;
+            this.Label_H.AutoSize = true;
+            this.Label_H.Location = new System.Drawing.Point(65, 99);
+            this.Label_H.Name = "Label_H";
+            this.Label_H.Size = new System.Drawing.Size(18, 17);
+            this.Label_H.TabIndex = 4;
+            this.Label_H.Text = "H";
             // 
-            // Label_Urgence
+            // CBox_Heure
             // 
-            this.Label_Urgence.AutoSize = true;
-            this.Label_Urgence.BackColor = System.Drawing.Color.Transparent;
-            this.Label_Urgence.Location = new System.Drawing.Point(173, 119);
-            this.Label_Urgence.Name = "Label_Urgence";
-            this.Label_Urgence.Size = new System.Drawing.Size(60, 17);
-            this.Label_Urgence.TabIndex = 7;
-            this.Label_Urgence.Text = "Urgence";
+            this.CBox_Heure.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBox_Heure.FormattingEnabled = true;
+            this.CBox_Heure.Items.AddRange(new object[] {
+            "09",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20"});
+            this.CBox_Heure.Location = new System.Drawing.Point(21, 96);
+            this.CBox_Heure.Name = "CBox_Heure";
+            this.CBox_Heure.Size = new System.Drawing.Size(43, 23);
+            this.CBox_Heure.TabIndex = 4;
             // 
-            // CBox_Client
+            // Label_Heure
             // 
-            this.CBox_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBox_Client.FormattingEnabled = true;
-            this.CBox_Client.Location = new System.Drawing.Point(15, 50);
-            this.CBox_Client.Name = "CBox_Client";
-            this.CBox_Client.Size = new System.Drawing.Size(182, 23);
-            this.CBox_Client.TabIndex = 3;
+            this.Label_Heure.AutoSize = true;
+            this.Label_Heure.Location = new System.Drawing.Point(18, 75);
+            this.Label_Heure.Name = "Label_Heure";
+            this.Label_Heure.Size = new System.Drawing.Size(46, 17);
+            this.Label_Heure.TabIndex = 3;
+            this.Label_Heure.Text = "Heure";
             // 
-            // Label_Client
+            // DTPicker_Date
             // 
-            this.Label_Client.AutoSize = true;
-            this.Label_Client.Location = new System.Drawing.Point(12, 28);
-            this.Label_Client.Name = "Label_Client";
-            this.Label_Client.Size = new System.Drawing.Size(44, 17);
-            this.Label_Client.TabIndex = 2;
-            this.Label_Client.Text = "Client";
+            this.DTPicker_Date.CalendarFont = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTPicker_Date.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTPicker_Date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTPicker_Date.Location = new System.Drawing.Point(21, 50);
+            this.DTPicker_Date.Name = "DTPicker_Date";
+            this.DTPicker_Date.Size = new System.Drawing.Size(200, 23);
+            this.DTPicker_Date.TabIndex = 2;
             // 
-            // CBox_Animal
+            // Label_Date
             // 
-            this.CBox_Animal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CBox_Animal.FormattingEnabled = true;
-            this.CBox_Animal.Location = new System.Drawing.Point(15, 101);
-            this.CBox_Animal.Name = "CBox_Animal";
-            this.CBox_Animal.Size = new System.Drawing.Size(182, 23);
-            this.CBox_Animal.TabIndex = 5;
-            // 
-            // Label_Animal
-            // 
-            this.Label_Animal.AutoSize = true;
-            this.Label_Animal.Location = new System.Drawing.Point(12, 79);
-            this.Label_Animal.Name = "Label_Animal";
-            this.Label_Animal.Size = new System.Drawing.Size(52, 17);
-            this.Label_Animal.TabIndex = 4;
-            this.Label_Animal.Text = "Animal";
-            // 
-            // PBox_AddClient
-            // 
-            this.PBox_AddClient.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddClient.Image")));
-            this.PBox_AddClient.Location = new System.Drawing.Point(203, 50);
-            this.PBox_AddClient.Name = "PBox_AddClient";
-            this.PBox_AddClient.Size = new System.Drawing.Size(23, 23);
-            this.PBox_AddClient.TabIndex = 3;
-            this.PBox_AddClient.TabStop = false;
-            // 
-            // PBox_AddAnimal
-            // 
-            this.PBox_AddAnimal.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddAnimal.Image")));
-            this.PBox_AddAnimal.Location = new System.Drawing.Point(203, 101);
-            this.PBox_AddAnimal.Name = "PBox_AddAnimal";
-            this.PBox_AddAnimal.Size = new System.Drawing.Size(23, 23);
-            this.PBox_AddAnimal.TabIndex = 6;
-            this.PBox_AddAnimal.TabStop = false;
+            this.Label_Date.AutoSize = true;
+            this.Label_Date.Location = new System.Drawing.Point(18, 28);
+            this.Label_Date.Name = "Label_Date";
+            this.Label_Date.Size = new System.Drawing.Size(37, 17);
+            this.Label_Date.TabIndex = 1;
+            this.Label_Date.Text = "Date";
             // 
             // dataGridView1
             // 
@@ -337,14 +338,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormRDV";
             this.Text = "Prise de Rendez-Vous";
+            this.Load += new System.EventHandler(this.FormRDV_Load);
             this.GBox_Pour.ResumeLayout(false);
             this.GBox_Pour.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).EndInit();
             this.GBox_Par.ResumeLayout(false);
             this.GBox_Par.PerformLayout();
             this.GBox_Quand.ResumeLayout(false);
             this.GBox_Quand.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 

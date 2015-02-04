@@ -57,5 +57,10 @@ namespace BO
             this.antecedents = Antecedents;
             this.archive = Archive;
         }
+
+        public override string ToString()
+        {
+            return this.espece + " " + this.nomAnimal;
+        }
     }
 }
