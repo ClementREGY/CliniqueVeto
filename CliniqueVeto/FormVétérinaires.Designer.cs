@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVétérinaires));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.LB_Vétérinaires = new System.Windows.Forms.ListBox();
             this.toolStripBt_Ajouter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBt_Suppr = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBt_Reinit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBt_Suppr = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBt_Reinit = new System.Windows.Forms.ToolStripButton();
+            this.LBox_Vetos = new System.Windows.Forms.ListBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,16 +54,6 @@
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // LB_Vétérinaires
-            // 
-            this.LB_Vétérinaires.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Vétérinaires.FormattingEnabled = true;
-            this.LB_Vétérinaires.ItemHeight = 19;
-            this.LB_Vétérinaires.Location = new System.Drawing.Point(12, 71);
-            this.LB_Vétérinaires.Name = "LB_Vétérinaires";
-            this.LB_Vétérinaires.Size = new System.Drawing.Size(218, 289);
-            this.LB_Vétérinaires.TabIndex = 1;
-            // 
             // toolStripBt_Ajouter
             // 
             this.toolStripBt_Ajouter.AutoSize = false;
@@ -75,6 +65,12 @@
             this.toolStripBt_Ajouter.Size = new System.Drawing.Size(75, 54);
             this.toolStripBt_Ajouter.Text = "Ajouter";
             this.toolStripBt_Ajouter.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Ajouter.Click += new System.EventHandler(this.toolStripBt_Ajouter_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 57);
             // 
             // toolStripBt_Suppr
             // 
@@ -87,6 +83,12 @@
             this.toolStripBt_Suppr.Size = new System.Drawing.Size(75, 54);
             this.toolStripBt_Suppr.Text = "Supprimer";
             this.toolStripBt_Suppr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Suppr.Click += new System.EventHandler(this.toolStripBt_Suppr_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 57);
             // 
             // toolStripBt_Reinit
             // 
@@ -99,16 +101,17 @@
             this.toolStripBt_Reinit.Size = new System.Drawing.Size(75, 54);
             this.toolStripBt_Reinit.Text = "Réinitialiser";
             this.toolStripBt_Reinit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Reinit.Click += new System.EventHandler(this.toolStripBt_Reinit_Click);
             // 
-            // toolStripSeparator1
+            // LBox_Vetos
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 57);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 57);
+            this.LBox_Vetos.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBox_Vetos.FormattingEnabled = true;
+            this.LBox_Vetos.ItemHeight = 17;
+            this.LBox_Vetos.Location = new System.Drawing.Point(12, 71);
+            this.LBox_Vetos.Name = "LBox_Vetos";
+            this.LBox_Vetos.Size = new System.Drawing.Size(218, 293);
+            this.LBox_Vetos.TabIndex = 1;
             // 
             // FormVétérinaires
             // 
@@ -116,11 +119,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(242, 376);
-            this.Controls.Add(this.LB_Vétérinaires);
+            this.Controls.Add(this.LBox_Vetos);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormVétérinaires";
             this.Text = "Vétérinaires";
+            this.Load += new System.EventHandler(this.FormVétérinaires_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -132,10 +136,10 @@
 
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripBt_Ajouter;
-        private System.Windows.Forms.ListBox LB_Vétérinaires;
         private System.Windows.Forms.ToolStripButton toolStripBt_Suppr;
         private System.Windows.Forms.ToolStripButton toolStripBt_Reinit;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ListBox LBox_Vetos;
     }
 }

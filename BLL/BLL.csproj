@@ -42,6 +42,7 @@
     <Compile Include="MgtAnimal.cs" />
     <Compile Include="MgtClient.cs" />
     <Compile Include="MgtLogin.cs" />
+    <Compile Include="MgtVeterinaire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

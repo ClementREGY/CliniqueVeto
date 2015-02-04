@@ -1,4 +1,6 @@
 ﻿using System;
+using BLL;
+using BO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,52 @@ namespace CliniqueVeto
 {
     public partial class FormVétérinaires : Form
     {
+        #region Attributs
+
+        public Veterinaire _veterinaireCourant 
+        {
+            get { return (Veterinaire)LBox_Vetos.SelectedItem; }
+        }
+
+        #endregion
+
         public FormVétérinaires()
         {
             InitializeComponent();
         }
+
+        private void FormVétérinaires_Load(object sender, EventArgs e)
+        {
+            LBox_Vetos.DataSource = MgtVeterinaire.GetVeterinaires();
+            LBox_Vetos.DisplayMember = "NomVeto";
+        }
+
+        #region Gestion des Boutons
+
+        private void toolStripBt_Ajouter_Click(object sender, EventArgs e)
+        {
+            FormAjout_Vétérinaire frmAjout = new FormAjout_Vétérinaire();
+            frmAjout.ShowDialog();
+            LBox_Vetos.DataSource = MgtVeterinaire.GetVeterinaires();
+        }
+
+        private void toolStripBt_Suppr_Click(object sender, EventArgs e)
+        {           
+            DialogResult result = MessageBox.Show("Voulez-vous vraiment supprimer ce Vétérinaire ?", "Attention", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                MgtVeterinaire.DeleteVeterinaire((Veterinaire)LBox_Vetos.SelectedItem);
+            }
+            LBox_Vetos.DataSource = MgtVeterinaire.GetVeterinaires();
+        }
+
+        private void toolStripBt_Reinit_Click(object sender, EventArgs e)
+        {
+            FormReinit_Vétérinaire frmReinit = new FormReinit_Vétérinaire(this);
+            frmReinit.ShowDialog();
+            LBox_Vetos.DataSource = MgtVeterinaire.GetVeterinaires();
+        }
+
+        #endregion
     }
 }

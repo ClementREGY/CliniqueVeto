@@ -13,7 +13,7 @@ namespace BLL
         #region Méthodes CRUD
 
         // Create
-        public static bool CreateLogin(Login pLogin)
+        public static int CreateLogin(Login pLogin)
         {
             return DALLogin.AddLogin(pLogin);
         }
@@ -22,6 +22,11 @@ namespace BLL
         public static List<Login> GetLogins()
         {
             return DALLogin.GetLogins();
+        }
+
+        public static Login GetLogin(int IdLogin)
+        {
+            return DALLogin.GetLogin(IdLogin);
         }
 
         // Update

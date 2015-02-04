@@ -55,6 +55,12 @@
     <Compile Include="FormAgenda.Designer.cs">
       <DependentUpon>FormAgenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAjout_Vétérinaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjout_Vétérinaire.Designer.cs">
+      <DependentUpon>FormAjout_Vétérinaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAnimaux.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     <Compile Include="FormRDV.Designer.cs">
       <DependentUpon>FormRDV.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReinit_Vétérinaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReinit_Vétérinaire.Designer.cs">
+      <DependentUpon>FormReinit_Vétérinaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRelance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAgenda.resx">
       <DependentUpon>FormAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAjout_Vétérinaire.resx">
+      <DependentUpon>FormAjout_Vétérinaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAnimaux.resx">
       <DependentUpon>FormAnimaux.cs</DependentUpon>
@@ -149,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRDV.resx">
       <DependentUpon>FormRDV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReinit_Vétérinaire.resx">
+      <DependentUpon>FormReinit_Vétérinaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRelance.resx">
       <DependentUpon>FormRelance.cs</DependentUpon>

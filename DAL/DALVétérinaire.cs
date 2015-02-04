@@ -65,41 +65,10 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Veterinaires WHERE V.Archive = 0 ORDER BY NomVeto";
+                    command.CommandText = "SELECT * FROM Veterinaires WHERE Archive = 0 ORDER BY NomVeto";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException("Erreur : " + ex.Message);
-            }
-            return list;
-        }
-
-        public static List<Veterinaire> GetVeterinairesLogin()
-        {
-            List<Veterinaire> list = new List<Veterinaire>();
-
-            try
-            {
-                using (SqlConnection cnx = DALAccess.GetConnection())
-                {
-                    SqlCommand command = cnx.CreateCommand();
-                    command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT V.NomVeto, L.Password FROM Veterinaires V JOIN Logins L ON V.RefLogin = L.ID WHERE V.Archive = 0 ORDER BY NomVeto";
-
-                    SqlDataReader dt = command.ExecuteReader();
-
-                    int colNom = dt.GetOrdinal("NomVeto");
-                    int colPassword = dt.GetOrdinal("Password");
-
-                    while (dt.Read())
-                    {
-                        Veterinaire veto = new Veterinaire(dt.GetString(colNom), dt.GetString(colPassword));
-                        list.Add(veto);
-                    }
                 }
             }
             catch (Exception ex)

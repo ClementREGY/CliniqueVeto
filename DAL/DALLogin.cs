@@ -11,7 +11,7 @@ namespace DAL
     public class DALLogin
     {
         #region CRUD
-        public static bool AddLogin(Login login)
+        public static int AddLogin(Login login)
         {
             try
             {
@@ -19,14 +19,14 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "EXEC ajout_login @login,@password";
+                    command.CommandText = "EXEC ajout_login @login, @password, 0;";
                     command.Parameters.AddWithValue("@login", login.loginUser);
                     command.Parameters.AddWithValue("@password", login.passwordUser);
-                    int resultat = command.ExecuteNonQuery();
-                    if (resultat == 0)
-                        return false;
-                    else
-                        return true;
+
+                    Decimal dResult = (decimal)command.ExecuteScalar();
+                    int resultat = (int)dResult;
+
+                    return resultat;
                 }
             }
             catch (Exception ex)
@@ -68,6 +68,39 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
             return list;
+        }
+
+        public static Login GetLogin(int IdLogin)
+        {
+            Login login = new Login();
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Logins WHERE ID = @id";
+                    command.Parameters.AddWithValue("@id", IdLogin);
+
+                    SqlDataReader dt = command.ExecuteReader();
+
+                    int colId = dt.GetOrdinal("Id");
+                    int colLogin = dt.GetOrdinal("Login");
+                    int colPassword = dt.GetOrdinal("Password");
+
+                    while (dt.Read())
+                    {
+                        login.loginUser = dt.GetString(colLogin);
+                        login.passwordUser = dt.GetString(colPassword);
+                        login.id = dt.GetInt32(colId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return login;
         }
 
         public static bool SetLogin(Login login)
