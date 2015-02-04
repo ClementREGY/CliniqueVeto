@@ -36,7 +36,6 @@ namespace CliniqueVeto
                 CBox_Genre.SelectedIndex = 0;
                 CBox_Espèce.SelectedIndex = 0;
                 CBox_Race.SelectedItem = 0;
-
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
