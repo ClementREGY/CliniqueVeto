@@ -10,43 +10,27 @@ namespace DAL
 {
     public class DALVétérinaire
     {
-        private static List<Client> builderObject(SqlDataReader dt)
+        private static List<Veterinaire> builderObject(SqlDataReader dt)
         {
-            List<Client> list = new List<Client>();
-            int colId = dt.GetOrdinal("CodeClient");
-            int colNom = dt.GetOrdinal("NomClient");
-            int colPrenom = dt.GetOrdinal("PrenomClient");
-            int colAdresse = dt.GetOrdinal("Adresse1");
-            int colAdresse2 = dt.GetOrdinal("Adresse2");
-            int colCP = dt.GetOrdinal("CodePostal");
-            int colVille = dt.GetOrdinal("Ville");
-            int colNumTel = dt.GetOrdinal("NumTel");
-            int colAssurance = dt.GetOrdinal("Assurance");
-            int colEmail = dt.GetOrdinal("Email");
-            int colRemarque = dt.GetOrdinal("Remarque");
+            List<Veterinaire> list = new List<Veterinaire>();
+            int colID = dt.GetOrdinal("CodeVeto");
+            int colNom = dt.GetOrdinal("NomVeto");
             int colArchive = dt.GetOrdinal("Archive");
+            int colRefLogin = dt.GetOrdinal("RefLogin");
 
             while (dt.Read())
             {
-                Client client = new Client();
-                client.codeClient = dt.GetGuid(colId);
-                client.nomClient = dt.GetString(colNom);
-                client.prenomClient = dt.GetString(colPrenom);
-                client.adresse = dt.GetString(colAdresse);
-                client.adresse2 = (dt.GetValue(colAdresse2).ToString() != null) ? dt.GetValue(colAdresse2).ToString() : String.Empty;
-                client.cp = dt.GetString(colCP);
-                client.ville = dt.GetString(colVille);
-                client.numTel = (dt.GetValue(colNumTel).ToString() != null) ? dt.GetValue(colNumTel).ToString() : String.Empty;
-                client.assurance = (dt.GetValue(colAssurance).ToString() != null) ? dt.GetValue(colAssurance).ToString() : String.Empty;
-                client.email = (dt.GetValue(colEmail).ToString() != null) ? dt.GetValue(colEmail).ToString() : String.Empty;
-                client.remarque = (dt.GetValue(colRemarque).ToString() != null) ? dt.GetValue(colRemarque).ToString() : String.Empty;
-                client.archive = dt.GetBoolean(colArchive);
-                list.Add(client);
+                Veterinaire veto = new Veterinaire();
+                veto.codeVeto = dt.GetGuid(colID);
+                veto.nomVeto = dt.GetString(colNom);
+                veto.archive = dt.GetBoolean(colArchive);
+                veto.refLogin = dt.GetInt32(colRefLogin);
+                list.Add(veto);
             }
             return list;
         }
 
-        public static bool AddClient(Client client)
+        public static bool AddVeterinaire(Veterinaire veterinaire)
         {
             try
             {
@@ -54,17 +38,10 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "EXEC ajout_client @nom, @prenom, @add, @add2, @cp, @ville, @tel, @ass, @mail, @arch";
-                    command.Parameters.AddWithValue("@nom", client.nomClient);
-                    command.Parameters.AddWithValue("@prenom", client.prenomClient);
-                    command.Parameters.AddWithValue("@add", client.adresse);
-                    command.Parameters.AddWithValue("@add2", client.adresse2);
-                    command.Parameters.AddWithValue("@cp", client.cp);
-                    command.Parameters.AddWithValue("@ville", client.ville);
-                    command.Parameters.AddWithValue("@tel", client.numTel);
-                    command.Parameters.AddWithValue("@ass", client.assurance);
-                    command.Parameters.AddWithValue("@mail", client.email);
-                    command.Parameters.AddWithValue("@arch", (client.archive != false) ? 1 : 0);
+                    command.CommandText = "EXEC ajout_veterinaire @nomveto, @archive, @reflogin";
+                    command.Parameters.AddWithValue("@nomveto", veterinaire.nomVeto);
+                    command.Parameters.AddWithValue("@archive", veterinaire.archive);
+                    command.Parameters.AddWithValue("@reflogin", veterinaire.refLogin);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
                         return false;
@@ -78,9 +55,9 @@ namespace DAL
             }
         }
 
-        public static List<Client> GetClients()
+        public static List<Veterinaire> GetVeterinaires()
         {
-            List<Client> list = new List<Client>();
+            List<Veterinaire> list = new List<Veterinaire>();
 
             try
             {
@@ -88,7 +65,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients WHERE Archive = 0 ORDER BY NomClient";
+                    command.CommandText = "SELECT * FROM Veterinaires WHERE V.Archive = 0 ORDER BY NomVeto";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -101,9 +78,9 @@ namespace DAL
             return list;
         }
 
-        public static Client GetClient(int id)
+        public static List<Veterinaire> GetVeterinairesLogin()
         {
-            List<Client> list = new List<Client>();
+            List<Veterinaire> list = new List<Veterinaire>();
 
             try
             {
@@ -111,28 +88,28 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients WHERE Id = @id AND Archive = 0";
-                    command.Parameters.AddWithValue("@id", id);
+                    command.CommandText = "SELECT V.NomVeto, L.Password FROM Veterinaires V JOIN Logins L ON V.RefLogin = L.ID WHERE V.Archive = 0 ORDER BY NomVeto";
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+
+                    int colNom = dt.GetOrdinal("NomVeto");
+                    int colPassword = dt.GetOrdinal("Password");
+
+                    while (dt.Read())
+                    {
+                        Veterinaire veto = new Veterinaire(dt.GetString(colNom), dt.GetString(colPassword));
+                        list.Add(veto);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
-            if (list.Count > 0)
-            {
-                return list.First();
-            }
-            else
-            {
-                return null;
-            }
+            return list;
         }
 
-        public static bool SetClient(Client client)
+        public static bool SetVeterinaire(Veterinaire veterinaire)
         {
             try
             {
@@ -140,14 +117,9 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "UPDATE Clients SET Nom = @nom, Prenom = @prenom, Adresse1 = @adresse, Adresse2 = @adresse2, CodePostal = @cp, Ville = @ville WHERE CodeClient = @id";
-                    command.Parameters.AddWithValue("@nom", client.nomClient);
-                    command.Parameters.AddWithValue("@prenom", client.prenomClient);
-                    command.Parameters.AddWithValue("@adresse", client.adresse);
-                    command.Parameters.AddWithValue("@adresse2", client.adresse2);
-                    command.Parameters.AddWithValue("@cp", client.cp);
-                    command.Parameters.AddWithValue("@ville", client.ville);
-                    command.Parameters.AddWithValue("@id", client.codeClient);
+                    command.CommandText = "UPDATE Veterinaires SET NomVeto = @nom WHERE CodeVeto = @id";
+                    command.Parameters.AddWithValue("@nom", veterinaire.nomVeto);
+                    command.Parameters.AddWithValue("@id", veterinaire.codeVeto);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
@@ -162,7 +134,7 @@ namespace DAL
             }
         }
 
-        public static bool DeleteClient(Client client)
+        public static bool DeleteVeterinaire(Veterinaire veterinaire)
         {
             try
             {
@@ -170,8 +142,8 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE FROM Clients WHERE CodeClient = @id";
-                    command.Parameters.AddWithValue("@id", client.codeClient.ToString().ToUpper());
+                    command.CommandText = "UPDATE Veterinaires SET Archive = 1 WHERE CodeVeto = @id";
+                    command.Parameters.AddWithValue("@id", veterinaire.codeVeto.ToString().ToUpper());
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)

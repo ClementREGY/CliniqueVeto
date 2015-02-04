@@ -170,7 +170,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE FROM Clients WHERE CodeClient = @id";
+                    command.CommandText = "UPDATE Clients SET Archive = 1 WHERE CodeClient = @id";
                     command.Parameters.AddWithValue("@id", client.codeClient.ToString().ToUpper());
 
                     int resultat = command.ExecuteNonQuery();

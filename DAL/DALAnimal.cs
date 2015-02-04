@@ -81,7 +81,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Animaux";
+                    command.CommandText = "SELECT * FROM Animaux AND Archive = 0";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -104,7 +104,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Animaux WHERE CodeClient = @id";
+                    command.CommandText = "SELECT * FROM Animaux WHERE CodeClient = @id AND Archive = 0";
                     command.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader dt = command.ExecuteReader();
@@ -128,7 +128,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Animaux WHERE CodeAnimal = @id";
+                    command.CommandText = "SELECT * FROM Animaux WHERE CodeAnimal = @id AND Archive = 0";
                     command.Parameters.AddWithValue("@id", id);
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
@@ -244,7 +244,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "DELETE FROM Animals WHERE Id = @id";
+                    command.CommandText = "UPDATE Animaux SET Archive = 1 WHERE Id = @id";
                     command.Parameters.AddWithValue("@id", animal.codeAnimal);
 
                     int resultat = command.ExecuteNonQuery();
