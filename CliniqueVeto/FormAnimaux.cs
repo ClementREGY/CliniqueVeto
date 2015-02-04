@@ -12,14 +12,14 @@ using BLL;
 
 namespace CliniqueVeto
 {
-    public partial class FormAnimaux : Form
+    public class FormAnimaux : Form
     {
         #region Attributs et Propriétés
+
         private FormClients frmClients;
 
         #endregion
         
-
         public FormAnimaux(FormClients frm)
         {
             InitializeComponent();
@@ -37,8 +37,9 @@ namespace CliniqueVeto
                 CBox_Espèce.SelectedIndex = 0;
                 CBox_Race.SelectedItem = 0;
 
-            } else if (frmClients.ModeAnimal == "Modification")
-
+            }
+            else if (frmClients.ModeAnimal == "Modification")
+            {
                 CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
                 CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
                 AfficherAnimalCourant();
@@ -56,7 +57,7 @@ namespace CliniqueVeto
             TBox_Code.Text = frmClients.AnimalCourant.codeAnimal.ToString();
             TBox_Nom.Text = frmClients.AnimalCourant.nomAnimal;
 
-            if (frmClients.AnimalCourant.sexe.StartsWith("M"))    
+            if (frmClients.AnimalCourant.sexe.StartsWith("M"))
                 CBox_Genre.SelectedIndex = 1;
             else if (frmClients.AnimalCourant.sexe.StartsWith("F"))
                 CBox_Genre.SelectedIndex = 0;
@@ -101,6 +102,7 @@ namespace CliniqueVeto
                 }
             }
         }
+
         private void Reset()
         {
             Panel_GestionAnimaux.Enabled = true;
