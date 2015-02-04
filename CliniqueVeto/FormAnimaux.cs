@@ -30,6 +30,8 @@ namespace CliniqueVeto
         {
             TBox_Code.Enabled = false;
             TBox_Client.Enabled = false;
+            CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
+            CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
 
             if (frmClients.ModeAnimal == "Ajout")
             {
@@ -39,8 +41,6 @@ namespace CliniqueVeto
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
-                CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
-                CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
                 AfficherAnimalCourant();
             }
         }
@@ -115,6 +115,11 @@ namespace CliniqueVeto
             CBox_Race.SelectedItem = 0;
             BTN_Valider.Visible = false;
             BTN_Annuler.Visible = false;
+        }
+
+        private void BTN_Annuler_Click(object sender, EventArgs e)
+        {
+            Reset();
         }
     }
 }

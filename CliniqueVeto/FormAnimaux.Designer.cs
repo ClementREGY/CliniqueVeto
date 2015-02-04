@@ -114,6 +114,7 @@
             this.BTN_Annuler.Size = new System.Drawing.Size(50, 50);
             this.BTN_Annuler.TabIndex = 2;
             this.BTN_Annuler.UseVisualStyleBackColor = true;
+            this.BTN_Annuler.Click += new System.EventHandler(this.BTN_Annuler_Click);
             // 
             // BTN_Valider
             // 
