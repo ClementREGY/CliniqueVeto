@@ -14,7 +14,7 @@ namespace BO
         public string couleur { get; set; }
         public string race { get; set; }
         public string espece { get; set; }
-        public Guid client { get; set; }
+        public string client { get; set; }
         public string tatouage { get; set; }
         public string antecedents { get; set; }
         public bool archive { get; set; }
@@ -24,7 +24,7 @@ namespace BO
         }
 
         public Animal(Guid CodeAnimal, String NomAnimal, String Sexe, String Race, String Espece,
-            Guid Client, bool Archive = false, String Couleur = null, String Tatouage = null, String Antecedents = null)
+            String Client, bool Archive = false, String Couleur = null, String Tatouage = null, String Antecedents = null)
         {
             this.codeAnimal = CodeAnimal;
             this.nomAnimal = NomAnimal;

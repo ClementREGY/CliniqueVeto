@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAnimaux));
             this.Panel_GestionAnimaux = new System.Windows.Forms.Panel();
             this.Label_Annuler = new System.Windows.Forms.Label();
@@ -51,8 +52,10 @@
             this.CBox_Race = new System.Windows.Forms.ComboBox();
             this.Label_Race = new System.Windows.Forms.Label();
             this.CBox_Genre = new System.Windows.Forms.ComboBox();
+            this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
             this.Panel_GestionAnimaux.SuspendLayout();
             this.GBox_Client.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_GestionAnimaux
@@ -121,6 +124,7 @@
             this.BTN_Valider.Size = new System.Drawing.Size(50, 50);
             this.BTN_Valider.TabIndex = 1;
             this.BTN_Valider.UseVisualStyleBackColor = true;
+            this.BTN_Valider.Click += new System.EventHandler(this.BTN_Valider_Click);
             // 
             // BTN_Dossier
             // 
@@ -274,6 +278,10 @@
             this.CBox_Genre.TabIndex = 24;
             this.CBox_Genre.SelectedIndexChanged += new System.EventHandler(this.CBox_Genre_SelectedIndexChanged);
             // 
+            // errorSaisie
+            // 
+            this.errorSaisie.ContainerControl = this;
+            // 
             // FormAnimaux
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -303,6 +311,7 @@
             this.Panel_GestionAnimaux.PerformLayout();
             this.GBox_Client.ResumeLayout(false);
             this.GBox_Client.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,6 +341,7 @@
         private System.Windows.Forms.ComboBox CBox_Race;
         private System.Windows.Forms.Label Label_Race;
         private System.Windows.Forms.ComboBox CBox_Genre;
+        private System.Windows.Forms.ErrorProvider errorSaisie;
 
     }
 }
