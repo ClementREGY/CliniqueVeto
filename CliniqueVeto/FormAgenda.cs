@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BO;
+using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,31 @@ namespace CliniqueVeto
         public FormAgenda()
         {
             InitializeComponent();
+        }
+
+        private void FormAgenda_Load(object sender, EventArgs e)
+        {
+            CBox_Vétérinaires.DataSource = MgtVeterinaire.GetVeterinaires();
+            CBox_Vétérinaires.DisplayMember = "NomVeto";
+
+            DataGrid_Agenda.DefaultCellStyle.Font = new Font("Cambria", 12);
+            DataGrid_Agenda.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
+            DataGrid_Agenda.Columns["dateRDV"].DefaultCellStyle.Format = "HH:mm";
+            DataGrid_Agenda.Columns["dateRDV"].DisplayIndex = 0;
+            DataGrid_Agenda.Columns["Client"].DisplayIndex = 1;
+            DataGrid_Agenda.Columns["Animal"].DisplayIndex = 2;
+            
+            DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
+        }
+
+        private void CBox_Vétérinaires_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
+        }
+
+        private void DTPicker_Date_ValueChanged(object sender, EventArgs e)
+        {
+            DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
         }
     }
 }

@@ -78,6 +78,42 @@ namespace DAL
             return list;
         }
 
+        public static Veterinaire GetVeterinaire(Guid Id)
+        {
+            Veterinaire veto = new Veterinaire();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Veterinaires WHERE Archive = 0 AND CodeVeto = @id";
+                    command.Parameters.AddWithValue("@id", Id);
+
+                    SqlDataReader dt = command.ExecuteReader();
+
+                    int colId = dt.GetOrdinal("CodeVeto");
+                    int colNom = dt.GetOrdinal("NomVeto");
+                    int colArchive = dt.GetOrdinal("Archive");
+                    int colRefLogin = dt.GetOrdinal("RefLogin");
+
+                    while (dt.Read())
+                    {
+                        veto.nomVeto = dt.GetString(colNom);
+                        veto.archive = dt.GetBoolean(colArchive);
+                        veto.refLogin = dt.GetInt32(colRefLogin);
+                        veto.codeVeto = dt.GetGuid(colId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return veto;
+        }
+
         public static bool SetVeterinaire(Veterinaire veterinaire)
         {
             try

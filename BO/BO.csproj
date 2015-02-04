@@ -45,6 +45,7 @@
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Race.cs" />
+    <Compile Include="RendezVous.cs" />
     <Compile Include="Vaccin.cs" />
     <Compile Include="Veterinaire.cs" />
   </ItemGroup>
