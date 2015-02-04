@@ -19,7 +19,7 @@ namespace BLL
         }
 
         // Read
-        public static Animal GetAnimal(int id)
+        public static Animal GetAnimal(Guid id)
         {
             return DALAnimal.GetAnimal(id);
         }

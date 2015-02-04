@@ -116,7 +116,7 @@ namespace DAL
             return list;
         }
 
-        public static Animal GetAnimal(int id)
+        public static Animal GetAnimal(Guid id)
         {
             List<Animal> list = new List<Animal>();
 
