@@ -12,7 +12,7 @@ using BLL;
 
 namespace CliniqueVeto
 {
-    public class FormAnimaux : Form
+    public partial class FormAnimaux : Form
     {
         #region Attributs et Propriétés
 

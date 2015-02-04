@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,15 +9,34 @@ namespace BO
 {
     public class Animal
     {
+        [Browsable(false)]
         public Guid codeAnimal { get; set; }
+
+        [DisplayName("Nom")]
         public string nomAnimal { get; set; }
+
+        [DisplayName("Sexe")]
         public string sexe { get; set; }
+
+        [DisplayName("Couleur")]
         public string couleur { get; set; }
+
+        [DisplayName("Race")]
         public string race { get; set; }
+
+        [DisplayName("Espèce")]
         public string espece { get; set; }
+
+        [Browsable(false)]
         public string client { get; set; }
+
+        [DisplayName("Tatouage")]
         public string tatouage { get; set; }
+
+        [Browsable(false)]
         public string antecedents { get; set; }
+
+        [Browsable(false)]
         public bool archive { get; set; }
 
         public Animal()
