@@ -20,7 +20,7 @@ namespace CliniqueVeto
 
         #endregion
         
-        public FormAnimaux(FormClients frm)
+        public FormAnimaux(FormClients frm = null, FormRDV frmRDV = null)
         {
             InitializeComponent();
             frmClients = frm;
@@ -32,12 +32,14 @@ namespace CliniqueVeto
             TBox_Client.Enabled = false;
             CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
             CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
+            TBox_Client.Text = frmClients.ClientCourant.nomPrenom;
 
             if (frmClients.ModeAnimal == "Ajout")
             {
                 CBox_Genre.SelectedIndex = 0;
                 CBox_Espèce.SelectedIndex = 0;
                 CBox_Race.SelectedItem = 0;
+                TBox_Couleur.Text = CBox_Genre.SelectedValue.ToString().Substring(1, 2);
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
@@ -52,7 +54,6 @@ namespace CliniqueVeto
 
         private void AfficherAnimalCourant()
         {
-            TBox_Client.Text = frmClients.ClientCourant.codeClient.ToString();
             TBox_Code.Text = frmClients.AnimalCourant.codeAnimal.ToString();
             TBox_Nom.Text = frmClients.AnimalCourant.nomAnimal;
 
@@ -93,7 +94,7 @@ namespace CliniqueVeto
                         }
                         else
                         {
-                            Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.SelectedValue.ToString().Substring(0, 1), CBox_Race.SelectedValue.ToString(), CBox_Espèce.SelectedValue.ToString(), TBox_Client.Text, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
+                            Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.SelectedValue.ToString().Substring(0,1), CBox_Race.SelectedValue.ToString(), CBox_Espèce.SelectedValue.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
                             MgtAnimal.CreateAnimal(newAnimal);
                             Reset();
                         }
@@ -120,6 +121,11 @@ namespace CliniqueVeto
         private void BTN_Annuler_Click(object sender, EventArgs e)
         {
             Reset();
+        }
+
+        private void CBox_Espèce_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.SelectedValue.ToString());
         }
     }
 }

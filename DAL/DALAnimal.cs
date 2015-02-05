@@ -32,7 +32,7 @@ namespace DAL
                 animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
                 animal.race = dt.GetString(colRace);
                 animal.espece = dt.GetString(colEspece);
-                animal.client = dt.GetGuid(colClient).ToString();
+                animal.client = dt.GetGuid(colClient);
                 animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
                 animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
                 list.Add(animal);

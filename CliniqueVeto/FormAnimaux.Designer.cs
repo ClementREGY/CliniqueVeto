@@ -246,6 +246,7 @@
             this.CBox_Espèce.Name = "CBox_Espèce";
             this.CBox_Espèce.Size = new System.Drawing.Size(88, 27);
             this.CBox_Espèce.TabIndex = 21;
+            this.CBox_Espèce.SelectedIndexChanged += new System.EventHandler(this.CBox_Espèce_SelectedIndexChanged);
             // 
             // CBox_Race
             // 

@@ -28,7 +28,7 @@ namespace BO
         public string espece { get; set; }
 
         [Browsable(false)]
-        public string client { get; set; }
+        public Guid client { get; set; }
 
         [DisplayName("Tatouage")]
         public string tatouage { get; set; }
@@ -44,7 +44,7 @@ namespace BO
         }
 
         public Animal(Guid CodeAnimal, String NomAnimal, String Sexe, String Race, String Espece,
-            String Client, bool Archive = false, String Couleur = null, String Tatouage = null, String Antecedents = null)
+            Guid Client, bool Archive = false, String Couleur = null, String Tatouage = null, String Antecedents = null)
         {
             this.codeAnimal = CodeAnimal;
             this.nomAnimal = NomAnimal;
