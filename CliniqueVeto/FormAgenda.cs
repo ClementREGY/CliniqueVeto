@@ -24,14 +24,15 @@ namespace CliniqueVeto
             CBox_Vétérinaires.DataSource = MgtVeterinaire.GetVeterinaires();
             CBox_Vétérinaires.DisplayMember = "NomVeto";
 
+            DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
+
             DataGrid_Agenda.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Agenda.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Agenda.Columns["dateRDV"].DefaultCellStyle.Format = "HH:mm";
             DataGrid_Agenda.Columns["dateRDV"].DisplayIndex = 0;
             DataGrid_Agenda.Columns["Client"].DisplayIndex = 1;
             DataGrid_Agenda.Columns["Animal"].DisplayIndex = 2;
-            
-            DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
+            DataGrid_Agenda.Columns["Vétérinaire"].DisplayIndex = 3;
         }
 
         private void CBox_Vétérinaires_SelectedIndexChanged(object sender, EventArgs e)

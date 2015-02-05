@@ -27,7 +27,7 @@ namespace BO
         [DisplayName("Animal")]
         public String nomAnimal { get; set; }
 
-        [Browsable(false)]
+        [DisplayName("Vétérinaire")]
         public String nomVeto { get; set; }
 
         [DisplayName("Heure")]

@@ -43,6 +43,7 @@ namespace CliniqueVeto
                         frm.Show();
                         frm.BringToFront();
                         this.Hide();
+                        frm.Disposed += AppliClose;
                     }
                     else
                     {
@@ -52,6 +53,11 @@ namespace CliniqueVeto
                     }
                 }
             }
+        }
+
+        private void AppliClose(object sender, EventArgs arg)
+        {
+            this.Close();
         }
     }
 }

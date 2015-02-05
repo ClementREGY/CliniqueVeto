@@ -48,20 +48,23 @@
             this.Label_Heure = new System.Windows.Forms.Label();
             this.DTPicker_Date = new System.Windows.Forms.DateTimePicker();
             this.Label_Date = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGrid_RDV = new System.Windows.Forms.DataGridView();
             this.BTN_Annuler = new System.Windows.Forms.Button();
             this.BTN_Valider = new System.Windows.Forms.Button();
             this.BTN_Supprimer = new System.Windows.Forms.Button();
+            this.Label_Vider_Véto = new System.Windows.Forms.LinkLabel();
+            this.Label_Vider_Client = new System.Windows.Forms.LinkLabel();
             this.GBox_Pour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).BeginInit();
             this.GBox_Par.SuspendLayout();
             this.GBox_Quand.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_RDV)).BeginInit();
             this.SuspendLayout();
             // 
             // GBox_Pour
             // 
+            this.GBox_Pour.Controls.Add(this.Label_Vider_Client);
             this.GBox_Pour.Controls.Add(this.PBox_AddAnimal);
             this.GBox_Pour.Controls.Add(this.PBox_AddClient);
             this.GBox_Pour.Controls.Add(this.CBox_Animal);
@@ -84,6 +87,7 @@
             this.PBox_AddAnimal.Size = new System.Drawing.Size(23, 23);
             this.PBox_AddAnimal.TabIndex = 6;
             this.PBox_AddAnimal.TabStop = false;
+            this.PBox_AddAnimal.Click += new System.EventHandler(this.PBox_AddAnimal_Click);
             // 
             // PBox_AddClient
             // 
@@ -93,9 +97,11 @@
             this.PBox_AddClient.Size = new System.Drawing.Size(23, 23);
             this.PBox_AddClient.TabIndex = 3;
             this.PBox_AddClient.TabStop = false;
+            this.PBox_AddClient.Click += new System.EventHandler(this.PBox_AddClient_Click);
             // 
             // CBox_Animal
             // 
+            this.CBox_Animal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Animal.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Animal.FormattingEnabled = true;
             this.CBox_Animal.Location = new System.Drawing.Point(15, 101);
@@ -114,6 +120,7 @@
             // 
             // CBox_Client
             // 
+            this.CBox_Client.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Client.FormattingEnabled = true;
             this.CBox_Client.Location = new System.Drawing.Point(15, 50);
@@ -133,6 +140,7 @@
             // 
             // GBox_Par
             // 
+            this.GBox_Par.Controls.Add(this.Label_Vider_Véto);
             this.GBox_Par.Controls.Add(this.CBox_Vétérinaire);
             this.GBox_Par.Controls.Add(this.Label_Vétérinaire);
             this.GBox_Par.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -145,12 +153,14 @@
             // 
             // CBox_Vétérinaire
             // 
+            this.CBox_Vétérinaire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Vétérinaire.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Vétérinaire.FormattingEnabled = true;
             this.CBox_Vétérinaire.Location = new System.Drawing.Point(21, 72);
             this.CBox_Vétérinaire.Name = "CBox_Vétérinaire";
             this.CBox_Vétérinaire.Size = new System.Drawing.Size(200, 23);
             this.CBox_Vétérinaire.TabIndex = 1;
+            this.CBox_Vétérinaire.SelectedIndexChanged += new System.EventHandler(this.CBox_Vétérinaire_SelectedIndexChanged);
             // 
             // Label_Vétérinaire
             // 
@@ -271,6 +281,7 @@
             this.DTPicker_Date.Name = "DTPicker_Date";
             this.DTPicker_Date.Size = new System.Drawing.Size(200, 23);
             this.DTPicker_Date.TabIndex = 2;
+            this.DTPicker_Date.ValueChanged += new System.EventHandler(this.DTPicker_Date_ValueChanged);
             // 
             // Label_Date
             // 
@@ -281,13 +292,18 @@
             this.Label_Date.TabIndex = 1;
             this.Label_Date.Text = "Date";
             // 
-            // dataGridView1
+            // DataGrid_RDV
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 174);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(758, 214);
-            this.dataGridView1.TabIndex = 3;
+            this.DataGrid_RDV.AllowUserToResizeRows = false;
+            this.DataGrid_RDV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGrid_RDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid_RDV.Location = new System.Drawing.Point(12, 174);
+            this.DataGrid_RDV.MultiSelect = false;
+            this.DataGrid_RDV.Name = "DataGrid_RDV";
+            this.DataGrid_RDV.RowHeadersVisible = false;
+            this.DataGrid_RDV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGrid_RDV.Size = new System.Drawing.Size(758, 214);
+            this.DataGrid_RDV.TabIndex = 3;
             // 
             // BTN_Annuler
             // 
@@ -299,6 +315,7 @@
             this.BTN_Annuler.TabIndex = 4;
             this.BTN_Annuler.Text = "Annuler";
             this.BTN_Annuler.UseVisualStyleBackColor = false;
+            this.BTN_Annuler.Click += new System.EventHandler(this.BTN_Annuler_Click);
             // 
             // BTN_Valider
             // 
@@ -310,6 +327,7 @@
             this.BTN_Valider.TabIndex = 5;
             this.BTN_Valider.Text = "Valider";
             this.BTN_Valider.UseVisualStyleBackColor = false;
+            this.BTN_Valider.Click += new System.EventHandler(this.BTN_Valider_Click);
             // 
             // BTN_Supprimer
             // 
@@ -322,6 +340,34 @@
             this.BTN_Supprimer.Text = "Supprimer";
             this.BTN_Supprimer.UseVisualStyleBackColor = false;
             // 
+            // Label_Vider_Véto
+            // 
+            this.Label_Vider_Véto.AutoSize = true;
+            this.Label_Vider_Véto.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Vider_Véto.LinkColor = System.Drawing.Color.SteelBlue;
+            this.Label_Vider_Véto.Location = new System.Drawing.Point(197, 12);
+            this.Label_Vider_Véto.Name = "Label_Vider_Véto";
+            this.Label_Vider_Véto.Size = new System.Drawing.Size(37, 15);
+            this.Label_Vider_Véto.TabIndex = 2;
+            this.Label_Vider_Véto.TabStop = true;
+            this.Label_Vider_Véto.Text = "Vider";
+            this.Label_Vider_Véto.VisitedLinkColor = System.Drawing.Color.Crimson;
+            this.Label_Vider_Véto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Véto_LinkClicked);
+            // 
+            // Label_Vider_Client
+            // 
+            this.Label_Vider_Client.AutoSize = true;
+            this.Label_Vider_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Vider_Client.LinkColor = System.Drawing.Color.SteelBlue;
+            this.Label_Vider_Client.Location = new System.Drawing.Point(197, 12);
+            this.Label_Vider_Client.Name = "Label_Vider_Client";
+            this.Label_Vider_Client.Size = new System.Drawing.Size(37, 15);
+            this.Label_Vider_Client.TabIndex = 3;
+            this.Label_Vider_Client.TabStop = true;
+            this.Label_Vider_Client.Text = "Vider";
+            this.Label_Vider_Client.VisitedLinkColor = System.Drawing.Color.Crimson;
+            this.Label_Vider_Client.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Client_LinkClicked);
+            // 
             // FormRDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,7 +377,7 @@
             this.Controls.Add(this.BTN_Supprimer);
             this.Controls.Add(this.BTN_Valider);
             this.Controls.Add(this.BTN_Annuler);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.DataGrid_RDV);
             this.Controls.Add(this.GBox_Quand);
             this.Controls.Add(this.GBox_Par);
             this.Controls.Add(this.GBox_Pour);
@@ -347,7 +393,7 @@
             this.GBox_Par.PerformLayout();
             this.GBox_Quand.ResumeLayout(false);
             this.GBox_Quand.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_RDV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -373,9 +419,11 @@
         private System.Windows.Forms.ComboBox CBox_Heure;
         private System.Windows.Forms.Label Label_Heure;
         private System.Windows.Forms.DateTimePicker DTPicker_Date;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGrid_RDV;
         private System.Windows.Forms.Button BTN_Annuler;
         private System.Windows.Forms.Button BTN_Valider;
         private System.Windows.Forms.Button BTN_Supprimer;
+        private System.Windows.Forms.LinkLabel Label_Vider_Véto;
+        private System.Windows.Forms.LinkLabel Label_Vider_Client;
     }
 }

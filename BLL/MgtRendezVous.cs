@@ -24,6 +24,16 @@ namespace BLL
             return DALRendezVous.GetAgendaByVeterinaire(IdVeto, laDate);
         }
 
+        public static List<RendezVous> GetAgendaByDate(DateTime laDate)
+        {
+            return DALRendezVous.GetAgendaByDate(laDate);
+        }
+
+        public static List<RendezVous> GetAgendaByClient(Guid IdClient, DateTime laDate)
+        {
+            return DALRendezVous.GetAgendaByClient(IdClient, laDate);
+        }
+
         #endregion
 
     }
