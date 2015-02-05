@@ -13,9 +13,9 @@ namespace BLL
         #region Méthodes CRUD
 
         // Create
-        public static bool CreateAnimal(Animal pAnimal)
+        public static bool CreateAnimal(Animal pAnimal, Client pClient)
         {
-            return DALAnimal.AddAnimal(pAnimal);
+            return DALAnimal.AddAnimal(pAnimal, pClient);
         }
 
         // Read
@@ -51,9 +51,9 @@ namespace BLL
         }
 
         // Delete
-        public static bool DeleteAnimal(Animal pAnimal)
+        public static bool DeleteAnimal(Guid id)
         {
-            return DALAnimal.DeleteAnimal(pAnimal);
+            return DALAnimal.DeleteAnimal(id);
         }
 
         #endregion

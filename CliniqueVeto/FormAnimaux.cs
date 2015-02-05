@@ -39,7 +39,6 @@ namespace CliniqueVeto
                 CBox_Genre.SelectedIndex = 0;
                 CBox_Espèce.SelectedIndex = 0;
                 CBox_Race.SelectedItem = 0;
-                TBox_Couleur.Text = CBox_Genre.SelectedValue.ToString().Substring(1, 2);
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
@@ -63,9 +62,9 @@ namespace CliniqueVeto
                 CBox_Genre.SelectedIndex = 0;
 
             TBox_Couleur.Text = frmClients.AnimalCourant.couleur;
-            CBox_Espèce.SelectedValue = frmClients.AnimalCourant.espece;
-            CBox_Race.SelectedValue = frmClients.AnimalCourant.race;
             TBox_Tatouage.Text = frmClients.AnimalCourant.tatouage;
+            CBox_Race.SelectedValue = frmClients.AnimalCourant.race;
+            CBox_Espèce.SelectedValue = frmClients.AnimalCourant.espece;
         }
 
         private void BTN_Valider_Click(object sender, EventArgs e)
@@ -94,9 +93,30 @@ namespace CliniqueVeto
                         }
                         else
                         {
-                            Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.SelectedValue.ToString().Substring(0,1), CBox_Race.SelectedValue.ToString(), CBox_Espèce.SelectedValue.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
-                            MgtAnimal.CreateAnimal(newAnimal);
-                            Reset();
+                            if (String.IsNullOrEmpty(CBox_Genre.Text.Trim()))
+                            {
+                                errorSaisie.SetError(CBox_Race, "Veuillez sélectionner un genre.");
+                            }
+                            else
+                            {
+                                Client client = new Client(frmClients.ClientCourant.nomClient, frmClients.ClientCourant.prenomClient);
+
+                                if (frmClients.ModeAnimal == "Ajout")
+                                {
+                                    Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
+                                    CBox_Espèce.Text.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
+                                    MgtAnimal.CreateAnimal(newAnimal, client);
+                                }
+                                else if (frmClients.ModeAnimal == "Modification")
+                                {
+                                    Animal newAnimal = new Animal(frmClients.AnimalCourant.codeAnimal, TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
+                                    CBox_Espèce.Text.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
+                                    MgtAnimal.UpdateAnimal(newAnimal);
+                                }
+
+                                Reset();
+                            }
+
                         }
                     }
                 }
@@ -114,8 +134,6 @@ namespace CliniqueVeto
             CBox_Espèce.SelectedItem = 0;
             CBox_Genre.SelectedItem = 0;
             CBox_Race.SelectedItem = 0;
-            BTN_Valider.Visible = false;
-            BTN_Annuler.Visible = false;
         }
 
         private void BTN_Annuler_Click(object sender, EventArgs e)

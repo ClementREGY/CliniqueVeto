@@ -29,6 +29,12 @@ namespace BO
         {
         }
 
+        public Client(String NomClient, String PrenomClient)
+        {
+            this.nomClient = NomClient;
+            this.prenomClient = PrenomClient;
+        }
+
         public Client(Guid CodeClient, String NomClient, String PrenomClient, String Adresse,
             String CP, String Ville, String NumTel = null, String Assurance = null, String Email = null, String Remarque = null, bool Archive = false, String Adresse2 = null)
         {

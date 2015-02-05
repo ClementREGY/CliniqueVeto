@@ -297,6 +297,12 @@ namespace CliniqueVeto
             BTN_Annuler.Visible = false;
         }
 
+        private void BTN_SupprimerAnimal_Click(object sender, EventArgs e)
+        {
+            MgtAnimal.DeleteAnimal(AnimalCourant.codeAnimal);
+            DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
+        }
+
         #endregion
 
         #region TextBox Numéro de Téléphone
@@ -342,5 +348,6 @@ namespace CliniqueVeto
         }
 
         #endregion
+
     }
 }

@@ -31,12 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormClients));
             this.Panel_GestionClients = new System.Windows.Forms.Panel();
+            this.Label_Rechercher = new System.Windows.Forms.Label();
             this.Label_SupprimerClient = new System.Windows.Forms.Label();
             this.Label_AjouterClient = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Label_Suivant = new System.Windows.Forms.Label();
             this.Label_Précédent = new System.Windows.Forms.Label();
             this.Label_Premier = new System.Windows.Forms.Label();
+            this.TBox_Recherche = new System.Windows.Forms.TextBox();
+            this.BTN_Rechercher = new System.Windows.Forms.Button();
             this.BTN_AjouterClient = new System.Windows.Forms.Button();
             this.BTN_SupprimerClient = new System.Windows.Forms.Button();
             this.NavBarre = new ControlsLibrary.NavBar();
@@ -74,9 +77,6 @@
             this.TBox_Num3 = new System.Windows.Forms.TextBox();
             this.TBox_Num4 = new System.Windows.Forms.TextBox();
             this.TBox_Num5 = new System.Windows.Forms.TextBox();
-            this.BTN_Rechercher = new System.Windows.Forms.Button();
-            this.Label_Rechercher = new System.Windows.Forms.Label();
-            this.TBox_Recherche = new System.Windows.Forms.TextBox();
             this.Panel_GestionClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Animaux)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -102,6 +102,16 @@
             this.Panel_GestionClients.Name = "Panel_GestionClients";
             this.Panel_GestionClients.Size = new System.Drawing.Size(693, 83);
             this.Panel_GestionClients.TabIndex = 0;
+            // 
+            // Label_Rechercher
+            // 
+            this.Label_Rechercher.AutoSize = true;
+            this.Label_Rechercher.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Rechercher.Location = new System.Drawing.Point(570, 62);
+            this.Label_Rechercher.Name = "Label_Rechercher";
+            this.Label_Rechercher.Size = new System.Drawing.Size(69, 15);
+            this.Label_Rechercher.TabIndex = 8;
+            this.Label_Rechercher.Text = "Rechercher";
             // 
             // Label_SupprimerClient
             // 
@@ -162,6 +172,25 @@
             this.Label_Premier.Size = new System.Drawing.Size(51, 15);
             this.Label_Premier.TabIndex = 5;
             this.Label_Premier.Text = "Premier";
+            // 
+            // TBox_Recherche
+            // 
+            this.TBox_Recherche.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Recherche.Location = new System.Drawing.Point(518, 28);
+            this.TBox_Recherche.Name = "TBox_Recherche";
+            this.TBox_Recherche.Size = new System.Drawing.Size(131, 26);
+            this.TBox_Recherche.TabIndex = 4;
+            // 
+            // BTN_Rechercher
+            // 
+            this.BTN_Rechercher.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BTN_Rechercher.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Rechercher.Image")));
+            this.BTN_Rechercher.Location = new System.Drawing.Point(659, 28);
+            this.BTN_Rechercher.Name = "BTN_Rechercher";
+            this.BTN_Rechercher.Size = new System.Drawing.Size(26, 26);
+            this.BTN_Rechercher.TabIndex = 3;
+            this.BTN_Rechercher.UseVisualStyleBackColor = true;
+            this.BTN_Rechercher.Click += new System.EventHandler(this.BTN_Rechercher_Click);
             // 
             // BTN_AjouterClient
             // 
@@ -364,6 +393,7 @@
             this.BTN_SupprimerAnimal.Size = new System.Drawing.Size(60, 53);
             this.BTN_SupprimerAnimal.TabIndex = 18;
             this.BTN_SupprimerAnimal.UseVisualStyleBackColor = true;
+            this.BTN_SupprimerAnimal.Click += new System.EventHandler(this.BTN_SupprimerAnimal_Click);
             // 
             // Label_SupprimerAnimal
             // 
@@ -516,35 +546,6 @@
             this.TBox_Num5.Size = new System.Drawing.Size(25, 26);
             this.TBox_Num5.TabIndex = 12;
             this.TBox_Num5.TextChanged += new System.EventHandler(this.TBox_Num5_TextChanged);
-            // 
-            // BTN_Rechercher
-            // 
-            this.BTN_Rechercher.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BTN_Rechercher.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Rechercher.Image")));
-            this.BTN_Rechercher.Location = new System.Drawing.Point(659, 28);
-            this.BTN_Rechercher.Name = "BTN_Rechercher";
-            this.BTN_Rechercher.Size = new System.Drawing.Size(26, 26);
-            this.BTN_Rechercher.TabIndex = 3;
-            this.BTN_Rechercher.UseVisualStyleBackColor = true;
-            this.BTN_Rechercher.Click += new System.EventHandler(this.BTN_Rechercher_Click);
-            // 
-            // Label_Rechercher
-            // 
-            this.Label_Rechercher.AutoSize = true;
-            this.Label_Rechercher.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Rechercher.Location = new System.Drawing.Point(570, 62);
-            this.Label_Rechercher.Name = "Label_Rechercher";
-            this.Label_Rechercher.Size = new System.Drawing.Size(69, 15);
-            this.Label_Rechercher.TabIndex = 8;
-            this.Label_Rechercher.Text = "Rechercher";
-            // 
-            // TBox_Recherche
-            // 
-            this.TBox_Recherche.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Recherche.Location = new System.Drawing.Point(518, 28);
-            this.TBox_Recherche.Name = "TBox_Recherche";
-            this.TBox_Recherche.Size = new System.Drawing.Size(131, 26);
-            this.TBox_Recherche.TabIndex = 4;
             // 
             // FormClients
             // 

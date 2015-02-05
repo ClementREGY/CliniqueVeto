@@ -40,7 +40,7 @@ namespace DAL
             return list;
         }
 
-        public static bool AddAnimal(Animal animal)
+        public static bool AddAnimal(Animal animal, Client client)
         {
             try
             {
@@ -48,14 +48,16 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "EXEC ajout_animal @nom,@sexe,@couleur,@race,@espece,@idClient,@tatouage";
+                    command.CommandText = "EXEC ajout_animal @nomCli,@prenomCli,@nom,@sexe,@couleur,@espece,@race,@tatouage,@arch";
+                    command.Parameters.AddWithValue("@nomCli", client.nomClient);
+                    command.Parameters.AddWithValue("@prenomCli", client.prenomClient);
                     command.Parameters.AddWithValue("@nom", animal.nomAnimal);
                     command.Parameters.AddWithValue("@sexe", animal.sexe);
                     command.Parameters.AddWithValue("@couleur", animal.couleur);
-                    command.Parameters.AddWithValue("@race", animal.race);
                     command.Parameters.AddWithValue("@espece", animal.espece);
-                    command.Parameters.AddWithValue("@idClient", animal.client);
+                    command.Parameters.AddWithValue("@race", animal.race);
                     command.Parameters.AddWithValue("@tatouage", animal.tatouage);
+                    command.Parameters.AddWithValue("@arch", (animal.archive != false) ? 1 : 0);
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
                         return false;
@@ -234,7 +236,7 @@ namespace DAL
             }
         }
 
-        public static bool DeleteAnimal(Animal animal)
+        public static bool DeleteAnimal(Guid id)
         {
             try
             {
@@ -242,8 +244,8 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "UPDATE Animaux SET Archive = 1 WHERE Id = @id";
-                    command.Parameters.AddWithValue("@id", animal.codeAnimal);
+                    command.CommandText = "UPDATE Animaux SET Archive = 1 WHERE CodeAnimal = @id";
+                    command.Parameters.AddWithValue("@id", id);
 
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
