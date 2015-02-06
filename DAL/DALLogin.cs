@@ -10,7 +10,8 @@ namespace DAL
 {
     public class DALLogin
     {
-        #region CRUD
+        #region Create
+
         public static int AddLogin(Login login)
         {
             try
@@ -34,6 +35,10 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
+
+        #region Read
 
         public static List<Login> GetLogins()
         {
@@ -103,6 +108,10 @@ namespace DAL
             return login;
         }
 
+        #endregion
+
+        #region Update
+
         public static bool SetLogin(Login login)
         {
             try
@@ -129,6 +138,10 @@ namespace DAL
             }
         }
 
+        #endregion
+
+        #region Delete
+
         public static bool DeleteLogin(Login login)
         {
             try
@@ -152,6 +165,7 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
         #endregion
 
         #region Authentifier

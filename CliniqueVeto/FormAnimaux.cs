@@ -46,10 +46,7 @@ namespace CliniqueVeto
             }
         }
 
-        private void CBox_Genre_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        #region Gestion de l'Affichage
 
         private void AfficherAnimalCourant()
         {
@@ -66,6 +63,28 @@ namespace CliniqueVeto
             CBox_Race.SelectedValue = frmClients.AnimalCourant.race;
             CBox_Espèce.SelectedValue = frmClients.AnimalCourant.espece;
         }
+
+        private void CBox_Espèce_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.SelectedValue.ToString());
+        }
+
+        private void Reset()
+        {
+            Panel_GestionAnimaux.Enabled = true;
+            TBox_Nom.Clear();
+            TBox_Code.Clear();
+            TBox_Couleur.Clear();
+            TBox_Client.Clear();
+            TBox_Tatouage.Clear();
+            CBox_Espèce.SelectedItem = 0;
+            CBox_Genre.SelectedItem = 0;
+            CBox_Race.SelectedItem = 0;
+        }
+
+        #endregion
+
+        #region Gestion des Boutons
 
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
@@ -123,27 +142,11 @@ namespace CliniqueVeto
             }
         }
 
-        private void Reset()
-        {
-            Panel_GestionAnimaux.Enabled = true;
-            TBox_Nom.Clear();
-            TBox_Code.Clear();
-            TBox_Couleur.Clear();
-            TBox_Client.Clear();
-            TBox_Tatouage.Clear();
-            CBox_Espèce.SelectedItem = 0;
-            CBox_Genre.SelectedItem = 0;
-            CBox_Race.SelectedItem = 0;
-        }
-
         private void BTN_Annuler_Click(object sender, EventArgs e)
         {
-            Reset();
+            this.Close();
         }
 
-        private void CBox_Espèce_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.SelectedValue.ToString());
-        }
+        #endregion
     }
 }

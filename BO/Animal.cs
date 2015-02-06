@@ -9,6 +9,8 @@ namespace BO
 {
     public class Animal
     {
+        #region Attributs et Accesseurs
+
         [Browsable(false)]
         public Guid codeAnimal { get; set; }
 
@@ -39,6 +41,10 @@ namespace BO
         [Browsable(false)]
         public bool archive { get; set; }
 
+        #endregion
+
+        #region Constructeurs
+
         public Animal()
         {
         }
@@ -58,9 +64,15 @@ namespace BO
             this.archive = Archive;
         }
 
+        #endregion
+
+        #region Méthodes
+
         public override string ToString()
         {
             return this.espece + " " + this.nomAnimal;
         }
+
+        #endregion
     }
 }

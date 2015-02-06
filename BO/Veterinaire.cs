@@ -9,10 +9,16 @@ namespace BO
 {
     public class Veterinaire
     {
+        #region Attributs et Accesseurs
+
         public Guid codeVeto { get; set; }
         public string nomVeto { get; set; }
         public bool archive { get; set; }
         public int refLogin { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Veterinaire()
         {
@@ -25,5 +31,7 @@ namespace BO
             this.archive = Archive;
             this.refLogin = RefLogin;
         }
+
+        #endregion
     }
 }

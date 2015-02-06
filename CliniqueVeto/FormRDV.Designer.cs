@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRDV));
             this.GBox_Pour = new System.Windows.Forms.GroupBox();
+            this.Label_Vider_Client = new System.Windows.Forms.LinkLabel();
             this.PBox_AddAnimal = new System.Windows.Forms.PictureBox();
             this.PBox_AddClient = new System.Windows.Forms.PictureBox();
             this.CBox_Animal = new System.Windows.Forms.ComboBox();
@@ -37,6 +38,7 @@
             this.CBox_Client = new System.Windows.Forms.ComboBox();
             this.Label_Client = new System.Windows.Forms.Label();
             this.GBox_Par = new System.Windows.Forms.GroupBox();
+            this.Label_Vider_Véto = new System.Windows.Forms.LinkLabel();
             this.CBox_Vétérinaire = new System.Windows.Forms.ComboBox();
             this.Label_Vétérinaire = new System.Windows.Forms.Label();
             this.GBox_Quand = new System.Windows.Forms.GroupBox();
@@ -52,8 +54,6 @@
             this.BTN_Annuler = new System.Windows.Forms.Button();
             this.BTN_Valider = new System.Windows.Forms.Button();
             this.BTN_Supprimer = new System.Windows.Forms.Button();
-            this.Label_Vider_Véto = new System.Windows.Forms.LinkLabel();
-            this.Label_Vider_Client = new System.Windows.Forms.LinkLabel();
             this.GBox_Pour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBox_AddClient)).BeginInit();
@@ -78,6 +78,20 @@
             this.GBox_Pour.TabIndex = 0;
             this.GBox_Pour.TabStop = false;
             this.GBox_Pour.Text = "Pour";
+            // 
+            // Label_Vider_Client
+            // 
+            this.Label_Vider_Client.AutoSize = true;
+            this.Label_Vider_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Vider_Client.LinkColor = System.Drawing.Color.SteelBlue;
+            this.Label_Vider_Client.Location = new System.Drawing.Point(197, 12);
+            this.Label_Vider_Client.Name = "Label_Vider_Client";
+            this.Label_Vider_Client.Size = new System.Drawing.Size(37, 15);
+            this.Label_Vider_Client.TabIndex = 3;
+            this.Label_Vider_Client.TabStop = true;
+            this.Label_Vider_Client.Text = "Vider";
+            this.Label_Vider_Client.VisitedLinkColor = System.Drawing.Color.Crimson;
+            this.Label_Vider_Client.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Client_LinkClicked);
             // 
             // PBox_AddAnimal
             // 
@@ -151,6 +165,20 @@
             this.GBox_Par.TabStop = false;
             this.GBox_Par.Text = "Par";
             // 
+            // Label_Vider_Véto
+            // 
+            this.Label_Vider_Véto.AutoSize = true;
+            this.Label_Vider_Véto.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Vider_Véto.LinkColor = System.Drawing.Color.SteelBlue;
+            this.Label_Vider_Véto.Location = new System.Drawing.Point(197, 12);
+            this.Label_Vider_Véto.Name = "Label_Vider_Véto";
+            this.Label_Vider_Véto.Size = new System.Drawing.Size(37, 15);
+            this.Label_Vider_Véto.TabIndex = 2;
+            this.Label_Vider_Véto.TabStop = true;
+            this.Label_Vider_Véto.Text = "Vider";
+            this.Label_Vider_Véto.VisitedLinkColor = System.Drawing.Color.Crimson;
+            this.Label_Vider_Véto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Véto_LinkClicked);
+            // 
             // CBox_Vétérinaire
             // 
             this.CBox_Vétérinaire.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -209,6 +237,7 @@
             this.BTN_Urgence.Size = new System.Drawing.Size(40, 40);
             this.BTN_Urgence.TabIndex = 6;
             this.BTN_Urgence.UseVisualStyleBackColor = false;
+            this.BTN_Urgence.Click += new System.EventHandler(this.BTN_Urgence_Click);
             // 
             // CBox_Minute
             // 
@@ -300,6 +329,7 @@
             this.DataGrid_RDV.Location = new System.Drawing.Point(12, 174);
             this.DataGrid_RDV.MultiSelect = false;
             this.DataGrid_RDV.Name = "DataGrid_RDV";
+            this.DataGrid_RDV.ReadOnly = true;
             this.DataGrid_RDV.RowHeadersVisible = false;
             this.DataGrid_RDV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_RDV.Size = new System.Drawing.Size(758, 214);
@@ -339,34 +369,7 @@
             this.BTN_Supprimer.TabIndex = 6;
             this.BTN_Supprimer.Text = "Supprimer";
             this.BTN_Supprimer.UseVisualStyleBackColor = false;
-            // 
-            // Label_Vider_Véto
-            // 
-            this.Label_Vider_Véto.AutoSize = true;
-            this.Label_Vider_Véto.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Vider_Véto.LinkColor = System.Drawing.Color.SteelBlue;
-            this.Label_Vider_Véto.Location = new System.Drawing.Point(197, 12);
-            this.Label_Vider_Véto.Name = "Label_Vider_Véto";
-            this.Label_Vider_Véto.Size = new System.Drawing.Size(37, 15);
-            this.Label_Vider_Véto.TabIndex = 2;
-            this.Label_Vider_Véto.TabStop = true;
-            this.Label_Vider_Véto.Text = "Vider";
-            this.Label_Vider_Véto.VisitedLinkColor = System.Drawing.Color.Crimson;
-            this.Label_Vider_Véto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Véto_LinkClicked);
-            // 
-            // Label_Vider_Client
-            // 
-            this.Label_Vider_Client.AutoSize = true;
-            this.Label_Vider_Client.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Vider_Client.LinkColor = System.Drawing.Color.SteelBlue;
-            this.Label_Vider_Client.Location = new System.Drawing.Point(197, 12);
-            this.Label_Vider_Client.Name = "Label_Vider_Client";
-            this.Label_Vider_Client.Size = new System.Drawing.Size(37, 15);
-            this.Label_Vider_Client.TabIndex = 3;
-            this.Label_Vider_Client.TabStop = true;
-            this.Label_Vider_Client.Text = "Vider";
-            this.Label_Vider_Client.VisitedLinkColor = System.Drawing.Color.Crimson;
-            this.Label_Vider_Client.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Label_Vider_Client_LinkClicked);
+            this.BTN_Supprimer.Click += new System.EventHandler(this.BTN_Supprimer_Click);
             // 
             // FormRDV
             // 

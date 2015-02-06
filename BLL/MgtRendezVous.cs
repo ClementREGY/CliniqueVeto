@@ -34,12 +34,22 @@ namespace BLL
             return DALRendezVous.GetAgendaByClient(IdClient, laDate);
         }
 
+        // Delete
+
+        public static bool DeleteRDV(RendezVous pRDV)
+        {
+            return DALRendezVous.DeleteRDV(pRDV);
+        }
+
+        #endregion
+
+        #region Vérification
+
         public static bool CheckRendezVous(Guid IdVeto, DateTime laDate)
         {
             return DALRendezVous.CheckRDV(IdVeto, laDate);
         }
 
         #endregion
-
     }
 }

@@ -8,6 +8,8 @@ namespace BO
 {
     public class Client
     {
+        #region Attributs et Accesseurs
+
         public Guid codeClient { get; set; }
         public String nomClient { get; set; }
         public String prenomClient { get; set; }
@@ -24,6 +26,10 @@ namespace BO
         public String email { get; set; }
         public String remarque { get; set; }
         public bool archive { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Client()
         {
@@ -51,5 +57,7 @@ namespace BO
             this.remarque = Remarque;
             this.archive = Archive;
         }
+
+        #endregion
     }
 }

@@ -10,6 +10,8 @@ namespace DAL
 {
     public class DALAnimal
     {
+        #region Builder
+
         private static List<Animal> builderObject(SqlDataReader dt)
         {
             List<Animal> list = new List<Animal>();
@@ -39,6 +41,10 @@ namespace DAL
             }
             return list;
         }
+
+        #endregion
+
+        #region Create
 
         public static bool AddAnimal(Animal animal, Client client)
         {
@@ -70,6 +76,10 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
+
+        #region Read
 
         public static List<Animal> GetAnimals()
         {
@@ -205,6 +215,10 @@ namespace DAL
             return list;
         }
 
+        #endregion
+
+        #region Update
+
         public static bool SetAnimal(Animal animal)
         {
             try
@@ -236,6 +250,10 @@ namespace DAL
             }
         }
 
+        #endregion
+
+        #region Delete
+
         public static bool DeleteAnimal(Guid id)
         {
             try
@@ -259,5 +277,31 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        public static bool DeleteAnimalByClient(Client leClient)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "UPDATE Animaux SET Archive = 1 WHERE CodeClient = @codeClient";
+                    command.Parameters.AddWithValue("@codeClient", leClient.codeClient);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+
+        #endregion
     }
 }

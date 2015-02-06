@@ -165,6 +165,7 @@ namespace CliniqueVeto
             try
             {
                 MgtClient.DeleteClient(ClientCourant);
+                MgtAnimal.DeleteAnimalByClient(ClientCourant);
                 Reset();
                 if (IndiceCourant == -1)
                 {
@@ -348,6 +349,5 @@ namespace CliniqueVeto
         }
 
         #endregion
-
     }
 }

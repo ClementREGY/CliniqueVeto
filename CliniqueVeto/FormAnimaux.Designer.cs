@@ -107,6 +107,7 @@
             // 
             // BTN_Annuler
             // 
+            this.BTN_Annuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BTN_Annuler.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Annuler.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Annuler.Image")));
             this.BTN_Annuler.Location = new System.Drawing.Point(333, 10);
@@ -278,7 +279,6 @@
             this.CBox_Genre.Name = "CBox_Genre";
             this.CBox_Genre.Size = new System.Drawing.Size(96, 27);
             this.CBox_Genre.TabIndex = 24;
-            this.CBox_Genre.SelectedIndexChanged += new System.EventHandler(this.CBox_Genre_SelectedIndexChanged);
             // 
             // errorSaisie
             // 
@@ -286,9 +286,11 @@
             // 
             // FormAnimaux
             // 
+            this.AcceptButton = this.BTN_Valider;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
+            this.CancelButton = this.BTN_Annuler;
             this.ClientSize = new System.Drawing.Size(404, 364);
             this.Controls.Add(this.CBox_Genre);
             this.Controls.Add(this.CBox_Race);

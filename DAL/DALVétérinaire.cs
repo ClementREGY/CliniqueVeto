@@ -10,6 +10,8 @@ namespace DAL
 {
     public class DALVétérinaire
     {
+        #region Builder
+
         private static List<Veterinaire> builderObject(SqlDataReader dt)
         {
             List<Veterinaire> list = new List<Veterinaire>();
@@ -29,6 +31,10 @@ namespace DAL
             }
             return list;
         }
+
+        #endregion
+
+        #region Create
 
         public static bool AddVeterinaire(Veterinaire veterinaire)
         {
@@ -54,6 +60,10 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
+
+        #region Read
 
         public static List<Veterinaire> GetVeterinaires()
         {
@@ -114,6 +124,10 @@ namespace DAL
             return veto;
         }
 
+        #endregion
+
+        #region Update
+
         public static bool SetVeterinaire(Veterinaire veterinaire)
         {
             try
@@ -139,6 +153,10 @@ namespace DAL
             }
         }
 
+        #endregion
+
+        #region Delete
+
         public static bool DeleteVeterinaire(Veterinaire veterinaire)
         {
             try
@@ -162,5 +180,7 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
     }
 }

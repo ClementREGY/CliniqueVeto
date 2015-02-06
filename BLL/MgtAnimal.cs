@@ -56,6 +56,11 @@ namespace BLL
             return DALAnimal.DeleteAnimal(id);
         }
 
+        public static bool DeleteAnimalByClient(Client pClient)
+        {
+            return DALAnimal.DeleteAnimalByClient(pClient);
+        }
+
         #endregion
     }
 }

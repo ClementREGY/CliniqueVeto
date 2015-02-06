@@ -8,6 +8,8 @@ namespace BO
 {
     public class Facture
     {
+        #region Attributs et Accesseurs
+
         public Guid numFacture { get; set; }
         public DateTime dateFacture { get; set; }
         public Guid codeClient { get; set; }
@@ -15,6 +17,10 @@ namespace BO
         public bool archive { get; set; }
         public string etat { get; set; }
         public string rappelEnvoye { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Facture()
         {
@@ -31,5 +37,7 @@ namespace BO
             this.etat = Etat;
             this.rappelEnvoye = RappelEnvoye;
         }
+
+        #endregion
     }
 }

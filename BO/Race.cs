@@ -8,8 +8,14 @@ namespace BO
 {
     public class Race
     {
+        #region Attributs et Accesseurs
+
         public string race { get; set; }
         public string espece { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Race()
         {
@@ -20,5 +26,7 @@ namespace BO
             this.race = Race;
             this.espece = Espece;
         }
+
+        #endregion
     }
 }

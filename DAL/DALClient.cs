@@ -10,6 +10,8 @@ namespace DAL
 {
     public class DALClient
     {
+        #region Builder
+
         private static List<Client> builderObject(SqlDataReader dt)
         {
             List<Client> list = new List<Client>();
@@ -46,6 +48,10 @@ namespace DAL
             return list;
         }
 
+        #endregion
+
+        #region Create
+
         public static bool AddClient(Client client)
         {
             try
@@ -77,6 +83,10 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
+
+        #region Read
 
         public static List<Client> GetClients()
         {
@@ -132,6 +142,10 @@ namespace DAL
             }
         }
 
+        #endregion
+
+        #region Update
+
         public static bool SetClient(Client client)
         {
             try
@@ -162,6 +176,10 @@ namespace DAL
             }
         }
 
+        #endregion
+
+        #region Delete
+
         public static bool DeleteClient(Client client)
         {
             try
@@ -185,5 +203,7 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
         }
+
+        #endregion
     }
 }

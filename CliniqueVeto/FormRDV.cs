@@ -50,13 +50,22 @@ namespace CliniqueVeto
 
             DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
 
+            #region Mise en Forme de la Grille
+
+            AffichageUrgences();
+
             DataGrid_RDV.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_RDV.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_RDV.Columns["dateRDV"].DefaultCellStyle.Format = "HH:mm";
+
+            DataGrid_RDV.Columns["Urgence"].Visible = false;
+
             DataGrid_RDV.Columns["dateRDV"].DisplayIndex = 0;
             DataGrid_RDV.Columns["Client"].DisplayIndex = 1;
             DataGrid_RDV.Columns["Animal"].DisplayIndex = 2;
             DataGrid_RDV.Columns["Vétérinaire"].DisplayIndex = 3;
+
+            #endregion
         }
 
         private void BTN_Annuler_Click(object sender, EventArgs e)
@@ -71,28 +80,33 @@ namespace CliniqueVeto
             if (CBox_Client.SelectedItem != null)
             {
                 CBox_Animal.DataSource = MgtAnimal.GetAnimalsByClient(((Client)CBox_Client.SelectedItem).codeClient);
+                AffichageUrgences();
             }
 
             // Cas où un Client est renseigné, sans Vétérinaire spécifique
             if ((CBox_Client.SelectedItem != null) && (CBox_Vétérinaire.SelectedItem == null))
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByClient(((Client)CBox_Client.SelectedItem).codeClient, DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Cas où un Client est renseigné, avec Vétérinaire spécifique
             else if ((CBox_Client.SelectedItem != null) && (CBox_Vétérinaire.SelectedItem != null))
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+                AffichageUrgences();
             }
 
             // Si on vide les Clients mais qu'il y a un vétérinaire de selectionné
             if (CBox_Client.SelectedItem == null && CBox_Vétérinaire.SelectedItem != null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Si on vide les Clients et qu'il n'y a pas de vétérinaire selectionné
             else if (CBox_Client.SelectedItem == null && CBox_Vétérinaire.SelectedItem == null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+                AffichageUrgences();
             }
         }
 
@@ -135,16 +149,19 @@ namespace CliniqueVeto
             if (CBox_Vétérinaire.SelectedItem != null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Si on vide le Vétérinaire et qu'il a un Client sélectionné
             else if (CBox_Vétérinaire.SelectedItem == null && CBox_Client.SelectedItem != null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByClient(((Client)CBox_Client.SelectedItem).codeClient, DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Si on vide le Vétérinaire et qu'il n'y a pas de Client sélectionné
             else if (CBox_Vétérinaire.SelectedItem == null && CBox_Client.SelectedItem == null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+                AffichageUrgences();
             }
         }
 
@@ -163,20 +180,25 @@ namespace CliniqueVeto
             if ((CBox_Client.SelectedItem == null) && (CBox_Animal.SelectedItem == null) && (CBox_Vétérinaire.SelectedItem == null))
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Si un Vétérinaire est renseigné
             else if (CBox_Vétérinaire.SelectedItem != null)
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+                AffichageUrgences();
             }
             // Si un Client est renseigné, sans Vétérinaire spécifique
             else if ((CBox_Client.SelectedItem != null) && (CBox_Vétérinaire.SelectedItem == null))
             {
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByClient(((Client)CBox_Client.SelectedItem).codeClient, DTPicker_Date.Value);
+                AffichageUrgences();
             }
         }
 
         #endregion
+
+        #region Gestion des Boutons
 
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
@@ -195,7 +217,41 @@ namespace CliniqueVeto
                 RendezVous newRDV = new RendezVous(laDate, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto);
                 MgtRendezVous.CreateRDV(newRDV);
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+                AffichageUrgences();
             }
         }
+
+        private void BTN_Urgence_Click(object sender, EventArgs e)
+        {
+            RendezVous newRDV = new RendezVous(DateTime.Now, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto, true);
+            MgtRendezVous.CreateRDV(newRDV);
+            DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+            AffichageUrgences();
+        }
+
+        private void BTN_Supprimer_Click(object sender, EventArgs e)
+        {
+            MgtRendezVous.DeleteRDV((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem);
+            DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+            AffichageUrgences();
+        }
+
+        #endregion
+
+        #region Gestion de l'Affichage
+
+        private void AffichageUrgences()
+        {
+            // Affichage en rouge des RDV ayant été placés en Urgence
+            foreach (DataGridViewRow row in DataGrid_RDV.Rows)
+            {
+                if (bool.Parse(row.Cells[4].Value.ToString()) == true)
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                else
+                    row.DefaultCellStyle.ForeColor = Color.Black;
+            }
+        }
+
+        #endregion
     }
 }

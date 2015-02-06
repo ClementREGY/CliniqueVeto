@@ -8,7 +8,7 @@ namespace BO
 {
     public class Login
     {
-        #region Attributs
+        #region Attributs et Accesseurs
 
         public String loginUser { get; set; }
         public String passwordUser { get; set; }
