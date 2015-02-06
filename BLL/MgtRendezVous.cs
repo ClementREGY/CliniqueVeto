@@ -34,6 +34,11 @@ namespace BLL
             return DALRendezVous.GetAgendaByClient(IdClient, laDate);
         }
 
+        public static bool CheckRendezVous(Guid IdVeto, DateTime laDate)
+        {
+            return DALRendezVous.CheckRDV(IdVeto, laDate);
+        }
+
         #endregion
 
     }

@@ -180,8 +180,22 @@ namespace CliniqueVeto
 
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
-            RendezVous newRDV = new RendezVous(DTPicker_Date.Value, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto);
-            MgtRendezVous.CreateRDV(newRDV);
+            // Affectation de la Date et de l'heure
+            DateTime laDate = DTPicker_Date.Value;
+            TimeSpan heuresMinutes = new TimeSpan(int.Parse(CBox_Heure.SelectedItem.ToString()), int.Parse(CBox_Minute.SelectedItem.ToString()), 0);
+            laDate = laDate.Date + heuresMinutes;
+
+            // Vérification de la disponibilité du Vétérinaire à cette heure-ci
+            if (MgtRendezVous.CheckRendezVous(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, laDate))
+            {
+                MessageBox.Show("Ce Vétérinaire a déjà un Rendez-Vous à cette heure-là !");
+            }
+            else
+            {
+                RendezVous newRDV = new RendezVous(laDate, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto);
+                MgtRendezVous.CreateRDV(newRDV);
+                DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
+            }
         }
     }
 }

@@ -158,5 +158,30 @@ namespace DAL
             }
             return list;
         }
+
+        public static bool CheckRDV(Guid codeVeto, DateTime laDate)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Agendas WHERE CodeVeto = @codeVeto AND DateRdv = @date";
+                    command.Parameters.AddWithValue("@codeVeto", codeVeto);
+                    command.Parameters.AddWithValue("@date", laDate);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == -1)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
     }
 }
