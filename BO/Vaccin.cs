@@ -24,7 +24,7 @@ namespace BO
         {
         }
 
-        public Vaccin(Guid CodeVaccin, string NomVaccin, int QuantiteStock, int PeriodeValidite, bool Archive)
+        public Vaccin(Guid CodeVaccin, string NomVaccin, int QuantiteStock, int PeriodeValidite, bool Archive = false)
         {
             this.codeVaccin = CodeVaccin;
             this.nomVaccin = NomVaccin;

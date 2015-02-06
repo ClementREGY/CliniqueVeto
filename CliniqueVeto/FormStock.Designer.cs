@@ -28,13 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BTN_MiseAJour = new System.Windows.Forms.Button();
             this.Label_Fournisseur = new System.Windows.Forms.Label();
             this.CBox_Fournisseurs = new System.Windows.Forms.ComboBox();
             this.Label_Nombre = new System.Windows.Forms.Label();
             this.TBox_Nombre = new System.Windows.Forms.TextBox();
             this.DataGrid_Vaccins = new System.Windows.Forms.DataGridView();
+            this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Vaccins)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
             // 
             // BTN_MiseAJour
@@ -64,6 +67,7 @@
             // 
             // CBox_Fournisseurs
             // 
+            this.CBox_Fournisseurs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Fournisseurs.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Fournisseurs.FormattingEnabled = true;
             this.CBox_Fournisseurs.Location = new System.Drawing.Point(96, 186);
@@ -98,14 +102,21 @@
             // 
             this.DataGrid_Vaccins.AllowUserToResizeColumns = false;
             this.DataGrid_Vaccins.AllowUserToResizeRows = false;
+            this.DataGrid_Vaccins.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGrid_Vaccins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGrid_Vaccins.Location = new System.Drawing.Point(12, 12);
+            this.DataGrid_Vaccins.MultiSelect = false;
             this.DataGrid_Vaccins.Name = "DataGrid_Vaccins";
+            this.DataGrid_Vaccins.ReadOnly = true;
             this.DataGrid_Vaccins.RowHeadersVisible = false;
             this.DataGrid_Vaccins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Vaccins.Size = new System.Drawing.Size(528, 164);
             this.DataGrid_Vaccins.TabIndex = 6;
             this.DataGrid_Vaccins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_Vaccins_CellContentClick);
+            // 
+            // errorSaisie
+            // 
+            this.errorSaisie.ContainerControl = this;
             // 
             // FormStock
             // 
@@ -126,6 +137,7 @@
             this.Text = "Stock des Vaccins";
             this.Load += new System.EventHandler(this.FormStock_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Vaccins)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,5 +151,6 @@
         private System.Windows.Forms.Label Label_Nombre;
         private System.Windows.Forms.TextBox TBox_Nombre;
         private System.Windows.Forms.DataGridView DataGrid_Vaccins;
+        private System.Windows.Forms.ErrorProvider errorSaisie;
     }
 }
