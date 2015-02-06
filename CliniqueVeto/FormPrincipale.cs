@@ -39,6 +39,17 @@ namespace CliniqueVeto
             frm.FormClosed += FermetureFille;
         }
 
+        private void AfficherBarèmes(object sender, EventArgs e)
+        {
+            FormBarèmes frm;
+            frm = new FormBarèmes();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
+            frm.FormClosed += FermetureFille;
+        }
+
         private void AfficherRDV(object sender, EventArgs e)
         {
             FormRDV frm;

@@ -160,6 +160,7 @@
             this.miseÀJourDuBarèmeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.miseÀJourDuBarèmeToolStripMenuItem.Size = new System.Drawing.Size(396, 24);
             this.miseÀJourDuBarèmeToolStripMenuItem.Text = "Mise à Jour du Barème de Tarification";
+            this.miseÀJourDuBarèmeToolStripMenuItem.Click += new System.EventHandler(this.AfficherBarèmes);
             // 
             // barreAccès
             // 
