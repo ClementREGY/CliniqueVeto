@@ -28,30 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LBox_Vaccins = new System.Windows.Forms.ListBox();
             this.BTN_MiseAJour = new System.Windows.Forms.Button();
             this.Label_Fournisseur = new System.Windows.Forms.Label();
             this.CBox_Fournisseurs = new System.Windows.Forms.ComboBox();
             this.Label_Nombre = new System.Windows.Forms.Label();
             this.TBox_Nombre = new System.Windows.Forms.TextBox();
+            this.DataGrid_Vaccins = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Vaccins)).BeginInit();
             this.SuspendLayout();
-            // 
-            // LBox_Vaccins
-            // 
-            this.LBox_Vaccins.FormattingEnabled = true;
-            this.LBox_Vaccins.ItemHeight = 17;
-            this.LBox_Vaccins.Location = new System.Drawing.Point(16, 16);
-            this.LBox_Vaccins.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.LBox_Vaccins.Name = "LBox_Vaccins";
-            this.LBox_Vaccins.Size = new System.Drawing.Size(525, 157);
-            this.LBox_Vaccins.TabIndex = 0;
             // 
             // BTN_MiseAJour
             // 
             this.BTN_MiseAJour.BackColor = System.Drawing.SystemColors.Control;
             this.BTN_MiseAJour.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_MiseAJour.Location = new System.Drawing.Point(427, 183);
-            this.BTN_MiseAJour.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BTN_MiseAJour.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_MiseAJour.Name = "BTN_MiseAJour";
             this.BTN_MiseAJour.Size = new System.Drawing.Size(114, 27);
             this.BTN_MiseAJour.TabIndex = 1;
@@ -76,7 +67,7 @@
             this.CBox_Fournisseurs.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Fournisseurs.FormattingEnabled = true;
             this.CBox_Fournisseurs.Location = new System.Drawing.Point(96, 186);
-            this.CBox_Fournisseurs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBox_Fournisseurs.Margin = new System.Windows.Forms.Padding(4);
             this.CBox_Fournisseurs.Name = "CBox_Fournisseurs";
             this.CBox_Fournisseurs.Size = new System.Drawing.Size(118, 23);
             this.CBox_Fournisseurs.TabIndex = 3;
@@ -103,23 +94,38 @@
             this.TBox_Nombre.TabIndex = 5;
             this.TBox_Nombre.Visible = false;
             // 
+            // DataGrid_Vaccins
+            // 
+            this.DataGrid_Vaccins.AllowUserToResizeColumns = false;
+            this.DataGrid_Vaccins.AllowUserToResizeRows = false;
+            this.DataGrid_Vaccins.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid_Vaccins.Location = new System.Drawing.Point(12, 12);
+            this.DataGrid_Vaccins.Name = "DataGrid_Vaccins";
+            this.DataGrid_Vaccins.RowHeadersVisible = false;
+            this.DataGrid_Vaccins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGrid_Vaccins.Size = new System.Drawing.Size(528, 164);
+            this.DataGrid_Vaccins.TabIndex = 6;
+            this.DataGrid_Vaccins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_Vaccins_CellContentClick);
+            // 
             // FormStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(554, 222);
+            this.Controls.Add(this.DataGrid_Vaccins);
             this.Controls.Add(this.TBox_Nombre);
             this.Controls.Add(this.Label_Nombre);
             this.Controls.Add(this.CBox_Fournisseurs);
             this.Controls.Add(this.Label_Fournisseur);
             this.Controls.Add(this.BTN_MiseAJour);
-            this.Controls.Add(this.LBox_Vaccins);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormStock";
             this.Text = "Stock des Vaccins";
+            this.Load += new System.EventHandler(this.FormStock_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Vaccins)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -127,11 +133,11 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox LBox_Vaccins;
         private System.Windows.Forms.Button BTN_MiseAJour;
         private System.Windows.Forms.Label Label_Fournisseur;
         private System.Windows.Forms.ComboBox CBox_Fournisseurs;
         private System.Windows.Forms.Label Label_Nombre;
         private System.Windows.Forms.TextBox TBox_Nombre;
+        private System.Windows.Forms.DataGridView DataGrid_Vaccins;
     }
 }

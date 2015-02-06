@@ -45,6 +45,7 @@
     <Compile Include="DALAnimal.cs" />
     <Compile Include="DALClient.cs" />
     <Compile Include="DALLogin.cs" />
+    <Compile Include="DALVaccin.cs" />
     <Compile Include="DALVétérinaire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

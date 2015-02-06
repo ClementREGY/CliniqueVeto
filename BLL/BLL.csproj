@@ -43,6 +43,7 @@
     <Compile Include="MgtClient.cs" />
     <Compile Include="MgtLogin.cs" />
     <Compile Include="MgtRendezVous.cs" />
+    <Compile Include="MgtVaccin.cs" />
     <Compile Include="MgtVeterinaire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
