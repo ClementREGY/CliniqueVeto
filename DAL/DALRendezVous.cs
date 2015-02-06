@@ -171,11 +171,17 @@ namespace DAL
                     command.Parameters.AddWithValue("@codeVeto", codeVeto);
                     command.Parameters.AddWithValue("@date", laDate);
 
-                    int resultat = command.ExecuteNonQuery();
-                    if (resultat == -1)
-                        return false;
-                    else
+                    SqlDataReader dt = command.ExecuteReader();
+
+                    int resultat = 0;
+
+                    while (dt.Read())
+                        resultat++;
+
+                    if (resultat == 0)
                         return true;
+                    else
+                        return false;
                 }
             }
             catch (Exception ex)

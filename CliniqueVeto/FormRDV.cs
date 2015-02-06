@@ -186,7 +186,7 @@ namespace CliniqueVeto
             laDate = laDate.Date + heuresMinutes;
 
             // Vérification de la disponibilité du Vétérinaire à cette heure-ci
-            if (MgtRendezVous.CheckRendezVous(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, laDate))
+            if (!MgtRendezVous.CheckRendezVous(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, laDate))
             {
                 MessageBox.Show("Ce Vétérinaire a déjà un Rendez-Vous à cette heure-là !");
             }
