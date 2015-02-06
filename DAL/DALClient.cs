@@ -52,7 +52,7 @@ namespace DAL
 
         #region Create
 
-        public static bool AddClient(Client client)
+        public static Guid AddClient(Client client)
         {
             try
             {
@@ -71,11 +71,9 @@ namespace DAL
                     command.Parameters.AddWithValue("@ass", client.assurance);
                     command.Parameters.AddWithValue("@mail", client.email);
                     command.Parameters.AddWithValue("@arch", (client.archive != false) ? 1 : 0);
-                    int resultat = command.ExecuteNonQuery();
-                    if (resultat == 0)
-                        return false;
-                    else
-                        return true;
+
+                    Guid dResult = (Guid)command.ExecuteScalar();
+                    return dResult;
                 }
             }
             catch (Exception ex)
@@ -111,9 +109,9 @@ namespace DAL
             return list;
         }
 
-        public static Client GetClient(int id)
+        public static Client GetClient(Guid codeClient)
         {
-            List<Client> list = new List<Client>();
+            Client leClient = new Client();
 
             try
             {
@@ -121,25 +119,46 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Clients WHERE Id = @id AND Archive = 0";
-                    command.Parameters.AddWithValue("@id", id);
+                    command.CommandText = "SELECT * FROM Clients WHERE codeClient = @codeClient AND Archive = 0";
+                    command.Parameters.AddWithValue("@codeClient", codeClient);
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+
+                    int colId = dt.GetOrdinal("CodeClient");
+                    int colNom = dt.GetOrdinal("NomClient");
+                    int colPrenom = dt.GetOrdinal("PrenomClient");
+                    int colAdresse = dt.GetOrdinal("Adresse1");
+                    int colAdresse2 = dt.GetOrdinal("Adresse2");
+                    int colCP = dt.GetOrdinal("CodePostal");
+                    int colVille = dt.GetOrdinal("Ville");
+                    int colNumTel = dt.GetOrdinal("NumTel");
+                    int colAssurance = dt.GetOrdinal("Assurance");
+                    int colEmail = dt.GetOrdinal("Email");
+                    int colRemarque = dt.GetOrdinal("Remarque");
+                    int colArchive = dt.GetOrdinal("Archive");
+
+                    while (dt.Read())
+                    {
+                        leClient.codeClient = dt.GetGuid(colId);
+                        leClient.nomClient = dt.GetString(colNom);
+                        leClient.prenomClient = dt.GetString(colPrenom);
+                        leClient.adresse = dt.GetString(colAdresse);
+                        leClient.adresse2 = (dt.GetValue(colAdresse2).ToString() != null) ? dt.GetValue(colAdresse2).ToString() : String.Empty;
+                        leClient.cp = dt.GetString(colCP);
+                        leClient.ville = dt.GetString(colVille);
+                        leClient.numTel = (dt.GetValue(colNumTel).ToString() != null) ? dt.GetValue(colNumTel).ToString() : String.Empty;
+                        leClient.assurance = (dt.GetValue(colAssurance).ToString() != null) ? dt.GetValue(colAssurance).ToString() : String.Empty;
+                        leClient.email = (dt.GetValue(colEmail).ToString() != null) ? dt.GetValue(colEmail).ToString() : String.Empty;
+                        leClient.remarque = (dt.GetValue(colRemarque).ToString() != null) ? dt.GetValue(colRemarque).ToString() : String.Empty;
+                        leClient.archive = dt.GetBoolean(colArchive);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
-            if (list.Count > 0)
-            {
-                return list.First();
-            }
-            else
-            {
-                return null;
-            }
+            return leClient;
         }
 
         #endregion

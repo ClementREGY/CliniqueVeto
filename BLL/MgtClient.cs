@@ -13,7 +13,7 @@ namespace BLL
         #region Méthodes CRUD
 
         // Create
-        public static bool CreateClient(Client pClient)
+        public static Guid CreateClient(Client pClient)
         {
             return DALClient.AddClient(pClient);
         }
@@ -22,6 +22,11 @@ namespace BLL
         public static List<Client> GetClients()
         {
             return DALClient.GetClients();
+        }
+
+        public static Client GetClient(Guid IdClient)
+        {
+            return DALClient.GetClient(IdClient);
         }
 
         // Update

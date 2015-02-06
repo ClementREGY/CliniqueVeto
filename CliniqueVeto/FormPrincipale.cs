@@ -123,6 +123,27 @@ namespace CliniqueVeto
             }
         }
 
+        private void AfficherDossier(object sender, EventArgs e)
+        {            
+            FormSelection_Animal frm;
+            if (!dossiersMédicauxToolStripMenuItem.Checked)
+            {
+                frm = new FormSelection_Animal();
+                frm.MdiParent = this;
+                frm.Show();
+                dossiersMédicauxToolStripMenuItem.Checked = true;
+                toolStripBt_Dossier.Checked = true;
+                frm.BringToFront();
+                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
+                frm.FormClosed += FermetureFille;
+            }
+            else
+            {
+                frm = (FormSelection_Animal)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormSelection_Animal");
+                frm.BringToFront();
+            }
+        }
+
         private void FermetureFille(object sender, FormClosedEventArgs e)
         {
             //Identifie l'occurence de fenêtre fermée pour décocher la bonne option de menu.
@@ -149,6 +170,12 @@ namespace CliniqueVeto
             {
                 agendaToolStripMenuItem.Checked = false;
                 toolStripBt_Agenda.Checked = false;
+                f.FormClosed -= FermetureFille;
+            }
+            else if (f is FormSelection_Animal || f is FormDossierMédical)
+            {
+                dossiersMédicauxToolStripMenuItem.Checked = false;
+                toolStripBt_Dossier.Checked = false;
                 f.FormClosed -= FermetureFille;
             }
             else

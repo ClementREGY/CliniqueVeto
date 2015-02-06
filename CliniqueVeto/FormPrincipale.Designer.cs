@@ -135,6 +135,7 @@
             this.dossiersMédicauxToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.dossiersMédicauxToolStripMenuItem.Size = new System.Drawing.Size(266, 24);
             this.dossiersMédicauxToolStripMenuItem.Text = "Dossiers Médicaux";
+            this.dossiersMédicauxToolStripMenuItem.Click += new System.EventHandler(this.AfficherDossier);
             // 
             // paramétrageToolStripMenuItem
             // 
@@ -260,6 +261,7 @@
             this.toolStripBt_Dossier.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Dossier.Text = "Dossier Médical";
             this.toolStripBt_Dossier.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripBt_Dossier.Click += new System.EventHandler(this.AfficherDossier);
             // 
             // toolStripSeparator1
             // 

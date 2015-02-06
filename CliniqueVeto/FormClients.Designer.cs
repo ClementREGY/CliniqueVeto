@@ -451,6 +451,7 @@
             this.BTN_Annuler.Text = "Annuler";
             this.BTN_Annuler.UseVisualStyleBackColor = false;
             this.BTN_Annuler.Visible = false;
+            this.BTN_Annuler.Click += new System.EventHandler(this.BTN_Annuler_Click);
             // 
             // errorSaisie
             // 

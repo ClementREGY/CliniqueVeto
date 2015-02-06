@@ -102,6 +102,7 @@
             this.DataGrid_Agenda.Location = new System.Drawing.Point(12, 103);
             this.DataGrid_Agenda.MultiSelect = false;
             this.DataGrid_Agenda.Name = "DataGrid_Agenda";
+            this.DataGrid_Agenda.ReadOnly = true;
             this.DataGrid_Agenda.RowHeadersVisible = false;
             this.DataGrid_Agenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Agenda.Size = new System.Drawing.Size(585, 257);
