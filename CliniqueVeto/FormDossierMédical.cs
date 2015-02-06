@@ -14,8 +14,11 @@ namespace CliniqueVeto
 {
     public partial class FormDossierMédical : Form
     {
+        #region Attributs et Accesseurs
+
         Guid _codeAnimal;
         Animal _animalCourant;
+        List<Consultation> _consultations;
 
         public Guid CodeAnimal 
         {
@@ -27,6 +30,8 @@ namespace CliniqueVeto
         {
             get { return MgtAnimal.GetAnimal(_codeAnimal); }
         }
+
+        #endregion
 
         public FormDossierMédical(Guid codeAnimal)
         {
@@ -41,9 +46,14 @@ namespace CliniqueVeto
             richTBox_Dossier.BackColor = Color.White;
             richTBox_Dossier.Cursor = Cursors.Arrow;
 
+            _consultations = MgtConsultation.GetConsultationsByAnimal(CodeAnimal);
+
             AfficherEntête();
             AfficherPropriétaire();
+            AfficherConsultations();
         }
+
+        #region Gestion de l'Affichage
 
         private void AfficherEntête()
         {
@@ -62,5 +72,56 @@ namespace CliniqueVeto
             richTBox_Dossier.AppendText(proprietaire.nomPrenom, Color.RoyalBlue, 12, false, true, false);
             richTBox_Dossier.AppendText(Environment.NewLine);
         }
+
+        private void AfficherConsultations()
+        {
+            foreach (Consultation uneConsult in _consultations)
+            {
+                Veterinaire veterinaire = MgtVeterinaire.GetVeterinaire(uneConsult.codeVeto);
+                richTBox_Dossier.AppendText(" _________________________________________________________________________________________", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(Environment.NewLine);
+                richTBox_Dossier.AppendText("  ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText("- Date : ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(uneConsult.dateConsultation.Date.ToString("dd/MM/yyyy"), Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText("  ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText("- Vétérinaire : ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(veterinaire.nomVeto, Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText(Environment.NewLine);
+                AfficherActes(uneConsult);
+
+                richTBox_Dossier.AppendText(Environment.NewLine);
+                richTBox_Dossier.AppendText("  ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText("- Commentaire sur la Consultation : ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(uneConsult.commentaire, Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText(Environment.NewLine);
+            }
+        }
+
+        private void AfficherActes(Consultation uneConsultation)
+        {
+            int i = 1;
+            uneConsultation.actes = MgtActe.GetActesByConsultation(uneConsultation.codeConsultation);
+
+            foreach (Acte unActe in uneConsultation.actes)
+            {
+                richTBox_Dossier.AppendText(Environment.NewLine);
+                richTBox_Dossier.AppendText("   ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText("  - Acte ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(" : ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(i.ToString(), Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText(Environment.NewLine);
+
+                richTBox_Dossier.AppendText("     ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText("    Type de l'Acte : ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(unActe.typeActe, Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText("   -  ", Color.Black, 12, false, false, false);
+                richTBox_Dossier.AppendText(unActe.libelle, Color.Navy, 12, false, true, false);
+                richTBox_Dossier.AppendText(Environment.NewLine);
+
+                i++;
+            }
+        }
+
+        #endregion
     }
 }

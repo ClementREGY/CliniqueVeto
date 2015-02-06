@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Acte.cs" />
     <Compile Include="Animal.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Consultation.cs" />
     <Compile Include="Facture.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

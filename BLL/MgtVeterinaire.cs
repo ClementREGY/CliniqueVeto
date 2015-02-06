@@ -24,6 +24,11 @@ namespace BLL
             return DALVétérinaire.GetVeterinaires();
         }
 
+        public static Veterinaire GetVeterinaire(Guid IdVeto)
+        {
+            return DALVétérinaire.GetVeterinaire(IdVeto);
+        }
+
         // Update
         public static bool UpdateVeterinaire(Veterinaire veterinaire)
         {

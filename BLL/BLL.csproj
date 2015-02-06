@@ -39,8 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MgtActe.cs" />
     <Compile Include="MgtAnimal.cs" />
     <Compile Include="MgtClient.cs" />
+    <Compile Include="MgtConsultation.cs" />
     <Compile Include="MgtLogin.cs" />
     <Compile Include="MgtRendezVous.cs" />
     <Compile Include="MgtVaccin.cs" />

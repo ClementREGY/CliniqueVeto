@@ -36,22 +36,6 @@ namespace CliniqueVeto
                 CBox_TypeTarif.Visible = true;
                 // Remplir les TEXTBOX TypeActe et Libellé par l'élément sélectionné
 
-                if (/*Si l'élément sélectionné a un tarif Fixe*/)
-                {
-                    CBox_TypeTarif.SelectedIndex = 0;
-                    Label_Fixe.Visible = true;
-                    TBox_TarifFixe.Visible = true;
-                    // Remplir la TEXTBOX                    
-                }
-                else if (/*Si l'élément sélectionné a un tarif variable*/)
-                {
-                    CBox_TypeTarif.SelectedIndex = 1;
-                    Label_Maxi.Visible = true;
-                    Label_Mini.Visible = true;
-                    TBox_TarifMaxi.Visible = true;
-                    TBox_TarifMini.Visible = true;
-                    // Remplir les 2 TEXTBOX
-                }
             }
             else if (BTN_MiseAJour.Text == "Valider")
             {

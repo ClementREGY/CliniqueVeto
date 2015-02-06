@@ -44,5 +44,14 @@ namespace CliniqueVeto
         {
             DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
         }
+
+        #region Gestion des Boutons
+
+        private void BTN_Dossier_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

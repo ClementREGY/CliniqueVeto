@@ -35,7 +35,7 @@
             // 
             this.richTBox_Dossier.Location = new System.Drawing.Point(0, 0);
             this.richTBox_Dossier.Name = "richTBox_Dossier";
-            this.richTBox_Dossier.Size = new System.Drawing.Size(509, 541);
+            this.richTBox_Dossier.Size = new System.Drawing.Size(579, 541);
             this.richTBox_Dossier.TabIndex = 0;
             this.richTBox_Dossier.Text = "";
             // 
@@ -44,7 +44,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(509, 541);
+            this.ClientSize = new System.Drawing.Size(579, 541);
             this.Controls.Add(this.richTBox_Dossier);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormDossierMédical";
