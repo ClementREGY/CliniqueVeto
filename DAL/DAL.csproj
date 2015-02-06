@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALAccess.cs" />
+    <Compile Include="DALConsultation.cs" />
     <Compile Include="DALRendezVous.cs" />
     <Compile Include="DALAnimal.cs" />
     <Compile Include="DALClient.cs" />

@@ -60,6 +60,7 @@ namespace CliniqueVeto
             richTBox_Dossier.AppendText("  ", Color.Navy, 12, false, true, false);
             richTBox_Dossier.AppendText("Propriétaire : ", Color.Navy, 12, false, true, false);
             richTBox_Dossier.AppendText(proprietaire.nomPrenom, Color.RoyalBlue, 12, false, true, false);
+            richTBox_Dossier.AppendText(Environment.NewLine);
         }
     }
 }
