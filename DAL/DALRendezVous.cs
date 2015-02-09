@@ -54,7 +54,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE A.CodeVeto = @codeVeto AND CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
+                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.CodeAnimal, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE A.CodeVeto = @codeVeto AND CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
                     command.Parameters.AddWithValue("@codeVeto", codeVeto);
                     command.Parameters.AddWithValue("@date", laDate.Date);
 
@@ -63,6 +63,7 @@ namespace DAL
                     int colDate = dt.GetOrdinal("DateRdv");
                     int colNomClient = dt.GetOrdinal("NomClient");
                     int colPrenomClient = dt.GetOrdinal("PrenomClient");
+                    int colCodeAnimal = dt.GetOrdinal("CodeAnimal");
                     int colNomAnimal = dt.GetOrdinal("NomAnimal");
                     int colNomVeto = dt.GetOrdinal("NomVeto");
                     int colUrgence = dt.GetOrdinal("Urgence");
@@ -73,6 +74,7 @@ namespace DAL
                         RDV.dateRDV = dt.GetDateTime(colDate);
                         RDV.nomClient = dt.GetString(colNomClient);
                         RDV.prenomClient = dt.GetString(colPrenomClient);
+                        RDV.codeAnimal = dt.GetGuid(colCodeAnimal);
                         RDV.nomAnimal = dt.GetString(colNomAnimal);
                         RDV.nomVeto = dt.GetString(colNomVeto);
                         RDV.urgence = dt.GetBoolean(colUrgence);
@@ -97,7 +99,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
+                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.CodeAnimal, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
                     command.Parameters.AddWithValue("@date", laDate.Date);
 
                     SqlDataReader dt = command.ExecuteReader();
@@ -105,6 +107,7 @@ namespace DAL
                     int colDate = dt.GetOrdinal("DateRdv");
                     int colNomClient = dt.GetOrdinal("NomClient");
                     int colPrenomClient = dt.GetOrdinal("PrenomClient");
+                    int colCodeAnimal = dt.GetOrdinal("CodeAnimal");
                     int colNomAnimal = dt.GetOrdinal("NomAnimal");
                     int colNomVeto = dt.GetOrdinal("NomVeto");
                     int colUrgence = dt.GetOrdinal("Urgence");
@@ -115,6 +118,7 @@ namespace DAL
                         RDV.dateRDV = dt.GetDateTime(colDate);
                         RDV.nomClient = dt.GetString(colNomClient);
                         RDV.prenomClient = dt.GetString(colPrenomClient);
+                        RDV.codeAnimal = dt.GetGuid(colCodeAnimal);
                         RDV.nomAnimal = dt.GetString(colNomAnimal);
                         RDV.nomVeto = dt.GetString(colNomVeto);
                         RDV.urgence = dt.GetBoolean(colUrgence);
@@ -139,7 +143,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE C.CodeClient = @codeClient AND CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
+                    command.CommandText = "SELECT A.DateRdv, C.NomClient, C.PrenomClient, An.CodeAnimal, An.NomAnimal, V.NomVeto, A.Urgence FROM Agendas A INNER JOIN Veterinaires V ON A.CodeVeto = V.CodeVeto JOIN Animaux An ON A.CodeAnimal = An.CodeAnimal JOIN Clients C ON An.CodeClient = C.CodeClient WHERE C.CodeClient = @codeClient AND CONVERT(CHAR(10), A.DateRdv, 103) = @date ORDER BY A.DateRdv";
                     command.Parameters.AddWithValue("@codeClient", codeClient);
                     command.Parameters.AddWithValue("@date", laDate.Date);
 
@@ -148,6 +152,7 @@ namespace DAL
                     int colDate = dt.GetOrdinal("DateRdv");
                     int colNomClient = dt.GetOrdinal("NomClient");
                     int colPrenomClient = dt.GetOrdinal("PrenomClient");
+                    int colCodeAnimal = dt.GetOrdinal("CodeAnimal");
                     int colNomAnimal = dt.GetOrdinal("NomAnimal");
                     int colNomVeto = dt.GetOrdinal("NomVeto");
                     int colUrgence = dt.GetOrdinal("Urgence");
@@ -158,6 +163,7 @@ namespace DAL
                         RDV.dateRDV = dt.GetDateTime(colDate);
                         RDV.nomClient = dt.GetString(colNomClient);
                         RDV.prenomClient = dt.GetString(colPrenomClient);
+                        RDV.codeAnimal = dt.GetGuid(colCodeAnimal);
                         RDV.nomAnimal = dt.GetString(colNomAnimal);
                         RDV.nomVeto = dt.GetString(colNomVeto);
                         RDV.urgence = dt.GetBoolean(colUrgence);

@@ -214,7 +214,7 @@ namespace CliniqueVeto
             }
             else
             {
-                RendezVous newRDV = new RendezVous(laDate, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto);
+                RendezVous newRDV = new RendezVous(laDate, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).codeAnimal, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto);
                 MgtRendezVous.CreateRDV(newRDV);
                 DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
                 AffichageUrgences();
@@ -223,7 +223,7 @@ namespace CliniqueVeto
 
         private void BTN_Urgence_Click(object sender, EventArgs e)
         {
-            RendezVous newRDV = new RendezVous(DateTime.Now, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto, true);
+            RendezVous newRDV = new RendezVous(DateTime.Now, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).codeAnimal, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto, true);
             MgtRendezVous.CreateRDV(newRDV);
             DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaire.SelectedItem).codeVeto, DTPicker_Date.Value);
             AffichageUrgences();

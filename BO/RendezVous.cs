@@ -24,6 +24,9 @@ namespace BO
             get { return nomClient + " " + prenomClient;} 
         }
 
+        [Browsable(false)]
+        public Guid codeAnimal { get; set; }
+
         [DisplayName("Animal")]
         public String nomAnimal { get; set; }
 
@@ -44,10 +47,11 @@ namespace BO
         {
         }
 
-        public RendezVous(DateTime DateRDV, String NomClient, String PrenomClient, String NomAnimal, String NomVeto, bool Urgence = false)
+        public RendezVous(DateTime DateRDV, String NomClient, String PrenomClient, Guid CodeAnimal, String NomAnimal, String NomVeto, bool Urgence = false)
         {
             this.nomClient = NomClient;
             this.prenomClient = PrenomClient;
+            this.codeAnimal = CodeAnimal;
             this.nomAnimal = NomAnimal;
             this.nomVeto = NomVeto;
             this.dateRDV = DateRDV;

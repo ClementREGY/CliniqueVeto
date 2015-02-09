@@ -137,6 +137,7 @@
             this.BTN_Dossier.Size = new System.Drawing.Size(50, 50);
             this.BTN_Dossier.TabIndex = 0;
             this.BTN_Dossier.UseVisualStyleBackColor = true;
+            this.BTN_Dossier.Click += new System.EventHandler(this.BTN_Dossier_Click);
             // 
             // GBox_Client
             // 

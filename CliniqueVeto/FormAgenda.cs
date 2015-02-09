@@ -49,7 +49,11 @@ namespace CliniqueVeto
 
         private void BTN_Dossier_Click(object sender, EventArgs e)
         {
-
+            Guid codeAnimalSelectionné = ((RendezVous)DataGrid_Agenda.CurrentRow.DataBoundItem).codeAnimal;
+            FormDossierMédical frm = new FormDossierMédical(codeAnimalSelectionné);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
         }
 
         #endregion

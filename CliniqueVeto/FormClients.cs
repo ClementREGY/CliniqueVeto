@@ -272,6 +272,7 @@ namespace CliniqueVeto
         {
             _modeAnimal = "Ajout";
             FormAnimaux frm = new FormAnimaux(this);
+            frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
         }
@@ -280,6 +281,7 @@ namespace CliniqueVeto
         {
             _modeAnimal = "Modification";
             FormAnimaux frm = new FormAnimaux(this);
+            frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
         }

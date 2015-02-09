@@ -39,6 +39,7 @@ namespace CliniqueVeto
                 CBox_Genre.SelectedIndex = 0;
                 CBox_Espèce.SelectedIndex = 0;
                 CBox_Race.SelectedItem = 0;
+                BTN_Dossier.Enabled = false;
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
@@ -85,6 +86,14 @@ namespace CliniqueVeto
         #endregion
 
         #region Gestion des Boutons
+
+        private void BTN_Dossier_Click(object sender, EventArgs e)
+        {
+            FormDossierMédical frm = new FormDossierMédical(frmClients.AnimalCourant.codeAnimal);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
+        }
 
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
