@@ -49,6 +49,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormRelance_Vaccin";
             this.Text = "Courrier de Relance";
+            this.Load += new System.EventHandler(this.FormRelance_Vaccin_Load);
             this.ResumeLayout(false);
 
         }
