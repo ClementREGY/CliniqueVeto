@@ -14,7 +14,7 @@ namespace CliniqueVeto
 {
     public partial class FormRDV : Form
     {
-        #region Attributs 
+        #region Attributs
 
         private String _modeAnimal;
 

@@ -52,5 +52,22 @@ namespace CliniqueVeto
         }
 
         #endregion
+
+        private void BTN_Rechercher_Click(object sender, EventArgs e)
+        {
+            bool isTrouve = false;
+            foreach (Animal unAnimal in MgtAnimal.GetAnimals())
+            {
+                if ((unAnimal.nomAnimal.ToLower().Contains(TBox_Recherche.Text.Trim().ToLower()) || unAnimal.tatouage.ToLower().Contains(TBox_Recherche.Text.Trim().ToLower())) && isTrouve == false)
+                {
+                    isTrouve = true;
+                    Client leClient = MgtClient.GetClient(unAnimal.client);
+                    CBox_Client.SelectedIndex = CBox_Client.FindStringExact(leClient.nomPrenom);
+                    CBox_Animal.SelectedIndex = CBox_Animal.FindStringExact(unAnimal.ToString());
+                }
+            }
+            if (!isTrouve)
+                MessageBox.Show("Aucun Animal ne corespond à vos critères de recherche !");
+        }
     }
 }

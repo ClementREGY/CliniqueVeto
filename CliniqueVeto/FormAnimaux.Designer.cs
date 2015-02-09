@@ -242,6 +242,7 @@
             // 
             // CBox_Espèce
             // 
+            this.CBox_Espèce.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Espèce.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Espèce.FormattingEnabled = true;
             this.CBox_Espèce.Location = new System.Drawing.Point(97, 281);
@@ -252,6 +253,7 @@
             // 
             // CBox_Race
             // 
+            this.CBox_Race.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Race.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Race.FormattingEnabled = true;
             this.CBox_Race.Location = new System.Drawing.Point(287, 281);
@@ -271,6 +273,7 @@
             // 
             // CBox_Genre
             // 
+            this.CBox_Genre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Genre.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Genre.FormattingEnabled = true;
             this.CBox_Genre.Items.AddRange(new object[] {

@@ -16,23 +16,33 @@ namespace CliniqueVeto
     {
         #region Attributs et Propriétés
 
-        private FormClients frmClients;
+        private FormClients frmClients = null;
+        private FormRDV frmRDV = null;
+        private Client ClientCourant = null;
 
         #endregion
         
-        public FormAnimaux(FormClients frm = null, FormRDV frmRDV = null)
+        public FormAnimaux(FormClients frm = null, FormRDV frmR = null)
         {
             InitializeComponent();
-            frmClients = frm;
+            if (frm != null)
+                frmClients = frm;
+            else if (frmR != null)
+                frmRDV = frmR;
         }
 
         private void FormAnimaux_Load(object sender, EventArgs e)
         {
+            if (frmClients != null)
+                ClientCourant = frmClients.ClientCourant;
+            else if (frmRDV != null)
+                ClientCourant = frmRDV.ClientCourant;
+
             TBox_Code.Enabled = false;
             TBox_Client.Enabled = false;
             CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
-            CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
-            TBox_Client.Text = frmClients.ClientCourant.nomPrenom;
+            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.Items[0].ToString());
+            TBox_Client.Text = ClientCourant.nomPrenom;
 
             if (frmClients.ModeAnimal == "Ajout")
             {
@@ -43,6 +53,8 @@ namespace CliniqueVeto
             }
             else if (frmClients.ModeAnimal == "Modification")
             {
+                CBox_Espèce.SelectedIndex = CBox_Espèce.FindStringExact(frmClients.AnimalCourant.espece);
+                CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
                 AfficherAnimalCourant();
             }
         }
@@ -132,13 +144,13 @@ namespace CliniqueVeto
                                 if (frmClients.ModeAnimal == "Ajout")
                                 {
                                     Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
-                                    CBox_Espèce.Text.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
+                                    CBox_Espèce.Text.ToString(), ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
                                     MgtAnimal.CreateAnimal(newAnimal, client);
                                 }
                                 else if (frmClients.ModeAnimal == "Modification")
                                 {
                                     Animal newAnimal = new Animal(frmClients.AnimalCourant.codeAnimal, TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
-                                    CBox_Espèce.Text.ToString(), frmClients.ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
+                                    CBox_Espèce.Text.ToString(), ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
                                     MgtAnimal.UpdateAnimal(newAnimal);
                                 }
 

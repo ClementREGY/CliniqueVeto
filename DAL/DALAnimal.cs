@@ -91,7 +91,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Animaux AND Archive = 0";
+                    command.CommandText = "SELECT * FROM Animaux WHERE Archive = 0";
 
                     SqlDataReader dt = command.ExecuteReader();
                     list = builderObject(dt);
