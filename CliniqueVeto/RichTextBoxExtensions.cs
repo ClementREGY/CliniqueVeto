@@ -24,7 +24,6 @@ namespace CliniqueVeto
             else
                 box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille);
 
-
             box.SelectionColor = color;
             box.AppendText(text);
             box.SelectionColor = box.ForeColor;

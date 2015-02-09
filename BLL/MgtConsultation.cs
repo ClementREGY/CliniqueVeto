@@ -28,7 +28,21 @@ namespace BLL
             return DALConsultation.GetConsultation(IdConsult);
         }
 
-        #endregion
+        public static List<String> GetTypesActes()
+        {
+            return DALConsultation.GetTypesActes();
+        }
 
+        public static List<String> GetLibellesActes(String type)
+        {
+            return DALConsultation.GetLibellesActes(type);
+        }
+
+        public static List<Decimal> GetTarifsActes(String libelle)
+        {
+            return DALConsultation.GetTarifsActes(libelle);
+        }
+
+        #endregion
     }
 }

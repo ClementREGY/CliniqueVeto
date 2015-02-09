@@ -122,6 +122,12 @@
     <Compile Include="FormRelance.Designer.cs">
       <DependentUpon>FormRelance.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRelance_Vaccin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRelance_Vaccin.Designer.cs">
+      <DependentUpon>FormRelance_Vaccin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSelection_Animal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormRelance.resx">
       <DependentUpon>FormRelance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRelance_Vaccin.resx">
+      <DependentUpon>FormRelance_Vaccin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelection_Animal.resx">
       <DependentUpon>FormSelection_Animal.cs</DependentUpon>

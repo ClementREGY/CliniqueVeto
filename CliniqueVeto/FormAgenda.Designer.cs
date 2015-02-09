@@ -107,6 +107,7 @@
             this.DataGrid_Agenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Agenda.Size = new System.Drawing.Size(585, 257);
             this.DataGrid_Agenda.TabIndex = 3;
+            this.DataGrid_Agenda.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGrid_Agenda_CellMouseDoubleClick);
             // 
             // Label_Dossier
             // 

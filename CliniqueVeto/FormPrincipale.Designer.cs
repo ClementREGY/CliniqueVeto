@@ -180,7 +180,7 @@
             this.barreAccès.Location = new System.Drawing.Point(889, 27);
             this.barreAccès.Name = "barreAccès";
             this.barreAccès.Padding = new System.Windows.Forms.Padding(0);
-            this.barreAccès.Size = new System.Drawing.Size(101, 644);
+            this.barreAccès.Size = new System.Drawing.Size(101, 794);
             this.barreAccès.TabIndex = 2;
             this.barreAccès.Text = "toolStrip1";
             // 
@@ -273,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 671);
+            this.ClientSize = new System.Drawing.Size(990, 821);
             this.Controls.Add(this.barreAccès);
             this.Controls.Add(this.menuGénéral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

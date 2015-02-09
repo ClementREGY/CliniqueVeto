@@ -149,6 +149,96 @@ namespace DAL
             return result;
         }
 
+        public static List<String> GetTypesActes()
+        {
+            List<String> list = new List<String>();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT DISTINCT TypeActe FROM Baremes";
+
+                    SqlDataReader dt = command.ExecuteReader();
+                    int colType = dt.GetOrdinal("TypeActe");
+
+                    while (dt.Read())
+                    {
+                        list.Add(dt.GetString(colType));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return list;
+        }
+
+        public static List<String> GetLibellesActes(String type)
+        {
+            List<String> list = new List<String>();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT DISTINCT Libelle FROM Baremes WHERE TypeActe = @type";
+                    command.Parameters.AddWithValue("@type", type);
+
+                    SqlDataReader dt = command.ExecuteReader();
+                    int colLibelle = dt.GetOrdinal("Libelle");
+
+                    while (dt.Read())
+                    {
+                        list.Add(dt.GetString(colLibelle));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return list;
+        }
+
+        public static List<Decimal> GetTarifsActes(String libelle)
+        {
+            List<Decimal> list = new List<Decimal>();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT ISNULL(TarifFixe, 0) AS TarifFixe, ISNULL(TarifMini, 0) AS TarifMini, ISNULL(TarifMaxi, 0) AS TarifMaxi FROM Baremes WHERE Libelle LIKE ('%' + @libelle + '%')";
+                    command.Parameters.AddWithValue("@libelle", libelle);
+
+                    SqlDataReader dt = command.ExecuteReader();
+                    int colFixe = dt.GetOrdinal("TarifFixe");
+                    int colMini = dt.GetOrdinal("TarifMini");
+                    int colMaxi = dt.GetOrdinal("TarifMaxi");
+
+                    while (dt.Read())
+                    {
+                        list.Add(dt.GetDecimal(colFixe));
+                        list.Add(dt.GetDecimal(colMini));
+                        list.Add(dt.GetDecimal(colMaxi));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return list;
+        }
+
         #endregion
     }
 }

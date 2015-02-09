@@ -56,6 +56,16 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        private void DataGrid_Agenda_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Guid animalSelectionne = ((RendezVous)DataGrid_Agenda.CurrentRow.DataBoundItem).codeAnimal;
+            Guid veterinaire = ((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto;
+            FormConsultation frm = new FormConsultation(animalSelectionne, veterinaire);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
+        }
+
         #endregion
     }
 }

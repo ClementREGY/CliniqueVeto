@@ -42,17 +42,6 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
-        private void BTN_Valider_Click(object sender, EventArgs e)
-        {
-            FormDossierMédical frm = new FormDossierMédical(((Animal)CBox_Animal.SelectedItem).codeAnimal);
-            frm.MdiParent = this.MdiParent;
-            frm.Show();
-            frm.BringToFront();
-            this.Close();
-        }
-
-        #endregion
-
         private void BTN_Rechercher_Click(object sender, EventArgs e)
         {
             bool isTrouve = false;
@@ -69,5 +58,16 @@ namespace CliniqueVeto
             if (!isTrouve)
                 MessageBox.Show("Aucun Animal ne corespond à vos critères de recherche !");
         }
+
+        private void BTN_Valider_Click(object sender, EventArgs e)
+        {
+            FormDossierMédical frm = new FormDossierMédical(((Animal)CBox_Animal.SelectedItem).codeAnimal);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
+            this.Close();
+        }
+
+        #endregion
     }
 }
