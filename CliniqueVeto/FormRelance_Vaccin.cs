@@ -57,5 +57,10 @@ namespace CliniqueVeto
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Clinique Vétérinaire Ani’Forme.", Color.Black, 12, false, false, false);
         }
+
+        private void BTN_EnvoieRelance_Click(object sender, EventArgs e)
+        {
+            MgtRelance.SetRelanceEnvoye(frmRelance.RelanceCourante);
+        }
     }
 }
