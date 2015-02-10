@@ -50,6 +50,9 @@ namespace CliniqueVeto
 
         #region Validation
 
+        /// <summary>
+        /// Vérifie que tous les champs ont été saisis, si oui, ajout du nouveau vétérinaire ET de son login, dans la base
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_Nom.Text.Trim()))

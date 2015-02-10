@@ -26,6 +26,33 @@ namespace CliniqueVeto
             DataGrid_Barèmes.DataSource = MgtBareme.GetBaremes();
         }
 
+        #region Gestion de l'Affichage
+
+        /// <summary>
+        /// Réinitialise tous les Champs à saisir
+        /// </summary>
+        private void Reset()
+        {
+            BTN_MiseAJour.Text = "Mettre à Jour";
+            BTN_Annuler.Visible = false;
+            Label_Acte.Visible = false;
+            Label_Tarif.Visible = false;
+            TBox_Type.Visible = false;
+            Tbox_Libelle.Visible = false;
+            CBox_TypeTarif.Visible = false;
+            CBox_TypeTarif.SelectedIndex = 0;
+            Label_Fixe.Visible = false;
+            TBox_TarifFixe.Visible = false;
+            Label_Maxi.Visible = false;
+            Label_Mini.Visible = false;
+            TBox_TarifMaxi.Visible = false;
+            TBox_TarifMini.Visible = false;
+        }
+
+        #endregion
+
+        #region Gestion de Boutons
+
         private void BTN_MiseAJour_Click(object sender, EventArgs e)
         {
             if (BTN_MiseAJour.Text == "Mettre à Jour")
@@ -52,23 +79,6 @@ namespace CliniqueVeto
             Reset();
         }
 
-        private void Reset()
-        {
-            BTN_MiseAJour.Text = "Mettre à Jour";
-            BTN_Annuler.Visible = false;
-            Label_Acte.Visible = false;
-            Label_Tarif.Visible = false;
-            TBox_Type.Visible = false;
-            Tbox_Libelle.Visible = false;
-            CBox_TypeTarif.Visible = false;
-            CBox_TypeTarif.SelectedIndex = 0;
-            Label_Fixe.Visible = false;
-            TBox_TarifFixe.Visible = false;
-            Label_Maxi.Visible = false;
-            Label_Mini.Visible = false;
-            TBox_TarifMaxi.Visible = false;
-            TBox_TarifMini.Visible = false;
-        }
-
+        #endregion
     }
 }

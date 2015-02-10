@@ -55,6 +55,9 @@ namespace CliniqueVeto
 
         #region Gestion de l'Affichage
 
+        /// <summary>
+        /// Affichage de l'entête du Document : Nom de l'animal courant
+        /// </summary>
         private void AfficherEntête()
         {
             richTBox_Dossier.AppendText("  ", Color.Navy, 15, false, false, false);
@@ -63,6 +66,9 @@ namespace CliniqueVeto
             richTBox_Dossier.AppendText(AnimalCourant.nomAnimal, Color.RoyalBlue, 15, false, false, false);
         }
 
+        /// <summary>
+        /// Affichage du Propriétaire de l'Animal : Nom du client correspondant à l'animal courant
+        /// </summary>
         private void AfficherPropriétaire()
         {
             Client proprietaire = MgtClient.GetClient(AnimalCourant.client);
@@ -73,6 +79,9 @@ namespace CliniqueVeto
             richTBox_Dossier.AppendText(Environment.NewLine);
         }
 
+        /// <summary>
+        /// Parcours et Affichage des consultations (Date, Vétérinaire, puis Commentaire)
+        /// </summary>
         private void AfficherConsultations()
         {
             foreach (Consultation uneConsult in _consultations)
@@ -97,6 +106,10 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Parcours et Affichage des actes de la Consultation (Type, Libellé)
+        /// </summary>
+        /// <param name="uneConsultation"> Consultation en cours d'affichage </param>
         private void AfficherActes(Consultation uneConsultation)
         {
             int i = 1;

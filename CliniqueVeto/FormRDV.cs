@@ -68,13 +68,11 @@ namespace CliniqueVeto
             #endregion
         }
 
-        private void BTN_Annuler_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         #region Panel Clients/Animaux
 
+        /// <summary>
+        /// Affichage des RDV du Client sélectionné en fonction des autres champs
+        /// </summary>
         private void CBox_Client_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CBox_Client.SelectedItem != null)
@@ -110,6 +108,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Ouverture du formulaire d'ajout de Client
+        /// </summary>
         private void PBox_AddClient_Click(object sender, EventArgs e)
         {
             FormClients frm = new FormClients();
@@ -118,6 +119,9 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        /// <summary>
+        /// Ouverture du formulaire d'ajout d'animal pour le Client sélectionné
+        /// </summary>
         private void PBox_AddAnimal_Click(object sender, EventArgs e)
         {
             ModeAnimal = "Ajout";
@@ -128,12 +132,18 @@ namespace CliniqueVeto
             frm.Disposed += Recharger;
         }
 
+        /// <summary>
+        /// Vide le contenu du Panel Clients/Animaux
+        /// </summary>
         private void Label_Vider_Client_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             CBox_Client.SelectedIndex = -1;
             CBox_Animal.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Rechargement de la Liste des Animaux du Client sélectionné
+        /// </summary>
         private void Recharger(object sender, EventArgs arg)
         {
             CBox_Animal.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
@@ -143,6 +153,9 @@ namespace CliniqueVeto
 
         #region Panel Vétérinaires
 
+        /// <summary>
+        /// Affichage des RDV du Vétérinaire sélectionné en fonction des autres champs
+        /// </summary>
         private void CBox_Vétérinaire_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Si un vétérinaire est selectionné, on affiche son Agenda du Jour
@@ -165,6 +178,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Vide le contenu du Panel Vétérinaire
+        /// </summary>
         private void Label_Vider_Véto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             CBox_Vétérinaire.SelectedIndex = -1;
@@ -174,6 +190,9 @@ namespace CliniqueVeto
 
         #region Panel Date
 
+        /// <summary>
+        /// Affichage des RDV de la date sélectionnée en fonction des autres champs
+        /// </summary>
         private void DTPicker_Date_ValueChanged(object sender, EventArgs e)
         {
             // Si seule la Date est renseignée
@@ -200,6 +219,9 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Ajout du Rendez-Vous dans la Base de Données
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             // Affectation de la Date et de l'heure
@@ -221,6 +243,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Ajout du Rendez-Vous dans la Base de Données avec la Date et l'Heure actuelles
+        /// </summary>
         private void BTN_Urgence_Click(object sender, EventArgs e)
         {
             RendezVous newRDV = new RendezVous(DateTime.Now, ((Client)CBox_Client.SelectedItem).nomClient, ((Client)CBox_Client.SelectedItem).prenomClient, ((Animal)CBox_Animal.SelectedItem).codeAnimal, ((Animal)CBox_Animal.SelectedItem).nomAnimal, ((Veterinaire)CBox_Vétérinaire.SelectedItem).nomVeto, true);
@@ -229,20 +254,40 @@ namespace CliniqueVeto
             AffichageUrgences();
         }
 
+        /// <summary>
+        /// Tentative de Suppression du Rendez-Vous
+        /// </summary>
         private void BTN_Supprimer_Click(object sender, EventArgs e)
         {
-            MgtRendezVous.DeleteRDV((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem);
-            DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+            try
+            {
+                MgtRendezVous.DeleteRDV((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem);
+                DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de la Suppression du RDV...");
+            }
             AffichageUrgences();
+        }
+
+        /// <summary>
+        /// Annulation et Fermeture
+        /// </summary>
+        private void BTN_Annuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         #endregion
 
         #region Gestion de l'Affichage
 
+        /// <summary>
+        /// Affichage en rouge des RDV ayant été placés en Urgence
+        /// </summary>
         private void AffichageUrgences()
         {
-            // Affichage en rouge des RDV ayant été placés en Urgence
             foreach (DataGridViewRow row in DataGrid_RDV.Rows)
             {
                 if (bool.Parse(row.Cells[4].Value.ToString()) == true)

@@ -55,8 +55,6 @@ namespace CliniqueVeto
 
         #endregion
 
-        #region Constructeurs
-
         public FormClients()
         {
             InitializeComponent();
@@ -67,20 +65,14 @@ namespace CliniqueVeto
             TBox_Code.Enabled = false;
             DataGrid_Animaux.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Animaux.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
-            try
-            {
-                DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
         }
-
-        #endregion
-
+        
         #region Navigation et Affichage
 
+        /// <summary>
+        /// Affichage à l'aide des données du Client courant
+        /// </summary>
         private void AfficherClientCourant()
         {
             TBox_Nom.Text = ClientCourant.nomClient;
@@ -116,6 +108,9 @@ namespace CliniqueVeto
             DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
         }
 
+        /// <summary>
+        /// Évenement de navigation de la NavBarre
+        /// </summary>
         private void NavBarre_Navigation(object sender, ControlsLibrary.NavBarEventArgs e)
         {
             switch (e.NavAction)
@@ -139,6 +134,9 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Initialise les Champs pour ajouter un nouveau client
+        /// </summary>
         private void BTN_AjouterClient_Click(object sender, EventArgs e)
         {
             Panel_GestionClients.Enabled = false;
@@ -165,6 +163,9 @@ namespace CliniqueVeto
             BTN_Annuler.Visible = true;
         }
 
+        /// <summary>
+        /// Tentative de suppression du Client courant
+        /// </summary>
         private void BTN_SupprimerClient_Click(object sender, EventArgs e)
         {
             try
@@ -191,6 +192,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Recherche dans la liste des Clients de la première occurence correspondante à la recherche saisie
+        /// </summary>
         private void BTN_Rechercher_Click(object sender, EventArgs e)
         {
             bool isTrouve = false;
@@ -207,6 +211,9 @@ namespace CliniqueVeto
                 MessageBox.Show("Aucun Client ne corespond à vos critères de recherche !");
         }
 
+        /// <summary>
+        /// Vérifie que tous les champs ont été remplis, si oui, ajout du Client dans la Base de Données
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_Nom.Text.Trim()))
@@ -263,11 +270,17 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Annulation et réinitialisation
+        /// </summary>
         private void BTN_Annuler_Click(object sender, EventArgs e)
         {
             Reset();
         }
 
+        /// <summary>
+        /// Ouverture du Formulaire de gestion d'un animal en passant les données actuelles (Client, Mode Ajout...)
+        /// </summary>
         private void BTN_AjouterAnimal_Click(object sender, EventArgs e)
         {
             _modeAnimal = "Ajout";
@@ -277,6 +290,10 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        /// <summary>
+        /// Ouverture du Formulaire de gestion d'un animal en passant les données actuelles 
+        /// (Client, Animal, Mode Modification...)
+        /// </summary>
         private void BTN_EditerAnimal_Click(object sender, EventArgs e)
         {
             _modeAnimal = "Modification";
@@ -286,6 +303,9 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        /// <summary>
+        /// Réinitialisation des Champs de saisie
+        /// </summary>
         private void Reset()
         {
             Panel_GestionClients.Enabled = true;
@@ -310,16 +330,29 @@ namespace CliniqueVeto
             BTN_Annuler.Visible = false;
         }
 
+        /// <summary>
+        /// Tentative de suppression de l'animal sélectionné dans la DataGridView
+        /// </summary>
         private void BTN_SupprimerAnimal_Click(object sender, EventArgs e)
         {
-            MgtAnimal.DeleteAnimal(AnimalCourant.codeAnimal);
-            DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
+            try
+            {
+                MgtAnimal.DeleteAnimal(AnimalCourant.codeAnimal);
+                DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erreur lors de la Suppression de l'Animal...");
+            }
         }
 
         #endregion
 
         #region TextBox Numéro de Téléphone
 
+        /// <summary>
+        /// Gestion de la TextBox du 1er et 2ème numéro du Téléphone
+        /// </summary>
         private void TBox_Num1_TextChanged(object sender, EventArgs e)
         {
             if (TBox_Num1.Text.Length == 2)
@@ -328,6 +361,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Gestion de la TextBox du 3ème et 4ème numéro du Téléphone
+        /// </summary>
         private void TBox_Num2_TextChanged(object sender, EventArgs e)
         {
             if (TBox_Num2.Text.Length == 2)
@@ -336,6 +372,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Gestion de la TextBox du 5ème et 6ème numéro du Téléphone
+        /// </summary>
         private void TBox_Num3_TextChanged(object sender, EventArgs e)
         {
             if (TBox_Num3.Text.Length == 2)
@@ -344,6 +383,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Gestion de la TextBox du 7ème et 8ème numéro du Téléphone
+        /// </summary>
         private void TBox_Num4_TextChanged(object sender, EventArgs e)
         {
             if (TBox_Num4.Text.Length == 2)
@@ -352,6 +394,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Gestion de la TextBox du 9ème et 10ème numéro du Téléphone
+        /// </summary>
         private void TBox_Num5_TextChanged(object sender, EventArgs e)
         {
             if (TBox_Num5.Text.Length == 2)
@@ -361,6 +406,5 @@ namespace CliniqueVeto
         }
 
         #endregion
-
     }
 }

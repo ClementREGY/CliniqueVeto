@@ -26,27 +26,43 @@ namespace CliniqueVeto
 
             DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
 
+            // Mise en forme de la DataGridView - Police, Format de l'Heure et Ordre des Colonnes
             DataGrid_Agenda.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Agenda.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
+
             DataGrid_Agenda.Columns["dateRDV"].DefaultCellStyle.Format = "HH:mm";
+
             DataGrid_Agenda.Columns["dateRDV"].DisplayIndex = 0;
             DataGrid_Agenda.Columns["Client"].DisplayIndex = 1;
             DataGrid_Agenda.Columns["Animal"].DisplayIndex = 2;
             DataGrid_Agenda.Columns["Vétérinaire"].DisplayIndex = 3;
         }
 
+        #region Gestion de l'Affichage
+
+        /// <summary>
+        /// Affichage de l'Agenda du Vétérinaire sélectionné
+        /// </summary>
         private void CBox_Vétérinaires_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
         }
 
+        /// <summary>
+        /// Affichage de l'Agenda correspondant pour la date sélectionnée
+        /// </summary>
         private void DTPicker_Date_ValueChanged(object sender, EventArgs e)
         {
             DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
         }
 
+        #endregion
+
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Ouverture de la fenêtre de Dossier Médical en passant l'animal correspondant à la ligne de l'Agenda selectionnée
+        /// </summary>
         private void BTN_Dossier_Click(object sender, EventArgs e)
         {
             Guid codeAnimalSelectionné = ((RendezVous)DataGrid_Agenda.CurrentRow.DataBoundItem).codeAnimal;
@@ -56,6 +72,10 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        /// <summary>
+        /// Ouverture de la fenêtre de Consultation en passant l'animal correspondant à la ligne de l'Agenda selectionnée
+        /// ainsi que le vétérinaire actuellement connecté.
+        /// </summary>
         private void DataGrid_Agenda_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             FormPrincipale frmPrincipale = this.MdiParent as FormPrincipale;

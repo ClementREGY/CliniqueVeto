@@ -20,7 +20,7 @@ namespace BO
         [DisplayName("Date Vigueur")]
         public String dateVigueur { get; set; }
 
-        [DisplayName("Code Groupement")]
+        [DisplayName("Groupement")]
         public String codeGroupement { get; set; }
 
         [DisplayName("Prix")]

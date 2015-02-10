@@ -35,6 +35,9 @@ namespace CliniqueVeto
 
         #region Validation
 
+        /// <summary>
+        /// Vérifie que tous les champs ont été saisis, si oui, Update du login dans la Base de Données
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_Password.Text.Trim()))

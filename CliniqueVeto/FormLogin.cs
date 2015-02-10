@@ -21,6 +21,9 @@ namespace CliniqueVeto
             TBox_Password.Text = "PIN";
         }
 
+        /// <summary>
+        /// Vérifie que tous les champs ont été remplis, si c'est le cas, authentification
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_User.Text.Trim()))
@@ -36,9 +39,11 @@ namespace CliniqueVeto
                 else
                 {
                     Login loginSaisie = new Login(TBox_User.Text, TBox_Password.Text);
+                    // Si le login est authentifié
                     if (MgtLogin.Authentifier(loginSaisie))
                     {
                         Veterinaire VetoConnecté = MgtVeterinaire.GetVeterinaireConnecté(TBox_User.Text, TBox_Password.Text);
+                        // Enregistrement de la personne connectée et affichage
                         FormPrincipale frm = new FormPrincipale(VetoConnecté);
                         frm.Show();
                         frm.BringToFront();

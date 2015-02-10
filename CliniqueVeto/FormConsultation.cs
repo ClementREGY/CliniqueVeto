@@ -58,11 +58,11 @@ namespace CliniqueVeto
         {
             _baremeCourant = MgtBareme.GetBareme(CBox_Libellé.SelectedValue.ToString());
 
-            TBox_Prix.Text = _baremeCourant.tarifFixe.ToString();
-            TBox_Mini.Text = _baremeCourant.tarifMini.ToString();
-            TBox_Maxi.Text = _baremeCourant.tarifMaxi.ToString();
+            TBox_Prix.Text = _baremeCourant.tarifFixe.ToString("N2");
+            TBox_Mini.Text = _baremeCourant.tarifMini.ToString("N2");
+            TBox_Maxi.Text = _baremeCourant.tarifMaxi.ToString("N2");
 
-            if (TBox_Prix.Text == "0,0000")
+            if (TBox_Prix.Text == "0,00")
                 TBox_Prix.Enabled = true;
             else
                 TBox_Prix.Enabled = false;
@@ -73,7 +73,7 @@ namespace CliniqueVeto
             if ((Decimal.Parse(TBox_Prix.Text) > Decimal.Parse(TBox_Maxi.Text)) || (Decimal.Parse(TBox_Prix.Text) < Decimal.Parse(TBox_Mini.Text)))
             {
                 errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
-                TBox_Prix.Text = "0,0000";      
+                TBox_Prix.Text = "0,00";      
             }
             else
             {
@@ -110,7 +110,7 @@ namespace CliniqueVeto
                 CBox_Libellé.Enabled = true;
                 BTN_Ajout.Text = "Annuler";
                 BTN_Enregistrer.Enabled = true;
-                if (TBox_Prix.Text == "0,0000")
+                if (TBox_Prix.Text == "0,00")
                     TBox_Prix.Enabled = true;
                 else
                     TBox_Prix.Enabled = false;
@@ -129,25 +129,40 @@ namespace CliniqueVeto
         {
             if (DataGrid_Actes.RowCount == 0)
             {
-                _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? "" : TBox_Commentaire.Text), false);
-                Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
-                _consultationCourante.actes.Add(nouvelActe);
+                if (errorSaisie.GetError(TBox_Prix) == "")
+                {
+                    _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? "" : TBox_Commentaire.Text), false);
+                    Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                    _consultationCourante.actes.Add(nouvelActe);
+                    errorSaisie.Clear();
+                }
+                else
+                    errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
             }
             else
             {
-                Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
-                _consultationCourante.actes.Add(nouvelActe);
-                DataGrid_Actes.DataSource = null;
+                if (errorSaisie.GetError(TBox_Prix) == "")
+                {
+                    Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                    _consultationCourante.actes.Add(nouvelActe);
+                    DataGrid_Actes.DataSource = null;
+                    errorSaisie.Clear();
+                }
+                else
+                    errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
             }
 
-            DataGrid_Actes.DataSource = _consultationCourante.actes;
-            DataGrid_Actes.Columns["libelle"].DisplayIndex = 0;
-            DataGrid_Actes.Columns["codeGroupement"].DisplayIndex = 1;
-            DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
-            DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
+            if (errorSaisie.GetError(TBox_Prix) == "")
+            {
+                DataGrid_Actes.DataSource = _consultationCourante.actes;
+                DataGrid_Actes.Columns["libelle"].DisplayIndex = 0;
+                DataGrid_Actes.Columns["codeGroupement"].DisplayIndex = 1;
+                DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
+                DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
 
-            TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
-            CalculTotal();
+                TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+                CalculTotal();
+            }
         }
 
         private void BTN_Supprimer_Click(object sender, EventArgs e)

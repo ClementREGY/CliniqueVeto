@@ -21,6 +21,9 @@ namespace CliniqueVeto
             _vetoConnecté = VetoConnect;
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Stocks + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherStocks(object sender, EventArgs e)
         {
             FormStock frm;
@@ -28,10 +31,12 @@ namespace CliniqueVeto
             frm.MdiParent = this;
             frm.Show();
             frm.BringToFront();
-            // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
             frm.FormClosed += FermetureFille;
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Vétérinaires + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherVétérinaires(object sender, EventArgs e)
         {
             FormVétérinaires frm;
@@ -39,10 +44,12 @@ namespace CliniqueVeto
             frm.MdiParent = this;
             frm.Show();
             frm.BringToFront();
-            // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
             frm.FormClosed += FermetureFille;
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Barèmes + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherBarèmes(object sender, EventArgs e)
         {
             FormBarèmes frm;
@@ -50,10 +57,12 @@ namespace CliniqueVeto
             frm.MdiParent = this;
             frm.Show();
             frm.BringToFront();
-            // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
             frm.FormClosed += FermetureFille;
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Prises de RDV + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherRDV(object sender, EventArgs e)
         {
             FormRDV frm;
@@ -65,7 +74,6 @@ namespace CliniqueVeto
                 priseDeRendezVousToolStripMenuItem.Checked = true;
                 toolStripBt_RDV.Checked = true;
                 frm.BringToFront();
-                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
                 frm.FormClosed += FermetureFille;
             }
             else
@@ -75,6 +83,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Clients + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherClients(object sender, EventArgs e)
         {
             FormClients frm;
@@ -86,7 +97,6 @@ namespace CliniqueVeto
                 dossierClientAnimauxToolStripMenuItem.Checked = true;
                 toolStripBt_Client.Checked = true;
                 frm.BringToFront();
-                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
                 frm.FormClosed += FermetureFille;
             }
             else
@@ -96,6 +106,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Relances + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherRelance(object sender, EventArgs e)
         {
             FormRelance frm;
@@ -107,7 +120,6 @@ namespace CliniqueVeto
                 relancesToolStripMenuItem.Checked = true;
                 toolStripBt_Relance.Checked = true;
                 frm.BringToFront();
-                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
                 frm.FormClosed += FermetureFille;
             }
             else
@@ -117,6 +129,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion de l'Agenda + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherAgenda(object sender, EventArgs e)
         {
             FormAgenda frm;
@@ -128,7 +143,6 @@ namespace CliniqueVeto
                 agendaToolStripMenuItem.Checked = true;
                 toolStripBt_Agenda.Checked = true;
                 frm.BringToFront();
-                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
                 frm.FormClosed += FermetureFille;
             }
             else
@@ -138,6 +152,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Affichage de la forme de Gestion des Dossiers Médicaux + écoute de la fermeture de cette fenêtre
+        /// </summary>
         private void AfficherDossier(object sender, EventArgs e)
         {            
             FormSelection_Animal frm;
@@ -149,7 +166,6 @@ namespace CliniqueVeto
                 dossiersMédicauxToolStripMenuItem.Checked = true;
                 toolStripBt_Dossier.Checked = true;
                 frm.BringToFront();
-                // Se mettre à l'écoute de l'évènement FormClosing de la feuille fille.
                 frm.FormClosed += FermetureFille;
             }
             else
@@ -159,9 +175,12 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Identifie la fenêtre qui vient d'être fermée pour décocher l'(les) option(s) correspondante(s) dans les menus
+        /// </summary>
         private void FermetureFille(object sender, FormClosedEventArgs e)
         {
-            //Identifie l'occurence de fenêtre fermée pour décocher la bonne option de menu.
+            // Identifie l'occurence de la fenêtre fermée
             Form f = (Form)sender;
             if (f is FormRDV)
             {

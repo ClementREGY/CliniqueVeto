@@ -44,6 +44,7 @@ namespace CliniqueVeto
             CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.Items[0].ToString());
             TBox_Client.Text = ClientCourant.nomPrenom;
 
+            // Affichage en fonction du mode
             if (frmClients.ModeAnimal == "Ajout")
             {
                 CBox_Genre.SelectedIndex = 0;
@@ -61,6 +62,9 @@ namespace CliniqueVeto
 
         #region Gestion de l'Affichage
 
+        /// <summary>
+        /// Remplissage des champs avec les données de l'animal courant
+        /// </summary>
         private void AfficherAnimalCourant()
         {
             TBox_Code.Text = frmClients.AnimalCourant.codeAnimal.ToString();
@@ -77,11 +81,17 @@ namespace CliniqueVeto
             CBox_Espèce.SelectedValue = frmClients.AnimalCourant.espece;
         }
 
+        /// <summary>
+        /// Affichage des races correspondantes à l'espèce selectionnée
+        /// </summary>
         private void CBox_Espèce_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.SelectedValue.ToString());
         }
 
+        /// <summary>
+        /// Réinitialisation des Champs de saisie et réactivation des boutons
+        /// </summary>
         private void Reset()
         {
             Panel_GestionAnimaux.Enabled = true;
@@ -99,6 +109,9 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Ouverture de la fenêtre de Dossier Médical en passant l'animal courant
+        /// </summary>
         private void BTN_Dossier_Click(object sender, EventArgs e)
         {
             FormDossierMédical frm = new FormDossierMédical(frmClients.AnimalCourant.codeAnimal);
@@ -107,6 +120,9 @@ namespace CliniqueVeto
             frm.BringToFront();
         }
 
+        /// <summary>
+        /// Vérifie que tous les champs ont été remplis, si oui, en fonction du mode, ajout ou modification de l'animal
+        /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(TBox_Nom.Text.Trim()))
@@ -163,6 +179,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Annulation, fermeture de la fenêtre
+        /// </summary>
         private void BTN_Annuler_Click(object sender, EventArgs e)
         {
             this.Close();
