@@ -14,6 +14,14 @@ namespace CliniqueVeto
 {
     public partial class FormBarèmes : Form
     {
+        public Bareme BaremeCourant
+        {
+            get
+            {
+                return (Bareme)DataGrid_Barèmes.CurrentRow.DataBoundItem;
+            }
+        }
+
         public FormBarèmes()
         {
             InitializeComponent();
@@ -21,12 +29,28 @@ namespace CliniqueVeto
 
         private void FormBarèmes_Load(object sender, EventArgs e)
         {
+            Reset();
             CBox_TypeTarif.SelectedIndex = 0;
             // Chargement de la grille
             DataGrid_Barèmes.DataSource = MgtBareme.GetBaremes();
+            DataGrid_Barèmes.Columns["tarifFixe"].DefaultCellStyle.Format = "0.00";
+            DataGrid_Barèmes.Columns["tarifMini"].DefaultCellStyle.Format = "0.00";
+            DataGrid_Barèmes.Columns["tarifMaxi"].DefaultCellStyle.Format = "0.00";
         }
 
         #region Gestion de l'Affichage
+
+        // Remplir les TEXTBOX TypeActe et Libellé par l'élément sélectionné
+        private void DataGrid_Barèmes_SelectionChanged(object sender, EventArgs e)
+        {
+            AfficherActeCourant();
+        }
+
+        private void AfficherActeCourant()
+        {
+            TBox_Type.Text = DataGrid_Barèmes.CurrentRow.Cells[1].Value.ToString();
+            Tbox_Libelle.Text = DataGrid_Barèmes.CurrentRow.Cells[2].Value.ToString();
+        }
 
         /// <summary>
         /// Réinitialise tous les Champs à saisir
@@ -64,12 +88,48 @@ namespace CliniqueVeto
                 TBox_Type.Visible = true;
                 Tbox_Libelle.Visible = true;
                 CBox_TypeTarif.Visible = true;
-                // Remplir les TEXTBOX TypeActe et Libellé par l'élément sélectionné
-
             }
             else if (BTN_MiseAJour.Text == "Valider")
             {
                 // Validation, changement de l'archive de l'élément selectionné et création du nouveau
+                if (CBox_TypeTarif.SelectedIndex == 0)
+                {
+                    if (String.IsNullOrEmpty(TBox_TarifFixe.Text.Trim()))
+                    {
+                        errorSaisie.SetError(TBox_TarifFixe, "Veuillez saisir un nouveau tarif.");
+                    }
+                    else
+                    {
+                        BaremeCourant.dateVigueur = DateTime.Now.ToString();
+                        Bareme bareme = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, decimal.Parse(TBox_TarifFixe.Text), 0, 0, BaremeCourant.codeVaccin, false);
+                        MgtBareme.AddBareme(bareme);
+                        MgtBareme.SetBaremeArchive(bareme);
+                        Reset();
+                    }
+                }
+                else if (CBox_TypeTarif.SelectedIndex == 1)
+                {
+                    if (String.IsNullOrEmpty(TBox_TarifMaxi.Text.Trim()))
+                    {
+                        errorSaisie.SetError(TBox_TarifMaxi, "Veuillez saisir un nouveau tarif maximum.");
+                    }
+                    else
+                    {
+                        if (String.IsNullOrEmpty(TBox_TarifMini.Text.Trim()))
+                        {
+                            errorSaisie.SetError(TBox_TarifMini, "Veuillez saisir un nouveau tarif minimum.");
+                        }
+                        else
+                        {
+                            BaremeCourant.dateVigueur = DateTime.Now.ToString();
+                            Bareme bareme = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, 0, decimal.Parse(TBox_TarifMini.Text), decimal.Parse(TBox_TarifMaxi.Text), BaremeCourant.codeVaccin , false);
+                            MgtBareme.AddBareme(bareme);
+                            MgtBareme.SetBaremeArchive(bareme);
+                            Reset();
+                        }
+                    }
+                }
+
                 Reset();
             }
         }
@@ -80,5 +140,34 @@ namespace CliniqueVeto
         }
 
         #endregion
+
+        private void CBox_TypeTarif_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CBox_TypeTarif.SelectedIndex == 0)
+            {
+                Label_Fixe.Visible = true;
+                TBox_TarifFixe.Visible = true;
+                TBox_TarifFixe.Enabled = true;
+                Label_Mini.Visible = false;
+                Label_Maxi.Visible = false;
+                TBox_TarifMini.Visible = false;
+                TBox_TarifMaxi.Visible = false;
+                TBox_TarifMini.Enabled = false;
+                TBox_TarifMaxi.Enabled = false;
+
+            }
+            else if (CBox_TypeTarif.SelectedIndex == 1)
+            {
+                Label_Fixe.Visible = false;
+                TBox_TarifFixe.Visible = false;
+                TBox_TarifFixe.Enabled = false;
+                Label_Mini.Visible = true;
+                Label_Maxi.Visible = true;
+                TBox_TarifMini.Visible = true;
+                TBox_TarifMaxi.Visible = true;
+                TBox_TarifMini.Enabled = true;
+                TBox_TarifMaxi.Enabled = true;
+            }
+        }
     }
 }

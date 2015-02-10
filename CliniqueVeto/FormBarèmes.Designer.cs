@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.BTN_Annuler = new System.Windows.Forms.Button();
             this.DataGrid_Barèmes = new System.Windows.Forms.DataGridView();
             this.CBox_TypeTarif = new System.Windows.Forms.ComboBox();
@@ -44,7 +45,9 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.BTN_MiseAJour = new System.Windows.Forms.Button();
+            this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Barèmes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
             // 
             // BTN_Annuler
@@ -68,12 +71,14 @@
             this.DataGrid_Barèmes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGrid_Barèmes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGrid_Barèmes.Location = new System.Drawing.Point(15, 12);
+            this.DataGrid_Barèmes.MultiSelect = false;
             this.DataGrid_Barèmes.Name = "DataGrid_Barèmes";
             this.DataGrid_Barèmes.ReadOnly = true;
             this.DataGrid_Barèmes.RowHeadersVisible = false;
             this.DataGrid_Barèmes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Barèmes.Size = new System.Drawing.Size(445, 204);
             this.DataGrid_Barèmes.TabIndex = 1;
+            this.DataGrid_Barèmes.SelectionChanged += new System.EventHandler(this.DataGrid_Barèmes_SelectionChanged);
             // 
             // CBox_TypeTarif
             // 
@@ -88,6 +93,7 @@
             this.CBox_TypeTarif.Size = new System.Drawing.Size(121, 23);
             this.CBox_TypeTarif.TabIndex = 4;
             this.CBox_TypeTarif.Visible = false;
+            this.CBox_TypeTarif.SelectedIndexChanged += new System.EventHandler(this.CBox_TypeTarif_SelectedIndexChanged);
             // 
             // Tbox_Libelle
             // 
@@ -217,6 +223,10 @@
             this.BTN_MiseAJour.UseVisualStyleBackColor = false;
             this.BTN_MiseAJour.Click += new System.EventHandler(this.BTN_MiseAJour_Click);
             // 
+            // errorSaisie
+            // 
+            this.errorSaisie.ContainerControl = this;
+            // 
             // FormBarèmes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -245,6 +255,7 @@
             this.Text = "Barème de Tarification";
             this.Load += new System.EventHandler(this.FormBarèmes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Barèmes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +279,6 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private System.Windows.Forms.Button BTN_MiseAJour;
+        private System.Windows.Forms.ErrorProvider errorSaisie;
     }
 }

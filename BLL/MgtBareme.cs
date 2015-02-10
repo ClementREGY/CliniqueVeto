@@ -12,6 +12,13 @@ namespace BLL
     {
         #region Méthodes CRUD
 
+        // Create
+
+        public static bool AddBareme(Bareme pBareme)
+        {
+            return DALBarème.AddBareme(pBareme);
+        }
+
         // Read
 
         public static List<Bareme> GetBaremes()
@@ -42,6 +49,13 @@ namespace BLL
         public static List<Decimal> GetTarifsActes(String libelle)
         {
             return DALBarème.GetTarifsActes(libelle);
+        }
+
+        // Update
+
+        public static bool SetBaremeArchive(Bareme pBareme)
+        {
+            return DALBarème.SetBaremeArchive(pBareme);
         }
 
         #endregion

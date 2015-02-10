@@ -10,6 +10,38 @@ namespace DAL
 {
     public class DALBarème
     {
+        #region Create
+        public static bool AddBareme(Bareme bareme)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "EXEC ajout_bareme @code,@dateVigueur,@typeActe,@libelle,@tarifFixe,@tarifMin,@tarifMax,@codeVaccin";
+                    command.Parameters.AddWithValue("@code", bareme.codeGroupement);
+                    command.Parameters.AddWithValue("@dateVigueur", bareme.dateVigueur);
+                    command.Parameters.AddWithValue("@typeActe", bareme.typeActe);
+                    command.Parameters.AddWithValue("@libelle", bareme.libelle);
+                    command.Parameters.AddWithValue("@tarifFixe", bareme.tarifFixe);
+                    command.Parameters.AddWithValue("@tarifMin", bareme.tarifMini);
+                    command.Parameters.AddWithValue("@tarifMax", bareme.tarifMaxi);
+                    command.Parameters.AddWithValue("@codeVaccin", Guid.Parse(bareme.codeVaccin));
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+        #endregion
+
         #region Read
 
         public static List<Bareme> GetBaremes()
@@ -223,6 +255,35 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
             return list;
+        }
+
+        #endregion
+
+        #region Update
+
+        public static bool SetBaremeArchive(Bareme bareme)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "UPDATE Baremes SET Archive = '1' WHERE CodeGroupement = @code AND DateVigueur = @date";
+                    command.Parameters.AddWithValue("@code", bareme.codeGroupement);
+                    command.Parameters.AddWithValue("@date", bareme.dateVigueur);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
         }
 
         #endregion
