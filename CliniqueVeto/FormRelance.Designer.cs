@@ -39,21 +39,23 @@
             this.DataGrid_Relance.AllowUserToResizeRows = false;
             this.DataGrid_Relance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGrid_Relance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGrid_Relance.Location = new System.Drawing.Point(12, 12);
+            this.DataGrid_Relance.Location = new System.Drawing.Point(16, 16);
+            this.DataGrid_Relance.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DataGrid_Relance.MultiSelect = false;
             this.DataGrid_Relance.Name = "DataGrid_Relance";
             this.DataGrid_Relance.ReadOnly = true;
             this.DataGrid_Relance.RowHeadersVisible = false;
             this.DataGrid_Relance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGrid_Relance.Size = new System.Drawing.Size(593, 179);
+            this.DataGrid_Relance.Size = new System.Drawing.Size(553, 153);
             this.DataGrid_Relance.TabIndex = 0;
             // 
             // BTN_Generer
             // 
             this.BTN_Generer.BackColor = System.Drawing.SystemColors.Control;
-            this.BTN_Generer.Location = new System.Drawing.Point(239, 197);
+            this.BTN_Generer.Location = new System.Drawing.Point(221, 177);
+            this.BTN_Generer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BTN_Generer.Name = "BTN_Generer";
-            this.BTN_Generer.Size = new System.Drawing.Size(136, 23);
+            this.BTN_Generer.Size = new System.Drawing.Size(141, 30);
             this.BTN_Generer.TabIndex = 1;
             this.BTN_Generer.Text = "Générer la relance";
             this.BTN_Generer.UseVisualStyleBackColor = false;
@@ -61,13 +63,15 @@
             // 
             // FormRelance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(617, 233);
+            this.ClientSize = new System.Drawing.Size(582, 214);
             this.Controls.Add(this.BTN_Generer);
             this.Controls.Add(this.DataGrid_Relance);
+            this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormRelance";
             this.Text = "Relance";
             this.Load += new System.EventHandler(this.FormRelance_Load);

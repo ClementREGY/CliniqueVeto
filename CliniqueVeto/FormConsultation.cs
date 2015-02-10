@@ -95,7 +95,7 @@ namespace CliniqueVeto
                 px += Convert.ToDecimal(DataGrid_Actes.Rows[i].Cells[2].Value);
             }
 
-            TBox_Total.Text = px.ToString();
+            TBox_Total.Text = px.ToString("N2");
         }
 
         #endregion

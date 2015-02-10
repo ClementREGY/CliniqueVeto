@@ -478,16 +478,16 @@
             // TBox_Total
             // 
             this.TBox_Total.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Total.Location = new System.Drawing.Point(453, 296);
+            this.TBox_Total.Location = new System.Drawing.Point(447, 296);
             this.TBox_Total.Name = "TBox_Total";
-            this.TBox_Total.Size = new System.Drawing.Size(50, 26);
+            this.TBox_Total.Size = new System.Drawing.Size(56, 26);
             this.TBox_Total.TabIndex = 41;
             // 
             // Label_Total
             // 
             this.Label_Total.AutoSize = true;
             this.Label_Total.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Total.Location = new System.Drawing.Point(313, 299);
+            this.Label_Total.Location = new System.Drawing.Point(307, 299);
             this.Label_Total.Name = "Label_Total";
             this.Label_Total.Size = new System.Drawing.Size(134, 19);
             this.Label_Total.TabIndex = 38;
