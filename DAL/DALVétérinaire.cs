@@ -124,6 +124,43 @@ namespace DAL
             return veto;
         }
 
+        public static Veterinaire GetVeterinaireConnect(String User, String Passwd)
+        {
+            Veterinaire veto = new Veterinaire();
+
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Veterinaires V JOIN Logins L ON V.RefLogin = L.ID WHERE L.Login = @login AND L.Password = @password";
+                    command.Parameters.AddWithValue("@login", User);
+                    command.Parameters.AddWithValue("@password", Passwd);
+
+                    SqlDataReader dt = command.ExecuteReader();
+
+                    int colId = dt.GetOrdinal("CodeVeto");
+                    int colNom = dt.GetOrdinal("NomVeto");
+                    int colArchive = dt.GetOrdinal("Archive");
+                    int colRefLogin = dt.GetOrdinal("RefLogin");
+
+                    while (dt.Read())
+                    {
+                        veto.nomVeto = dt.GetString(colNom);
+                        veto.archive = dt.GetBoolean(colArchive);
+                        veto.refLogin = dt.GetInt32(colRefLogin);
+                        veto.codeVeto = dt.GetGuid(colId);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+            return veto;
+        }
+
         #endregion
 
         #region Update

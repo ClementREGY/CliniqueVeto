@@ -14,9 +14,15 @@ namespace CliniqueVeto
 {
     public partial class FormConsultation : Form
     {
+        #region Attributs
+
         private Guid _codeAnimal, _codeVeto;
         private Animal _animalCourant;
         private Veterinaire _veterinaireCourant;
+        private Consultation _consultationCourante;
+        private Bareme _baremeCourant;
+
+        #endregion
 
         public FormConsultation(Guid codeAnimal, Guid codeVeto)
         {
@@ -38,21 +44,112 @@ namespace CliniqueVeto
             TBox_Tatouage.Text = _animalCourant.tatouage;
             TBox_Vétérinaire.Text = _veterinaireCourant.nomVeto;
 
-            CBox_Type.DataSource = MgtConsultation.GetTypesActes();
-            CBox_Libellé.DataSource = MgtConsultation.GetLibellesActes(CBox_Type.Items[0].ToString());
+            CBox_Type.DataSource = MgtBareme.GetTypesActes();
+
+            DataGrid_Actes.DataSource = _consultationCourante.actes;
+
+            DataGrid_Actes.Columns["Acte"].DisplayIndex = 0;
+            DataGrid_Actes.Columns["Code Groupement"].DisplayIndex = 1;
+            DataGrid_Actes.Columns["Date Vigueur"].DisplayIndex = 2;
+            DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
         }
+
+        #region Gestion de l'Affichage
 
         private void CBox_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CBox_Libellé.DataSource = MgtConsultation.GetLibellesActes(CBox_Type.SelectedValue.ToString());
+            CBox_Libellé.DataSource = MgtBareme.GetLibelleActe(CBox_Type.SelectedValue.ToString());
         }
 
         private void CBox_Libellé_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<Decimal> listePrix = MgtConsultation.GetTarifsActes(CBox_Libellé.Text);
-            TBox_Prix.Text = listePrix.ElementAt(0).ToString();
-            TBox_Mini.Text = listePrix.ElementAt(1).ToString();
-            TBox_Maxi.Text = listePrix.ElementAt(2).ToString();
+            _baremeCourant = MgtBareme.GetBareme(CBox_Libellé.SelectedValue.ToString());
+
+            TBox_Prix.Text = _baremeCourant.tarifFixe.ToString();
+            TBox_Mini.Text = _baremeCourant.tarifMini.ToString();
+            TBox_Maxi.Text = _baremeCourant.tarifMaxi.ToString();
+
+            if (TBox_Prix.Text == "0,0000")
+                TBox_Prix.Enabled = true;
+            else
+                TBox_Prix.Enabled = false;
         }
+
+        private void TBox_Prix_Leave(object sender, EventArgs e)
+        {
+            if ((Decimal.Parse(TBox_Prix.Text) > Decimal.Parse(TBox_Maxi.Text)) || (Decimal.Parse(TBox_Prix.Text) < Decimal.Parse(TBox_Mini.Text)))
+            {
+                errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
+                TBox_Prix.Text = "0,0000";      
+            }
+            else
+            {
+                errorSaisie.Clear();
+                TBox_Prix.Text = string.Format("{0:#,##0.00}", double.Parse(TBox_Prix.Text));
+            }
+        }
+
+        private void TBox_Prix_Enter(object sender, EventArgs e)
+        {
+            TBox_Prix.Clear();
+        }
+
+        #endregion
+
+        #region Gestion des Boutons
+
+        private void BTN_Ajout_Click(object sender, EventArgs e)
+        {
+            if (BTN_Ajout.Text == "Ajouter un Acte")
+            {
+                CBox_Type.Enabled = true;
+                CBox_Libellé.Enabled = true;
+                BTN_Ajout.Text = "Annuler";
+                BTN_Enregistrer.Enabled = true;
+                if (TBox_Prix.Text == "0,0000")
+                    TBox_Prix.Enabled = true;
+                else
+                    TBox_Prix.Enabled = false;
+            }
+            else if (BTN_Ajout.Text == "Annuler")
+            {
+                CBox_Type.Enabled = false;
+                CBox_Libellé.Enabled = false;
+                TBox_Prix.Enabled = false;
+                BTN_Ajout.Text = "Ajouter un Acte";
+                BTN_Enregistrer.Enabled = false;
+            }
+        }
+
+        private void BTN_Enregistrer_Click(object sender, EventArgs e)
+        {
+            if (DataGrid_Actes.RowCount == 0)
+            {
+                _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? "" : TBox_Commentaire.Text), false);
+                Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                _consultationCourante.actes.Add(nouvelActe);
+            }
+            else
+            {
+                Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                _consultationCourante.actes.Add(nouvelActe);
+                DataGrid_Actes.DataSource = null;
+            }
+
+            DataGrid_Actes.DataSource = _consultationCourante.actes;
+
+            TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+        }
+
+        private void BTN_Supprimer_Click(object sender, EventArgs e)
+        {
+            Acte acteSelect = (Acte)DataGrid_Actes.CurrentRow.DataBoundItem;
+            _consultationCourante.actes.Remove(acteSelect);
+            DataGrid_Actes.DataSource = null;
+            DataGrid_Actes.DataSource = _consultationCourante.actes;
+            TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+        }
+
+        #endregion
     }
 }

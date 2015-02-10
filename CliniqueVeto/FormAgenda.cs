@@ -58,12 +58,13 @@ namespace CliniqueVeto
 
         private void DataGrid_Agenda_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            FormPrincipale frmPrincipale = this.MdiParent as FormPrincipale;
             Guid animalSelectionne = ((RendezVous)DataGrid_Agenda.CurrentRow.DataBoundItem).codeAnimal;
-            Guid veterinaire = ((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto;
-            FormConsultation frm = new FormConsultation(animalSelectionne, veterinaire);
+            FormConsultation frm = new FormConsultation(animalSelectionne, frmPrincipale._vetoConnecté.codeVeto);            
             frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
+            this.Close();
         }
 
         #endregion

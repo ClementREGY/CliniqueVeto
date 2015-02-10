@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConsultation));
             this.Panel_GestionAnimaux = new System.Windows.Forms.Panel();
             this.Label_Annuler = new System.Windows.Forms.Label();
@@ -54,12 +55,19 @@
             this.Label_Commentaire = new System.Windows.Forms.Label();
             this.TBox_Commentaire = new System.Windows.Forms.TextBox();
             this.GBox_Actes = new System.Windows.Forms.GroupBox();
+            this.TBox_Prix = new System.Windows.Forms.TextBox();
+            this.Label_Prix = new System.Windows.Forms.Label();
+            this.TBox_Maxi = new System.Windows.Forms.TextBox();
+            this.Label_Maxi = new System.Windows.Forms.Label();
+            this.TBox_Mini = new System.Windows.Forms.TextBox();
+            this.Label_Mini = new System.Windows.Forms.Label();
+            this.TBox_Vétérinaire = new System.Windows.Forms.TextBox();
             this.BTN_Supprimer = new System.Windows.Forms.Button();
-            this.BTN_enregistrer = new System.Windows.Forms.Button();
+            this.BTN_Enregistrer = new System.Windows.Forms.Button();
             this.BTN_Ajout = new System.Windows.Forms.Button();
             this.TBox_Total = new System.Windows.Forms.TextBox();
             this.Label_Total = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.DataGrid_Actes = new System.Windows.Forms.DataGridView();
             this.CBox_Libellé = new System.Windows.Forms.ComboBox();
             this.Label_Libellé = new System.Windows.Forms.Label();
             this.CBox_Type = new System.Windows.Forms.ComboBox();
@@ -70,17 +78,12 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.Line = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.TBox_NbActes = new System.Windows.Forms.TextBox();
-            this.TBox_Vétérinaire = new System.Windows.Forms.TextBox();
-            this.TBox_Prix = new System.Windows.Forms.TextBox();
-            this.Label_Prix = new System.Windows.Forms.Label();
-            this.TBox_Maxi = new System.Windows.Forms.TextBox();
-            this.Label_Maxi = new System.Windows.Forms.Label();
-            this.TBox_Mini = new System.Windows.Forms.TextBox();
-            this.Label_Mini = new System.Windows.Forms.Label();
+            this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
             this.Panel_GestionAnimaux.SuspendLayout();
             this.GBox_Animal.SuspendLayout();
             this.GBox_Actes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Actes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_GestionAnimaux
@@ -346,11 +349,11 @@
             this.GBox_Actes.Controls.Add(this.Label_Mini);
             this.GBox_Actes.Controls.Add(this.TBox_Vétérinaire);
             this.GBox_Actes.Controls.Add(this.BTN_Supprimer);
-            this.GBox_Actes.Controls.Add(this.BTN_enregistrer);
+            this.GBox_Actes.Controls.Add(this.BTN_Enregistrer);
             this.GBox_Actes.Controls.Add(this.BTN_Ajout);
             this.GBox_Actes.Controls.Add(this.TBox_Total);
             this.GBox_Actes.Controls.Add(this.Label_Total);
-            this.GBox_Actes.Controls.Add(this.dataGridView1);
+            this.GBox_Actes.Controls.Add(this.DataGrid_Actes);
             this.GBox_Actes.Controls.Add(this.CBox_Libellé);
             this.GBox_Actes.Controls.Add(this.Label_Libellé);
             this.GBox_Actes.Controls.Add(this.CBox_Type);
@@ -367,26 +370,99 @@
             this.GBox_Actes.TabStop = false;
             this.GBox_Actes.Text = "Actes";
             // 
+            // TBox_Prix
+            // 
+            this.TBox_Prix.Enabled = false;
+            this.TBox_Prix.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Prix.Location = new System.Drawing.Point(449, 130);
+            this.TBox_Prix.Name = "TBox_Prix";
+            this.TBox_Prix.Size = new System.Drawing.Size(50, 25);
+            this.TBox_Prix.TabIndex = 37;
+            this.TBox_Prix.Text = "00,00";
+            this.TBox_Prix.Enter += new System.EventHandler(this.TBox_Prix_Enter);
+            this.TBox_Prix.Leave += new System.EventHandler(this.TBox_Prix_Leave);
+            // 
+            // Label_Prix
+            // 
+            this.Label_Prix.AutoSize = true;
+            this.Label_Prix.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Prix.Location = new System.Drawing.Point(407, 135);
+            this.Label_Prix.Name = "Label_Prix";
+            this.Label_Prix.Size = new System.Drawing.Size(34, 17);
+            this.Label_Prix.TabIndex = 52;
+            this.Label_Prix.Text = "Prix";
+            // 
+            // TBox_Maxi
+            // 
+            this.TBox_Maxi.Enabled = false;
+            this.TBox_Maxi.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Maxi.Location = new System.Drawing.Point(449, 99);
+            this.TBox_Maxi.Name = "TBox_Maxi";
+            this.TBox_Maxi.Size = new System.Drawing.Size(50, 25);
+            this.TBox_Maxi.TabIndex = 36;
+            this.TBox_Maxi.Text = "00,00";
+            // 
+            // Label_Maxi
+            // 
+            this.Label_Maxi.AutoSize = true;
+            this.Label_Maxi.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Maxi.Location = new System.Drawing.Point(407, 103);
+            this.Label_Maxi.Name = "Label_Maxi";
+            this.Label_Maxi.Size = new System.Drawing.Size(38, 17);
+            this.Label_Maxi.TabIndex = 50;
+            this.Label_Maxi.Text = "Maxi";
+            // 
+            // TBox_Mini
+            // 
+            this.TBox_Mini.Enabled = false;
+            this.TBox_Mini.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Mini.Location = new System.Drawing.Point(449, 68);
+            this.TBox_Mini.Name = "TBox_Mini";
+            this.TBox_Mini.Size = new System.Drawing.Size(50, 25);
+            this.TBox_Mini.TabIndex = 35;
+            this.TBox_Mini.Text = "00,00";
+            // 
+            // Label_Mini
+            // 
+            this.Label_Mini.AutoSize = true;
+            this.Label_Mini.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_Mini.Location = new System.Drawing.Point(407, 71);
+            this.Label_Mini.Name = "Label_Mini";
+            this.Label_Mini.Size = new System.Drawing.Size(36, 17);
+            this.Label_Mini.TabIndex = 48;
+            this.Label_Mini.Text = "Mini";
+            // 
+            // TBox_Vétérinaire
+            // 
+            this.TBox_Vétérinaire.Enabled = false;
+            this.TBox_Vétérinaire.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TBox_Vétérinaire.Location = new System.Drawing.Point(261, 32);
+            this.TBox_Vétérinaire.Name = "TBox_Vétérinaire";
+            this.TBox_Vétérinaire.Size = new System.Drawing.Size(242, 25);
+            this.TBox_Vétérinaire.TabIndex = 32;
+            // 
             // BTN_Supprimer
             // 
             this.BTN_Supprimer.BackColor = System.Drawing.SystemColors.Control;
             this.BTN_Supprimer.Location = new System.Drawing.Point(8, 296);
             this.BTN_Supprimer.Name = "BTN_Supprimer";
             this.BTN_Supprimer.Size = new System.Drawing.Size(158, 27);
-            this.BTN_Supprimer.TabIndex = 47;
+            this.BTN_Supprimer.TabIndex = 40;
             this.BTN_Supprimer.Text = "Supprimer l\'Acte";
             this.BTN_Supprimer.UseVisualStyleBackColor = false;
+            this.BTN_Supprimer.Click += new System.EventHandler(this.BTN_Supprimer_Click);
             // 
-            // BTN_enregistrer
+            // BTN_Enregistrer
             // 
-            this.BTN_enregistrer.BackColor = System.Drawing.SystemColors.Control;
-            this.BTN_enregistrer.Enabled = false;
-            this.BTN_enregistrer.Location = new System.Drawing.Point(228, 128);
-            this.BTN_enregistrer.Name = "BTN_enregistrer";
-            this.BTN_enregistrer.Size = new System.Drawing.Size(158, 27);
-            this.BTN_enregistrer.TabIndex = 46;
-            this.BTN_enregistrer.Text = "Enregistrer";
-            this.BTN_enregistrer.UseVisualStyleBackColor = false;
+            this.BTN_Enregistrer.BackColor = System.Drawing.SystemColors.Control;
+            this.BTN_Enregistrer.Enabled = false;
+            this.BTN_Enregistrer.Location = new System.Drawing.Point(228, 128);
+            this.BTN_Enregistrer.Name = "BTN_Enregistrer";
+            this.BTN_Enregistrer.Size = new System.Drawing.Size(158, 27);
+            this.BTN_Enregistrer.TabIndex = 39;
+            this.BTN_Enregistrer.Text = "Enregistrer";
+            this.BTN_Enregistrer.UseVisualStyleBackColor = false;
+            this.BTN_Enregistrer.Click += new System.EventHandler(this.BTN_Enregistrer_Click);
             // 
             // BTN_Ajout
             // 
@@ -394,9 +470,10 @@
             this.BTN_Ajout.Location = new System.Drawing.Point(34, 128);
             this.BTN_Ajout.Name = "BTN_Ajout";
             this.BTN_Ajout.Size = new System.Drawing.Size(158, 27);
-            this.BTN_Ajout.TabIndex = 45;
+            this.BTN_Ajout.TabIndex = 38;
             this.BTN_Ajout.Text = "Ajouter un Acte";
             this.BTN_Ajout.UseVisualStyleBackColor = false;
+            this.BTN_Ajout.Click += new System.EventHandler(this.BTN_Ajout_Click);
             // 
             // TBox_Total
             // 
@@ -404,7 +481,7 @@
             this.TBox_Total.Location = new System.Drawing.Point(453, 296);
             this.TBox_Total.Name = "TBox_Total";
             this.TBox_Total.Size = new System.Drawing.Size(50, 26);
-            this.TBox_Total.TabIndex = 43;
+            this.TBox_Total.TabIndex = 41;
             // 
             // Label_Total
             // 
@@ -416,22 +493,29 @@
             this.Label_Total.TabIndex = 38;
             this.Label_Total.Text = "Total Consultation";
             // 
-            // dataGridView1
+            // DataGrid_Actes
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(8, 187);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(496, 103);
-            this.dataGridView1.TabIndex = 37;
+            this.DataGrid_Actes.AllowUserToResizeColumns = false;
+            this.DataGrid_Actes.AllowUserToResizeRows = false;
+            this.DataGrid_Actes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGrid_Actes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid_Actes.Location = new System.Drawing.Point(8, 187);
+            this.DataGrid_Actes.Name = "DataGrid_Actes";
+            this.DataGrid_Actes.ReadOnly = true;
+            this.DataGrid_Actes.RowHeadersVisible = false;
+            this.DataGrid_Actes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGrid_Actes.Size = new System.Drawing.Size(496, 103);
+            this.DataGrid_Actes.TabIndex = 38;
             // 
             // CBox_Libellé
             // 
             this.CBox_Libellé.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBox_Libellé.Enabled = false;
             this.CBox_Libellé.FormattingEnabled = true;
             this.CBox_Libellé.Location = new System.Drawing.Point(230, 68);
             this.CBox_Libellé.Name = "CBox_Libellé";
             this.CBox_Libellé.Size = new System.Drawing.Size(162, 25);
-            this.CBox_Libellé.TabIndex = 35;
+            this.CBox_Libellé.TabIndex = 34;
             this.CBox_Libellé.SelectedIndexChanged += new System.EventHandler(this.CBox_Libellé_SelectedIndexChanged);
             // 
             // Label_Libellé
@@ -447,6 +531,7 @@
             // CBox_Type
             // 
             this.CBox_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBox_Type.Enabled = false;
             this.CBox_Type.FormattingEnabled = true;
             this.CBox_Type.Location = new System.Drawing.Point(53, 68);
             this.CBox_Type.Name = "CBox_Type";
@@ -524,74 +609,9 @@
             this.TBox_NbActes.Text = "0";
             this.TBox_NbActes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // TBox_Vétérinaire
+            // errorSaisie
             // 
-            this.TBox_Vétérinaire.Enabled = false;
-            this.TBox_Vétérinaire.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Vétérinaire.Location = new System.Drawing.Point(261, 32);
-            this.TBox_Vétérinaire.Name = "TBox_Vétérinaire";
-            this.TBox_Vétérinaire.Size = new System.Drawing.Size(242, 25);
-            this.TBox_Vétérinaire.TabIndex = 32;
-            // 
-            // TBox_Prix
-            // 
-            this.TBox_Prix.Enabled = false;
-            this.TBox_Prix.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Prix.Location = new System.Drawing.Point(453, 130);
-            this.TBox_Prix.Name = "TBox_Prix";
-            this.TBox_Prix.Size = new System.Drawing.Size(50, 25);
-            this.TBox_Prix.TabIndex = 53;
-            this.TBox_Prix.Text = "00.00";
-            // 
-            // Label_Prix
-            // 
-            this.Label_Prix.AutoSize = true;
-            this.Label_Prix.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Prix.Location = new System.Drawing.Point(411, 135);
-            this.Label_Prix.Name = "Label_Prix";
-            this.Label_Prix.Size = new System.Drawing.Size(34, 17);
-            this.Label_Prix.TabIndex = 52;
-            this.Label_Prix.Text = "Prix";
-            // 
-            // TBox_Maxi
-            // 
-            this.TBox_Maxi.Enabled = false;
-            this.TBox_Maxi.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Maxi.Location = new System.Drawing.Point(453, 99);
-            this.TBox_Maxi.Name = "TBox_Maxi";
-            this.TBox_Maxi.Size = new System.Drawing.Size(50, 25);
-            this.TBox_Maxi.TabIndex = 51;
-            this.TBox_Maxi.Text = "00.00";
-            // 
-            // Label_Maxi
-            // 
-            this.Label_Maxi.AutoSize = true;
-            this.Label_Maxi.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Maxi.Location = new System.Drawing.Point(411, 103);
-            this.Label_Maxi.Name = "Label_Maxi";
-            this.Label_Maxi.Size = new System.Drawing.Size(38, 17);
-            this.Label_Maxi.TabIndex = 50;
-            this.Label_Maxi.Text = "Maxi";
-            // 
-            // TBox_Mini
-            // 
-            this.TBox_Mini.Enabled = false;
-            this.TBox_Mini.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TBox_Mini.Location = new System.Drawing.Point(453, 68);
-            this.TBox_Mini.Name = "TBox_Mini";
-            this.TBox_Mini.Size = new System.Drawing.Size(50, 25);
-            this.TBox_Mini.TabIndex = 49;
-            this.TBox_Mini.Text = "00.00";
-            // 
-            // Label_Mini
-            // 
-            this.Label_Mini.AutoSize = true;
-            this.Label_Mini.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Mini.Location = new System.Drawing.Point(411, 71);
-            this.Label_Mini.Name = "Label_Mini";
-            this.Label_Mini.Size = new System.Drawing.Size(36, 17);
-            this.Label_Mini.TabIndex = 48;
-            this.Label_Mini.Text = "Mini";
+            this.errorSaisie.ContainerControl = this;
             // 
             // FormConsultation
             // 
@@ -615,7 +635,8 @@
             this.GBox_Animal.PerformLayout();
             this.GBox_Actes.ResumeLayout(false);
             this.GBox_Actes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Actes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -652,11 +673,11 @@
         private System.Windows.Forms.DateTimePicker DTPicker_Date;
         private System.Windows.Forms.Label Label_Date;
         private System.Windows.Forms.Button BTN_Supprimer;
-        private System.Windows.Forms.Button BTN_enregistrer;
+        private System.Windows.Forms.Button BTN_Enregistrer;
         private System.Windows.Forms.Button BTN_Ajout;
         private System.Windows.Forms.TextBox TBox_Total;
         private System.Windows.Forms.Label Label_Total;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView DataGrid_Actes;
         private System.Windows.Forms.ComboBox CBox_Libellé;
         private System.Windows.Forms.Label Label_Libellé;
         private System.Windows.Forms.ComboBox CBox_Type;
@@ -671,5 +692,6 @@
         private System.Windows.Forms.Label Label_Maxi;
         private System.Windows.Forms.TextBox TBox_Mini;
         private System.Windows.Forms.Label Label_Mini;
+        private System.Windows.Forms.ErrorProvider errorSaisie;
     }
 }

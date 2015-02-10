@@ -245,17 +245,9 @@
             this.CBox_Minute.FormattingEnabled = true;
             this.CBox_Minute.Items.AddRange(new object[] {
             "00",
-            "05",
-            "10",
             "15",
-            "20",
-            "25",
             "30",
-            "35",
-            "40",
-            "45",
-            "50",
-            "55"});
+            "45"});
             this.CBox_Minute.Location = new System.Drawing.Point(83, 96);
             this.CBox_Minute.Name = "CBox_Minute";
             this.CBox_Minute.Size = new System.Drawing.Size(43, 23);

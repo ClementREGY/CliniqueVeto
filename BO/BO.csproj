@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Acte.cs" />
     <Compile Include="Animal.cs" />
+    <Compile Include="Bareme.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Consultation.cs" />
     <Compile Include="Facture.cs" />

@@ -17,8 +17,8 @@ namespace CliniqueVeto
         public FormLogin()
         {
             InitializeComponent();
-            TBox_User.Text = "test";
-            TBox_Password.Text = "test";
+            TBox_User.Text = "BOSAPIN";
+            TBox_Password.Text = "PIN";
         }
 
         private void BTN_Valider_Click(object sender, EventArgs e)
@@ -38,8 +38,8 @@ namespace CliniqueVeto
                     Login loginSaisie = new Login(TBox_User.Text, TBox_Password.Text);
                     if (MgtLogin.Authentifier(loginSaisie))
                     {
-                        FormPrincipale frm;
-                        frm = new FormPrincipale();
+                        Veterinaire VetoConnecté = MgtVeterinaire.GetVeterinaireConnecté(TBox_User.Text, TBox_Password.Text);
+                        FormPrincipale frm = new FormPrincipale(VetoConnecté);
                         frm.Show();
                         frm.BringToFront();
                         this.Hide();

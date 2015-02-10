@@ -10,6 +10,8 @@ namespace BO
     {
         #region Attributs et Accesseurs
 
+        private List<Acte> _actes;
+
         public Guid codeConsultation { get; set; }
         public DateTime dateConsultation { get; set; }
         public Guid codeVeto { get; set; }
@@ -18,7 +20,7 @@ namespace BO
         public int etat { get; set; }
         public String numFacture { get; set; }
         public bool archive { get; set; }
-        public List<Acte> actes { get; set; }
+        public List<Acte> actes { get { return _actes; } set { _actes = value; } }
 
         #endregion
 
@@ -38,6 +40,7 @@ namespace BO
             this.etat = Etat;
             this.numFacture = NumFacture;
             this.archive = Archive;
+            _actes = new List<Acte>();
         }
 
         #endregion

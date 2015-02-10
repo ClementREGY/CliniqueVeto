@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace CliniqueVeto
 {
     public partial class FormPrincipale : Form
     {
-        public FormPrincipale()
+        public Veterinaire _vetoConnecté;
+
+        public FormPrincipale(Veterinaire VetoConnect)
         {
             InitializeComponent();
+            _vetoConnecté = VetoConnect;
         }
 
         private void AfficherStocks(object sender, EventArgs e)
