@@ -9,6 +9,8 @@ namespace BO
 {
     public class Relance
     {
+        #region Attributs et Accesseurs
+
         [Browsable(false)]
         public Guid codeConsultation { get; set; }
         [Browsable(false)]
@@ -26,6 +28,10 @@ namespace BO
         [DisplayName("Prénom Client")]
         public string prenomClient { get; set; }
 
+        #endregion
+
+        #region Constructeurs
+
         public Relance(Guid CodeConsultation, Guid NumLigne, DateTime DateVigueur, String NomVaccin, int PeriodeValidite,
             String NomAnimal, String NomClient, String PrenomClient)
         {
@@ -42,5 +48,6 @@ namespace BO
         public Relance()
         {
         }
+        #endregion
     }
 }

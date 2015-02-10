@@ -48,6 +48,7 @@ namespace CliniqueVeto
             frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
+            MgtRelance.SetRelanceEnvoye(RelanceCourante);
         }
     }
 }

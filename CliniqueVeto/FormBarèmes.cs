@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using BO;
 
 namespace CliniqueVeto
 {
@@ -21,6 +23,7 @@ namespace CliniqueVeto
         {
             CBox_TypeTarif.SelectedIndex = 0;
             // Chargement de la grille
+            DataGrid_Barèmes.DataSource = MgtBareme.GetBaremes();
         }
 
         private void BTN_MiseAJour_Click(object sender, EventArgs e)
