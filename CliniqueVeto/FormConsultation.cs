@@ -87,6 +87,17 @@ namespace CliniqueVeto
             TBox_Prix.Clear();
         }
 
+        private void CalculTotal()
+        {
+            Decimal px = 0;
+            for (int i = 0; i < DataGrid_Actes.RowCount; i++)
+            {
+                px += Convert.ToDecimal(DataGrid_Actes.Rows[i].Cells[2].Value);
+            }
+
+            TBox_Total.Text = px.ToString();
+        }
+
         #endregion
 
         #region Gestion des Boutons
@@ -130,9 +141,13 @@ namespace CliniqueVeto
             }
 
             DataGrid_Actes.DataSource = _consultationCourante.actes;
+            DataGrid_Actes.Columns["libelle"].DisplayIndex = 0;
+            DataGrid_Actes.Columns["codeGroupement"].DisplayIndex = 1;
             DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
             DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
+
             TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+            CalculTotal();
         }
 
         private void BTN_Supprimer_Click(object sender, EventArgs e)
@@ -142,6 +157,7 @@ namespace CliniqueVeto
             DataGrid_Actes.DataSource = null;
             DataGrid_Actes.DataSource = _consultationCourante.actes;
             TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+            CalculTotal();
         }
 
         #endregion
