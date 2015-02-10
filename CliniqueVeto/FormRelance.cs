@@ -14,13 +14,14 @@ namespace CliniqueVeto
 {
     public partial class FormRelance : Form
     {
+        #region Attributs et Propriétés
+
         public Relance RelanceCourante
         {
-            get
-            {
-                return (Relance)DataGrid_Relance.CurrentRow.DataBoundItem;
-            }
+            get { return (Relance)DataGrid_Relance.CurrentRow.DataBoundItem; }
         }
+
+        #endregion
 
         public FormRelance()
         {
@@ -31,23 +32,22 @@ namespace CliniqueVeto
         {
             DataGrid_Relance.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Relance.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
-
-            try
-            {
-                DataGrid_Relance.DataSource = MgtRelance.GetRelances();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            DataGrid_Relance.DataSource = MgtRelance.GetRelances();
         }
 
-        private void BTN_Envoie_Click(object sender, EventArgs e)
+        #region Gestion des Boutons
+
+        /// <summary>
+        /// Ouverture de la fenêtre du Courrier de Relance
+        /// </summary>
+        private void BTN_Générer_Click(object sender, EventArgs e)
         {
             FormRelance_Vaccin frm = new FormRelance_Vaccin(this);
             frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
         }
+
+        #endregion
     }
 }

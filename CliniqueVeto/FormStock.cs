@@ -15,19 +15,52 @@ namespace CliniqueVeto
 {
     public partial class FormStock : Form
     {
+        #region Attributs et Propriétés
+
         public Vaccin VaccinCourant
         {
-            get
-            {
-                return (Vaccin)DataGrid_Vaccins.CurrentRow.DataBoundItem;
-            }
+            get { return (Vaccin)DataGrid_Vaccins.CurrentRow.DataBoundItem; }
         }
+
+        #endregion
 
         public FormStock()
         {
             InitializeComponent();
         }
 
+        private void FormStock_Load(object sender, EventArgs e)
+        {
+            Datagrid_Load();
+        }
+
+        #region Gestion de l'Affichage
+
+        /// <summary>
+        /// Affichage des données relatives au Vaccin sélectionné
+        /// </summary>
+        private void DataGrid_Vaccins_SelectionChanged(object sender, EventArgs e)
+        {
+            TBox_Nombre.Text = DataGrid_Vaccins.CurrentRow.Cells[1].Value.ToString();
+        }
+
+        /// <summary>
+        /// Chargement de la DataGridView
+        /// </summary>
+        private void Datagrid_Load()
+        {
+            DataGrid_Vaccins.DefaultCellStyle.Font = new Font("Cambria", 12);
+            DataGrid_Vaccins.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
+            DataGrid_Vaccins.DataSource = MgtVaccin.GetVaccins();
+        }
+
+        #endregion
+
+        #region Gestion des Boutons
+
+        /// <summary>
+        /// Affichage du formulaire de mise à jour, avec chargement des fournisseurs dans le fichier local
+        /// </summary>
         private void BTN_MiseAJour_Click(object sender, EventArgs e)
         {
             if (BTN_MiseAJour.Text == "Mettre à Jour")
@@ -38,6 +71,7 @@ namespace CliniqueVeto
                 TBox_Nombre.Visible = true;
                 BTN_MiseAJour.Text = "Valider";
 
+                // Lecture des fournisseurs inscrits dans le fichier local et insertion dans la ComboBox
                 string[] CBBoxContent = File.ReadAllLines("C:\\Users\\Administrateur\\Desktop\\CliniqueVeto\\fournisseurs.csv");
                 foreach (var line in CBBoxContent)
                 {
@@ -72,31 +106,6 @@ namespace CliniqueVeto
             }
         }
 
-
-
-        private void FormStock_Load(object sender, EventArgs e)
-        {
-            Datagrid_Load();
-        }
-
-        private void Datagrid_Load()
-        {
-            DataGrid_Vaccins.DefaultCellStyle.Font = new Font("Cambria", 12);
-            DataGrid_Vaccins.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
-            try
-            {
-                DataGrid_Vaccins.DataSource = MgtVaccin.GetVaccins();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
-        private void DataGrid_Vaccins_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            TBox_Nombre.Text = DataGrid_Vaccins.CurrentRow.Cells[1].Value.ToString();
-        }
+        #endregion
     }
 }

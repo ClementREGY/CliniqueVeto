@@ -112,7 +112,7 @@
             this.DataGrid_Vaccins.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Vaccins.Size = new System.Drawing.Size(528, 164);
             this.DataGrid_Vaccins.TabIndex = 6;
-            this.DataGrid_Vaccins.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_Vaccins_CellContentClick);
+            this.DataGrid_Vaccins.SelectionChanged += new System.EventHandler(this.DataGrid_Vaccins_SelectionChanged);
             // 
             // errorSaisie
             // 

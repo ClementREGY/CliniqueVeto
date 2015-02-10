@@ -30,6 +30,9 @@ namespace CliniqueVeto
 
         #region Gestion Changement de Client
 
+        /// <summary>
+        /// Affichage de la liste des Animaux du Client sélectionné
+        /// </summary>
         private void CBox_Client_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (CBox_Client.SelectedItem != null)
@@ -42,6 +45,9 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Affichage des éléments correspondants aux critères et recherche
+        /// </summary>
         private void BTN_Rechercher_Click(object sender, EventArgs e)
         {
             bool isTrouve = false;
@@ -59,6 +65,11 @@ namespace CliniqueVeto
                 MessageBox.Show("Aucun Animal ne corespond à vos critères de recherche !");
         }
 
+        /// <summary>
+        /// Ouverture de la fenêtre de Dossier Médical correspondant à l'animal sélectionné
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
             FormDossierMédical frm = new FormDossierMédical(((Animal)CBox_Animal.SelectedItem).codeAnimal);
