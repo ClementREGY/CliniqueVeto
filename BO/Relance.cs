@@ -13,20 +13,33 @@ namespace BO
 
         [Browsable(false)]
         public Guid codeConsultation { get; set; }
+
         [Browsable(false)]
         public Guid numLigne { get; set; }
-        [DisplayName("Date en vigueur")]
+
+        [DisplayName("Date Vigueur")]
         public DateTime dateVigueur { get; set; }
-        [DisplayName("Nom du vaccin")]
+
+        [DisplayName("Vaccin")]
         public string nomVaccin { get; set; }
-        [DisplayName("Période de validité")]
+
+        [DisplayName("Validité (mois)")]
         public int periodeValidite { get; set; }
-        [DisplayName("Nom Animal")]
+
+        [DisplayName("Animal")]
         public string nomAnimal { get; set; }
-        [DisplayName("Nom Client")]
+
+        [Browsable(false)]
         public string nomClient { get; set; }
-        [DisplayName("Prénom Client")]
+
+        [Browsable(false)]
         public string prenomClient { get; set; }
+        
+        [DisplayName("Client")]
+        public String nomPrenom
+        {
+            get { return nomClient + " " + prenomClient; }
+        }
 
         #endregion
 

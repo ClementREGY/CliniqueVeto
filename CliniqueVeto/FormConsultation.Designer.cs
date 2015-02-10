@@ -142,6 +142,7 @@
             this.BTN_Annuler.Size = new System.Drawing.Size(50, 50);
             this.BTN_Annuler.TabIndex = 2;
             this.BTN_Annuler.UseVisualStyleBackColor = true;
+            this.BTN_Annuler.Click += new System.EventHandler(this.BTN_Annuler_Click);
             // 
             // BTN_Valider
             // 
@@ -162,6 +163,7 @@
             this.BTN_Dossier.Size = new System.Drawing.Size(50, 50);
             this.BTN_Dossier.TabIndex = 0;
             this.BTN_Dossier.UseVisualStyleBackColor = true;
+            this.BTN_Dossier.Click += new System.EventHandler(this.BTN_Dossier_Click);
             // 
             // GBox_Animal
             // 

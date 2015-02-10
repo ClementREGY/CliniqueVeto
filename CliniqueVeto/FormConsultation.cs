@@ -19,7 +19,7 @@ namespace CliniqueVeto
         private Guid _codeAnimal, _codeVeto;
         private Animal _animalCourant;
         private Veterinaire _veterinaireCourant;
-        private Consultation _consultationCourante;
+        private Consultation _consultationCourante = null;
         private Bareme _baremeCourant;
 
         #endregion
@@ -102,6 +102,28 @@ namespace CliniqueVeto
 
         #region Gestion des Boutons
 
+        /// <summary>
+        /// Ouverture de la fenêtre de Dossier Médical en passant l'animal courant
+        /// </summary>
+        private void BTN_Dossier_Click(object sender, EventArgs e)
+        {
+            FormDossierMédical frm = new FormDossierMédical(_animalCourant.codeAnimal);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        /// <summary>
+        /// Annulation et Fermeture
+        /// </summary>
+        private void BTN_Annuler_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        /// <summary>
+        /// Permets la saisie d'un nouvel acte pour la consultation
+        /// </summary>
         private void BTN_Ajout_Click(object sender, EventArgs e)
         {
             if (BTN_Ajout.Text == "Ajouter un Acte")
@@ -125,10 +147,15 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Si c'est la consultation n'est pas encore créée, création de la consultation + ajout de l'acte
+        /// Sinon, simple ajout de l'acte
+        /// </summary>
         private void BTN_Enregistrer_Click(object sender, EventArgs e)
         {
-            if (DataGrid_Actes.RowCount == 0)
+            if (_consultationCourante == null)
             {
+                // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
                 if (errorSaisie.GetError(TBox_Prix) == "")
                 {
                     _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? "" : TBox_Commentaire.Text), false);
@@ -141,6 +168,7 @@ namespace CliniqueVeto
             }
             else
             {
+                // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
                 if (errorSaisie.GetError(TBox_Prix) == "")
                 {
                     Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
@@ -152,6 +180,7 @@ namespace CliniqueVeto
                     errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
             }
 
+            // Si l'erreur n'est pas déclenchée, on peut procéder à la mise à jour des informations
             if (errorSaisie.GetError(TBox_Prix) == "")
             {
                 DataGrid_Actes.DataSource = _consultationCourante.actes;
@@ -165,6 +194,9 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Suppression de l'acte sélectionné de la liste des actes de la consultation
+        /// </summary>
         private void BTN_Supprimer_Click(object sender, EventArgs e)
         {
             Acte acteSelect = (Acte)DataGrid_Actes.CurrentRow.DataBoundItem;

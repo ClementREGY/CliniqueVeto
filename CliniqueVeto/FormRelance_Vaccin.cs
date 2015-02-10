@@ -58,7 +58,9 @@ namespace CliniqueVeto
             richTBox_Courrier.AppendText(frmRelance.RelanceCourante.dateVigueur.ToShortDateString() , Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(", avait une durée de validité de ", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(frmRelance.RelanceCourante.periodeValidite.ToString(), Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(" mois. La date d'invalidité arrivant donc à échéance, nous vous invitons à prendre Rendez-Vous prochainement avec notre secrétariat afin d'effectuer un rappel.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(" mois.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(Environment.NewLine);
+            richTBox_Courrier.AppendText("La date d'invalidité arrivant donc à échéance, nous vous invitons à prendre Rendez-Vous prochainement avec notre secrétariat afin d'effectuer un rappel.", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Cordialement,", Color.Black, 12, false, false, false);

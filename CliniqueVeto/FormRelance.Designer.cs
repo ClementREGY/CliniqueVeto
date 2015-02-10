@@ -37,7 +37,7 @@
             // 
             this.DataGrid_Relance.AllowUserToResizeColumns = false;
             this.DataGrid_Relance.AllowUserToResizeRows = false;
-            this.DataGrid_Relance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataGrid_Relance.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DataGrid_Relance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGrid_Relance.Location = new System.Drawing.Point(16, 16);
             this.DataGrid_Relance.Margin = new System.Windows.Forms.Padding(4);
@@ -46,13 +46,13 @@
             this.DataGrid_Relance.ReadOnly = true;
             this.DataGrid_Relance.RowHeadersVisible = false;
             this.DataGrid_Relance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGrid_Relance.Size = new System.Drawing.Size(553, 153);
+            this.DataGrid_Relance.Size = new System.Drawing.Size(622, 153);
             this.DataGrid_Relance.TabIndex = 0;
             // 
             // BTN_Générer
             // 
             this.BTN_Générer.BackColor = System.Drawing.SystemColors.Control;
-            this.BTN_Générer.Location = new System.Drawing.Point(224, 177);
+            this.BTN_Générer.Location = new System.Drawing.Point(255, 179);
             this.BTN_Générer.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Générer.Name = "BTN_Générer";
             this.BTN_Générer.Size = new System.Drawing.Size(141, 25);
@@ -66,7 +66,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(582, 214);
+            this.ClientSize = new System.Drawing.Size(651, 214);
             this.Controls.Add(this.BTN_Générer);
             this.Controls.Add(this.DataGrid_Relance);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
