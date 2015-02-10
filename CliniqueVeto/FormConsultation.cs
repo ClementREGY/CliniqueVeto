@@ -45,13 +45,6 @@ namespace CliniqueVeto
             TBox_Vétérinaire.Text = _veterinaireCourant.nomVeto;
 
             CBox_Type.DataSource = MgtBareme.GetTypesActes();
-
-            DataGrid_Actes.DataSource = _consultationCourante.actes;
-
-            DataGrid_Actes.Columns["Acte"].DisplayIndex = 0;
-            DataGrid_Actes.Columns["Code Groupement"].DisplayIndex = 1;
-            DataGrid_Actes.Columns["Date Vigueur"].DisplayIndex = 2;
-            DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
         }
 
         #region Gestion de l'Affichage
@@ -137,7 +130,8 @@ namespace CliniqueVeto
             }
 
             DataGrid_Actes.DataSource = _consultationCourante.actes;
-
+            DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
+            DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
             TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
         }
 
