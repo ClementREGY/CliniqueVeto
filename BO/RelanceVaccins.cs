@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Relance
+    public class RelanceVaccins
     {
         #region Attributs et Accesseurs
 
@@ -45,7 +45,7 @@ namespace BO
 
         #region Constructeurs
 
-        public Relance(Guid CodeConsultation, Guid NumLigne, DateTime DateVigueur, String NomVaccin, int PeriodeValidite,
+        public RelanceVaccins(Guid CodeConsultation, Guid NumLigne, DateTime DateVigueur, String NomVaccin, int PeriodeValidite,
             String NomAnimal, String NomClient, String PrenomClient)
         {
             this.codeConsultation = CodeConsultation;
@@ -58,7 +58,7 @@ namespace BO
             this.prenomClient = PrenomClient;
         }
 
-        public Relance()
+        public RelanceVaccins()
         {
         }
         #endregion

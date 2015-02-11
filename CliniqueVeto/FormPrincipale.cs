@@ -65,7 +65,12 @@ namespace CliniqueVeto
         /// </summary>
         private void AfficherRelanceFacture(object sender, EventArgs e)
         {
-
+            FormRelance_FactureSelection frm;
+            frm = new FormRelance_FactureSelection();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            frm.FormClosed += FermetureFille;
         }
 
         /// <summary>
@@ -145,10 +150,10 @@ namespace CliniqueVeto
         /// </summary>
         private void AfficherRelanceVaccin(object sender, EventArgs e)
         {
-            FormRelance frm;
+            FormRelance_VaccinSelection frm;
             if (!relancesToolStripMenuItem.Checked)
             {
-                frm = new FormRelance();
+                frm = new FormRelance_VaccinSelection();
                 frm.MdiParent = this;
                 frm.Show();
                 relancesToolStripMenuItem.Checked = true;
@@ -158,7 +163,7 @@ namespace CliniqueVeto
             }
             else
             {
-                frm = (FormRelance)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormRelance");
+                frm = (FormRelance_VaccinSelection)Array.Find(this.MdiChildren, (Form f) => f.Name == "FormRelance_VaccinSelection");
                 frm.BringToFront();
             }
         }
@@ -228,7 +233,7 @@ namespace CliniqueVeto
                 toolStripBt_Client.Checked = false;
                 f.FormClosed -= FermetureFille;
             }
-            else if (f is FormRelance)
+            else if (f is FormRelance_VaccinSelection)
             {
                 relancesToolStripMenuItem.Checked = false;
                 toolStripBt_Relance.Checked = false;

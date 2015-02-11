@@ -128,17 +128,29 @@
     <Compile Include="FormReinit_Vétérinaire.Designer.cs">
       <DependentUpon>FormReinit_Vétérinaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRelance.cs">
+    <Compile Include="FormRelance_FactureCourrier.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRelance.Designer.cs">
-      <DependentUpon>FormRelance.cs</DependentUpon>
+    <Compile Include="FormRelance_FactureCourrier.Designer.cs">
+      <DependentUpon>FormRelance_FactureCourrier.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormRelance_Vaccin.cs">
+    <Compile Include="FormRelance_FactureSelection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormRelance_Vaccin.Designer.cs">
-      <DependentUpon>FormRelance_Vaccin.cs</DependentUpon>
+    <Compile Include="FormRelance_FactureSelection.Designer.cs">
+      <DependentUpon>FormRelance_FactureSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRelance_VaccinSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRelance_VaccinSelection.Designer.cs">
+      <DependentUpon>FormRelance_VaccinSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRelance_VaccinCourrier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRelance_VaccinCourrier.Designer.cs">
+      <DependentUpon>FormRelance_VaccinCourrier.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSelection_Animal.cs">
       <SubType>Form</SubType>
@@ -206,11 +218,17 @@
     <EmbeddedResource Include="FormReinit_Vétérinaire.resx">
       <DependentUpon>FormReinit_Vétérinaire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRelance.resx">
-      <DependentUpon>FormRelance.cs</DependentUpon>
+    <EmbeddedResource Include="FormRelance_FactureCourrier.resx">
+      <DependentUpon>FormRelance_FactureCourrier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormRelance_Vaccin.resx">
-      <DependentUpon>FormRelance_Vaccin.cs</DependentUpon>
+    <EmbeddedResource Include="FormRelance_FactureSelection.resx">
+      <DependentUpon>FormRelance_FactureSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRelance_VaccinSelection.resx">
+      <DependentUpon>FormRelance_VaccinSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRelance_VaccinCourrier.resx">
+      <DependentUpon>FormRelance_VaccinCourrier.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelection_Animal.resx">
       <DependentUpon>FormSelection_Animal.cs</DependentUpon>

@@ -1,6 +1,6 @@
 ﻿namespace CliniqueVeto
 {
-    partial class FormRelance_Vaccin
+    partial class FormRelance_FactureCourrier
     {
         /// <summary>
         /// Required designer variable.
@@ -34,39 +34,34 @@
             // 
             // richTBox_Courrier
             // 
-            this.richTBox_Courrier.Location = new System.Drawing.Point(-1, 0);
-            this.richTBox_Courrier.Margin = new System.Windows.Forms.Padding(4);
+            this.richTBox_Courrier.Location = new System.Drawing.Point(0, 0);
             this.richTBox_Courrier.Name = "richTBox_Courrier";
             this.richTBox_Courrier.Size = new System.Drawing.Size(625, 359);
-            this.richTBox_Courrier.TabIndex = 1;
+            this.richTBox_Courrier.TabIndex = 0;
             this.richTBox_Courrier.Text = "";
             // 
             // BTN_EnvoiRelance
             // 
             this.BTN_EnvoiRelance.BackColor = System.Drawing.SystemColors.Control;
+            this.BTN_EnvoiRelance.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTN_EnvoiRelance.Location = new System.Drawing.Point(232, 367);
-            this.BTN_EnvoiRelance.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_EnvoiRelance.Name = "BTN_EnvoiRelance";
             this.BTN_EnvoiRelance.Size = new System.Drawing.Size(156, 30);
-            this.BTN_EnvoiRelance.TabIndex = 2;
+            this.BTN_EnvoiRelance.TabIndex = 1;
             this.BTN_EnvoiRelance.Text = "Envoyer la Relance";
             this.BTN_EnvoiRelance.UseVisualStyleBackColor = false;
-            this.BTN_EnvoiRelance.Click += new System.EventHandler(this.BTN_EnvoiRelance_Click);
             // 
-            // FormRelance_Vaccin
+            // FormRelance_FactureCourrier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(623, 407);
+            this.ClientSize = new System.Drawing.Size(625, 409);
             this.Controls.Add(this.BTN_EnvoiRelance);
             this.Controls.Add(this.richTBox_Courrier);
-            this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormRelance_Vaccin";
-            this.Text = "Courrier de Relance";
-            this.Load += new System.EventHandler(this.FormRelance_Vaccin_Load);
+            this.Name = "FormRelance_FactureCourrier";
+            this.Text = "Envoi de la relance";
+            this.Load += new System.EventHandler(this.FormRelance_FactureCourrier_Load);
             this.ResumeLayout(false);
 
         }

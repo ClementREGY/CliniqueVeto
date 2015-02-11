@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BLL;
+using BO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,26 +9,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BO;
-using BLL;
 
 namespace CliniqueVeto
 {
-    public partial class FormRelance_Vaccin : Form
+    public partial class FormRelance_FactureCourrier : Form
     {
+
         #region Attributs et Propriétés
 
-        private FormRelance frmRelance = null;
+        private FormRelance_FactureSelection frmRelance = null;
 
         #endregion
 
-        public FormRelance_Vaccin(FormRelance frm)
+        public FormRelance_FactureCourrier(FormRelance_FactureSelection frm)
         {
             InitializeComponent();
             frmRelance = frm;
         }
 
-        private void FormRelance_Vaccin_Load(object sender, EventArgs e)
+        private void FormRelance_FactureCourrier_Load(object sender, EventArgs e)
         {
             richTBox_Courrier.TabStop = false;
             richTBox_Courrier.ReadOnly = true;
@@ -43,8 +44,8 @@ namespace CliniqueVeto
         /// </summary>
         private void textRelance()
         {
-            richTBox_Courrier.AppendText("Rappel de Vaccination - ", Color.Black, 15, false, false, true);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.nomVaccin, Color.Black, 15, false, false, true);
+            richTBox_Courrier.AppendText("Rappel de facture impayée - ", Color.Black, 15, false, false, true);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString(), Color.Black, 15, false, false, true);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Madame, Monsieur ", Color.Black, 12, false, false, false);
@@ -52,18 +53,18 @@ namespace CliniqueVeto
             richTBox_Courrier.AppendText(",", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
-            richTBox_Courrier.AppendText("Il apparaît dans notre Base de Données que le dernier vaccin de votre animal ", Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.nomAnimal, Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(", effectué le ", Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.dateVigueur.ToShortDateString() , Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(", avait une durée de validité de ", Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.periodeValidite.ToString(), Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(" mois.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText("Sauf erreur ou omission de notre part, le paiement de la facture n° ", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString(), Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(" datée du ", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.dateFacture.ToShortDateString(), Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(" pour un montant de ", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.totalFacture.ToString(), Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(" euros ne nous est pas parvenu. Nous vous prions donc de bien vouloir procéder à son règlement dans les meilleurs délais.", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
-            richTBox_Courrier.AppendText("La date d'invalidité arrivant donc à échéance, nous vous invitons à prendre Rendez-Vous prochainement avec notre secrétariat afin d'effectuer un rappel.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText("Si par ailleurs votre paiement venait à nous parvenir avant la réception de la présente, nous vous saurions gré de ne pas en tenir compte.", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
-            richTBox_Courrier.AppendText("Cordialement,", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText("Vous remerciant de faire le nécessaire, et restant à votre entière disposition pour toute question, nous vous prions d'agréer, Madame, Monsieur, l'expression de nos salutations distinguées.", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Clinique Vétérinaire Ani’Forme.", Color.Black, 12, false, false, false);
@@ -78,7 +79,7 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_EnvoiRelance_Click(object sender, EventArgs e)
         {
-            MgtRelance.SetRelanceEnvoye(frmRelance.RelanceCourante);
+            MgtRelanceFactures.SetRelanceEnvoye(frmRelance.RelanceCourante);
         }
 
         #endregion

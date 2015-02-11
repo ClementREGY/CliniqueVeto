@@ -8,18 +8,18 @@ using BO;
 
 namespace BLL
 {
-    public class MgtRelance
+    public class MgtRelanceVaccins
     {
         #region Méthodes CRUD
         //Read
-        public static List<Relance> GetRelances()
+        public static List<RelanceVaccins> GetRelances()
         {
-            return DALRelance.GetRelances();
+            return DALRelanceVaccins.GetRelances();
         }
         //Update
-        public static bool SetRelanceEnvoye(Relance pRelance)
+        public static bool SetRelanceEnvoye(RelanceVaccins pRelance)
         {
-            return DALRelance.SetRelanceEnvoye(pRelance);
+            return DALRelanceVaccins.SetRelanceEnvoye(pRelance);
         }
         #endregion
     }

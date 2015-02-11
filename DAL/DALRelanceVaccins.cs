@@ -8,12 +8,12 @@ using System.Data.SqlClient;
 
 namespace DAL
 {
-    public class DALRelance
+    public class DALRelanceVaccins
     {
         #region Read
-        public static List<Relance> GetRelances()
+        public static List<RelanceVaccins> GetRelances()
         {
-            List<Relance> list = new List<Relance>();
+            List<RelanceVaccins> list = new List<RelanceVaccins>();
 
             try
             {
@@ -36,7 +36,7 @@ namespace DAL
 
                     while (dt.Read())
                     {
-                        Relance relance = new Relance();
+                        RelanceVaccins relance = new RelanceVaccins();
                         relance.codeConsultation = dt.GetGuid(colCodeCons);
                         relance.numLigne = dt.GetGuid(colNumLigne);
                         string dateVigueur = dt.GetString(colDateVig);
@@ -66,7 +66,7 @@ namespace DAL
         #endregion 
 
         #region Update
-        public static bool SetRelanceEnvoye(Relance relance)
+        public static bool SetRelanceEnvoye(RelanceVaccins relance)
         {
             try
             {

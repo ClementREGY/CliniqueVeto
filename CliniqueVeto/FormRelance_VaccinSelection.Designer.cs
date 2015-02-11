@@ -1,6 +1,6 @@
 ﻿namespace CliniqueVeto
 {
-    partial class FormRelance
+    partial class FormRelance_VaccinSelection
     {
         /// <summary>
         /// Required designer variable.
