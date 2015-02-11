@@ -83,17 +83,17 @@ namespace CliniqueVeto
             {
                 if (String.IsNullOrEmpty(CBox_Fournisseurs.Text.Trim()))
                 {
-                    errorSaisie.SetError(CBox_Fournisseurs, "Veuillez sélectionner un fournisseur.");
+                    errorSaisie.SetError(CBox_Fournisseurs, "Veuillez sélectionner un Fournisseur.");
                 }
                 else
                 {
-                    if (String.IsNullOrEmpty(TBox_Nombre.Text.Trim()) || int.Parse(TBox_Nombre.Text) < VaccinCourant.quantiteStock)
+                    if (String.IsNullOrEmpty(TBox_Nombre.Text.Trim()))
                     {
-                        errorSaisie.SetError(TBox_Nombre, "Veuillez saisir une quantité supérieure à la précédente.");
+                        errorSaisie.SetError(TBox_Nombre, "Veuillez saisir une Quantité valide.");
                     }
                     else
                     {
-                        Vaccin vaccin = new Vaccin(VaccinCourant.codeVaccin, VaccinCourant.nomVaccin, int.Parse(TBox_Nombre.Text), VaccinCourant.periodeValidite, false);
+                        Vaccin vaccin = new Vaccin(VaccinCourant.codeVaccin, VaccinCourant.nomVaccin, VaccinCourant.quantiteStock + int.Parse(TBox_Nombre.Text), VaccinCourant.periodeValidite, false);
                         MgtVaccin.UpdateVaccin(vaccin);
                         Datagrid_Load();
                         Label_Fournisseur.Visible = false;

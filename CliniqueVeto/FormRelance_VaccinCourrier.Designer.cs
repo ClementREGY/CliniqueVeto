@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRelance_VaccinCourrier));
             this.richTBox_Courrier = new System.Windows.Forms.RichTextBox();
             this.BTN_EnvoiRelance = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -53,7 +54,7 @@
             this.BTN_EnvoiRelance.UseVisualStyleBackColor = false;
             this.BTN_EnvoiRelance.Click += new System.EventHandler(this.BTN_EnvoiRelance_Click);
             // 
-            // FormRelance_Vaccin
+            // FormRelance_VaccinCourrier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -63,8 +64,9 @@
             this.Controls.Add(this.richTBox_Courrier);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormRelance_Vaccin";
+            this.Name = "FormRelance_VaccinCourrier";
             this.Text = "Courrier de Relance";
             this.Load += new System.EventHandler(this.FormRelance_Vaccin_Load);
             this.ResumeLayout(false);

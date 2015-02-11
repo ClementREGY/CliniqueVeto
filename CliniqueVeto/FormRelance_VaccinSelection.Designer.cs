@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRelance_VaccinSelection));
             this.DataGrid_Relance = new System.Windows.Forms.DataGridView();
             this.BTN_Générer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Relance)).BeginInit();
@@ -69,9 +70,10 @@
             this.Controls.Add(this.DataGrid_Relance);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormRelance_VaccinSelection";
-            this.Text = "Relance";
+            this.Text = "Relance de Vaccination";
             this.Load += new System.EventHandler(this.FormRelance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Relance)).EndInit();
             this.ResumeLayout(false);

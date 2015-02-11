@@ -57,6 +57,7 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripBt_Dossier = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.réglementDuneFactureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGénéral.SuspendLayout();
             this.barreAccès.SuspendLayout();
             this.SuspendLayout();
@@ -114,7 +115,8 @@
             // 
             this.facturationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.créationDeFacturesToolStripMenuItem,
-            this.impressionDeFacturesToolStripMenuItem});
+            this.impressionDeFacturesToolStripMenuItem,
+            this.réglementDuneFactureToolStripMenuItem});
             this.facturationToolStripMenuItem.Name = "facturationToolStripMenuItem";
             this.facturationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
             this.facturationToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
@@ -123,14 +125,14 @@
             // créationDeFacturesToolStripMenuItem
             // 
             this.créationDeFacturesToolStripMenuItem.Name = "créationDeFacturesToolStripMenuItem";
-            this.créationDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
+            this.créationDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
             this.créationDeFacturesToolStripMenuItem.Text = "Créer une Facture";
             this.créationDeFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherCreationFacture);
             // 
             // impressionDeFacturesToolStripMenuItem
             // 
             this.impressionDeFacturesToolStripMenuItem.Name = "impressionDeFacturesToolStripMenuItem";
-            this.impressionDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
+            this.impressionDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
             this.impressionDeFacturesToolStripMenuItem.Text = "Imprimer une Facture";
             this.impressionDeFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherImpressionFacture);
             // 
@@ -272,7 +274,7 @@
             this.toolStripBt_Relance.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBt_Relance.Name = "toolStripBt_Relance";
             this.toolStripBt_Relance.Size = new System.Drawing.Size(100, 69);
-            this.toolStripBt_Relance.Text = "Relance";
+            this.toolStripBt_Relance.Text = "Relance Vaccins";
             this.toolStripBt_Relance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripBt_Relance.Click += new System.EventHandler(this.AfficherRelanceVaccin);
             // 
@@ -315,6 +317,13 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
             // 
+            // réglementDuneFactureToolStripMenuItem
+            // 
+            this.réglementDuneFactureToolStripMenuItem.Name = "réglementDuneFactureToolStripMenuItem";
+            this.réglementDuneFactureToolStripMenuItem.Size = new System.Drawing.Size(254, 24);
+            this.réglementDuneFactureToolStripMenuItem.Text = "Réglement d\'une Facture";
+            this.réglementDuneFactureToolStripMenuItem.Click += new System.EventHandler(this.AfficheRèglementFacture);
+            // 
             // FormPrincipale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +332,7 @@
             this.Controls.Add(this.barreAccès);
             this.Controls.Add(this.menuGénéral);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuGénéral;
             this.Name = "FormPrincipale";
@@ -366,5 +376,6 @@
         private System.Windows.Forms.ToolStripMenuItem impressionDeFacturesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relancesVaccinationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relancesFacturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem réglementDuneFactureToolStripMenuItem;
     }
 }

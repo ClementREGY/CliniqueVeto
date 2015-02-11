@@ -9,16 +9,22 @@ namespace BO
 {
     public class Vaccin
     {
+        #region Attributs et Propriétés
+
         [Browsable(false)]
         public Guid codeVaccin { get; set; }
         [DisplayName("Nom du vaccin")]
         public string nomVaccin { get; set; }
         [DisplayName("Quantité en Stock")]
         public int quantiteStock { get; set; }
-        [DisplayName("Période de Validité")]
+        [DisplayName("Validité (mois)")]
         public int periodeValidite { get; set; }
         [Browsable(false)]
         public bool archive { get; set; }
+
+        #endregion
+
+        #region Constructeurs
 
         public Vaccin()
         {
@@ -32,5 +38,7 @@ namespace BO
             this.periodeValidite = PeriodeValidite;
             this.archive = Archive;
         }
+
+        #endregion
     }
 }

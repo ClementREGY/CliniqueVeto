@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDossierMédical));
             this.richTBox_Dossier = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             this.ClientSize = new System.Drawing.Size(579, 541);
             this.Controls.Add(this.richTBox_Dossier);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDossierMédical";
             this.Text = "Dossier Médical";
             this.Load += new System.EventHandler(this.FormDossierMédical_Load);

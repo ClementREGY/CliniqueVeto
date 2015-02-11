@@ -104,6 +104,12 @@
     <Compile Include="FormFactures_Afficher.Designer.cs">
       <DependentUpon>FormFactures_Afficher.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFactures_Règlement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactures_Règlement.Designer.cs">
+      <DependentUpon>FormFactures_Règlement.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormFactures_Afficher.resx">
       <DependentUpon>FormFactures_Afficher.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFactures_Règlement.resx">
+      <DependentUpon>FormFactures_Règlement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>

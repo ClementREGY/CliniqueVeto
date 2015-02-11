@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReinit_Vétérinaire));
             this.Label_Password2 = new System.Windows.Forms.Label();
             this.TBox_Password2 = new System.Windows.Forms.TextBox();
             this.Label_Password = new System.Windows.Forms.Label();
@@ -117,6 +118,7 @@
             this.Controls.Add(this.TBox_Password);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormReinit_Vétérinaire";
             this.Text = "Réinitialiser le Mot de Passe";
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();

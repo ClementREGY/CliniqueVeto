@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRelance_FactureCourrier));
             this.richTBox_Courrier = new System.Windows.Forms.RichTextBox();
             this.BTN_EnvoiRelance = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -44,7 +45,7 @@
             // 
             this.BTN_EnvoiRelance.BackColor = System.Drawing.SystemColors.Control;
             this.BTN_EnvoiRelance.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_EnvoiRelance.Location = new System.Drawing.Point(232, 367);
+            this.BTN_EnvoiRelance.Location = new System.Drawing.Point(236, 367);
             this.BTN_EnvoiRelance.Name = "BTN_EnvoiRelance";
             this.BTN_EnvoiRelance.Size = new System.Drawing.Size(156, 30);
             this.BTN_EnvoiRelance.TabIndex = 1;
@@ -60,8 +61,9 @@
             this.ClientSize = new System.Drawing.Size(625, 409);
             this.Controls.Add(this.BTN_EnvoiRelance);
             this.Controls.Add(this.richTBox_Courrier);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRelance_FactureCourrier";
-            this.Text = "Envoi de la relance";
+            this.Text = "Courrier de Relance";
             this.Load += new System.EventHandler(this.FormRelance_FactureCourrier_Load);
             this.ResumeLayout(false);
 

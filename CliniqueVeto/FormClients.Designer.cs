@@ -588,6 +588,7 @@
             this.Controls.Add(this.TBox_Code);
             this.Controls.Add(this.Panel_GestionClients);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClients";
             this.Text = "Clients";
             this.Load += new System.EventHandler(this.FormClients_Load);

@@ -629,6 +629,7 @@
             this.Controls.Add(this.GBox_Animal);
             this.Controls.Add(this.Panel_GestionAnimaux);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormConsultation";
             this.Text = "Consultation";
             this.Load += new System.EventHandler(this.FormConsultation_Load);

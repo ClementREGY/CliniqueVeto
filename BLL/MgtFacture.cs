@@ -26,6 +26,11 @@ namespace BLL
             return DALFacture.GetFactures();
         }
 
+        public static List<Facture> GetFacturesImpayees()
+        {
+            return DALFacture.GetFacturesImpayees();
+        }
+
         public static Facture GetFacture(Guid NumFacture)
         {
             return DALFacture.GetFacture(NumFacture);
@@ -36,6 +41,11 @@ namespace BLL
         public static bool UpdateFactureImprimee(Guid NumFacture)
         {
             return DALFacture.SetFactureImprimee(NumFacture);
+        }
+
+        public static bool UpdateFacturePayee(Guid NumFacture)
+        {
+            return DALFacture.SetFacturePayee(NumFacture);
         }
 
         #endregion

@@ -100,6 +100,19 @@ namespace CliniqueVeto
         }
 
         /// <summary>
+        /// Affichage de la forme de Réglement des Factures + écoute de la fermeture de cette fenêtre
+        /// </summary>
+        private void AfficheRèglementFacture(object sender, EventArgs e)
+        {
+            FormFactures_Règlement frm;
+            frm = new FormFactures_Règlement();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            frm.FormClosed += FermetureFille;
+        }
+
+        /// <summary>
         /// Affichage de la forme de Gestion des Prises de RDV + écoute de la fermeture de cette fenêtre
         /// </summary>
         private void AfficherRDV(object sender, EventArgs e)

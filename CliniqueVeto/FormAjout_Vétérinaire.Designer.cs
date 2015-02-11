@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAjout_Vétérinaire));
             this.TBox_Nom = new System.Windows.Forms.TextBox();
             this.TBox_Prénom = new System.Windows.Forms.TextBox();
             this.TBox_Password = new System.Windows.Forms.TextBox();
@@ -159,6 +160,7 @@
             this.Controls.Add(this.TBox_Nom);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAjout_Vétérinaire";
             this.Text = "Ajouter un Vétérinaire";
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();

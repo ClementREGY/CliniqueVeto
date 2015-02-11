@@ -142,6 +142,7 @@
             this.Controls.Add(this.DataGrid_Agenda);
             this.Controls.Add(this.GBox_Vétérinaire);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAgenda";
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.FormAgenda_Load);

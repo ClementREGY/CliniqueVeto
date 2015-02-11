@@ -377,6 +377,7 @@
             this.Controls.Add(this.GBox_Par);
             this.Controls.Add(this.GBox_Pour);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRDV";
             this.Text = "Prise de Rendez-Vous";
             this.Load += new System.EventHandler(this.FormRDV_Load);

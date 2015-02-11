@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStock));
             this.BTN_MiseAJour = new System.Windows.Forms.Button();
             this.Label_Fournisseur = new System.Windows.Forms.Label();
             this.CBox_Fournisseurs = new System.Windows.Forms.ComboBox();
@@ -132,6 +133,7 @@
             this.Controls.Add(this.BTN_MiseAJour);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormStock";
             this.Text = "Stock des Vaccins";

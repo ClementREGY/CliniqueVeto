@@ -122,6 +122,7 @@
             this.Controls.Add(this.LBox_Vetos);
             this.Controls.Add(this.toolStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVétérinaires";
             this.Text = "Vétérinaires";
             this.Load += new System.EventHandler(this.FormVétérinaires_Load);

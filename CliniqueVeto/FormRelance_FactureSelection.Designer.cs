@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRelance_FactureSelection));
             this.DataGrid_Relance = new System.Windows.Forms.DataGridView();
             this.BTN_GenererRelance = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Relance)).BeginInit();
@@ -49,7 +50,7 @@
             // BTN_GenererRelance
             // 
             this.BTN_GenererRelance.BackColor = System.Drawing.SystemColors.Control;
-            this.BTN_GenererRelance.Location = new System.Drawing.Point(172, 268);
+            this.BTN_GenererRelance.Location = new System.Drawing.Point(183, 268);
             this.BTN_GenererRelance.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_GenererRelance.Name = "BTN_GenererRelance";
             this.BTN_GenererRelance.Size = new System.Drawing.Size(155, 30);
@@ -67,9 +68,10 @@
             this.Controls.Add(this.BTN_GenererRelance);
             this.Controls.Add(this.DataGrid_Relance);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormRelance_FactureSelection";
-            this.Text = "Sélection de la relance";
+            this.Text = "Relance de Factures";
             this.Load += new System.EventHandler(this.FormRelance_FactureSelection_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Relance)).EndInit();
             this.ResumeLayout(false);
