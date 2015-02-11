@@ -92,6 +92,18 @@
     <Compile Include="FormDossierMédical.Designer.cs">
       <DependentUpon>FormDossierMédical.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFactures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactures.Designer.cs">
+      <DependentUpon>FormFactures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFactures_Afficher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactures_Afficher.Designer.cs">
+      <DependentUpon>FormFactures_Afficher.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +146,12 @@
     <Compile Include="FormSelection_Animal.Designer.cs">
       <DependentUpon>FormSelection_Animal.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSelection_Facture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSelection_Facture.Designer.cs">
+      <DependentUpon>FormSelection_Facture.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +188,12 @@
     <EmbeddedResource Include="FormDossierMédical.resx">
       <DependentUpon>FormDossierMédical.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFactures.resx">
+      <DependentUpon>FormFactures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFactures_Afficher.resx">
+      <DependentUpon>FormFactures_Afficher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSelection_Animal.resx">
       <DependentUpon>FormSelection_Animal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSelection_Facture.resx">
+      <DependentUpon>FormSelection_Facture.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStock.resx">
       <DependentUpon>FormStock.cs</DependentUpon>

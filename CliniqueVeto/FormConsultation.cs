@@ -114,6 +114,32 @@ namespace CliniqueVeto
         }
 
         /// <summary>
+        /// Met à Jour le commentaire de la consultation et enregistre celle-ci puis ses actes dans la Base de Données
+        /// </summary>
+        private void BTN_Valider_Click(object sender, EventArgs e)
+        {
+            _consultationCourante.commentaire = TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text;
+            Guid consultationCreee = MgtConsultation.CreateConsultation(_consultationCourante);
+
+            foreach (Acte unActe in _consultationCourante.actes)
+            {
+                unActe.numConsultation = consultationCreee;
+            }
+
+            foreach (Acte unActe in _consultationCourante.actes)
+            {
+                MgtActe.CreateActe(unActe);
+            }
+
+            // Affichage du montant total de la consultation et fermeture de la fenêtre
+            DialogResult result = MessageBox.Show(String.Format("Consultation terminée ! Montant Total : {0}€",TBox_Total.Text), "Enregistré", MessageBoxButtons.OK);
+            if (result == DialogResult.OK)
+            {
+                this.Close();
+            }
+        }
+
+        /// <summary>
         /// Annulation et Fermeture
         /// </summary>
         private void BTN_Annuler_Click(object sender, EventArgs e)
@@ -158,7 +184,7 @@ namespace CliniqueVeto
                 // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
                 if (errorSaisie.GetError(TBox_Prix) == "")
                 {
-                    _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? "" : TBox_Commentaire.Text), false);
+                    _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text), false);
                     Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
                     _consultationCourante.actes.Add(nouvelActe);
                     errorSaisie.Clear();
@@ -199,12 +225,15 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_Supprimer_Click(object sender, EventArgs e)
         {
-            Acte acteSelect = (Acte)DataGrid_Actes.CurrentRow.DataBoundItem;
-            _consultationCourante.actes.Remove(acteSelect);
-            DataGrid_Actes.DataSource = null;
-            DataGrid_Actes.DataSource = _consultationCourante.actes;
-            TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
-            CalculTotal();
+            if (DataGrid_Actes.RowCount != 0)
+            {
+                Acte acteSelect = (Acte)DataGrid_Actes.CurrentRow.DataBoundItem;
+                _consultationCourante.actes.Remove(acteSelect);
+                DataGrid_Actes.DataSource = null;
+                DataGrid_Actes.DataSource = _consultationCourante.actes;
+                TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+                CalculTotal();
+            }
         }
 
         #endregion

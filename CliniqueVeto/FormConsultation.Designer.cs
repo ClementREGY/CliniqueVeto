@@ -153,6 +153,7 @@
             this.BTN_Valider.Size = new System.Drawing.Size(50, 50);
             this.BTN_Valider.TabIndex = 1;
             this.BTN_Valider.UseVisualStyleBackColor = true;
+            this.BTN_Valider.Click += new System.EventHandler(this.BTN_Valider_Click);
             // 
             // BTN_Dossier
             // 

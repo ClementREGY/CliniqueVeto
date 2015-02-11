@@ -33,7 +33,12 @@
             this.secrétariatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priseDeRendezVousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dossierClientAnimauxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.facturationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.créationDeFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.impressionDeFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relancesVaccinationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relancesFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.miseÀJourDuStockDeVaccinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vétérinaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,8 +79,9 @@
             this.secrétariatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.priseDeRendezVousToolStripMenuItem,
             this.dossierClientAnimauxToolStripMenuItem,
-            this.relancesToolStripMenuItem,
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem});
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem,
+            this.facturationToolStripMenuItem,
+            this.relancesToolStripMenuItem});
             this.secrétariatToolStripMenuItem.Name = "secrétariatToolStripMenuItem";
             this.secrétariatToolStripMenuItem.Size = new System.Drawing.Size(96, 23);
             this.secrétariatToolStripMenuItem.Text = "&Secrétariat";
@@ -96,13 +102,52 @@
             this.dossierClientAnimauxToolStripMenuItem.Text = "Dossiers Client / Animaux";
             this.dossierClientAnimauxToolStripMenuItem.Click += new System.EventHandler(this.AfficherClients);
             // 
+            // facturationToolStripMenuItem
+            // 
+            this.facturationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.créationDeFacturesToolStripMenuItem,
+            this.impressionDeFacturesToolStripMenuItem});
+            this.facturationToolStripMenuItem.Name = "facturationToolStripMenuItem";
+            this.facturationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
+            this.facturationToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
+            this.facturationToolStripMenuItem.Text = "Facturation";
+            // 
+            // créationDeFacturesToolStripMenuItem
+            // 
+            this.créationDeFacturesToolStripMenuItem.Name = "créationDeFacturesToolStripMenuItem";
+            this.créationDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
+            this.créationDeFacturesToolStripMenuItem.Text = "Créer une Facture";
+            this.créationDeFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherCreationFacture);
+            // 
+            // impressionDeFacturesToolStripMenuItem
+            // 
+            this.impressionDeFacturesToolStripMenuItem.Name = "impressionDeFacturesToolStripMenuItem";
+            this.impressionDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
+            this.impressionDeFacturesToolStripMenuItem.Text = "Imprimer une Facture";
+            // 
             // relancesToolStripMenuItem
             // 
+            this.relancesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relancesVaccinationToolStripMenuItem,
+            this.relancesFacturesToolStripMenuItem});
             this.relancesToolStripMenuItem.Name = "relancesToolStripMenuItem";
             this.relancesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.relancesToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
             this.relancesToolStripMenuItem.Text = "Relances";
-            this.relancesToolStripMenuItem.Click += new System.EventHandler(this.AfficherRelance);
+            // 
+            // relancesVaccinationToolStripMenuItem
+            // 
+            this.relancesVaccinationToolStripMenuItem.Name = "relancesVaccinationToolStripMenuItem";
+            this.relancesVaccinationToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.relancesVaccinationToolStripMenuItem.Text = "Vaccinations";
+            this.relancesVaccinationToolStripMenuItem.Click += new System.EventHandler(this.AfficherRelanceVaccin);
+            // 
+            // relancesFacturesToolStripMenuItem
+            // 
+            this.relancesFacturesToolStripMenuItem.Name = "relancesFacturesToolStripMenuItem";
+            this.relancesFacturesToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
+            this.relancesFacturesToolStripMenuItem.Text = "Factures";
+            this.relancesFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherRelanceFacture);
             // 
             // miseÀJourDuStockDeVaccinsToolStripMenuItem
             // 
@@ -228,7 +273,7 @@
             this.toolStripBt_Relance.Size = new System.Drawing.Size(100, 69);
             this.toolStripBt_Relance.Text = "Relance";
             this.toolStripBt_Relance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripBt_Relance.Click += new System.EventHandler(this.AfficherRelance);
+            this.toolStripBt_Relance.Click += new System.EventHandler(this.AfficherRelanceVaccin);
             // 
             // toolStripSeparator2
             // 
@@ -315,5 +360,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripBt_Dossier;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem facturationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem créationDeFacturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem impressionDeFacturesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relancesVaccinationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relancesFacturesToolStripMenuItem;
     }
 }

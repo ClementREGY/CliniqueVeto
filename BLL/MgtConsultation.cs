@@ -12,6 +12,13 @@ namespace BLL
     {
         #region Méthodes CRUD
 
+        // Create
+
+        public static Guid CreateConsultation(Consultation laConsultation)
+        {
+            return DALConsultation.AddConsultation(laConsultation);
+        }
+
         // Read
         public static List<Consultation> GetConsultations()
         {

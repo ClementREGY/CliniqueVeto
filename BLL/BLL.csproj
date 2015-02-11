@@ -44,6 +44,7 @@
     <Compile Include="MgtBareme.cs" />
     <Compile Include="MgtClient.cs" />
     <Compile Include="MgtConsultation.cs" />
+    <Compile Include="MgtFacture.cs" />
     <Compile Include="MgtLogin.cs" />
     <Compile Include="MgtRelance.cs" />
     <Compile Include="MgtRendezVous.cs" />

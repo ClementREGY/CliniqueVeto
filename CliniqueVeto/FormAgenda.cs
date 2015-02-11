@@ -84,7 +84,6 @@ namespace CliniqueVeto
             frm.MdiParent = this.MdiParent;
             frm.Show();
             frm.BringToFront();
-            this.Close();
         }
 
         #endregion

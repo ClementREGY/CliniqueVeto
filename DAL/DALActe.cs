@@ -10,6 +10,37 @@ namespace DAL
 {
     public class DALActe
     {
+        #region Create
+
+        public static bool AddActe(Acte acte)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "EXEC ajout_acte @codeConsultation, @codeGroupement, @datevigueur, @prix";
+                    command.Parameters.AddWithValue("@codeConsultation", acte.numConsultation);
+                    command.Parameters.AddWithValue("@codeGroupement", acte.codeGroupement);
+                    command.Parameters.AddWithValue("@datevigueur", acte.dateVigueur);
+                    command.Parameters.AddWithValue("@prix", acte.prix);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+
+        #endregion
+
         #region Read
 
         public static List<Acte> GetActesByConsultation(Guid codeConsult)

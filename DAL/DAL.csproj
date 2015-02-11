@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="DALAccess.cs" />
     <Compile Include="DALBarème.cs" />
+    <Compile Include="DALFacture.cs" />
     <Compile Include="DALRelance.cs" />
     <Compile Include="DALActe.cs" />
     <Compile Include="DALConsultation.cs" />

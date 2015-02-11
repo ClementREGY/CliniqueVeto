@@ -61,6 +61,27 @@ namespace CliniqueVeto
         }
 
         /// <summary>
+        /// Affichage de la forme de Gestion des Relances des Factures + écoute de la fermeture de cette fenêtre
+        /// </summary>
+        private void AfficherRelanceFacture(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Affichage de la forme de Création des Factures + écoute de la fermeture de cette fenêtre
+        /// </summary>
+        private void AfficherCreationFacture(object sender, EventArgs e)
+        {
+            FormFactures frm;
+            frm = new FormFactures();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            frm.FormClosed += FermetureFille;
+        }
+
+        /// <summary>
         /// Affichage de la forme de Gestion des Prises de RDV + écoute de la fermeture de cette fenêtre
         /// </summary>
         private void AfficherRDV(object sender, EventArgs e)
@@ -107,9 +128,9 @@ namespace CliniqueVeto
         }
 
         /// <summary>
-        /// Affichage de la forme de Gestion des Relances + écoute de la fermeture de cette fenêtre
+        /// Affichage de la forme de Gestion des Relances des Vaccins + écoute de la fermeture de cette fenêtre
         /// </summary>
-        private void AfficherRelance(object sender, EventArgs e)
+        private void AfficherRelanceVaccin(object sender, EventArgs e)
         {
             FormRelance frm;
             if (!relancesToolStripMenuItem.Checked)

@@ -10,19 +10,34 @@ namespace CliniqueVeto
 {
     public static class RichTextBoxExtensions
     {
-        public static void AppendText(this RichTextBox box, string text, Color color, float taille = 12, bool bold = false, bool italic = false, bool souligne = false)
+        public static void AppendText(this RichTextBox box, string text, Color color, float taille = 12, bool bold = false, bool italic = false, bool souligne = false, bool policeFacture = false)
         {
             box.SelectionStart = box.TextLength;
             box.SelectionLength = 0;
 
-            if (bold)
-                box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Bold);
-            else if (italic)
-                box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Italic);
-            else if (souligne)
-                box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Underline);
+            if (policeFacture)
+            {
+                if (bold)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Courier New"), taille, FontStyle.Bold);
+                else if (italic)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Courier New"), taille, FontStyle.Italic);
+                else if (souligne)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Courier New"), taille, FontStyle.Underline);
+                else
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Courier New"), taille);
+            }
             else
-                box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille);
+            {
+                if (bold)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Bold);
+                else if (italic)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Italic);
+                else if (souligne)
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille, FontStyle.Underline);
+                else
+                    box.SelectionFont = new Font(new System.Drawing.FontFamily("Cambria"), taille);
+            }
+
 
             box.SelectionColor = color;
             box.AppendText(text);

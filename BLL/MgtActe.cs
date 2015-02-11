@@ -12,6 +12,13 @@ namespace BLL
     {
         #region Méthodes CRUD
 
+        // Create
+
+        public static bool CreateActe(Acte lActe)
+        {
+            return DALActe.AddActe(lActe);
+        }
+
         // Read
         public static List<Acte> GetActesByConsultation(Guid IdConsult)
         {
