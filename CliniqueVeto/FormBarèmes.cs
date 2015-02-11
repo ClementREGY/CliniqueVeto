@@ -31,11 +31,7 @@ namespace CliniqueVeto
         {
             Reset();
             CBox_TypeTarif.SelectedIndex = 0;
-            // Chargement de la grille
-            DataGrid_Barèmes.DataSource = MgtBareme.GetBaremes();
-            DataGrid_Barèmes.Columns["tarifFixe"].DefaultCellStyle.Format = "0.00";
-            DataGrid_Barèmes.Columns["tarifMini"].DefaultCellStyle.Format = "0.00";
-            DataGrid_Barèmes.Columns["tarifMaxi"].DefaultCellStyle.Format = "0.00";
+            ActualiserDataGrid();
         }
 
         #region Gestion de l'Affichage
@@ -44,6 +40,15 @@ namespace CliniqueVeto
         private void DataGrid_Barèmes_SelectionChanged(object sender, EventArgs e)
         {
             AfficherActeCourant();
+        }
+
+        // Chargement de la grille
+        private void ActualiserDataGrid()
+        {
+            DataGrid_Barèmes.DataSource = MgtBareme.GetBaremes();
+            DataGrid_Barèmes.Columns["tarifFixe"].DefaultCellStyle.Format = "0.00 €";
+            DataGrid_Barèmes.Columns["tarifMini"].DefaultCellStyle.Format = "0.00 €";
+            DataGrid_Barèmes.Columns["tarifMaxi"].DefaultCellStyle.Format = "0.00 €";
         }
 
         private void AfficherActeCourant()
@@ -100,11 +105,11 @@ namespace CliniqueVeto
                     }
                     else
                     {
+                        Bareme baremeSET = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, decimal.Parse(TBox_TarifFixe.Text), 0, 0, BaremeCourant.codeVaccin, false);
                         BaremeCourant.dateVigueur = DateTime.Now.ToString();
-                        Bareme bareme = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, decimal.Parse(TBox_TarifFixe.Text), 0, 0, BaremeCourant.codeVaccin, false);
-                        MgtBareme.AddBareme(bareme);
-                        MgtBareme.SetBaremeArchive(bareme);
-                        Reset();
+                        Bareme baremeADD = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, decimal.Parse(TBox_TarifFixe.Text), 0, 0, BaremeCourant.codeVaccin, false);
+                        MgtBareme.AddBareme(baremeADD);
+                        MgtBareme.SetBaremeArchive(baremeSET);
                     }
                 }
                 else if (CBox_TypeTarif.SelectedIndex == 1)
@@ -121,15 +126,15 @@ namespace CliniqueVeto
                         }
                         else
                         {
+                            Bareme baremeSET = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, 0, decimal.Parse(TBox_TarifMini.Text), decimal.Parse(TBox_TarifMaxi.Text), BaremeCourant.codeVaccin, false);
                             BaremeCourant.dateVigueur = DateTime.Now.ToString();
-                            Bareme bareme = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, 0, decimal.Parse(TBox_TarifMini.Text), decimal.Parse(TBox_TarifMaxi.Text), BaremeCourant.codeVaccin , false);
-                            MgtBareme.AddBareme(bareme);
-                            MgtBareme.SetBaremeArchive(bareme);
-                            Reset();
+                            Bareme baremeADD = new Bareme(BaremeCourant.codeGroupement, BaremeCourant.dateVigueur, TBox_Type.Text, Tbox_Libelle.Text, 0, decimal.Parse(TBox_TarifMini.Text), decimal.Parse(TBox_TarifMaxi.Text), BaremeCourant.codeVaccin , false);
+                            MgtBareme.AddBareme(baremeADD);
+                            MgtBareme.SetBaremeArchive(baremeSET);
                         }
                     }
                 }
-
+                ActualiserDataGrid();
                 Reset();
             }
         }

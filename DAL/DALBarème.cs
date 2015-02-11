@@ -27,7 +27,12 @@ namespace DAL
                     command.Parameters.AddWithValue("@tarifFixe", bareme.tarifFixe);
                     command.Parameters.AddWithValue("@tarifMin", bareme.tarifMini);
                     command.Parameters.AddWithValue("@tarifMax", bareme.tarifMaxi);
-                    command.Parameters.AddWithValue("@codeVaccin", Guid.Parse(bareme.codeVaccin));
+
+                    if (bareme.codeVaccin == "")
+                        command.Parameters.AddWithValue("@codeVaccin", DBNull.Value);
+                    else
+                        command.Parameters.AddWithValue("@codeVaccin", Guid.Parse(bareme.codeVaccin));
+
                     int resultat = command.ExecuteNonQuery();
                     if (resultat == 0)
                         return false;
