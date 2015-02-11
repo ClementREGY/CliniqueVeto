@@ -56,6 +56,7 @@ namespace CliniqueVeto
             {
                 CBox_Espèce.SelectedIndex = CBox_Espèce.FindStringExact(frmClients.AnimalCourant.espece);
                 CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
+                TBox_Tatouage.Enabled = false;
                 AfficherAnimalCourant();
             }
         }

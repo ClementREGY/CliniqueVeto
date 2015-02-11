@@ -49,11 +49,17 @@ namespace CliniqueVeto
 
         #region Gestion de l'Affichage
 
+        /// <summary>
+        /// Affiche le libellé correspondant au Type choisi
+        /// </summary>
         private void CBox_Type_SelectedIndexChanged(object sender, EventArgs e)
         {
             CBox_Libellé.DataSource = MgtBareme.GetLibelleActe(CBox_Type.SelectedValue.ToString());
         }
 
+        /// <summary>
+        /// Affiche les tarifs correspondants à l'acte sélectionné
+        /// </summary>
         private void CBox_Libellé_SelectedIndexChanged(object sender, EventArgs e)
         {
             _baremeCourant = MgtBareme.GetBareme(CBox_Libellé.SelectedValue.ToString());
@@ -62,15 +68,19 @@ namespace CliniqueVeto
             TBox_Mini.Text = _baremeCourant.tarifMini.ToString("N2");
             TBox_Maxi.Text = _baremeCourant.tarifMaxi.ToString("N2");
 
-            if (TBox_Prix.Text == "0,00")
+            if (TBox_Prix.Text == "0,00" && BTN_Ajout.Text == "Annuler")
                 TBox_Prix.Enabled = true;
             else
                 TBox_Prix.Enabled = false;
         }
 
+        /// <summary>
+        /// Vérifie lors de la sortie de la TextBox du Prix Fixe, que la valeur saisie est au bon format
+        /// et bien située entre le Prix Mini et le Prix Maxi
+        /// </summary>
         private void TBox_Prix_Leave(object sender, EventArgs e)
         {
-            if ((Decimal.Parse(TBox_Prix.Text) > Decimal.Parse(TBox_Maxi.Text)) || (Decimal.Parse(TBox_Prix.Text) < Decimal.Parse(TBox_Mini.Text)))
+            if ((Decimal.Parse(TBox_Prix.Text) > Decimal.Parse(TBox_Maxi.Text)) || (Decimal.Parse(TBox_Prix.Text) < Decimal.Parse(TBox_Mini.Text)) || (Decimal.Parse(TBox_Prix.Text) == 0))
             {
                 errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
                 TBox_Prix.Text = "0,00";      
@@ -82,11 +92,17 @@ namespace CliniqueVeto
             }
         }
 
+        /// <summary>
+        /// Vide la TextBox de Prix Fixe lors du focus
+        /// </summary>
         private void TBox_Prix_Enter(object sender, EventArgs e)
         {
             TBox_Prix.Clear();
         }
 
+        /// <summary>
+        /// Calcule et affiche le prix total de la Consultation
+        /// </summary>
         private void CalculTotal()
         {
             Decimal px = 0;
@@ -96,6 +112,20 @@ namespace CliniqueVeto
             }
 
             TBox_Total.Text = px.ToString("N2");
+        }
+
+        /// <summary>
+        /// Vérifie si un Tatouage a été effectué, si oui, permet la saisie du N° de Tatouage
+        /// </summary>
+        private void CheckTatouage()
+        {
+            foreach (Acte unActe in _consultationCourante.actes)
+            {
+                if (unActe.typeActe == "TATO")
+                    TBox_Tatouage.Enabled = true;
+                else
+                    TBox_Tatouage.Enabled = false;
+            }
         }
 
         #endregion
@@ -118,24 +148,38 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_Valider_Click(object sender, EventArgs e)
         {
-            _consultationCourante.commentaire = TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text;
-            Guid consultationCreee = MgtConsultation.CreateConsultation(_consultationCourante);
-
-            foreach (Acte unActe in _consultationCourante.actes)
+            if (TBox_Tatouage.Enabled && String.IsNullOrWhiteSpace(TBox_Tatouage.Text))
             {
-                unActe.numConsultation = consultationCreee;
+                errorSaisie.SetError(TBox_Tatouage, "Veuillez saisir le N° du Tatouage effectué !");
+                TBox_Tatouage.Focus();
             }
-
-            foreach (Acte unActe in _consultationCourante.actes)
+            else
             {
-                MgtActe.CreateActe(unActe);
-            }
+                _consultationCourante.commentaire = TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text;
+                Guid consultationCreee = MgtConsultation.CreateConsultation(_consultationCourante);
 
-            // Affichage du montant total de la consultation et fermeture de la fenêtre
-            DialogResult result = MessageBox.Show(String.Format("Consultation terminée ! Montant Total : {0}€",TBox_Total.Text), "Enregistré", MessageBoxButtons.OK);
-            if (result == DialogResult.OK)
-            {
-                this.Close();
+                foreach (Acte unActe in _consultationCourante.actes)
+                {
+                    unActe.numConsultation = consultationCreee;
+                }
+
+                foreach (Acte unActe in _consultationCourante.actes)
+                {
+                    MgtActe.CreateActe(unActe);
+                }
+
+                // Si un tatouage a été effectué et saisi, on met l'animal à jour
+                if (TBox_Tatouage.Enabled && !String.IsNullOrWhiteSpace(TBox_Tatouage.Text))
+                {
+                    MgtAnimal.UpdateTatouage(TBox_Tatouage.Text.Trim(), _animalCourant.codeAnimal);
+                }
+
+                // Affichage du montant total de la consultation et fermeture de la fenêtre
+                DialogResult result = MessageBox.Show(String.Format("Consultation terminée ! Montant Total : {0}€",TBox_Total.Text), "Enregistré", MessageBoxButtons.OK);
+                if (result == DialogResult.OK)
+                {
+                    this.Close();
+                }
             }
         }
 
@@ -179,44 +223,55 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_Enregistrer_Click(object sender, EventArgs e)
         {
-            if (_consultationCourante == null)
+            // Vérifie que le Prix fixe saisi n'est pas égal à 0
+            if (TBox_Prix.Text == "0,00")
             {
-                // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
-                if (errorSaisie.GetError(TBox_Prix) == "")
-                {
-                    _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text), false);
-                    Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
-                    _consultationCourante.actes.Add(nouvelActe);
-                    errorSaisie.Clear();
-                }
-                else
-                    errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
+                errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
+                TBox_Prix.Text = "0,00";
             }
             else
             {
-                // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
-                if (errorSaisie.GetError(TBox_Prix) == "")
+                errorSaisie.Clear();
+                if (_consultationCourante == null)
                 {
-                    Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
-                    _consultationCourante.actes.Add(nouvelActe);
-                    DataGrid_Actes.DataSource = null;
-                    errorSaisie.Clear();
+                    // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
+                    if (errorSaisie.GetError(TBox_Prix) == "")
+                    {
+                        _consultationCourante = new Consultation(Guid.NewGuid(), DTPicker_Date.Value, _veterinaireCourant.codeVeto, _animalCourant.codeAnimal, 1, null, (TBox_Commentaire.Text == null ? null : TBox_Commentaire.Text), false);
+                        Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                        _consultationCourante.actes.Add(nouvelActe);
+                        errorSaisie.Clear();
+                    }
+                    else
+                        errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
                 }
                 else
-                    errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
-            }
+                {
+                    // Si l'erreur n'est pas déclenchée, on peut procéder à l'enregistrement
+                    if (errorSaisie.GetError(TBox_Prix) == "")
+                    {
+                        Acte nouvelActe = new Acte(_consultationCourante.codeConsultation, Guid.NewGuid(), _baremeCourant.dateVigueur, _baremeCourant.codeGroupement, Decimal.Parse(TBox_Prix.Text), _baremeCourant.typeActe, _baremeCourant.libelle);
+                        _consultationCourante.actes.Add(nouvelActe);
+                        DataGrid_Actes.DataSource = null;
+                        errorSaisie.Clear();
+                    }
+                    else
+                        errorSaisie.SetError(TBox_Prix, "Veuillez saisir un Prix entre le Mini et le Maxi !");
+                }
 
-            // Si l'erreur n'est pas déclenchée, on peut procéder à la mise à jour des informations
-            if (errorSaisie.GetError(TBox_Prix) == "")
-            {
-                DataGrid_Actes.DataSource = _consultationCourante.actes;
-                DataGrid_Actes.Columns["libelle"].DisplayIndex = 0;
-                DataGrid_Actes.Columns["codeGroupement"].DisplayIndex = 1;
-                DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
-                DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
+                // Si l'erreur n'est pas déclenchée, on peut procéder à la mise à jour des informations
+                if (errorSaisie.GetError(TBox_Prix) == "")
+                {
+                    DataGrid_Actes.DataSource = _consultationCourante.actes;
+                    DataGrid_Actes.Columns["libelle"].DisplayIndex = 0;
+                    DataGrid_Actes.Columns["codeGroupement"].DisplayIndex = 1;
+                    DataGrid_Actes.Columns["dateVigueur"].DisplayIndex = 2;
+                    DataGrid_Actes.Columns["Prix"].DisplayIndex = 3;
 
-                TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
-                CalculTotal();
+                    TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
+                    CalculTotal();
+                    CheckTatouage();
+                }
             }
         }
 
@@ -233,6 +288,7 @@ namespace CliniqueVeto
                 DataGrid_Actes.DataSource = _consultationCourante.actes;
                 TBox_NbActes.Text = DataGrid_Actes.RowCount.ToString();
                 CalculTotal();
+                CheckTatouage();
             }
         }
 

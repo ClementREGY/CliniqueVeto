@@ -50,6 +50,11 @@ namespace BLL
             return DALAnimal.SetAnimal(pAnimal);
         }
 
+        public static bool UpdateTatouage(String tatouage, Guid codeAnimal)
+        {
+            return DALAnimal.SetTatouage(tatouage, codeAnimal);
+        }
+
         // Delete
         public static bool DeleteAnimal(Guid id)
         {

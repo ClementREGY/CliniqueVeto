@@ -63,6 +63,7 @@ namespace CliniqueVeto
         private void FormClients_Load(object sender, EventArgs e)
         {
             TBox_Code.Enabled = false;
+            NavBarre.AvantEnable = false;
             DataGrid_Animaux.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Animaux.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);

@@ -250,6 +250,31 @@ namespace DAL
             }
         }
 
+        public static bool SetTatouage(String tatouage, Guid codeAnimal)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "UPDATE Animaux SET Tatouage = @tatouage WHERE CodeAnimal = @id";
+                    command.Parameters.AddWithValue("@tatouage", tatouage);
+                    command.Parameters.AddWithValue("@id", codeAnimal);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+
         #endregion
 
         #region Delete
