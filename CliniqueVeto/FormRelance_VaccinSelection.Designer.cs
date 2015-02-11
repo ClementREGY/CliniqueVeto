@@ -41,9 +41,7 @@
             this.DataGrid_Relance.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGrid_Relance.Location = new System.Drawing.Point(16, 16);
             this.DataGrid_Relance.Margin = new System.Windows.Forms.Padding(4);
-            this.DataGrid_Relance.MultiSelect = false;
             this.DataGrid_Relance.Name = "DataGrid_Relance";
-            this.DataGrid_Relance.ReadOnly = true;
             this.DataGrid_Relance.RowHeadersVisible = false;
             this.DataGrid_Relance.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGrid_Relance.Size = new System.Drawing.Size(622, 153);
@@ -61,7 +59,7 @@
             this.BTN_Générer.UseVisualStyleBackColor = false;
             this.BTN_Générer.Click += new System.EventHandler(this.BTN_Générer_Click);
             // 
-            // FormRelance
+            // FormRelance_VaccinSelection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -72,7 +70,7 @@
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormRelance";
+            this.Name = "FormRelance_VaccinSelection";
             this.Text = "Relance";
             this.Load += new System.EventHandler(this.FormRelance_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Relance)).EndInit();

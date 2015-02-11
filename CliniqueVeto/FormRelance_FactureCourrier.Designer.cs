@@ -50,6 +50,7 @@
             this.BTN_EnvoiRelance.TabIndex = 1;
             this.BTN_EnvoiRelance.Text = "Envoyer la Relance";
             this.BTN_EnvoiRelance.UseVisualStyleBackColor = false;
+            this.BTN_EnvoiRelance.Click += new System.EventHandler(this.BTN_EnvoiRelance_Click);
             // 
             // FormRelance_FactureCourrier
             // 

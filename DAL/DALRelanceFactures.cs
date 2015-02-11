@@ -50,7 +50,7 @@ namespace DAL
                         relance.totalFacture = dt.GetDecimal(colTotal);
                         relance.archive = dt.GetBoolean(colArchive);
                         relance.etat = dt.GetInt32(colEtat);
-                        relance.rappelEnvoye = dt.GetDateTime(colRappel);
+                        relance.rappelEnvoye = dt.GetValue(colRappel) == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dt.GetDateTime(colRappel));
 
                         if ( relance.rappelEnvoye == null && relance.dateFacture.AddMonths(1) <= DateTime.Now )
                             list.Add(relance);
@@ -77,7 +77,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "UPDATE LignesConsultations SET RappelEnvoye=@date WHERE NumFacture=@Num";
+                    command.CommandText = "UPDATE Factures SET RappelEnvoye=@date WHERE NumFacture=@Num";
                     command.Parameters.AddWithValue("@Num", relance.numFacture);
                     command.Parameters.AddWithValue("@date", relance.rappelEnvoye);
 

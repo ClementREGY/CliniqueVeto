@@ -27,6 +27,11 @@ namespace CliniqueVeto
             frmRelance = frm;
         }
 
+        /// <summary>
+        /// Chargement du contenu de la richTextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormRelance_FactureCourrier_Load(object sender, EventArgs e)
         {
             richTBox_Courrier.TabStop = false;
@@ -79,9 +84,12 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_EnvoiRelance_Click(object sender, EventArgs e)
         {
+            frmRelance.RelanceCourante.rappelEnvoye = DateTime.Now;
             MgtRelanceFactures.SetRelanceEnvoye(frmRelance.RelanceCourante);
+            this.Close();
         }
 
         #endregion
+
     }
 }

@@ -28,11 +28,17 @@ namespace CliniqueVeto
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Chargement de la dataGrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormRelance_FactureSelection_Load(object sender, EventArgs e)
         {
             DataGrid_Relance.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Relance.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Relance.DataSource = MgtRelanceFactures.GetRelances();
+            DataGrid_Relance.Columns["TotalFacture"].DefaultCellStyle.Format = "0.00 €";
         }
 
         #region Gestion des Boutons
@@ -40,7 +46,7 @@ namespace CliniqueVeto
         /// <summary>
         /// Ouverture de la fenêtre du Courrier de Relance
         /// </summary>
-        private void BTN_Générer_Click(object sender, EventArgs e)
+        private void BTN_GenererRelance_Click(object sender, EventArgs e)
         {
             FormRelance_FactureCourrier frm = new FormRelance_FactureCourrier(this);
             frm.MdiParent = this.MdiParent;
@@ -49,5 +55,7 @@ namespace CliniqueVeto
         }
 
         #endregion
+
+        
     }
 }
