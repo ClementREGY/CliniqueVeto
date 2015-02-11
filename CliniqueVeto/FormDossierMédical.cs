@@ -17,7 +17,6 @@ namespace CliniqueVeto
         #region Attributs et Accesseurs
 
         Guid _codeAnimal;
-        Animal _animalCourant;
         List<Consultation> _consultations;
 
         public Guid CodeAnimal 

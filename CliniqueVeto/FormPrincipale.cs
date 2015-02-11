@@ -82,6 +82,19 @@ namespace CliniqueVeto
         }
 
         /// <summary>
+        /// Affichage de la forme d'Impression des Factures + écoute de la fermeture de cette fenêtre
+        /// </summary>
+        private void AfficherImpressionFacture(object sender, EventArgs e)
+        {
+            FormSelection_Facture frm;
+            frm = new FormSelection_Facture();
+            frm.MdiParent = this;
+            frm.Show();
+            frm.BringToFront();
+            frm.FormClosed += FermetureFille;
+        }
+
+        /// <summary>
         /// Affichage de la forme de Gestion des Prises de RDV + écoute de la fermeture de cette fenêtre
         /// </summary>
         private void AfficherRDV(object sender, EventArgs e)

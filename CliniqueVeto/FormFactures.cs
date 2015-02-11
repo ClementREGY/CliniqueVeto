@@ -14,8 +14,12 @@ namespace CliniqueVeto
 {
     public partial class FormFactures : Form
     {
+        #region Attributs et Propriétés
+
         private Consultation _consultationCourante;
         private Facture _factureCourante;
+
+        #endregion
 
         public FormFactures()
         {
@@ -28,11 +32,23 @@ namespace CliniqueVeto
             DataGrid_Factures.Columns["nomAnimal"].DisplayIndex = 3;
         }
 
+        #region Gestion de l'Affichage
+
+        /// <summary>
+        /// Affecte la consultaton selectionnée en tant que consultation courante
+        /// </summary>
         private void DataGrid_Factures_SelectionChanged(object sender, EventArgs e)
         {
             _consultationCourante = (Consultation)DataGrid_Factures.CurrentRow.DataBoundItem;
         }
 
+        #endregion
+
+        #region Gestion des Boutons
+
+        /// <summary>
+        /// Met à jour l'état de la Facture et de la Consultation, puis affiche le visuel de la facture
+        /// </summary>
         private void BTN_Créer_Click(object sender, EventArgs e)
         {
             _factureCourante = new Facture(new Guid(), DateTime.Now, 0);
@@ -41,8 +57,14 @@ namespace CliniqueVeto
             _factureCourante.nomVeto = _consultationCourante.nomVeto;
 
             Guid numFacture = MgtFacture.CreateFacture(_factureCourante);
-
             DataGrid_Factures.DataSource = MgtConsultation.GetConsultations();
+
+            FormFactures_Afficher frm = new FormFactures_Afficher(numFacture);
+            frm.MdiParent = this.MdiParent;
+            frm.Show();
+            frm.BringToFront();
         }
+
+        #endregion
     }
 }

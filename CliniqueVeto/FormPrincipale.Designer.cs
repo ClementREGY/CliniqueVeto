@@ -33,13 +33,13 @@
             this.secrétariatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.priseDeRendezVousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dossierClientAnimauxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.facturationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.créationDeFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.impressionDeFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relancesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relancesVaccinationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relancesFacturesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.vétérinaireToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dossiersMédicauxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +102,14 @@
             this.dossierClientAnimauxToolStripMenuItem.Text = "Dossiers Client / Animaux";
             this.dossierClientAnimauxToolStripMenuItem.Click += new System.EventHandler(this.AfficherClients);
             // 
+            // miseÀJourDuStockDeVaccinsToolStripMenuItem
+            // 
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Name = "miseÀJourDuStockDeVaccinsToolStripMenuItem";
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Text = "Mise à Jour du Stock de Vaccins";
+            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Click += new System.EventHandler(this.AfficherStocks);
+            // 
             // facturationToolStripMenuItem
             // 
             this.facturationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -124,6 +132,7 @@
             this.impressionDeFacturesToolStripMenuItem.Name = "impressionDeFacturesToolStripMenuItem";
             this.impressionDeFacturesToolStripMenuItem.Size = new System.Drawing.Size(234, 24);
             this.impressionDeFacturesToolStripMenuItem.Text = "Imprimer une Facture";
+            this.impressionDeFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherImpressionFacture);
             // 
             // relancesToolStripMenuItem
             // 
@@ -148,14 +157,6 @@
             this.relancesFacturesToolStripMenuItem.Size = new System.Drawing.Size(168, 24);
             this.relancesFacturesToolStripMenuItem.Text = "Factures";
             this.relancesFacturesToolStripMenuItem.Click += new System.EventHandler(this.AfficherRelanceFacture);
-            // 
-            // miseÀJourDuStockDeVaccinsToolStripMenuItem
-            // 
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Name = "miseÀJourDuStockDeVaccinsToolStripMenuItem";
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Size = new System.Drawing.Size(355, 24);
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Text = "Mise à Jour du Stock de Vaccins";
-            this.miseÀJourDuStockDeVaccinsToolStripMenuItem.Click += new System.EventHandler(this.AfficherStocks);
             // 
             // vétérinaireToolStripMenuItem
             // 

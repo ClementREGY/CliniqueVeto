@@ -33,9 +33,10 @@
             // 
             // richTBox_Facture
             // 
+            this.richTBox_Facture.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.richTBox_Facture.Location = new System.Drawing.Point(0, 0);
             this.richTBox_Facture.Name = "richTBox_Facture";
-            this.richTBox_Facture.Size = new System.Drawing.Size(372, 473);
+            this.richTBox_Facture.Size = new System.Drawing.Size(375, 461);
             this.richTBox_Facture.TabIndex = 0;
             this.richTBox_Facture.Text = "";
             // 
@@ -44,11 +45,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MintCream;
-            this.ClientSize = new System.Drawing.Size(372, 473);
+            this.ClientSize = new System.Drawing.Size(375, 461);
             this.Controls.Add(this.richTBox_Facture);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormFactures_Afficher";
             this.Text = "Facture";
             this.Load += new System.EventHandler(this.FormFactures_Afficher_Load);

@@ -45,14 +45,14 @@
             this.DataGrid_Factures.ReadOnly = true;
             this.DataGrid_Factures.RowHeadersVisible = false;
             this.DataGrid_Factures.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGrid_Factures.Size = new System.Drawing.Size(495, 200);
+            this.DataGrid_Factures.Size = new System.Drawing.Size(553, 149);
             this.DataGrid_Factures.TabIndex = 0;
             this.DataGrid_Factures.SelectionChanged += new System.EventHandler(this.DataGrid_Factures_SelectionChanged);
             // 
             // BTN_Créer
             // 
             this.BTN_Créer.BackColor = System.Drawing.SystemColors.Control;
-            this.BTN_Créer.Location = new System.Drawing.Point(366, 219);
+            this.BTN_Créer.Location = new System.Drawing.Point(424, 168);
             this.BTN_Créer.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Créer.Name = "BTN_Créer";
             this.BTN_Créer.Size = new System.Drawing.Size(141, 25);
@@ -66,13 +66,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(519, 253);
+            this.ClientSize = new System.Drawing.Size(577, 203);
             this.Controls.Add(this.BTN_Créer);
             this.Controls.Add(this.DataGrid_Factures);
             this.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormFactures";
             this.Text = "Factures à Créer";
             this.Load += new System.EventHandler(this.FormFactures_Load);

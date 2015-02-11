@@ -149,7 +149,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT * FROM Consultations WHERE CodeConsultation = @codeConsult Archive = 0";
+                    command.CommandText = "SELECT * FROM Consultations WHERE CodeConsultation = @codeConsult AND Archive = 0";
                     command.Parameters.AddWithValue("@codeConsult", codeConsult);
 
                     SqlDataReader dt = command.ExecuteReader();
