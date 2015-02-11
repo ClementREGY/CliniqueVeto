@@ -259,14 +259,21 @@ namespace CliniqueVeto
         /// </summary>
         private void BTN_Supprimer_Click(object sender, EventArgs e)
         {
-            try
+            if (((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem).dateRDV.Date >= DateTime.Now.Date)
             {
-                MgtRendezVous.DeleteRDV((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem);
-                DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+                try
+                {
+                    MgtRendezVous.DeleteRDV((RendezVous)DataGrid_RDV.CurrentRow.DataBoundItem);
+                    DataGrid_RDV.DataSource = MgtRendezVous.GetAgendaByDate(DTPicker_Date.Value);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erreur lors de la Suppression du RDV...");
+                }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Erreur lors de la Suppression du RDV...");
+                MessageBox.Show("Le Rendez-Vous est déjà passé, impossible de le supprimer.");
             }
             AffichageUrgences();
         }

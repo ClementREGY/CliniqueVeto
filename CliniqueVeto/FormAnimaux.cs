@@ -74,6 +74,8 @@ namespace CliniqueVeto
                 CBox_Genre.SelectedIndex = 1;
             else if (frmClients.AnimalCourant.sexe.StartsWith("F"))
                 CBox_Genre.SelectedIndex = 0;
+            else if (frmClients.AnimalCourant.sexe.StartsWith("H"))
+                CBox_Genre.SelectedIndex = 2;
 
             TBox_Couleur.Text = frmClients.AnimalCourant.couleur;
             TBox_Tatouage.Text = frmClients.AnimalCourant.tatouage;
@@ -162,12 +164,14 @@ namespace CliniqueVeto
                                     Animal newAnimal = new Animal(new Guid(), TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
                                     CBox_Espèce.Text.ToString(), ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
                                     MgtAnimal.CreateAnimal(newAnimal, client);
+                                    this.Close();
                                 }
                                 else if (frmClients.ModeAnimal == "Modification")
                                 {
                                     Animal newAnimal = new Animal(frmClients.AnimalCourant.codeAnimal, TBox_Nom.Text, CBox_Genre.Text[0].ToString(), CBox_Race.Text.ToString(),
                                     CBox_Espèce.Text.ToString(), ClientCourant.codeClient, false, TBox_Couleur.Text, TBox_Tatouage.Text, null);
                                     MgtAnimal.UpdateAnimal(newAnimal);
+                                    this.Close();
                                 }
 
                                 Reset();

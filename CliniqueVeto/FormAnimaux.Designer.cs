@@ -256,16 +256,16 @@
             this.CBox_Race.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBox_Race.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CBox_Race.FormattingEnabled = true;
-            this.CBox_Race.Location = new System.Drawing.Point(287, 281);
+            this.CBox_Race.Location = new System.Drawing.Point(260, 281);
             this.CBox_Race.Name = "CBox_Race";
-            this.CBox_Race.Size = new System.Drawing.Size(96, 27);
+            this.CBox_Race.Size = new System.Drawing.Size(133, 27);
             this.CBox_Race.TabIndex = 23;
             // 
             // Label_Race
             // 
             this.Label_Race.AutoSize = true;
             this.Label_Race.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Race.Location = new System.Drawing.Point(223, 284);
+            this.Label_Race.Location = new System.Drawing.Point(205, 284);
             this.Label_Race.Name = "Label_Race";
             this.Label_Race.Size = new System.Drawing.Size(42, 19);
             this.Label_Race.TabIndex = 22;
@@ -278,10 +278,11 @@
             this.CBox_Genre.FormattingEnabled = true;
             this.CBox_Genre.Items.AddRange(new object[] {
             "Femelle",
-            "Mâle"});
-            this.CBox_Genre.Location = new System.Drawing.Point(287, 200);
+            "Mâle",
+            "Hermaphrodite"});
+            this.CBox_Genre.Location = new System.Drawing.Point(260, 200);
             this.CBox_Genre.Name = "CBox_Genre";
-            this.CBox_Genre.Size = new System.Drawing.Size(96, 27);
+            this.CBox_Genre.Size = new System.Drawing.Size(132, 27);
             this.CBox_Genre.TabIndex = 24;
             // 
             // errorSaisie

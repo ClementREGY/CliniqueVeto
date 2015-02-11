@@ -168,7 +168,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT DISTINCT Espece FROM Animaux";
+                    command.CommandText = "SELECT DISTINCT Espece FROM Races";
 
                     SqlDataReader dt = command.ExecuteReader();
                     int colEspece = dt.GetOrdinal("Espece");
@@ -196,7 +196,7 @@ namespace DAL
                 {
                     SqlCommand command = cnx.CreateCommand();
                     command.CommandType = System.Data.CommandType.Text;
-                    command.CommandText = "SELECT DISTINCT Race FROM Animaux WHERE Espece = @espece";
+                    command.CommandText = "SELECT DISTINCT Race FROM Races WHERE Espece = @espece";
                     command.Parameters.AddWithValue("@espece", espece);
 
                     SqlDataReader dt = command.ExecuteReader();
