@@ -43,6 +43,7 @@
     <Compile Include="DALAccess.cs" />
     <Compile Include="DALBarème.cs" />
     <Compile Include="DALFacture.cs" />
+    <Compile Include="DALRace.cs" />
     <Compile Include="DALRelanceFactures.cs" />
     <Compile Include="DALRelanceVaccins.cs" />
     <Compile Include="DALActe.cs" />

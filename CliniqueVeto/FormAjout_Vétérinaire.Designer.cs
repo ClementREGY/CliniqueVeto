@@ -48,21 +48,21 @@
             // 
             this.TBox_Nom.Location = new System.Drawing.Point(81, 25);
             this.TBox_Nom.Name = "TBox_Nom";
-            this.TBox_Nom.Size = new System.Drawing.Size(232, 23);
+            this.TBox_Nom.Size = new System.Drawing.Size(240, 23);
             this.TBox_Nom.TabIndex = 0;
             // 
             // TBox_Prénom
             // 
             this.TBox_Prénom.Location = new System.Drawing.Point(81, 54);
             this.TBox_Prénom.Name = "TBox_Prénom";
-            this.TBox_Prénom.Size = new System.Drawing.Size(232, 23);
+            this.TBox_Prénom.Size = new System.Drawing.Size(240, 23);
             this.TBox_Prénom.TabIndex = 1;
             // 
             // TBox_Password
             // 
             this.TBox_Password.Location = new System.Drawing.Point(187, 97);
             this.TBox_Password.Name = "TBox_Password";
-            this.TBox_Password.Size = new System.Drawing.Size(126, 23);
+            this.TBox_Password.Size = new System.Drawing.Size(134, 23);
             this.TBox_Password.TabIndex = 2;
             this.TBox_Password.UseSystemPasswordChar = true;
             // 
@@ -132,7 +132,7 @@
             // 
             this.TBox_Password2.Location = new System.Drawing.Point(187, 126);
             this.TBox_Password2.Name = "TBox_Password2";
-            this.TBox_Password2.Size = new System.Drawing.Size(126, 23);
+            this.TBox_Password2.Size = new System.Drawing.Size(134, 23);
             this.TBox_Password2.TabIndex = 3;
             this.TBox_Password2.UseSystemPasswordChar = true;
             // 

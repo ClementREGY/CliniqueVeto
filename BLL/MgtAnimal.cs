@@ -34,16 +34,6 @@ namespace BLL
             return DALAnimal.GetAnimals();
         }
 
-        public static List<String> GetEspeces()
-        {
-            return DALAnimal.GetEspeces();
-        }
-
-        public static List<String> GetRaces(String espece)
-        {
-            return DALAnimal.GetRaces(espece);
-        }
-
         // Update
         public static bool UpdateAnimal(Animal pAnimal)
         {

@@ -53,9 +53,13 @@
             this.Label_Race = new System.Windows.Forms.Label();
             this.CBox_Genre = new System.Windows.Forms.ComboBox();
             this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
+            this.PBox_AddEspèce = new System.Windows.Forms.PictureBox();
+            this.PBox_AddRace = new System.Windows.Forms.PictureBox();
             this.Panel_GestionAnimaux.SuspendLayout();
             this.GBox_Client.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddEspèce)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddRace)).BeginInit();
             this.SuspendLayout();
             // 
             // Panel_GestionAnimaux
@@ -69,7 +73,7 @@
             this.Panel_GestionAnimaux.Controls.Add(this.BTN_Dossier);
             this.Panel_GestionAnimaux.Location = new System.Drawing.Point(0, 0);
             this.Panel_GestionAnimaux.Name = "Panel_GestionAnimaux";
-            this.Panel_GestionAnimaux.Size = new System.Drawing.Size(404, 83);
+            this.Panel_GestionAnimaux.Size = new System.Drawing.Size(428, 83);
             this.Panel_GestionAnimaux.TabIndex = 0;
             // 
             // Label_Annuler
@@ -77,7 +81,7 @@
             this.Label_Annuler.AutoSize = true;
             this.Label_Annuler.BackColor = System.Drawing.Color.Transparent;
             this.Label_Annuler.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Annuler.Location = new System.Drawing.Point(332, 63);
+            this.Label_Annuler.Location = new System.Drawing.Point(365, 63);
             this.Label_Annuler.Name = "Label_Annuler";
             this.Label_Annuler.Size = new System.Drawing.Size(51, 15);
             this.Label_Annuler.TabIndex = 10;
@@ -88,7 +92,7 @@
             this.Label_Valider.AutoSize = true;
             this.Label_Valider.BackColor = System.Drawing.Color.Transparent;
             this.Label_Valider.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Valider.Location = new System.Drawing.Point(262, 63);
+            this.Label_Valider.Location = new System.Drawing.Point(295, 63);
             this.Label_Valider.Name = "Label_Valider";
             this.Label_Valider.Size = new System.Drawing.Size(46, 15);
             this.Label_Valider.TabIndex = 9;
@@ -110,7 +114,7 @@
             this.BTN_Annuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BTN_Annuler.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Annuler.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Annuler.Image")));
-            this.BTN_Annuler.Location = new System.Drawing.Point(333, 10);
+            this.BTN_Annuler.Location = new System.Drawing.Point(366, 10);
             this.BTN_Annuler.Name = "BTN_Annuler";
             this.BTN_Annuler.Size = new System.Drawing.Size(50, 50);
             this.BTN_Annuler.TabIndex = 2;
@@ -121,7 +125,7 @@
             // 
             this.BTN_Valider.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BTN_Valider.Image = ((System.Drawing.Image)(resources.GetObject("BTN_Valider.Image")));
-            this.BTN_Valider.Location = new System.Drawing.Point(260, 10);
+            this.BTN_Valider.Location = new System.Drawing.Point(293, 10);
             this.BTN_Valider.Name = "BTN_Valider";
             this.BTN_Valider.Size = new System.Drawing.Size(50, 50);
             this.BTN_Valider.TabIndex = 1;
@@ -145,7 +149,7 @@
             this.GBox_Client.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GBox_Client.Location = new System.Drawing.Point(12, 89);
             this.GBox_Client.Name = "GBox_Client";
-            this.GBox_Client.Size = new System.Drawing.Size(381, 55);
+            this.GBox_Client.Size = new System.Drawing.Size(404, 55);
             this.GBox_Client.TabIndex = 1;
             this.GBox_Client.TabStop = false;
             this.GBox_Client.Text = "Client";
@@ -155,7 +159,7 @@
             this.TBox_Client.Enabled = false;
             this.TBox_Client.Location = new System.Drawing.Point(26, 21);
             this.TBox_Client.Name = "TBox_Client";
-            this.TBox_Client.Size = new System.Drawing.Size(332, 25);
+            this.TBox_Client.Size = new System.Drawing.Size(355, 25);
             this.TBox_Client.TabIndex = 0;
             // 
             // Label_Tatouage
@@ -265,7 +269,7 @@
             // 
             this.Label_Race.AutoSize = true;
             this.Label_Race.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_Race.Location = new System.Drawing.Point(205, 284);
+            this.Label_Race.Location = new System.Drawing.Point(217, 284);
             this.Label_Race.Name = "Label_Race";
             this.Label_Race.Size = new System.Drawing.Size(42, 19);
             this.Label_Race.TabIndex = 22;
@@ -282,12 +286,32 @@
             "Hermaphrodite"});
             this.CBox_Genre.Location = new System.Drawing.Point(260, 200);
             this.CBox_Genre.Name = "CBox_Genre";
-            this.CBox_Genre.Size = new System.Drawing.Size(132, 27);
+            this.CBox_Genre.Size = new System.Drawing.Size(156, 27);
             this.CBox_Genre.TabIndex = 24;
             // 
             // errorSaisie
             // 
             this.errorSaisie.ContainerControl = this;
+            // 
+            // PBox_AddEspèce
+            // 
+            this.PBox_AddEspèce.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddEspèce.Image")));
+            this.PBox_AddEspèce.Location = new System.Drawing.Point(188, 282);
+            this.PBox_AddEspèce.Name = "PBox_AddEspèce";
+            this.PBox_AddEspèce.Size = new System.Drawing.Size(23, 23);
+            this.PBox_AddEspèce.TabIndex = 25;
+            this.PBox_AddEspèce.TabStop = false;
+            this.PBox_AddEspèce.Click += new System.EventHandler(this.PBox_AddEspèce_Click);
+            // 
+            // PBox_AddRace
+            // 
+            this.PBox_AddRace.Image = ((System.Drawing.Image)(resources.GetObject("PBox_AddRace.Image")));
+            this.PBox_AddRace.Location = new System.Drawing.Point(399, 282);
+            this.PBox_AddRace.Name = "PBox_AddRace";
+            this.PBox_AddRace.Size = new System.Drawing.Size(23, 23);
+            this.PBox_AddRace.TabIndex = 26;
+            this.PBox_AddRace.TabStop = false;
+            this.PBox_AddRace.Click += new System.EventHandler(this.PBox_AddRace_Click);
             // 
             // FormAnimaux
             // 
@@ -296,7 +320,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.BTN_Annuler;
-            this.ClientSize = new System.Drawing.Size(404, 364);
+            this.ClientSize = new System.Drawing.Size(428, 364);
+            this.Controls.Add(this.PBox_AddRace);
+            this.Controls.Add(this.PBox_AddEspèce);
             this.Controls.Add(this.CBox_Genre);
             this.Controls.Add(this.CBox_Race);
             this.Controls.Add(this.Label_Race);
@@ -322,6 +348,8 @@
             this.GBox_Client.ResumeLayout(false);
             this.GBox_Client.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddEspèce)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PBox_AddRace)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -352,6 +380,8 @@
         private System.Windows.Forms.Label Label_Race;
         private System.Windows.Forms.ComboBox CBox_Genre;
         private System.Windows.Forms.ErrorProvider errorSaisie;
+        private System.Windows.Forms.PictureBox PBox_AddRace;
+        private System.Windows.Forms.PictureBox PBox_AddEspèce;
 
     }
 }

@@ -40,8 +40,8 @@ namespace CliniqueVeto
 
             TBox_Code.Enabled = false;
             TBox_Client.Enabled = false;
-            CBox_Espèce.DataSource = MgtAnimal.GetEspeces();
-            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.Items[0].ToString());
+            CBox_Espèce.DataSource = MgtRace.GetEspeces();
+            CBox_Race.DataSource = MgtRace.GetRaces(CBox_Espèce.Items[0].ToString());
             TBox_Client.Text = ClientCourant.nomPrenom;
 
             // Affichage en fonction du mode
@@ -89,7 +89,7 @@ namespace CliniqueVeto
         /// </summary>
         private void CBox_Espèce_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CBox_Race.DataSource = MgtAnimal.GetRaces(CBox_Espèce.SelectedValue.ToString());
+            CBox_Race.DataSource = MgtRace.GetRaces(CBox_Espèce.SelectedValue.ToString());
         }
 
         /// <summary>
@@ -190,6 +190,28 @@ namespace CliniqueVeto
         private void BTN_Annuler_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Ouvre le formulaire d'ajout d'une espèce et d'une race
+        /// </summary>
+        private void PBox_AddEspèce_Click(object sender, EventArgs e)
+        {
+            FormAjout_EspècesRaces frmAjout = new FormAjout_EspècesRaces(null);
+            frmAjout.ShowDialog();
+            CBox_Espèce.DataSource = MgtRace.GetEspeces();
+            CBox_Race.DataSource = MgtRace.GetRaces(CBox_Espèce.Items[0].ToString());
+        }
+
+        /// <summary>
+        /// Ouvre le formulaire d'ajout d'une race poru une espèce
+        /// </summary>
+        private void PBox_AddRace_Click(object sender, EventArgs e)
+        {
+            FormAjout_EspècesRaces frmAjout = new FormAjout_EspècesRaces(CBox_Espèce.SelectedValue.ToString());
+            frmAjout.ShowDialog();
+            CBox_Espèce.DataSource = MgtRace.GetEspeces();
+            CBox_Race.DataSource = MgtRace.GetRaces(CBox_Espèce.Items[0].ToString());
         }
 
         #endregion

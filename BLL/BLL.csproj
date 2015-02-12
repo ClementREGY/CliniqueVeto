@@ -46,6 +46,7 @@
     <Compile Include="MgtConsultation.cs" />
     <Compile Include="MgtFacture.cs" />
     <Compile Include="MgtLogin.cs" />
+    <Compile Include="MgtRace.cs" />
     <Compile Include="MgtRelanceVaccins.cs" />
     <Compile Include="MgtRendezVous.cs" />
     <Compile Include="MgtVaccin.cs" />
