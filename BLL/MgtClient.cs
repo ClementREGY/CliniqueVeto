@@ -29,6 +29,11 @@ namespace BLL
             return DALClient.GetClient(IdClient);
         }
 
+        public static bool GetFacturesImpayees(Guid codeClient)
+        {
+            return DALClient.GetFacturesImpayees(codeClient);
+        }
+
         // Update
         public static bool UpdateClient(Client pClient)
         {

@@ -165,31 +165,40 @@ namespace CliniqueVeto
         }
 
         /// <summary>
-        /// Tentative de suppression du Client courant
+        /// Tentative d'archivage du Client courant
         /// </summary>
         private void BTN_SupprimerClient_Click(object sender, EventArgs e)
         {
-            try
+            // Vérifie si le client a des factures impayées
+            if (!MgtClient.GetFacturesImpayees(ClientCourant.codeClient))
             {
-                MgtClient.DeleteClient(ClientCourant);
-                MgtAnimal.DeleteAnimalByClient(ClientCourant);
-                Reset();
-                if (IndiceCourant == -1)
+                // Si non, on tente d'archiver le Client ainsi que ses animaux
+                try
                 {
-                    IndiceCourant = 0;
+                    MgtClient.DeleteClient(ClientCourant);
+                    MgtAnimal.DeleteAnimalByClient(ClientCourant);
+                    Reset();
+                    if (IndiceCourant == -1)
+                    {
+                        IndiceCourant = 0;
+                    }
+                    else if (IndiceCourant >= MgtClient.GetClients().Count)
+                    {
+                        IndiceCourant = MgtClient.GetClients().Count - 1;
+                    }
+                    else
+                    {
+                        IndiceCourant = IndiceCourant;
+                    }
                 }
-                else if (IndiceCourant >= MgtClient.GetClients().Count)
+                catch (Exception)
                 {
-                    IndiceCourant = MgtClient.GetClients().Count - 1;
-                }
-                else
-                {
-                    IndiceCourant = IndiceCourant;
+                    MessageBox.Show("Erreur lors de la suppression du Client...");
                 }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Erreur lors de la suppression du Client...");
+                MessageBox.Show("Suppression impossible : Le Client a des factures impayées !");
             }
         }
 

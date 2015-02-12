@@ -55,7 +55,7 @@ namespace CliniqueVeto
             else if (frmClients.ModeAnimal == "Modification")
             {
                 CBox_Espèce.SelectedIndex = CBox_Espèce.FindStringExact(frmClients.AnimalCourant.espece);
-                CBox_Race.DataSource = MgtAnimal.GetRaces(frmClients.AnimalCourant.espece);
+                CBox_Race.SelectedIndex = CBox_Race.FindStringExact(frmClients.AnimalCourant.race);
                 TBox_Tatouage.Enabled = false;
                 AfficherAnimalCourant();
             }

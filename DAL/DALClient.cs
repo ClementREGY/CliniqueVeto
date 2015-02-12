@@ -161,6 +161,30 @@ namespace DAL
             return leClient;
         }
 
+        public static bool GetFacturesImpayees(Guid codeClient)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT * FROM Clients C JOIN Factures F ON C.CodeClient = F.CodeClient WHERE F.Etat != 2 AND F.CodeClient = @codeClient";
+                    command.Parameters.AddWithValue("@codeClient", codeClient);
+
+                    int resultat = command.ExecuteNonQuery();
+                    if (resultat == 0)
+                        return false;
+                    else
+                        return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+        
         #endregion
 
         #region Update

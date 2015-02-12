@@ -55,7 +55,7 @@
             // 
             this.BTN_Annuler.BackColor = System.Drawing.SystemColors.Control;
             this.BTN_Annuler.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_Annuler.Location = new System.Drawing.Point(345, 309);
+            this.BTN_Annuler.Location = new System.Drawing.Point(474, 310);
             this.BTN_Annuler.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_Annuler.Name = "BTN_Annuler";
             this.BTN_Annuler.Size = new System.Drawing.Size(114, 25);
@@ -77,7 +77,7 @@
             this.DataGrid_Barèmes.ReadOnly = true;
             this.DataGrid_Barèmes.RowHeadersVisible = false;
             this.DataGrid_Barèmes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGrid_Barèmes.Size = new System.Drawing.Size(445, 204);
+            this.DataGrid_Barèmes.Size = new System.Drawing.Size(573, 204);
             this.DataGrid_Barèmes.TabIndex = 1;
             this.DataGrid_Barèmes.SelectionChanged += new System.EventHandler(this.DataGrid_Barèmes_SelectionChanged);
             // 
@@ -91,7 +91,7 @@
             "Tarif Variable"});
             this.CBox_TypeTarif.Location = new System.Drawing.Point(54, 279);
             this.CBox_TypeTarif.Name = "CBox_TypeTarif";
-            this.CBox_TypeTarif.Size = new System.Drawing.Size(121, 23);
+            this.CBox_TypeTarif.Size = new System.Drawing.Size(126, 23);
             this.CBox_TypeTarif.TabIndex = 4;
             this.CBox_TypeTarif.Visible = false;
             this.CBox_TypeTarif.SelectedIndexChanged += new System.EventHandler(this.CBox_TypeTarif_SelectedIndexChanged);
@@ -101,7 +101,7 @@
             this.Tbox_Libelle.Enabled = false;
             this.Tbox_Libelle.Location = new System.Drawing.Point(138, 231);
             this.Tbox_Libelle.Name = "Tbox_Libelle";
-            this.Tbox_Libelle.Size = new System.Drawing.Size(322, 25);
+            this.Tbox_Libelle.Size = new System.Drawing.Size(450, 25);
             this.Tbox_Libelle.TabIndex = 3;
             this.Tbox_Libelle.Visible = false;
             // 
@@ -137,16 +137,17 @@
             // TBox_TarifMini
             // 
             this.TBox_TarifMini.Enabled = false;
-            this.TBox_TarifMini.Location = new System.Drawing.Point(54, 310);
+            this.TBox_TarifMini.Location = new System.Drawing.Point(237, 310);
             this.TBox_TarifMini.Name = "TBox_TarifMini";
             this.TBox_TarifMini.Size = new System.Drawing.Size(78, 25);
             this.TBox_TarifMini.TabIndex = 6;
             this.TBox_TarifMini.Visible = false;
+            this.TBox_TarifMini.Enter += new System.EventHandler(this.TBox_TarifMini_Enter);
             // 
             // Label_Mini
             // 
             this.Label_Mini.AutoSize = true;
-            this.Label_Mini.Location = new System.Drawing.Point(12, 313);
+            this.Label_Mini.Location = new System.Drawing.Point(188, 313);
             this.Label_Mini.Name = "Label_Mini";
             this.Label_Mini.Size = new System.Drawing.Size(43, 17);
             this.Label_Mini.TabIndex = 9;
@@ -156,16 +157,17 @@
             // TBox_TarifMaxi
             // 
             this.TBox_TarifMaxi.Enabled = false;
-            this.TBox_TarifMaxi.Location = new System.Drawing.Point(239, 310);
+            this.TBox_TarifMaxi.Location = new System.Drawing.Point(375, 311);
             this.TBox_TarifMaxi.Name = "TBox_TarifMaxi";
             this.TBox_TarifMaxi.Size = new System.Drawing.Size(78, 25);
             this.TBox_TarifMaxi.TabIndex = 7;
             this.TBox_TarifMaxi.Visible = false;
+            this.TBox_TarifMaxi.Enter += new System.EventHandler(this.TBox_TarifMaxi_Enter);
             // 
             // Label_Maxi
             // 
             this.Label_Maxi.AutoSize = true;
-            this.Label_Maxi.Location = new System.Drawing.Point(188, 313);
+            this.Label_Maxi.Location = new System.Drawing.Point(324, 314);
             this.Label_Maxi.Name = "Label_Maxi";
             this.Label_Maxi.Size = new System.Drawing.Size(45, 17);
             this.Label_Maxi.TabIndex = 11;
@@ -175,16 +177,17 @@
             // TBox_TarifFixe
             // 
             this.TBox_TarifFixe.Enabled = false;
-            this.TBox_TarifFixe.Location = new System.Drawing.Point(239, 277);
+            this.TBox_TarifFixe.Location = new System.Drawing.Point(237, 279);
             this.TBox_TarifFixe.Name = "TBox_TarifFixe";
             this.TBox_TarifFixe.Size = new System.Drawing.Size(78, 25);
             this.TBox_TarifFixe.TabIndex = 5;
             this.TBox_TarifFixe.Visible = false;
+            this.TBox_TarifFixe.Enter += new System.EventHandler(this.TBox_TarifFixe_Enter);
             // 
             // Label_Fixe
             // 
             this.Label_Fixe.AutoSize = true;
-            this.Label_Fixe.Location = new System.Drawing.Point(192, 280);
+            this.Label_Fixe.Location = new System.Drawing.Point(190, 282);
             this.Label_Fixe.Name = "Label_Fixe";
             this.Label_Fixe.Size = new System.Drawing.Size(41, 17);
             this.Label_Fixe.TabIndex = 13;
@@ -198,7 +201,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(472, 348);
+            this.shapeContainer1.Size = new System.Drawing.Size(600, 346);
             this.shapeContainer1.TabIndex = 14;
             this.shapeContainer1.TabStop = false;
             // 
@@ -207,15 +210,15 @@
             this.lineShape1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.lineShape1.Name = "lineShape1";
             this.lineShape1.X1 = 10;
-            this.lineShape1.X2 = 463;
+            this.lineShape1.X2 = 590;
             this.lineShape1.Y1 = 267;
-            this.lineShape1.Y2 = 267;
+            this.lineShape1.Y2 = 266;
             // 
             // BTN_MiseAJour
             // 
             this.BTN_MiseAJour.BackColor = System.Drawing.SystemColors.Control;
             this.BTN_MiseAJour.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BTN_MiseAJour.Location = new System.Drawing.Point(345, 276);
+            this.BTN_MiseAJour.Location = new System.Drawing.Point(474, 276);
             this.BTN_MiseAJour.Margin = new System.Windows.Forms.Padding(4);
             this.BTN_MiseAJour.Name = "BTN_MiseAJour";
             this.BTN_MiseAJour.Size = new System.Drawing.Size(114, 25);
@@ -233,7 +236,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(472, 348);
+            this.ClientSize = new System.Drawing.Size(600, 346);
             this.Controls.Add(this.BTN_MiseAJour);
             this.Controls.Add(this.TBox_TarifFixe);
             this.Controls.Add(this.Label_Fixe);

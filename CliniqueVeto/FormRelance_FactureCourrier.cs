@@ -50,7 +50,7 @@ namespace CliniqueVeto
         private void textRelance()
         {
             richTBox_Courrier.AppendText("Rappel de facture impayée - ", Color.Black, 15, false, false, true);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString(), Color.Black, 15, false, false, true);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString().ToUpper(), Color.Black, 15, false, false, true);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Madame, Monsieur ", Color.Black, 12, false, false, false);
@@ -59,12 +59,14 @@ namespace CliniqueVeto
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Sauf erreur ou omission de notre part, le paiement de la facture n° ", Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString(), Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.numFacture.ToString().ToUpper(), Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(" datée du ", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(frmRelance.RelanceCourante.dateFacture.ToShortDateString(), Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(" pour un montant de ", Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.totalFacture.ToString(), Color.Black, 12, false, false, false);
-            richTBox_Courrier.AppendText(" euros ne nous est pas parvenu. Nous vous prions donc de bien vouloir procéder à son règlement dans les meilleurs délais.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(frmRelance.RelanceCourante.totalFacture.ToString("N2"), Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(" € ne nous est pas parvenu.", Color.Black, 12, false, false, false);
+            richTBox_Courrier.AppendText(Environment.NewLine);
+            richTBox_Courrier.AppendText("Nous vous prions donc de bien vouloir procéder à son règlement dans les meilleurs délais.", Color.Black, 12, false, false, false); 
             richTBox_Courrier.AppendText(Environment.NewLine);
             richTBox_Courrier.AppendText("Si par ailleurs votre paiement venait à nous parvenir avant la réception de la présente, nous vous saurions gré de ne pas en tenir compte.", Color.Black, 12, false, false, false);
             richTBox_Courrier.AppendText(Environment.NewLine);
@@ -90,6 +92,5 @@ namespace CliniqueVeto
         }
 
         #endregion
-
     }
 }
