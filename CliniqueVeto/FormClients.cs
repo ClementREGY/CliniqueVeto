@@ -66,7 +66,6 @@ namespace CliniqueVeto
             NavBarre.AvantEnable = false;
             DataGrid_Animaux.DefaultCellStyle.Font = new Font("Cambria", 12);
             DataGrid_Animaux.ColumnHeadersDefaultCellStyle.Font = new Font("Cambria", 12);
-            DataGrid_Animaux.DataSource = MgtAnimal.GetAnimalsByClient(ClientCourant.codeClient);
         }
         
         #region Navigation et Affichage

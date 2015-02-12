@@ -61,9 +61,8 @@ namespace CliniqueVeto
             DataGrid_RDV.Columns["Urgence"].Visible = false;
 
             DataGrid_RDV.Columns["dateRDV"].DisplayIndex = 0;
-            DataGrid_RDV.Columns["Client"].DisplayIndex = 1;
-            DataGrid_RDV.Columns["Animal"].DisplayIndex = 2;
-            DataGrid_RDV.Columns["Vétérinaire"].DisplayIndex = 3;
+            DataGrid_RDV.Columns["nomAnimal"].DisplayIndex = 2;
+            DataGrid_RDV.Columns["nomVeto"].DisplayIndex = 3;
 
             #endregion
         }

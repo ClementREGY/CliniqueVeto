@@ -33,9 +33,8 @@ namespace CliniqueVeto
             DataGrid_Agenda.Columns["dateRDV"].DefaultCellStyle.Format = "HH:mm";
 
             DataGrid_Agenda.Columns["dateRDV"].DisplayIndex = 0;
-            DataGrid_Agenda.Columns["Client"].DisplayIndex = 1;
-            DataGrid_Agenda.Columns["Animal"].DisplayIndex = 2;
-            DataGrid_Agenda.Columns["Vétérinaire"].DisplayIndex = 3;
+            DataGrid_Agenda.Columns["nomAnimal"].DisplayIndex = 2;
+            DataGrid_Agenda.Columns["nomVeto"].DisplayIndex = 3;
         }
 
         #region Gestion de l'Affichage
