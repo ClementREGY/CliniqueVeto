@@ -80,8 +80,8 @@ namespace CliniqueVeto
 
             TBox_Couleur.Text = frmClients.AnimalCourant.couleur;
             TBox_Tatouage.Text = frmClients.AnimalCourant.tatouage;
-            CBox_Race.SelectedValue = frmClients.AnimalCourant.race;
-            CBox_Espèce.SelectedValue = frmClients.AnimalCourant.espece;
+            CBox_Espèce.SelectedItem = frmClients.AnimalCourant.espece;
+            CBox_Race.SelectedItem = frmClients.AnimalCourant.race;
         }
 
         /// <summary>
