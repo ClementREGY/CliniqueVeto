@@ -22,6 +22,7 @@ namespace CliniqueVeto
         private void FormAgenda_Load(object sender, EventArgs e)
         {
             CBox_Vétérinaires.DataSource = MgtVeterinaire.GetVeterinaires();
+            CBox_Vétérinaires.SelectedIndex = 0;
             CBox_Vétérinaires.DisplayMember = "NomVeto";
 
             DataGrid_Agenda.DataSource = MgtRendezVous.GetAgendaByVeterinaire(((Veterinaire)CBox_Vétérinaires.SelectedItem).codeVeto, DTPicker_Date.Value);
