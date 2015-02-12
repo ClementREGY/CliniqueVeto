@@ -10,46 +10,6 @@ namespace DAL
 {
     public class DALClient
     {
-        #region Builder
-
-        private static List<Client> builderObject(SqlDataReader dt)
-        {
-            List<Client> list = new List<Client>();
-            int colId = dt.GetOrdinal("CodeClient");
-            int colNom = dt.GetOrdinal("NomClient");
-            int colPrenom = dt.GetOrdinal("PrenomClient");
-            int colAdresse = dt.GetOrdinal("Adresse1");
-            int colAdresse2 = dt.GetOrdinal("Adresse2");
-            int colCP = dt.GetOrdinal("CodePostal");
-            int colVille = dt.GetOrdinal("Ville");
-            int colNumTel = dt.GetOrdinal("NumTel");
-            int colAssurance = dt.GetOrdinal("Assurance");
-            int colEmail = dt.GetOrdinal("Email");
-            int colRemarque = dt.GetOrdinal("Remarque");
-            int colArchive = dt.GetOrdinal("Archive");
-
-            while (dt.Read())
-            {
-                Client client = new Client();
-                client.codeClient = dt.GetGuid(colId);
-                client.nomClient = dt.GetString(colNom);
-                client.prenomClient = dt.GetString(colPrenom);
-                client.adresse = dt.GetString(colAdresse);
-                client.adresse2 = (dt.GetValue(colAdresse2).ToString() != null) ? dt.GetValue(colAdresse2).ToString() : String.Empty;
-                client.cp = dt.GetString(colCP);
-                client.ville = dt.GetString(colVille);
-                client.numTel = (dt.GetValue(colNumTel).ToString() != null) ? dt.GetValue(colNumTel).ToString() : String.Empty;
-                client.assurance = (dt.GetValue(colAssurance).ToString() != null) ? dt.GetValue(colAssurance).ToString() : String.Empty;
-                client.email = (dt.GetValue(colEmail).ToString() != null) ? dt.GetValue(colEmail).ToString() : String.Empty;
-                client.remarque = (dt.GetValue(colRemarque).ToString() != null) ? dt.GetValue(colRemarque).ToString() : String.Empty;
-                client.archive = dt.GetBoolean(colArchive);
-                list.Add(client);
-            }
-            return list;
-        }
-
-        #endregion
-
         #region Create
 
         public static Guid AddClient(Client client)
@@ -99,7 +59,36 @@ namespace DAL
                     command.CommandText = "SELECT * FROM Clients WHERE Archive = 0 ORDER BY NomClient";
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+                    int colId = dt.GetOrdinal("CodeClient");
+                    int colNom = dt.GetOrdinal("NomClient");
+                    int colPrenom = dt.GetOrdinal("PrenomClient");
+                    int colAdresse = dt.GetOrdinal("Adresse1");
+                    int colAdresse2 = dt.GetOrdinal("Adresse2");
+                    int colCP = dt.GetOrdinal("CodePostal");
+                    int colVille = dt.GetOrdinal("Ville");
+                    int colNumTel = dt.GetOrdinal("NumTel");
+                    int colAssurance = dt.GetOrdinal("Assurance");
+                    int colEmail = dt.GetOrdinal("Email");
+                    int colRemarque = dt.GetOrdinal("Remarque");
+                    int colArchive = dt.GetOrdinal("Archive");
+
+                    while (dt.Read())
+                    {
+                        Client client = new Client();
+                        client.codeClient = dt.GetGuid(colId);
+                        client.nomClient = dt.GetString(colNom);
+                        client.prenomClient = dt.GetString(colPrenom);
+                        client.adresse = dt.GetString(colAdresse);
+                        client.adresse2 = (dt.GetValue(colAdresse2).ToString() != null) ? dt.GetValue(colAdresse2).ToString() : String.Empty;
+                        client.cp = dt.GetString(colCP);
+                        client.ville = dt.GetString(colVille);
+                        client.numTel = (dt.GetValue(colNumTel).ToString() != null) ? dt.GetValue(colNumTel).ToString() : String.Empty;
+                        client.assurance = (dt.GetValue(colAssurance).ToString() != null) ? dt.GetValue(colAssurance).ToString() : String.Empty;
+                        client.email = (dt.GetValue(colEmail).ToString() != null) ? dt.GetValue(colEmail).ToString() : String.Empty;
+                        client.remarque = (dt.GetValue(colRemarque).ToString() != null) ? dt.GetValue(colRemarque).ToString() : String.Empty;
+                        client.archive = dt.GetBoolean(colArchive);
+                        list.Add(client);
+                    }
                 }
             }
             catch (Exception ex)

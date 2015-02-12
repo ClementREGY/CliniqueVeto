@@ -10,30 +10,6 @@ namespace DAL
 {
     public class DALVétérinaire
     {
-        #region Builder
-
-        private static List<Veterinaire> builderObject(SqlDataReader dt)
-        {
-            List<Veterinaire> list = new List<Veterinaire>();
-            int colID = dt.GetOrdinal("CodeVeto");
-            int colNom = dt.GetOrdinal("NomVeto");
-            int colArchive = dt.GetOrdinal("Archive");
-            int colRefLogin = dt.GetOrdinal("RefLogin");
-
-            while (dt.Read())
-            {
-                Veterinaire veto = new Veterinaire();
-                veto.codeVeto = dt.GetGuid(colID);
-                veto.nomVeto = dt.GetString(colNom);
-                veto.archive = dt.GetBoolean(colArchive);
-                veto.refLogin = dt.GetInt32(colRefLogin);
-                list.Add(veto);
-            }
-            return list;
-        }
-
-        #endregion
-
         #region Create
 
         public static bool AddVeterinaire(Veterinaire veterinaire)
@@ -78,7 +54,20 @@ namespace DAL
                     command.CommandText = "SELECT * FROM Veterinaires WHERE Archive = 0 ORDER BY NomVeto";
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+                    int colID = dt.GetOrdinal("CodeVeto");
+                    int colNom = dt.GetOrdinal("NomVeto");
+                    int colArchive = dt.GetOrdinal("Archive");
+                    int colRefLogin = dt.GetOrdinal("RefLogin");
+
+                    while (dt.Read())
+                    {
+                        Veterinaire veto = new Veterinaire();
+                        veto.codeVeto = dt.GetGuid(colID);
+                        veto.nomVeto = dt.GetString(colNom);
+                        veto.archive = dt.GetBoolean(colArchive);
+                        veto.refLogin = dt.GetInt32(colRefLogin);
+                        list.Add(veto);
+                    }
                 }
             }
             catch (Exception ex)

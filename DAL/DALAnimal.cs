@@ -10,40 +10,6 @@ namespace DAL
 {
     public class DALAnimal
     {
-        #region Builder
-
-        private static List<Animal> builderObject(SqlDataReader dt)
-        {
-            List<Animal> list = new List<Animal>();
-            int colId = dt.GetOrdinal("CodeAnimal");
-            int colNom = dt.GetOrdinal("NomAnimal");
-            int colSexe = dt.GetOrdinal("Sexe");
-            int colCouleur = dt.GetOrdinal("Couleur");
-            int colRace = dt.GetOrdinal("Race");
-            int colEspece = dt.GetOrdinal("Espece");
-            int colClient = dt.GetOrdinal("CodeClient");
-            int colTatouage = dt.GetOrdinal("Tatouage");
-            int colAntecedents = dt.GetOrdinal("Antecedents");
-
-            while (dt.Read())
-            {
-                Animal animal = new Animal();
-                animal.codeAnimal = dt.GetGuid(colId);
-                animal.nomAnimal = dt.GetString(colNom);
-                animal.sexe = dt.GetString(colSexe);
-                animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
-                animal.race = dt.GetString(colRace);
-                animal.espece = dt.GetString(colEspece);
-                animal.client = dt.GetGuid(colClient);
-                animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
-                animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
-                list.Add(animal);
-            }
-            return list;
-        }
-
-        #endregion
-
         #region Create
 
         public static bool AddAnimal(Animal animal, Client client)
@@ -94,7 +60,30 @@ namespace DAL
                     command.CommandText = "SELECT * FROM Animaux WHERE Archive = 0";
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+                    int colId = dt.GetOrdinal("CodeAnimal");
+                    int colNom = dt.GetOrdinal("NomAnimal");
+                    int colSexe = dt.GetOrdinal("Sexe");
+                    int colCouleur = dt.GetOrdinal("Couleur");
+                    int colRace = dt.GetOrdinal("Race");
+                    int colEspece = dt.GetOrdinal("Espece");
+                    int colClient = dt.GetOrdinal("CodeClient");
+                    int colTatouage = dt.GetOrdinal("Tatouage");
+                    int colAntecedents = dt.GetOrdinal("Antecedents");
+
+                    while (dt.Read())
+                    {
+                        Animal animal = new Animal();
+                        animal.codeAnimal = dt.GetGuid(colId);
+                        animal.nomAnimal = dt.GetString(colNom);
+                        animal.sexe = dt.GetString(colSexe);
+                        animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
+                        animal.race = dt.GetString(colRace);
+                        animal.espece = dt.GetString(colEspece);
+                        animal.client = dt.GetGuid(colClient);
+                        animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
+                        animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
+                        list.Add(animal);
+                    }
                 }
             }
             catch (Exception ex)
@@ -118,7 +107,30 @@ namespace DAL
                     command.Parameters.AddWithValue("@id", id);
 
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+                    int colId = dt.GetOrdinal("CodeAnimal");
+                    int colNom = dt.GetOrdinal("NomAnimal");
+                    int colSexe = dt.GetOrdinal("Sexe");
+                    int colCouleur = dt.GetOrdinal("Couleur");
+                    int colRace = dt.GetOrdinal("Race");
+                    int colEspece = dt.GetOrdinal("Espece");
+                    int colClient = dt.GetOrdinal("CodeClient");
+                    int colTatouage = dt.GetOrdinal("Tatouage");
+                    int colAntecedents = dt.GetOrdinal("Antecedents");
+
+                    while (dt.Read())
+                    {
+                        Animal animal = new Animal();
+                        animal.codeAnimal = dt.GetGuid(colId);
+                        animal.nomAnimal = dt.GetString(colNom);
+                        animal.sexe = dt.GetString(colSexe);
+                        animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
+                        animal.race = dt.GetString(colRace);
+                        animal.espece = dt.GetString(colEspece);
+                        animal.client = dt.GetGuid(colClient);
+                        animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
+                        animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
+                        list.Add(animal);
+                    }
                 }
             }
             catch (Exception ex)
@@ -141,7 +153,30 @@ namespace DAL
                     command.CommandText = "SELECT * FROM Animaux WHERE CodeAnimal = @id AND Archive = 0";
                     command.Parameters.AddWithValue("@id", id);
                     SqlDataReader dt = command.ExecuteReader();
-                    list = builderObject(dt);
+                    int colId = dt.GetOrdinal("CodeAnimal");
+                    int colNom = dt.GetOrdinal("NomAnimal");
+                    int colSexe = dt.GetOrdinal("Sexe");
+                    int colCouleur = dt.GetOrdinal("Couleur");
+                    int colRace = dt.GetOrdinal("Race");
+                    int colEspece = dt.GetOrdinal("Espece");
+                    int colClient = dt.GetOrdinal("CodeClient");
+                    int colTatouage = dt.GetOrdinal("Tatouage");
+                    int colAntecedents = dt.GetOrdinal("Antecedents");
+
+                    while (dt.Read())
+                    {
+                        Animal animal = new Animal();
+                        animal.codeAnimal = dt.GetGuid(colId);
+                        animal.nomAnimal = dt.GetString(colNom);
+                        animal.sexe = dt.GetString(colSexe);
+                        animal.couleur = (dt.GetValue(colCouleur).ToString() != null) ? dt.GetValue(colCouleur).ToString() : String.Empty;
+                        animal.race = dt.GetString(colRace);
+                        animal.espece = dt.GetString(colEspece);
+                        animal.client = dt.GetGuid(colClient);
+                        animal.tatouage = (dt.GetValue(colTatouage).ToString() != null) ? dt.GetValue(colTatouage).ToString() : String.Empty;
+                        animal.antecedents = (dt.GetValue(colAntecedents).ToString() != null) ? dt.GetValue(colAntecedents).ToString() : String.Empty;
+                        list.Add(animal);
+                    }
                 }
             }
             catch (Exception ex)
