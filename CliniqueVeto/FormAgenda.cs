@@ -17,9 +17,10 @@ namespace CliniqueVeto
         public FormAgenda()
         {
             InitializeComponent();
+            LoadContent();
         }
 
-        private void FormAgenda_Load(object sender, EventArgs e)
+        private void LoadContent()
         {
             CBox_Vétérinaires.DataSource = MgtVeterinaire.GetVeterinaires();
             CBox_Vétérinaires.SelectedIndex = 0;

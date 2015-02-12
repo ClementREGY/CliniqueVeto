@@ -145,7 +145,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormAgenda";
             this.Text = "Agenda";
-            this.Load += new System.EventHandler(this.FormAgenda_Load);
             this.GBox_Vétérinaire.ResumeLayout(false);
             this.GBox_Vétérinaire.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Agenda)).EndInit();

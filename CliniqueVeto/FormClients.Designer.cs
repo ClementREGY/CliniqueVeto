@@ -591,7 +591,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormClients";
             this.Text = "Clients";
-            this.Load += new System.EventHandler(this.FormClients_Load);
             this.Panel_GestionClients.ResumeLayout(false);
             this.Panel_GestionClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Animaux)).EndInit();

@@ -34,9 +34,10 @@ namespace CliniqueVeto
         public FormRDV()
         {
             InitializeComponent();
+            LoadContent();
         }
 
-        private void FormRDV_Load(object sender, EventArgs e)
+        private void LoadContent()
         {
             CBox_Client.DataSource = MgtClient.GetClients();
             CBox_Client.DisplayMember = "nomPrenom";

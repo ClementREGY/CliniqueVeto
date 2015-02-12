@@ -380,7 +380,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormRDV";
             this.Text = "Prise de Rendez-Vous";
-            this.Load += new System.EventHandler(this.FormRDV_Load);
             this.GBox_Pour.ResumeLayout(false);
             this.GBox_Pour.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBox_AddAnimal)).EndInit();

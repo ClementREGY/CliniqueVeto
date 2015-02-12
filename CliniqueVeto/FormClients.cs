@@ -58,9 +58,10 @@ namespace CliniqueVeto
         public FormClients()
         {
             InitializeComponent();
+            LoadContent();
         }
 
-        private void FormClients_Load(object sender, EventArgs e)
+        private void LoadContent()
         {
             TBox_Code.Enabled = false;
             NavBarre.AvantEnable = false;
