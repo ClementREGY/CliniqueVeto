@@ -62,6 +62,12 @@
     <Compile Include="FormAjout_EspècesRaces.Designer.cs">
       <DependentUpon>FormAjout_EspècesRaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAjout_Vaccin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAjout_Vaccin.Designer.cs">
+      <DependentUpon>FormAjout_Vaccin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAjout_Vétérinaire.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjout_EspècesRaces.resx">
       <DependentUpon>FormAjout_EspècesRaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAjout_Vaccin.resx">
+      <DependentUpon>FormAjout_Vaccin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjout_Vétérinaire.resx">
       <DependentUpon>FormAjout_Vétérinaire.cs</DependentUpon>

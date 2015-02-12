@@ -106,6 +106,17 @@ namespace CliniqueVeto
             }
         }
 
+
+        /// <summary>
+        /// Ouverture du formulaire d'ajout de vaccin
+        /// </summary>
+        private void BTN_Ajout_Click(object sender, EventArgs e)
+        {
+            FormAjout_Vaccin frm = new FormAjout_Vaccin();
+            frm.ShowDialog();
+            DataGrid_Vaccins.DataSource = MgtVaccin.GetVaccins();
+        }
+
         #endregion
     }
 }

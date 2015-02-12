@@ -31,6 +31,29 @@ namespace DAL
             return list;
         }
 
+        public static Guid AddVaccin(Vaccin leVaccin)
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "EXEC ajout_vaccin @nomvaccin, @periodevalidite, @quantite";
+                    command.Parameters.AddWithValue("@nomvaccin", leVaccin.nomVaccin);
+                    command.Parameters.AddWithValue("@periodevalidite", leVaccin.periodeValidite);
+                    command.Parameters.AddWithValue("@quantite", leVaccin.quantiteStock);
+
+                    Guid dResult = (Guid)command.ExecuteScalar();
+                    return dResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
+        }
+
         public static List<Vaccin> GetVaccins()
         {
             List<Vaccin> list = new List<Vaccin>();

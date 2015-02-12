@@ -11,6 +11,7 @@ namespace DAL
     public class DALBarème
     {
         #region Create
+
         public static bool AddBareme(Bareme bareme)
         {
             try
@@ -260,6 +261,28 @@ namespace DAL
                 throw new ApplicationException("Erreur : " + ex.Message);
             }
             return list;
+        }
+
+        public static int GetDernierCodeVaccin()
+        {
+            try
+            {
+                using (SqlConnection cnx = DALAccess.GetConnection())
+                {
+                    SqlCommand command = cnx.CreateCommand();
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "SELECT MAX(CodeGroupement) + 1 FROM Baremes WHERE TypeActe = 'VACC'";
+
+                    String dResult = command.ExecuteScalar().ToString();
+                    int resultat = int.Parse(dResult);
+
+                    return resultat;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Erreur : " + ex.Message);
+            }
         }
 
         #endregion

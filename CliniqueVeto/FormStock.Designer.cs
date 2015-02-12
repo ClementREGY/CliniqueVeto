@@ -37,6 +37,7 @@
             this.TBox_Nombre = new System.Windows.Forms.TextBox();
             this.DataGrid_Vaccins = new System.Windows.Forms.DataGridView();
             this.errorSaisie = new System.Windows.Forms.ErrorProvider(this.components);
+            this.BTN_Ajout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid_Vaccins)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorSaisie)).BeginInit();
             this.SuspendLayout();
@@ -119,12 +120,26 @@
             // 
             this.errorSaisie.ContainerControl = this;
             // 
+            // BTN_Ajout
+            // 
+            this.BTN_Ajout.BackColor = System.Drawing.SystemColors.Control;
+            this.BTN_Ajout.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BTN_Ajout.Location = new System.Drawing.Point(346, 218);
+            this.BTN_Ajout.Margin = new System.Windows.Forms.Padding(4);
+            this.BTN_Ajout.Name = "BTN_Ajout";
+            this.BTN_Ajout.Size = new System.Drawing.Size(195, 27);
+            this.BTN_Ajout.TabIndex = 7;
+            this.BTN_Ajout.Text = "Ajouter un Nouveau Vaccin";
+            this.BTN_Ajout.UseVisualStyleBackColor = false;
+            this.BTN_Ajout.Click += new System.EventHandler(this.BTN_Ajout_Click);
+            // 
             // FormStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(554, 222);
+            this.ClientSize = new System.Drawing.Size(554, 253);
+            this.Controls.Add(this.BTN_Ajout);
             this.Controls.Add(this.DataGrid_Vaccins);
             this.Controls.Add(this.TBox_Nombre);
             this.Controls.Add(this.Label_Nombre);
@@ -154,5 +169,6 @@
         private System.Windows.Forms.TextBox TBox_Nombre;
         private System.Windows.Forms.DataGridView DataGrid_Vaccins;
         private System.Windows.Forms.ErrorProvider errorSaisie;
+        private System.Windows.Forms.Button BTN_Ajout;
     }
 }

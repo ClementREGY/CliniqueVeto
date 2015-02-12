@@ -51,6 +51,11 @@ namespace BLL
             return DALBarème.GetTarifsActes(libelle);
         }
 
+        public static int GetDernierCodeVaccin()
+        {
+            return DALBarème.GetDernierCodeVaccin();
+        }
+
         // Update
 
         public static bool SetBaremeArchive(Bareme pBareme)

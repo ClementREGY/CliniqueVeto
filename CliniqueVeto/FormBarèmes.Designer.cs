@@ -212,7 +212,7 @@
             this.lineShape1.X1 = 10;
             this.lineShape1.X2 = 590;
             this.lineShape1.Y1 = 267;
-            this.lineShape1.Y2 = 266;
+            this.lineShape1.Y2 = 267;
             // 
             // BTN_MiseAJour
             // 

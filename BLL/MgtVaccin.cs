@@ -10,13 +10,19 @@ namespace BLL
 {
     public class MgtVaccin
     {
-        //Read
+        // Read
         public static List<Vaccin> GetVaccins()
         {
             return DALVaccin.GetVaccins();
         }
 
-        //Update
+        // Create
+        public static Guid CreateVaccin(Vaccin pVaccin)
+        {
+            return DALVaccin.AddVaccin(pVaccin);
+        }
+
+        // Update
         public static bool UpdateVaccin(Vaccin pVaccin)
         {
             return DALVaccin.SetVaccin(pVaccin);
